@@ -1,1 +1,1 @@
-# finance_tracker
+# finance tracker & data visualisation software

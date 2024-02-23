@@ -1,4 +1,4 @@
-def add_data():
+def add_data():                                                                    #add data
     n=int(input("No. of points: "))
     for i in range(n):
         print("\nx",i+1,":")

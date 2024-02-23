@@ -4,7 +4,7 @@ import numpy as np
 import time
 import datetime
 import getpass
-import functions                          #user-defined
+import functions                          #user-defined module
 colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","#0d0887","#7e03a8","cyan"]
 #========================================================================================================connecting mySQL
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')

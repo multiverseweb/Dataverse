@@ -37,3 +37,21 @@ NOTE:
 NOTE:
 - you can pip install the python modules if you don't have them already on your computer.
 ```
+---
+##### :octocat:&nbsp;&nbsp;28-02-2024
+---
+## How to contribute?
+
+| Nandana | Ojas | Tejas |
+|:----------:|:---:|:---:|
+| Basic mathematical operations | Loan operations | Guest operations|
+| Dowloading report option | User operations | User account details |
+| | | Output theme & structure |
+
+- As you have access to this repository, you can make changes to any file.
+- Add code/files with proper comments.
+- Keep appending to this readme file `date-wise`. :octocat:
+
+  `Happy coding :)`
+  
+  ---

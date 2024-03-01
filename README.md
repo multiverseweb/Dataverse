@@ -55,7 +55,8 @@ NOTE:
 ---
 ##### :octocat:&nbsp;&nbsp;02-03-2024
 ---
-Fixed 'Add Details' option under user operations.
+- Fixed 'Add Details' option under user operations.
+- Increased the y-axis variables limit. (15)
 
   `Happy coding :)`
   

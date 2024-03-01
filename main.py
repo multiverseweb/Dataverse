@@ -3,35 +3,22 @@ import matplotlib.pyplot as plt
 import numpy as np
 import time
 import datetime
+from datetime import date
 import getpass
+import math
 import functions                          #user-defined
-colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","#0d0887","#7e03a8","cyan"]
-#========================================================================================================connecting mySQL
+
+colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","#0d0887","#7e03a8","cyan","aquamarine","magenta","tomato","springgreen","tan"]
+#===============================================================================================================connecting mySQL
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
 cursor=mycon.cursor()
 cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id INT PRIMARY KEY, u_name VARCHAR(255), pwd VARCHAR(255))")
 cursor.execute("CREATE TABLE IF NOT EXISTS money (u_id INT PRIMARY KEY, salary FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total DOUBLE AS (salary + gold + stocks + commodity + sales - expenditure), entryDate date);")
-#===========================================================================================================add dataṇ
 
-#===========================================================================================================view data
-def view_data():
-    x=[]
-    y=[]
-    q="select * from money"
-    cursor.execute(q)
-    data=cursor.fetchall()
-    if len(data)==0:
-        print("Your dataSet is empty.")
-    else:
-        for i in data:
-            x.append(i[0])
-            y.append(i[1])
-        print(9*"-","+",9*"-",sep="")
-        print("| x \t |\ty |",sep="")
-        print(9*"-","+",9*"-",sep="")
-        for i in range(len(x)):
-            print("|",x[i],7*"_","|",7*"_",y[i],"|",sep="")
-        print(9*"-","+",9*"-",sep="")
+#=======================================================================================================================
+#function defined in user-defined module "functions.py"
+# add_data()
+# view_data()
 #==============================================================================================================plot data
 def plot_data():
     plt.style.use('dark_background')
@@ -51,24 +38,24 @@ def plot_data():
     plt.ylabel("y points")
     plt.tight_layout()
     plt.show()
-#==================================================================================================================Account operations
+#==================================================================================================================user operations
 def main_menu():
     ch=1
     while ch!=0:
         print(201*"=","\n",100*" ","MENU\n",201*"=","\n","1. Add Data\n2. View Data\n3. Visualise Data\n4. Save & Logout",sep="")
         ch=int(input("Enter your choice: "))
         if ch==1:
-            functions.add_data()
+            functions.add_data(u_id)
         elif ch==2:
-            view_data()
+            functions.view_data(u_id)
         elif ch==3:
-            plot_data()
+            plot_data()                             #in progress
         elif ch==4:
             print("Data saved successfully. ✓")
             break
         else:
             print("Invalid Choice. ✖")
-#==========================================================================================================for guest
+#=================================================================================================================guest operations
 def guest_plot():
     plt.style.use('dark_background')
     print(201*"=")
@@ -87,53 +74,75 @@ def guest_plot():
         for i in range(start,end+1,width):
             x.append(i)
             count+=1
-        dependent=int(input("No. of dependent attributes: "))
-        for i in range(dependent):
-            d_attr.append(input("Dependent Attribute {}: ".format(i+1)))
-        y.append(d_attr)
-
-        for i in range(dependent):
-            print("Enter {} observations of {}: ".format(count,d_attr[i]))
-            values=[]
-            for j in range(count):
-                value=float(input("{}{}: ".format(d_attr[i],j+1)))
-                values.append(value)
-            y.append(values)
-        fig, ax=plt.subplots()
-        width=1
-        for i in range(dependent):
-            if c==1:
-                plt.bar(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
-            elif c==2:
-                plt.hist(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
-            elif c==3:
-                plt.scatter(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
+        resume=False
+        while resume==False:
+            dependent=int(input("No. of dependent attributes: "))
+            if dependent>15:
+                print("Too many variables! The maximum limit is 15\nNOTE: Enter 0 to exit.")
+            elif dependent==0:
+                break
             else:
-                plt.plot(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
-            width-=0.2
-        plt.legend(loc="upper left")
-        plt.title(heading)
-        plt.xticks(rotation=30)
-        plt.xlabel(x_label)
-        ax.spines['bottom'].set_color('teal')
-        ax.spines['top'].set_color('#ffffff40') 
-        ax.spines['right'].set_color('#ffffff40')
-        ax.spines['left'].set_color('darkturquoise')
-        ax.grid(linestyle = "dashed",linewidth = 1, alpha = 0.25)
-        #plt.savefig("example.png", dpi=1000)
-        plt.show()
-    if c==5:
+                resume=True
+        if dependent==0:
+            pass
+        else:
+            for i in range(dependent):
+                d_attr.append(input("Dependent Attribute {}: ".format(i+1)))
+            y.append(d_attr)
+
+            for i in range(dependent):
+                print("Enter {} observations of {}: ".format(count,d_attr[i]))
+                values=[]
+                for j in range(count):
+                    value=float(input("{}{}: ".format(d_attr[i],j+1)))
+                    values.append(value)
+                y.append(values)
+            fig, ax=plt.subplots()
+            width=1
+            for i in range(dependent):
+                if c==1:
+                    plt.bar(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
+                elif c==2:
+                    plt.hist(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
+                elif c==3:
+                    plt.scatter(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
+                else:
+                    plt.plot(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
+                width-=0.2
+            plt.legend(loc="upper left")
+            plt.title(heading)
+            plt.xticks(rotation=30)
+            plt.xlabel(x_label)
+            ax.spines['bottom'].set_color('teal')
+            ax.spines['top'].set_color('#ffffff40') 
+            ax.spines['right'].set_color('#ffffff40')
+            ax.spines['left'].set_color('darkturquoise')
+            ax.grid(linestyle = "dashed",linewidth = 1, alpha = 0.25)
+            #plt.savefig("example.png", dpi=1000)
+            plt.show()
+    elif c==5:
         heading=input("Title: ")
         label=[]
         y=[]
-        n=int(input("How many variables? "))
-        for i in range(n):
-            label.append(input("Name of variable {}: ".format(i+1)))
-        for i in range(n):
-            y.append(float(input("Amount of {}: ".format(label[i]))))
-        plt.pie(y, labels = label, colors=colors[:n])
-        plt.legend(title = heading)
-        plt.show() 
+        resume=False
+        while resume==False:
+            n=int(input("How many variables? "))
+            if n>15:
+                print("Too many variables! The maximum limit is 15\nNOTE: Enter 0 to exit.")
+            elif n==0:
+                break
+            else:
+                resume=True
+        if n==0:
+            pass
+        else:
+            for i in range(n):
+                label.append(input("Name of variable {}: ".format(i+1)))
+            for i in range(n):
+                y.append(float(input("Amount of {}: ".format(label[i]))))
+            plt.pie(y, labels = label, colors=colors[:n])
+            plt.legend(title = heading)
+            plt.show() 
 
     elif c==8:
         heading=input("Title: ")
@@ -182,8 +191,8 @@ def guest_plot():
         print(201*"=")
 
             
-#=========================================================================================================Start
-#==============================================================================================================
+#=========================================================================================================Start of execution flow
+#==================================================================================================================================
 while True: 
     print(201*"=")
     greet="PERSONAL FINANCE TRACKER & DATA VISUALIZTAION SOFTWARE"
@@ -213,7 +222,11 @@ while True:
                 cursor.execute(q)
                 data=cursor.fetchall()
                 if data[0][0]==pwd:
-                    print("Login Successful.")
+                    print("Login Successful.")           
+                    q="select u_id from user where u_name='{}'".format(u_name)
+                    cursor.execute(q)
+                    u_id=cursor.fetchall()[0][0]
+                    print("User ID = ",u_id)
                     main_menu()
                 else:
                     print("Incorrect password! ✖")
@@ -250,7 +263,7 @@ while True:
 #==========================================================================================================Exit
     elif user_type==4:
         print(201*"=")
-        print("Made with <3 Tejas :)")
+        print("Made with <3 Tejas, Ojas & Nandana :)")
         time.sleep(1)
         print(".",end="")
         time.sleep(1)
@@ -261,3 +274,4 @@ while True:
         break
     else:
         print("Invalid choice! ✖")
+

@@ -5,6 +5,7 @@ import time
 import datetime
 from datetime import datetime
 import getpass
+#==================================================================================================connecting mySQL
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
 cursor=mycon.cursor()
 #==================================================================================================add data

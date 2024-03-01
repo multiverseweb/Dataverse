@@ -27,7 +27,7 @@ NOTE:
 ---
 ## How to set up code in your computer?
 1. Save/copy the files [main.py](https://github.com/multiverseweb/finance_tracker/blob/main/main.py) and [functions.py](https://github.com/multiverseweb/finance_tracker/blob/main/functions.py) on your computer.
-2. In the `connecting mySQL` section of `main.py` file, write the host, user and passwd associated with your MySQL.
+2. In the `connecting mySQL` section of `main.py` and `functions.py` files, write the host, user and passwd associated with your MySQL.
 3. Open MySQL commandline client and execute the following query:
    ```mysql
    create database finance;
@@ -51,6 +51,11 @@ NOTE:
 - As you have access to this repository, you can make changes to any file.
 - Add code/files with proper comments.
 - Keep appending to this readme file `date-wise`. :octocat:
+
+---
+##### :octocat:&nbsp;&nbsp;02-03-2024
+---
+Fixed 'Add Details' option under user operations.
 
   `Happy coding :)`
   

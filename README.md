@@ -34,7 +34,9 @@ NOTE:
    create database finance;
    ```
 4. Now, run the python program.
-NOTE:
+
+
+★ NOTE:
 You can pip install the python modules if you don't have them already on your computer use this command in command prompt:
 
 ```

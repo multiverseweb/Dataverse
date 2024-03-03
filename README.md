@@ -2,7 +2,9 @@
 Project by Nandana, Ojas & Tejas
 
 Technologies to be used:
-`#python #numpy #pandas #matplotlib #mysql`
+`#python #mysql`
+Python modules:
+`#mysql.connector #numpy #pandas #matplotlib #time #datetime #getpass #math #fpdf/#reportlab`
 
 ---
 ##### :octocat:&nbsp;&nbsp;26-02-2024
@@ -15,7 +17,7 @@ Technologies to be used:
 - Paydays or EMI/rent payment days can be plot on the graph using a vertical line.
 - Data wrangling can be performed (if required) using `pandas` module of `python`.
 - Some useful mathematical operations can also be performed on the data (like calculating Total money, profit, loss, interest, etc.).
-- The users will also be able to download the report generated.
+- The users will also be able to download the report generated. This can be done using puthon module `fpdf` or `reportlab`.
 ```python
 NOTE:
 - If the user just wants to visualise any form of data without saving it, he/she can continue as guest.

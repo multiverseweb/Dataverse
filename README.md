@@ -2,8 +2,11 @@
 Project by Nandana, Ojas & Tejas
 
 Technologies to be used:
+
 `#python #mysql`
+
 Python modules:
+
 `#mysql.connector #numpy #pandas #matplotlib #time #datetime #getpass #math #fpdf/#reportlab`
 
 ---

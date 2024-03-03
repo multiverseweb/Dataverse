@@ -1,13 +1,9 @@
 # Personal Finance Tracker & Data Visualisation Software
 Project by Nandana, Ojas & Tejas
 
-Technologies to be used:
+Technologies to be used:<br/>`#python #mysql`
 
-`#python #mysql`
-
-Python modules:
-
-`#mysql.connector #numpy #pandas #matplotlib #time #datetime #getpass #math #fpdf/#reportlab`
+Python modules:<br/>`#mysql.connector #numpy #pandas #matplotlib #time #datetime #getpass #math #fpdf/#reportlab`
 
 ---
 ##### :octocat:&nbsp;&nbsp;26-02-2024

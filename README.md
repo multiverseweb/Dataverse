@@ -1,5 +1,5 @@
 # Personal Finance Tracker & Data Visualisation Software
-Project by Nandana, Ojas & Tejas
+Project by [Nandana](https://github.com/nandanaap/), [Ojas](https://github.com/ojas-git/) & [Tejas](https://github.com/multiverseweb/)
 
 Technologies to be used:<br/>`#python #mysql`
 

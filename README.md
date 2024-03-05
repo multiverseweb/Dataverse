@@ -67,8 +67,8 @@ python -m pip install {moduleName}
 ---
 #### :octocat:&nbsp;&nbsp;06-03-2024
 ---
-- Basic code for report downloading function is added in the file [save_report.py](save_report.py).
-- output report can be seen in [Tejas-2024-03-06.pdf](Tejas-2024-03-06.pdf).
+- **Basic** code for report downloading function is added in the file [save_report.py](save_report.py).
+- Output report can be seen in [Tejas-2024-03-06.pdf](Tejas-2024-03-06.pdf).
   
   `Happy coding :)`
   

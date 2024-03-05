@@ -64,6 +64,12 @@ python -m pip install {moduleName}
 - Fixed 'Add Details' option under user operations.
 - Increased the y-axis variables limit. (15)
 
+---
+#### :octocat:&nbsp;&nbsp;06-03-2024
+---
+- Basic code for report downloading function is added in the file [save_report.py](save_report.py).
+- output report can be seen in [Tejas-2024-03-06.pdf](Tejas-2024-03-06.pdf).
+  
   `Happy coding :)`
   
   ---

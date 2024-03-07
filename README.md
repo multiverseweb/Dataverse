@@ -62,7 +62,7 @@ python -m pip install {moduleName}
 ##### :octocat:&nbsp;&nbsp;02-03-2024
 ---
 - Fixed 'Add Details' option under user operations.
-- Increased the y-axis variables limit. (15)
+- Increased the y-axis variables limit. (16)
 
 ---
 #### :octocat:&nbsp;&nbsp;06-03-2024

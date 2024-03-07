@@ -70,6 +70,12 @@ python -m pip install {moduleName}
 - **Basic** code for report downloading function is added in the file [save_report.py](save_report.py).
 - Output report can be seen in [Tejas-2024-03-06.pdf](Tejas-2024-03-06.pdf).
   
+---
+#### :octocat:&nbsp;&nbsp;07-03-2024
+---
+- Added option for plotting data in finance tracker. Code is in file [plot.py](plot.py).
+- Performed data wrangling for dealing with the dates on which data wasn't updated by user.
+  
   `Happy coding :)`
   
   ---

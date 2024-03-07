@@ -7,8 +7,10 @@ from datetime import date
 import getpass
 import math
 import functions                          #user-defined
+import plot
 
-colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","#0d0887","#7e03a8","cyan","aquamarine","magenta","tomato","springgreen","tan"]
+
+colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","#0d0887","#7e03a8","tomato","tan","cyan","green","blue","indigo","violet"]
 #===============================================================================================================connecting mySQL
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
 cursor=mycon.cursor()
@@ -19,27 +21,10 @@ cursor.execute("CREATE TABLE IF NOT EXISTS money (u_id INT PRIMARY KEY, salary F
 #function defined in user-defined module "functions.py"
 # add_data()
 # view_data()
-#==============================================================================================================plot data
-def plot_data():
-    plt.style.use('dark_background')
-    x=[]
-    y=[]
-    q="select * from points"
-    cursor.execute(q)
-    data=cursor.fetchall()
-    for i in data:
-        x.append(i[0])
-        y.append(i[1])
-    fig = plt.figure(figsize=(12, 9))
-    plt.plot(x,y,color="teal")
-    plt.scatter(x,y,color="yellow",marker="*")
-    plt.title("XY - Plot", fontsize=15, fontname="Monospace")
-    plt.xlabel("x points")
-    plt.ylabel("y points")
-    plt.tight_layout()
-    plt.show()
+# fetch_data()
+# plot_data()
 #==================================================================================================================user operations
-def main_menu():
+def main_menu(u_id):
     ch=1
     while ch!=0:
         print(201*"=","\n",100*" ","MENU\n",201*"=","\n","1. Add Data\n2. View Data\n3. Visualise Data\n4. Save & Logout",sep="")
@@ -49,7 +34,11 @@ def main_menu():
         elif ch==2:
             functions.view_data(u_id)
         elif ch==3:
-            plot_data()                             #in progress
+            requireds=plot.fetch_data(u_id)                             #in progress
+            if requireds==None:
+                print("Not enough data to visualize.")
+            else:
+                plot.plot_data(requireds,u_name)
         elif ch==4:
             print("Data saved successfully. ✓")
             break
@@ -77,8 +66,8 @@ def guest_plot():
         resume=False
         while resume==False:
             dependent=int(input("No. of dependent attributes: "))
-            if dependent>15:
-                print("Too many variables! The maximum limit is 15\nNOTE: Enter 0 to exit.")
+            if dependent>16:
+                print("Too many variables! The maximum limit is 16\nNOTE: Enter 0 to exit.")
             elif dependent==0:
                 break
             else:
@@ -109,7 +98,7 @@ def guest_plot():
                 else:
                     plt.plot(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
                 width-=0.2
-            plt.legend(loc="upper left")
+            plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
             plt.title(heading)
             plt.xticks(rotation=30)
             plt.xlabel(x_label)
@@ -127,8 +116,8 @@ def guest_plot():
         resume=False
         while resume==False:
             n=int(input("How many variables? "))
-            if n>15:
-                print("Too many variables! The maximum limit is 15\nNOTE: Enter 0 to exit.")
+            if n>16:
+                print("Too many variables! The maximum limit is 16\nNOTE: Enter 0 to exit.")
             elif n==0:
                 break
             else:
@@ -142,6 +131,7 @@ def guest_plot():
                 y.append(float(input("Amount of {}: ".format(label[i]))))
             plt.pie(y, labels = label, colors=colors[:n])
             plt.legend(title = heading)
+            plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
             plt.show() 
 
     elif c==8:
@@ -153,43 +143,57 @@ def guest_plot():
         for i in range(start,end+1,width):
             x.append(i)
             count+=1
-        dependent=int(input("No. of dependent attributes: "))
-        for i in range(dependent):
-            d_attr.append(input("Dependent Attribute {}: ".format(i+1)))
-        y.append(d_attr)
+        resume=False
+        while resume==False:
+            dependent=int(input("No. of dependent attributes: "))
+            if dependent>16:
+                print("Too many variables! The maximum limit is 16\nNOTE: Enter 0 to exit.")
+            elif dependent==0:
+                break
+            else:
+                resume=True
+        if dependent==0:
+            pass
+        else:
+            for i in range(dependent):
+                d_attr.append(input("Dependent Attribute {}: ".format(i+1)))
+            y.append(d_attr)
 
-        for i in range(dependent):
-            print("Enter {} observations of {}: ".format(count,d_attr[i]))
-            values=[]
-            for j in range(count):
-                value=float(input("{}{}: ".format(d_attr[i],j+1)))
-                values.append(value)
-            y.append(values)
-        width=1
-        fig, ax=plt.subplots(2,2)
-        for i in range(dependent):
-            ax[0, 0].bar(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
-            ax[0, 0].set_title("Bar Graph") 
-            ax[0, 0].legend(loc="upper left")
-            ax[0, 1].hist(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
-            ax[0, 1].set_title("Histogram") 
-            ax[0, 1].legend(loc="upper left")
-            ax[1, 0].scatter(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
-            ax[1, 0].set_title("Scatter Plot") 
-            ax[1, 0].legend(loc="upper left")
-            ax[1, 1].plot(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
-            ax[1, 1].set_title("Line Chart")
-            ax[1, 1].legend(loc="upper left")
-            width-=0.2
-        plt.title(heading)
-        plt.xticks(rotation=30)
-        plt.xlabel(x_label)
-        #plt.savefig("example.png", dpi=1000)
-        plt.show() 
+            for i in range(dependent):
+                print("Enter {} observations of {}: ".format(count,d_attr[i]))
+                values=[]
+                for j in range(count):
+                    value=float(input("{}{}: ".format(d_attr[i],j+1)))
+                    values.append(value)
+                y.append(values)
+            width=1
+            fig, ax=plt.subplots(2,2)
+            for i in range(dependent):
+                ax[0, 0].bar(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
+                ax[0, 0].set_title("Bar Graph") 
+                ax[0, 0].legend(loc="upper left")
+                ax[0, 0].legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+                ax[0, 1].hist(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
+                ax[0, 1].set_title("Histogram") 
+                ax[0, 1].legend(loc="upper left")
+                ax[0, 1].legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+                ax[1, 0].scatter(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
+                ax[1, 0].set_title("Scatter Plot") 
+                ax[1, 0].legend(loc="upper left")
+                ax[1, 0].legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+                ax[1, 1].plot(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
+                ax[1, 1].set_title("Line Chart")
+                ax[1, 1].legend(loc="upper left")
+                ax[1, 1].legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+                width-=0.05
+            plt.title(heading)
+            plt.xticks(rotation=30)
+            plt.xlabel(x_label)
+            #plt.savefig("example.png", dpi=1000)
+            plt.show() 
     else:
         print("Invalid Choice! ✖")
         print(201*"=")
-
             
 #=========================================================================================================Start of execution flow
 #==================================================================================================================================
@@ -227,39 +231,47 @@ while True:
                     cursor.execute(q)
                     u_id=cursor.fetchall()[0][0]
                     print("User ID = ",u_id)
-                    main_menu()
+                    main_menu(u_id)
                 else:
                     print("Incorrect password! ✖")
 #=========================================================================================================Create Account
     elif user_type==2:
         print(83*" ","𝗣𝗲𝗿𝘀𝗼𝗻𝗮𝗹 𝗙𝗶𝗻𝗮𝗻𝗰𝗲 𝗧𝗿𝗮𝗰𝗸𝗲𝗿")
         ok=False
+        names=[]
         q="select u_name from user"
         cursor.execute(q)
         data=cursor.fetchall()
+        for i in data:
+            names.append(i[0])
         while ok!=True:                                                  #set up in mySQL before running
-            u_name=input("Username: ")
-            for i in data:
-                ok=True
-                if i[0]==u_name:
-                    ok=False
-                    print("An account exists with the same username. Try another one.")
+            u_name=input("\nUsername: ")
+            if u_name=="exit" or u_name in names:
+                if u_name=="exit":
                     break
-        pwd=input("Password: ")
-        u_id = datetime.datetime.now().strftime("%H%M%S")
-        q="insert into user values({},'{}','{}')".format(u_id,u_name,pwd)
-        cursor.execute(q)
-        mycon.commit()
-        print("Account Created Successfully! ✓")
-        print("Your User ID is: ",u_id)
+                else:
+                    ok=False
+                    print("That username is not available. Try another one.\n[Enter 'exit' to cancel account creation.]")
+            else:
+                pwd=input("Password: ")
+                u_id = datetime.datetime.now().strftime("%H%M%S")
+                q="insert into user values({},'{}','{}')".format(u_id,u_name,pwd)
+                cursor.execute(q)
+                mycon.commit()
+                print("Account Created Successfully! ✓")
+                print("Your User ID is: ",u_id)
+                break
 #==========================================================================================================Guest
     elif user_type==3:
         print(81*" ","𝗗𝗮𝘁𝗮 𝗩𝗶𝘀𝘂𝗮𝗹𝗶𝘇𝗮𝘁𝗶𝗼𝗻 𝗦𝗼𝗳𝘁𝘄𝗮𝗿𝗲")
-        while True:
+        a='y'
+        while a=='y':
             guest_plot()
             a=input("Do you want to continue as guest? (y/n): ")
             if a=='n':
                 break
+        if a!='n':
+            print("Invalid response! ✖\nRedirecting to main menu. . .")
 #==========================================================================================================Exit
     elif user_type==4:
         print(201*"=")
@@ -274,4 +286,3 @@ while True:
         break
     else:
         print("Invalid choice! ✖")
-

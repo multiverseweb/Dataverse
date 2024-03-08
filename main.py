@@ -9,7 +9,7 @@ import math
 import functions                          #user-defined
 import plot
 
-
+z=0                 #failed login attempts
 colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","#0d0887","#7e03a8","tomato","tan","cyan","green","blue","indigo","violet"]
 #===============================================================================================================connecting mySQL
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
@@ -201,7 +201,7 @@ while True:
     print(201*"=")
     greet="PERSONAL FINANCE TRACKER & DATA VISUALIZTAION SOFTWARE"
     print(70*" ",greet)
-    print(201*"=","\n","1. Login\n2. Create Account\n3. Continue as Guest\n4. Exit",sep="")                #Login Menu
+    print(201*"=","\n","1. Login\n2. Create Account\n3. Continue as Guest\n4. Login as Admin\n5. Exit",sep="")                #Login Menu
     user_type=int(input("Enter your choice: "))
 
 #==========================================================================================================Login
@@ -272,8 +272,47 @@ while True:
                 break
         if a!='n':
             print("Invalid response! ✖\nRedirecting to main menu. . .")
-#==========================================================================================================Exit
+#==========================================================================================================Admin mode
     elif user_type==4:
+        try:
+            p = getpass.getpass()
+        except Exception as error:
+            print('There was some error: ', error)
+        else:
+            if p=="tejasadmin":
+                print("Hello Sir,")
+                print("Database changed.")
+                q=""
+                while(q!="exit"):
+                    q=input("")
+                    if q.lower()=="exit":
+                        print("Exited the database.")
+                        break
+                    cursor2=mycon.cursor()
+                    cursor2.execute(q)
+                    data=cursor2.fetchall()
+                    if len(data)!=0:           
+                        for i in range(0,len(data)):
+                            print(data[i])
+                    else:
+                        print("Operation performed.")
+                    mycon.commit()
+            else:
+                print("Incorrect Password >:(")
+                z+=1
+                if z>=2:
+                    print("There have been more than 1 failed login attempts. Closing the system.")
+                    time.sleep(0.3)
+                    print(".",end="")
+                    time.sleep(0.3)
+                    print(".",end="")
+                    time.sleep(0.3)
+                    print(".",end="")
+                    time.sleep(3)
+                    break
+                print(201*"=")
+#==========================================================================================================Exit
+    elif user_type==5:
         print(201*"=")
         print("Made with <3 Tejas, Ojas & Nandana :)")
         time.sleep(1)

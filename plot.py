@@ -61,16 +61,24 @@ def plot_data(requireds,u_name):
 #=====================================================================================================================================
 #=====================================================================================================================================DATA WRANGLING
     l=list(pool.values())
-    for i in range(1,len(l)-1):
-        c=0
-        wrangled_data=[]
-        for j in range(len(t)):
-            if t_new[j] not in pool_new:
-                wrangled_data.append((pool[columns[i]][c])/j)
-            else:
-                wrangled_data.append(pool[columns[i]][c])
-                c+=1
-        plt.plot(t,wrangled_data, label=columns[i],color=colors[i],linewidth=0.7)
+    if len(t)>1:
+        for i in range(1,len(l)-1):
+            c=0
+            wrangled_data=[]
+            for j in range(len(t)):
+                if t_new[j] not in pool_new:
+                    wrangled_data.append((pool[columns[i]][c])/j)
+                else:
+                    wrangled_data.append(pool[columns[i]][c])
+                    c+=1
+            plt.plot(t,wrangled_data, label=columns[i],color=colors[i],linewidth=0.7)
+    else:
+        print("Not enough data to visualize.")
+        #t=np.arange([x.date().isoformat() for x in pool["entryDate"]])
+        #print(t)
+        #print(pool)
+        #for i in range(1,len(l)-1):
+            #plt.scatter(t,pool[columns[i]], label=columns[i],color=colors[i],marker='*')
 #=====================================================================================================================================
 #=====================================================================================================================================
 

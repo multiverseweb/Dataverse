@@ -75,7 +75,12 @@ python -m pip install {moduleName}
 ---
 - Added option for plotting data in finance tracker. Code is in file [plot.py](plot.py).
 - Performed data wrangling for dealing with the dates on which data wasn't updated by user.
-  
+
+---
+#### :octocat:&nbsp;&nbsp;07-03-2024
+---
+- Added admin mode to run sql queries in python output directly.
+
   `Happy coding :)`
   
   ---

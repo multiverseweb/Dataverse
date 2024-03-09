@@ -77,7 +77,7 @@ python -m pip install {moduleName}
 - Performed data wrangling for dealing with the dates on which data wasn't updated by user.
 
 ---
-#### :octocat:&nbsp;&nbsp;07-03-2024
+#### :octocat:&nbsp;&nbsp;08-03-2024
 ---
 - Added admin mode to run sql queries in python output directly.
 

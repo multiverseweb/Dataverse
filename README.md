@@ -48,11 +48,11 @@ python -m pip install {moduleName}
 ---
 >## How to contribute?
 
->| Nandana | Ojas | Tejas |
->|:----------:|:---:|:---:|
->| Basic mathematical operations | Loan operations | Guest operations|
->| Dowloading report option | User operations | ~~User account details~~ |
->| | | Output theme & structure |
+| Nandana | Ojas | Tejas |
+|:----------:|:---:|:---:|
+| Basic mathematical operations | Loan operations | Guest operations|
+| Dowloading report option | User operations | ~~User account details~~ |
+| | | Output theme & structure |
 
 >- As you have access to this repository, you can make changes to any file.
 >- Add code/files with proper comments.

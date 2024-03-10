@@ -80,6 +80,12 @@ python -m pip install {moduleName}
 #### :octocat:&nbsp;&nbsp;08-03-2024
 ---
 - Added admin mode to run sql queries in python output directly.
+---
+#### :octocat:&nbsp;&nbsp;10-03-2024
+---
+- Fixed represtation of table in 'view data' option.
+- added large dataset.
+- `scatter plot issue to be fixed` for users with single data entry.
 
   `Happy coding :)`
   

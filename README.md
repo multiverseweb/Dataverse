@@ -53,7 +53,7 @@ python -m pip install {moduleName}
 >| Nandana | Ojas | Tejas |
 >|:----------:|:---:|:---:|
 >| Basic mathematical operations | Loan operations | Guest operations|
->| Dowloading report option | User operations | User account details |
+>| Dowloading report option | User operations | ~~User account details~~ |
 >| | | Output theme & structure |
 
 >- As you have access to this repository, you can make changes to any file.
@@ -77,7 +77,23 @@ python -m pip install {moduleName}
 ---
 - Added option for plotting data in finance tracker. Code is in file [plot.py](plot.py).
 - Performed data wrangling for dealing with the dates on which data wasn't updated by user.
+
+---
+#### :octocat:&nbsp;&nbsp;09-03-2024
+---
+- Fixed 'plot data' option under user operations.
   
+---
+#### :octocat:&nbsp;&nbsp;10-03-2024
+---
+- Added admin mode option to run SQL queries directly in python output.
+
+---
+#### :octocat:&nbsp;&nbsp;11-03-2024
+---
+- Fixed data wrangling.
+- Added large dataset.
+
   `Happy coding :)`
   
   ---

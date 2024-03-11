@@ -5,6 +5,8 @@
 
 >Python modules:<br/>`#mysql.connector #numpy #pandas #matplotlib #time #datetime #getpass #math #fpdf/#reportlab`
 
+>User-defined modules:<br/>`#functions #plot`
+
 ---
 ##### :octocat:&nbsp;&nbsp;26-02-2024
 ---

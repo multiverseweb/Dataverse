@@ -93,7 +93,9 @@ python -m pip install {moduleName}
 ---
 - Fixed data wrangling.
 - Added large dataset.
+- Fixed data relation representation under view data.
 
+  
   `Happy coding :)`
   
   ---

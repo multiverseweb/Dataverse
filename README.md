@@ -29,8 +29,8 @@ NOTE:
 ##### :octocat:&nbsp;&nbsp;27-02-2024
 ---
 >## How to set up code in your computer?
->1. Save/copy the files [main.py](https://github.com/multiverseweb/finance_tracker/blob/main/main.py) and [functions.py](https://github.com/multiverseweb/finance_tracker/blob/main/functions.py) on your computer.
->2. In the `connecting mySQL` section of `main.py` and `functions.py` files, write the host, user and passwd associated with your MySQL.
+>1. Save/copy the files [main.py](https://github.com/multiverseweb/finance_tracker/blob/main/main.py), [functions.py](https://github.com/multiverseweb/finance_tracker/blob/main/functions.py) and [plot.py](https://github.com/multiverseweb/finance_tracker/blob/main/plot.py) on your computer.
+>2. In the `connecting mySQL` section of `main.py`, `functions.py` and `plot.py` files, write the host, user and passwd associated with your MySQL.
 >3. Open MySQL commandline client and execute the following query:
    ```mysql
    create database finance;

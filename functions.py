@@ -10,27 +10,8 @@ mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='financ
 cursor=mycon.cursor()
 #==================================================================================================add data
 def add_data(u_id):
-    q="select * from money where u_id={}".format(u_id)
-    cursor.execute(q)
-    data=cursor.fetchall()
-    if len(data)==0:
-        print("Your dataSet is empty.")
-    else:
-        print("CURRENT DATA")
-        cursor.execute("DESCRIBE money")
-# Get the schema of the table
-        schema = cursor.fetchall()
-# Print the schema
-        print("| ",end="")
-        for column in schema:
-            print(column[0],end=" | ")
-        print("\n")
-        #print tuples
-        for i in data:
-            print("| ",end="")
-            for j in i:
-                print(j,end=" | ")
-            print("\n")
+    print("CURRENT DATA")
+    view_data(u_id)
 
     print("Enter the data: ")
     new_data=[]
@@ -47,24 +28,8 @@ def add_data(u_id):
     mycon.commit()
 
     print("Data added successfully. ✓")
-
-    q="select * from money where u_id={}".format(u_id)
-    cursor.execute(q)
-    data=cursor.fetchall()
-    cursor.execute("DESCRIBE money")
-# Get the schema of the table
-    schema = cursor.fetchall()
-# Print the schema
-    print("| ",end="")
-    for column in schema:
-        print(column[0],end=" | ")
-    print("\n")
-    #print tuples
-    for i in data:
-        print("| ",end="")
-        for j in i:
-            print(j,end=" | ")
-        print("\n")
+    print("UPDATED DATA")
+    view_data(u_id)
 
 #=========================================================================================view data
 def view_data(u_id):
@@ -77,15 +42,18 @@ def view_data(u_id):
         cursor.execute("DESCRIBE money")
 # Get the schema of the table
         schema = cursor.fetchall()
-# Print the schema
-        print("| ",end="")
+        print(19*9*"-",end="")
+        print("+")
+        print("\r| ",end="")
         for column in schema:
-            print(column[0],end=" | ")
-        print("\n")
-
-        #print tuples
+            print((15-len(str(column[0])))*" ",column[0],end=" | ")
+        print("\r")
+        print(19*9*"-",end="")
+        print("+")
         for i in data:
             print("| ",end="")
             for j in i:
-                print(j,end=" | ")
-            print("\n")
+                print((15-len(str(j)))*" ",j,end=" | ")
+            print("\r")
+        print(19*9*"-",end="")
+        print("+")

@@ -8,12 +8,11 @@ from datetime import datetime, timedelta,date
 import math
 import functions                          #user-defined
 
-colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","#0d0887","#7e03a8","tomato","tan","cyan","green","blue","indigo","violet"]
-
-#==================================================================================================connecting mySQL
+colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","cyan","#7e03a8","tomato","tan","#0d0887","green","blue","indigo","violet"]
+#========================================================================================================================================connecting mySQL
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
 cursor=mycon.cursor()
-#====================================================================fetch data
+#=============================================================================================================================================fetch data
 def fetch_data(u_id):
     q="select * from money where u_id={}".format(u_id)
     cursor.execute(q)
@@ -44,7 +43,6 @@ def fetch_data(u_id):
 
 #=======================================================================================visualize/plot data
 
-
 def plot_data(requireds,u_name):
         #style.use("ggplot")
     plt.style.use('dark_background')
@@ -53,12 +51,12 @@ def plot_data(requireds,u_name):
 
     columns=requireds[0]
     pool=requireds[1]
-    t = np.arange(min(pool["entryDate"]), max(pool["entryDate"]), timedelta(days=1)).astype(datetime)
+    t = np.arange(min(pool["entryDate"]), max(pool["entryDate"]) + timedelta(days=2), timedelta(days=1)).astype(datetime)
     only_dates = [x.date().isoformat() for x in t]
     t_new = np.array(only_dates)
     pool_new=[x.strftime('%Y-%m-%d') for x in pool["entryDate"]]
 
-#=====================================================================================================================================
+#===================================================================================================================================================
 #=====================================================================================================================================DATA WRANGLING
     l=list(pool.values())
     if len(t)>1:
@@ -67,20 +65,25 @@ def plot_data(requireds,u_name):
             wrangled_data=[]
             for j in range(len(t)):
                 if t_new[j] not in pool_new:
-                    wrangled_data.append((pool[columns[i]][c])/j)
+                    wrangled_data.append((wrangled_data[j-1]))
                 else:
                     wrangled_data.append(pool[columns[i]][c])
                     c+=1
             plt.plot(t,wrangled_data, label=columns[i],color=colors[i],linewidth=0.7)
     else:
-        print("Not enough data to visualize.")
-        #t=np.arange([x.date().isoformat() for x in pool["entryDate"]])
-        #print(t)
-        #print(pool)
-        #for i in range(1,len(l)-1):
-            #plt.scatter(t,pool[columns[i]], label=columns[i],color=colors[i],marker='*')
-#=====================================================================================================================================
-#=====================================================================================================================================
+        #===================================================================================some error here
+        for i in range(1,len(l)-1):
+            c=0
+            wrangled_data=[]
+            for j in range(len(t)):
+                if t_new[j] not in pool_new:
+                    wrangled_data.append((wrangled_data[j-1]))
+                else:
+                    wrangled_data.append(pool[columns[i]][c])
+                    c+=1
+            plt.scatter(t,wrangled_data, label=columns[i],color=colors[i],marker="*",markersize=50)
+#==================================================================================================================================================
+#==================================================================================================================================================
 
     plt.legend(bbox_to_anchor=(1.01, 1), loc='upper left', borderaxespad=0)
     plt.title("{}_{}".format(u_name.title(),date.today()))

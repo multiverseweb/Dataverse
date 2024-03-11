@@ -10,7 +10,7 @@ import functions                          #user-defined
 import plot
 
 z=0                 #failed login attempts
-colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","#0d0887","#7e03a8","tomato","tan","cyan","green","blue","indigo","violet"]
+colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","cyan","#7e03a8","tomato","tan","#0d0887","green","blue","indigo","violet"]
 #===============================================================================================================connecting mySQL
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
 cursor=mycon.cursor()
@@ -234,6 +234,18 @@ while True:
                     main_menu(u_id)
                 else:
                     print("Incorrect password! ✖")
+                    z+=1
+                    if z>=2:
+                        print("There have been more than 1 failed login attempts. Closing the system.")
+                        time.sleep(0.3)
+                        print(".",end="")
+                        time.sleep(0.3)
+                        print(".",end="")
+                        time.sleep(0.3)
+                        print(".",end="")
+                        time.sleep(0.3)
+                        break
+                    print(201*"=")
 #=========================================================================================================Create Account
     elif user_type==2:
         print(83*" ","𝗣𝗲𝗿𝘀𝗼𝗻𝗮𝗹 𝗙𝗶𝗻𝗮𝗻𝗰𝗲 𝗧𝗿𝗮𝗰𝗸𝗲𝗿")
@@ -279,7 +291,7 @@ while True:
         except Exception as error:
             print('There was some error: ', error)
         else:
-            if p=="tejasadmin":
+            if p=="infinity":
                 print("Hello Sir,")
                 print("Database changed.")
                 q=""
@@ -308,7 +320,7 @@ while True:
                     print(".",end="")
                     time.sleep(0.3)
                     print(".",end="")
-                    time.sleep(3)
+                    time.sleep(0.3)
                     break
                 print(201*"=")
 #==========================================================================================================Exit

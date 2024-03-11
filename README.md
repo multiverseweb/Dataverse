@@ -48,11 +48,11 @@ python -m pip install {moduleName}
 ---
 >## How to contribute?
 
-| Nandana | Ojas | Tejas |
-|:----------:|:---:|:---:|
-| Basic mathematical operations | Loan operations | Guest operations|
-| Dowloading report option | User operations | ~~User account details~~ |
-| | | Output theme & structure |
+>| Nandana | Ojas | Tejas |
+>|:----------:|:---:|:---:|
+>| Basic mathematical operations | Loan operations | Guest operations|
+>| Dowloading report option | User operations | User account details |
+>| | | Output theme & structure |
 
 >- As you have access to this repository, you can make changes to any file.
 >- Add code/files with proper comments.
@@ -75,18 +75,7 @@ python -m pip install {moduleName}
 ---
 - Added option for plotting data in finance tracker. Code is in file [plot.py](plot.py).
 - Performed data wrangling for dealing with the dates on which data wasn't updated by user.
-
----
-#### :octocat:&nbsp;&nbsp;08-03-2024
----
-- Added admin mode to run sql queries in python output directly.
----
-#### :octocat:&nbsp;&nbsp;10-03-2024
----
-- Fixed represtation of table in 'view data' option.
-- added large dataset.
-- `scatter plot issue to be fixed` for users with single data entry.
-
+  
   `Happy coding :)`
   
   ---

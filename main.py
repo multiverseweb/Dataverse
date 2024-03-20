@@ -5,8 +5,7 @@ import time
 import datetime
 from datetime import date
 import getpass
-import math
-import functions                          #user-defined
+import functions                          #user-defined modules
 import plot
 
 z=0                 #failed login attempts
@@ -337,3 +336,5 @@ while True:
         break
     else:
         print("Invalid choice! ✖")
+
+

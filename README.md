@@ -8,11 +8,12 @@
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-%2311557c.svg?style=for-the-badge&logo=Matplotlib&logoColor=white)
 
 ### Preview
-Relational Data
-![](data.png)
 
 Visualised Data
 ![](preview.png)
+
+Relational Data
+![](data.png)
 
 - This software can be used to visualise data in many forms.
 - It allows the user to download the generated charts.

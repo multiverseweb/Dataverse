@@ -1,4 +1,4 @@
-# Personal Finance Tracker & Data Visualisation Software
+## Personal Finance Tracker & Data Visualisation Software
 
 >Technologies used:<br/>
 ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
@@ -8,9 +8,17 @@
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-%2311557c.svg?style=for-the-badge&logo=Matplotlib&logoColor=white)
 
 ### Preview
+Relational Data
+![](data.png)
+
+Visualised Data
 ![](preview.png)
 
 - This software can be used to visualise data in many forms.
 - It allows the user to download the generated charts.
 - It can be used as a finance tracker, providing various useful outputs.
 - The data can also be stored for later use.
+
+---
+
+Designed & Developed by [Tejas](https://github.com/multiverseweb).

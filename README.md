@@ -7,6 +7,12 @@
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-%2311557c.svg?style=for-the-badge&logo=Matplotlib&logoColor=white)
 
+### What does this software do?
+- This software can be used to visualise data in many forms.
+- It allows the user to download the generated charts.
+- It can be used as a finance tracker, providing various useful outputs.
+- The data can also be stored for later use.
+
 ### Preview
 
 Visualised Data
@@ -14,11 +20,6 @@ Visualised Data
 
 Relational Data
 ![](data.png)
-
-- This software can be used to visualise data in many forms.
-- It allows the user to download the generated charts.
-- It can be used as a finance tracker, providing various useful outputs.
-- The data can also be stored for later use.
 
 ---
 

@@ -21,6 +21,9 @@ Visualised Data
 Relational Data
 ![](data.png)
 
+### Entity Relationship Diagram for Finance Tracker
+![](ERdiagram.png)
+
 ---
 
 Designed & Developed by [Tejas](https://github.com/multiverseweb).

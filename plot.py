@@ -82,7 +82,7 @@ def plot_data(requireds,u_name):
             else:
                 wrangled_data.append(pool[columns[i]][c])
                 c+=1
-        ax[0,0].plot(t,wrangled_data, label=columns[i].title(),color=colors[i],linewidth=0.7)
+        ax[0,0].plot(t,wrangled_data, label=columns[i].title(),color=colors[i],linewidth=0.7,marker=".",markersize=0.7)
 
 #==================================================================================================================================================
 #==================================================================================================================================================

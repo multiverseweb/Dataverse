@@ -7,14 +7,16 @@ from datetime import date
 import getpass
 import functions                          #user-defined modules
 import plot
+from tkinter import messagebox
 
+messagebox.showinfo(title="Greet", message="Hello!")
 z=0                 #failed login attempts
 colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","cyan","#7e03a8","tomato","tan","#0d0887","green","blue","indigo","violet"]
 #===============================================================================================================connecting mySQL
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
 cursor=mycon.cursor()
 cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id INT PRIMARY KEY, u_name VARCHAR(255), pwd VARCHAR(255))")
-cursor.execute("CREATE TABLE IF NOT EXISTS money (u_id INT PRIMARY KEY, salary FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total DOUBLE AS (salary + gold + stocks + commodity + sales - expenditure), entryDate date);")
+cursor.execute("CREATE TABLE IF NOT EXISTS money (u_id INT, salary FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total DOUBLE AS (salary + gold + stocks + commodity + sales - expenditure), entryDate date);")
 
 #=======================================================================================================================
 #function defined in user-defined module "functions.py"
@@ -200,7 +202,7 @@ while True:
     print(201*"=")
     greet="PERSONAL FINANCE TRACKER & DATA VISUALIZTAION SOFTWARE"
     print(70*" ",greet)
-    print(201*"=","\n","1. Login\n2. Create Account\n3. Continue as Guest\n4. Login as Admin\n5. Exit",sep="")                #Login Menu
+    print(201*"=","\n","1. Login\n2. Create Account\n3. Continue as Guest\n4. Delete Account\n5. Login as Admin\n6. Exit",sep="")                       #Login Menu
     user_type=int(input("Enter your choice: "))
 
 #==========================================================================================================Login
@@ -283,8 +285,31 @@ while True:
                 break
         if a!='n':
             print("Invalid response! ✖\nRedirecting to main menu. . .")
-#==========================================================================================================Admin mode
+#=========================================================================================================Delete Account
     elif user_type==4:
+        u_id=int(input("User ID: "))
+        q="select pwd from user where u_id = {}".format(u_id)
+        cursor.execute(q)
+        data=cursor.fetchall()
+        if len(data)==0:
+            print("No account exists with that user ID.")
+        else:
+            try:
+                pwd = getpass.getpass()
+            except Exception as error:
+                print('There was some error: ', error)
+            if pwd==data[0][0]:
+                q="delete from user where u_id = {}".format(u_id)
+                cursor.execute(q)
+                mycon.commit()
+                q="delete from money where u_id = {}".format(u_id)
+                cursor.execute(q)
+                mycon.commit()
+                print("Account deleted successfully! ✓")
+            else:
+                print("Invalid Credentials! ✖")
+#==========================================================================================================Admin mode
+    elif user_type==5:
         try:
             p = getpass.getpass()
         except Exception as error:
@@ -323,9 +348,9 @@ while True:
                     break
                 print(201*"=")
 #==========================================================================================================Exit
-    elif user_type==5:
+    elif user_type==6:
         print(201*"=")
-        print("Made with <3 Tejas, Ojas & Nandana :)")
+        print("Tejas' Codes :)")
         time.sleep(1)
         print(".",end="")
         time.sleep(1)

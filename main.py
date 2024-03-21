@@ -294,7 +294,7 @@ while True:
                 print("Hello Sir,")
                 print("Database changed.")
                 q=""
-                while(q!="exit"):
+                while(q not in ["exit;","exit"]):
                     q=input("")
                     if q.lower()=="exit":
                         print("Exited the database.")

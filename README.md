@@ -1,5 +1,5 @@
 # Personal Finance Tracker & Data Visualisation Software
->Project by [Tejas](https://github.com/multiverseweb/).
+>Project by [Nandana](https://github.com/nandanaap/), [Ojas](https://github.com/ojas-git/) & [Tejas](https://github.com/multiverseweb/)
 
 >Technologies to be used:<br/>`#python #mysql`
 
@@ -50,8 +50,8 @@ python -m pip install {moduleName}
 
 >| Nandana | Ojas | Tejas |
 >|:----------:|:---:|:---:|
->| Basic mathematical operations | Loan operations | ~~Guest operations~~ |
->| ~~Dowloading report option~~ | ~~User operations~~ | ~~User account details~~ |
+>| Basic mathematical operations | Loan operations | Guest operations|
+>| Dowloading report option | User operations | User account details |
 >| | | Output theme & structure |
 
 >- As you have access to this repository, you can make changes to any file.

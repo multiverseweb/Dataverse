@@ -63,7 +63,8 @@ def plot_data(requireds,u_name):
 
     columns=requireds[0]
     pool=requireds[1]
-    t = np.arange(min(pool["entryDate"]), max(pool["entryDate"]) + timedelta(days=2), timedelta(days=1)).astype(datetime)
+    #t = np.arange(min(pool["entryDate"]), max(pool["entryDate"]) + timedelta(days=2), timedelta(days=1)).astype(datetime)
+    t = np.arange(min(pool["entryDate"]), date.today() + timedelta(days=2), timedelta(days=1)).astype(datetime)
     only_dates = [x.date().isoformat() for x in t]
     t_new = np.array(only_dates)
     pool_new=[x.strftime('%Y-%m-%d') for x in pool["entryDate"]]
@@ -71,30 +72,18 @@ def plot_data(requireds,u_name):
 #====================================================================================================================================Line chart
 #=====================================================================================================================================DATA WRANGLING
     l=list(pool.values())
-    if len(t)>1:
-        f1= plt.figure(1)
-        for i in range(1,len(l)-1):
-            c=0
-            wrangled_data=[]
-            for j in range(len(t)):
-                if t_new[j] not in pool_new:
-                    wrangled_data.append((wrangled_data[j-1]))
-                else:
-                    wrangled_data.append(pool[columns[i]][c])
-                    c+=1
-            ax[0,0].plot(t,wrangled_data, label=columns[i],color=colors[i],linewidth=0.7)
-    else:
-        #===================================================================================some error here
-        for i in range(1,len(l)-1):
-            c=0
-            wrangled_data=[]
-            for j in range(len(t)):
-                if t_new[j] not in pool_new:
-                    wrangled_data.append((wrangled_data[j-1]))
-                else:
-                    wrangled_data.append(pool[columns[i]][c])
-                    c+=1
-            ax[0,0].scatter(t,wrangled_data, label=columns[i],color=colors[i],marker="*",markersize=50)
+    f1= plt.figure(1)
+    for i in range(1,len(l)-1):
+        c=0
+        wrangled_data=[]
+        for j in range(len(t)):
+            if t_new[j] not in pool_new:
+                wrangled_data.append((wrangled_data[j-1]))
+            else:
+                wrangled_data.append(pool[columns[i]][c])
+                c+=1
+        ax[0,0].plot(t,wrangled_data, label=columns[i].title(),color=colors[i],linewidth=0.7)
+
 #==================================================================================================================================================
 #==================================================================================================================================================
     ax[0,0].tick_params(bottom=True, labelbottom=True, left=True, right=True, labelleft=True)
@@ -133,21 +122,39 @@ def plot_data(requireds,u_name):
         sectors.append(i[-1])
         explode.append(0)
     explode[-1]=0.1
+
+    #divide=len(str(max(sectors)))
+    #for i in range(len(sectors)):
+    #    explode.append(sectors[i]/(math.pow(10,divide-2)))
+
+    #print(explode)
+
+
+
     ax[1,0].pie(sectors, explode = explode, colors=colors[:len(columns)])
-    ax[1,0].set_title("Pie Chart- {}".format(date.today()))
+    ax[1,0].set_title("Money Distribution- {}".format(date.today()))
     ax[1,0].legend(labels=columns[1:len(columns)-2], bbox_to_anchor=(1.1, 1), loc='upper left', borderaxespad=0)
     ax[1,0].spines['bottom'].set_color('black')
     ax[1,0].spines['top'].set_color('black') 
     ax[1,0].spines['right'].set_color('black')
     ax[1,0].spines['left'].set_color('black')
 
+    max_expend=max(l[-3])
+    index=l[-3].index(max_expend)
+
+    ax[1,1].bar(l[-1],l[-3], color=colors[2],label=columns[-3].title())
+    ax[1,1].bar(l[-1][index],l[-3][index], color="red",label="Max Expenditure")
+    ax[1,1].set_title("Expenditure Till Now")
+    ax[1,1].legend(bbox_to_anchor=(1.1, 1), loc='upper left', borderaxespad=0)
+    ax[1,1].spines['bottom'].set_color('black')
+    ax[1,1].spines['top'].set_color('black') 
+    ax[1,1].spines['right'].set_color('black')
+    ax[1,1].spines['left'].set_color('black')
+
     plt.tight_layout()
-    from tkinter import messagebox
     a=input("Do you want to download today's report?")
     if a=="y":
         plt.savefig("plot.png", dpi=100)
         report.save(u_name,total)
         print("Report downloaded. ✓")
     plt.show()
-
-

@@ -22,7 +22,7 @@ Relational Data
 ![](data.png)
 
 ### Entity Relationship Diagram for Finance Tracker
-![](ERdiagram.png)
+![](ER_diagram.png)
 
 ---
 

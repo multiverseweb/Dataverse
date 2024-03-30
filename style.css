@@ -6,6 +6,7 @@ body{
     background-color: black;
     font-size: 2.4vh;
     overflow: hidden;
+    transition-duration: 0.4s;
 }
 nav{
     background-color: rgba(149, 149, 149, 0.138);
@@ -37,15 +38,15 @@ nav{
     border: none;
 }
 .l{
-    width: 5vh;
+    width: 4vh;
     height: 1px;
     background-color: white;
-    margin-top: 1.6vh;
+    margin-top: 1.2vh;
     transform-origin: 2% 0%;
     transition-duration: 0.2s;
 }
 #l1{
-    margin-top: 0;
+    margin-top: -1vh;
 }
 .tab_link {
     text-decoration: none;
@@ -54,7 +55,7 @@ nav{
 .tabs{
     margin-left: 110vw;
     transition-duration: 0.2s;
-    transform: translate(-50%);
+    transform: translate(-100%);
     list-style: none;
     overflow-x: hidden;
 }
@@ -71,4 +72,30 @@ nav{
     top:0;
     transition: 0.2s;
     z-index: -10;
+}
+
+.theme{
+    height: 5vh;
+    width: 5vh;
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+    position: absolute;
+    right:calc(4vh + 30px);
+    margin-top: 1.6vh;
+}
+.sun{
+    height: 2.6vh;
+    width:2.6vh;
+    border-radius: 50%;
+    border:1px solid white;
+    transition-duration: 0.7s;
+}
+.glow{
+    height: fit-content;
+    width: fit-content;
+    padding: 0px;
+    border: 1px solid white;
+    border-radius: 50%;
+    transition-duration: 0.7s;
+    box-shadow: 0px 0px 10px white;
 }

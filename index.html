@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="2dlogo.svg">
 </head>
-<body>
-    <nav>
-        <img src="3dlogo.svg" alt="" class="logo">
+<body id="body">
+    <nav id="navbar">
+        <img src="3dlogo.svg" alt="" class="logo" id="logo">
         <button class="hamburger" onclick="hide()" id="hide"></button>
         <button class="hamburger" onclick="show()" id="show">
             <div class="l" id="l1"></div>
             <div class="l" id="l2"></div>
             <div class="l" id="l3"></div>
         </button>
+        <button class="theme" onclick="light()" id="theme"><div class="glow" id="glow"><div class="sun" id="sun"></div></div></button>
         <ul class="tabs" id="tabs">
             <li class="tab"><a href="#" class="tab_link">Tab</a></li>
             <li class="tab"><a href="#" class="tab_link">Tab</a></li>
@@ -25,7 +26,7 @@
         </ul>
         <div class="cover" id="cover"></div>
     </nav>
-    
+    <!--<iframe src="README.md" frameborder="0" markdown=1 class="readme"></iframe>-->
     <script src="script.js"></script>
 </body>
 </html>

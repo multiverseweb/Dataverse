@@ -5,14 +5,24 @@
 body{
     background-color: black;
     font-size: 2.4vh;
-    overflow: hidden;
+    overflow-x: hidden;
     transition-duration: 0.4s;
+    background-image: linear-gradient(to right, transparent 4vh, rgba(65, 65, 65, 0.181) 1px),linear-gradient(to bottom, transparent 4vh, rgba(65, 65, 65, 0.181) 1px);
+    background-size: calc(4vh + 1px) calc(4vh + 1px);
+    background-attachment: fixed;
+}
+
+::-webkit-scrollbar{
+    display: none;
 }
 nav{
-    background-color: rgba(149, 149, 149, 0.138);
+    background-color: rgba(149, 149, 149, 0);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.025);
     height: calc(5vh + 20px);
+    transition-duration: 0.4s;
+    position:sticky;
+    top:0;
 }
 .logo{
     height: 5vh;
@@ -87,15 +97,36 @@ nav{
     height: 2.6vh;
     width:2.6vh;
     border-radius: 50%;
-    border:1px solid white;
+    border:1px solid rgb(255, 255, 255);
     transition-duration: 0.7s;
 }
 .glow{
     height: fit-content;
     width: fit-content;
     padding: 0px;
-    border: 1px solid white;
+    border: 0px solid rgba(255, 255, 255, 0);
     border-radius: 50%;
     transition-duration: 0.7s;
     box-shadow: 0px 0px 10px white;
+}
+
+#top{
+    position:fixed;
+    background-color: rgba(149, 149, 149, 0.138);
+    border: 1px solid rgba(255, 255, 255, 0.025);
+    color:white;
+    right:20px;
+    bottom: 20px;
+    font-size: 3.5vh;
+    padding: 5px;
+    border-radius: 1px;
+    opacity: 0;
+    transition-duration: 0.4s;
+    backdrop-filter: blur(10px);
+}
+
+.graph{
+    height: 200vh;
+    width: 10vw;
+    background-color: rgba(240, 248, 255, 0);
 }

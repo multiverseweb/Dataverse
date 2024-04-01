@@ -7,7 +7,7 @@ body{
     font-size: 2.4vh;
     overflow-x: hidden;
     transition-duration: 0.4s;
-    background-image: linear-gradient(to right, transparent 4vh, rgba(65, 65, 65, 0.09) 1px),linear-gradient(to bottom, transparent 4vh, rgba(65, 65, 65, 0.09) 1px);
+    background-image: linear-gradient(to right, transparent 4vh, rgba(65, 65, 65, 0.14) 1px),linear-gradient(to bottom, transparent 4vh, rgba(65, 65, 65, 0.14) 1px);
     background-size: calc(4vh + 1px) calc(4vh + 1px);
     background-attachment: fixed;
 }

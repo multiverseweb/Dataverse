@@ -9,6 +9,8 @@ var glow = document.getElementById("glow");
 var sun = document.getElementById("sun");
 var navbar = document.getElementById("navbar");
 var logo = document.getElementById("logo");
+var theme=document.getElementById("theme");
+var buttons=document.getElementById("buttons");
 
 function show() {
     l1.style.transform = "rotate(45deg)";
@@ -18,15 +20,23 @@ function show() {
     tabs.style.marginLeft = "70vw";
     cover.style.width = "calc(100vw - 20px - 6vh)";
     document.getElementById("top").style.opacity = 0;
+    navbar.style.height="100vh";
+    document.getElementById("body").style.overflowY="hidden";
+    buttons.style.opacity=1;
+    buttons.style.left="20px";
 }
 function hide() {
     l1.style.transform = "rotate(0deg)";
     l2.style.opacity = 1;
     l3.style.transform = "rotate(0deg)";
     hide_btn.style.display = "none";
-    tabs.style.marginLeft = "110vw";
+    tabs.style.marginLeft = "150vw";
     cover.style.width = "0vw";
     document.getElementById("top").style.opacity = 1;
+    navbar.style.height="calc(5vh + 20px)";
+    document.getElementById("body").style.overflowY="scroll";
+    buttons.style.opacity=0;
+    buttons.style.left="-30px";
 }
 var light = function theme() {
     glow.style.border = "2px dotted white";

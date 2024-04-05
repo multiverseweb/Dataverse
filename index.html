@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dataverse</title>
-    <link rel="icon" class="favicon" type="image/x-icon" href="web_images/2dlogo.png">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="2dlogo.svg">
 </head>
-<body>
-    <nav>
-        <img src="web_images/3dlogo.svg" alt="" class="logo">
+
+<body id="body">
+    <div class="buttons" id="buttons">
+    <button class="theme" onclick="light()" id="theme">
+        <div class="glow" id="glow">
+            <div class="sun" id="sun"></div>
+        </div>
+    </button>
+    <a href="https://github.com/multiverseweb/finance_tracker/blob/main/README.md"><img
+            src="https://icons.veryicon.com/png/o/miscellaneous/light-weight-line-icon/st-github.png" id="github"></a>
+        </div>
+    <nav id="navbar">
+        <a href="index.html"><img src="3dlogo.svg" alt="" class="logo" id="logo"></a>
         <button class="hamburger" onclick="hide()" id="hide"></button>
         <button class="hamburger" onclick="show()" id="show">
             <div class="l" id="l1"></div>
@@ -17,15 +28,17 @@
             <div class="l" id="l3"></div>
         </button>
         <ul class="tabs" id="tabs">
-            <li class="tab"><a href="#" class="tab_link">Tab</a></li>
-            <li class="tab"><a href="#" class="tab_link">Tab</a></li>
-            <li class="tab"><a href="#" class="tab_link">Tab</a></li>
-            <li class="tab"><a href="#" class="tab_link">Tab</a></li>
-            <li class="tab"><a href="#" class="tab_link">Tab</a></li>
+            <li class="tab"><a href="#" class="tab_link">Introduction</a></li>
+            <li class="tab"><a href="#" class="tab_link">Details</a></li>
+            <li class="tab"><a href="#" class="tab_link">Download</a></li>
+            <li class="tab"><a href="#" class="tab_link">Contact Us</a></li>
         </ul>
         <div class="cover" id="cover"></div>
     </nav>
-    
+    <button id="top" onclick="topFunction()">△</button>
+    <div class="graph"></div>
+    <!--<iframe src="README.md" frameborder="0" markdown=1 class="readme"></iframe>-->
     <script src="script.js"></script>
 </body>
+
 </html>

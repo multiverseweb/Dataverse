@@ -5,18 +5,31 @@
 body{
     background-color: black;
     font-size: 2.4vh;
-    overflow: hidden;
+    overflow-x: hidden;
+    transition-duration: 0.4s;
+    background-image: linear-gradient(to right, transparent 4vh, rgba(65, 65, 65, 0.4) 1px),linear-gradient(to bottom, transparent 4vh, rgba(65, 65, 65, 0.4) 1px);
+    background-size: calc(4vh + 1px) calc(4vh + 1px);
+    background-attachment: fixed;
+}
+
+::-webkit-scrollbar{
+    display: none;
 }
 nav{
-    background-color: rgba(149, 149, 149, 0.138);
+    background-color: rgba(149, 149, 149, 0);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.025);
     height: calc(5vh + 20px);
+    transition-duration: 0.2s;
+    position:sticky;
+    top:0;
+    overflow-x: hidden;
 }
 .logo{
     height: 5vh;
     width: 6vh;
     margin: 10px;
+    z-index: 50;
 }
 #hide{
     display: none;
@@ -37,26 +50,31 @@ nav{
     border: none;
 }
 .l{
-    width: 5vh;
+    width: 4vh;
     height: 1px;
     background-color: white;
-    margin-top: 1.6vh;
+    margin-top: 1.2vh;
     transform-origin: 2% 0%;
     transition-duration: 0.2s;
 }
 #l1{
-    margin-top: 0;
+    margin-top: -1vh;
 }
 .tab_link {
     text-decoration: none;
     color: white;
+    display: inline;
+    text-wrap: nowrap;
 }
 .tabs{
-    margin-left: 110vw;
+    margin-left: 150vw;
     transition-duration: 0.2s;
-    transform: translate(-50%);
+    transform: translate(-100%);
     list-style: none;
     overflow-x: hidden;
+    width: fit-content;
+    text-align: center;
+    position: fixed;
 }
 .tabs li{
     margin-top: 6vh;
@@ -66,9 +84,77 @@ nav{
     height: 100vh;
     width: 0vw;
     background-color: rgba(149, 149, 149, 0.138);
-    backdrop-filter: blur(10px);
-    position: absolute;
+    backdrop-filter: blur(7px);
+    position: fixed;
     top:0;
     transition: 0.2s;
     z-index: -10;
+    overflow: hidden;
+}
+
+.theme{
+    height: 5vh;
+    width: 5vh;
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+    bottom: calc(0vh + 60px);
+    z-index: 10;
+    transition-duration: 0.2s;
+    opacity: 1;
+}
+.sun{
+    height: 2.6vh;
+    width:2.6vh;
+    border-radius: 50%;
+    border:1px solid rgb(255, 255, 255);
+    transition-duration: 0.7s;
+}
+.glow{
+    height: fit-content;
+    width: fit-content;
+    padding: 0px;
+    border: 0px solid rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    transition-duration: 0.7s;
+    box-shadow: 0px 0px 10px white;
+}
+
+#top{
+    position:fixed;
+    background-color: rgba(149, 149, 149, 0.138);
+    border: 1px solid rgba(255, 255, 255, 0.025);
+    color:white;
+    right:20px;
+    bottom: 20px;
+    font-size: 3.5vh;
+    padding: 5px;
+    border-radius: 1px;
+    opacity: 0;
+    transition-duration: 0.4s;
+    backdrop-filter: blur(10px);
+}
+
+.graph{
+    height: 200vh;
+    width: 10vw;
+    background-color: rgba(240, 248, 255, 0);
+}
+#github{
+    height: 3.5vh;
+    width: 3.5vh;
+    filter: invert(1);
+    margin-top: 15px;
+    margin-left: -3px;
+}
+#buttons{
+    justify-content: center;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left:-30px;
+    bottom: calc(5vh + 80px);
+    z-index: 10;
+    transition-duration: 0.2s;
+    opacity: 1;
 }

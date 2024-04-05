@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: black;
+    font-size: 2.4vh;
+    overflow: hidden;
+}
+nav{
+    background-color: rgba(149, 149, 149, 0.138);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.025);
+    height: calc(5vh + 20px);
+}
+.logo{
+    height: 5vh;
+    width: 6vh;
+    margin: 10px;
+}
+#hide{
+    display: none;
+    z-index: 20;
+    position: absolute;
+    top:0px;
+    right: 0px;
+}
+#show{
+    z-index: 1;
+}
+.hamburger{
+    height: 5vh;
+    width: 5vh;
+    float: right;
+    margin: 15px;
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+}
+.l{
+    width: 5vh;
+    height: 1px;
+    background-color: white;
+    margin-top: 1.6vh;
+    transform-origin: 2% 0%;
+    transition-duration: 0.2s;
+}
+#l1{
+    margin-top: 0;
+}
+.tab_link {
+    text-decoration: none;
+    color: white;
+}
+.tabs{
+    margin-left: 110vw;
+    transition-duration: 0.2s;
+    transform: translate(-50%);
+    list-style: none;
+    overflow-x: hidden;
+}
+.tabs li{
+    margin-top: 6vh;
+}
+.cover{
+    right: 0;
+    height: 100vh;
+    width: 0vw;
+    background-color: rgba(149, 149, 149, 0.138);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top:0;
+    transition: 0.2s;
+    z-index: -10;
+}

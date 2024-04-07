@@ -148,7 +148,6 @@ nav{
 }
 #buttons{
     justify-content: center;
-    position: fixed;
     display: flex;
     flex-direction: column;
     position: fixed;

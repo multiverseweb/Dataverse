@@ -17,7 +17,7 @@ def fetch_data(u_id):
     cursor.execute(q)
     data=cursor.fetchall()
     if len(data)==0:
-        print("Your dataSet is empty.")
+        #print("Your dataSet is empty.")
         return None
     else:
         cursor.execute("DESCRIBE money")

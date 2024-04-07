@@ -50,7 +50,7 @@ var light = function theme() {
     document.getElementById("theme").setAttribute("onClick", "javascript: dark();");
     navbar.style.backgroundColor = "rgba(149, 149, 149, 0.738)";
     logo.style.filter = "invert(1)";
-    cover.style.backgroundColor = "rgba(149, 149, 149, 0.538)";
+    cover.style.backgroundColor = "rgba(149, 149, 149, 0.738)";
 }
 
 var dark = function theme2() {

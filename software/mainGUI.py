@@ -44,7 +44,7 @@ def login(text,menu,b1,b2,b3,b4,preview_image):
     pwd_entry.insert(0,'Password')
     user_entry.pack(pady=20,padx=50)
     pwd_entry.pack(pady=20,padx=50)
-    Button(form,text="Login",width=15,command=show_message).pack(pady=20)
+    Button(form,text="Login",width=15,command=show_message,cursor="dotbox").pack(pady=20)
     form.mainloop()
     
 #====================================================================== Ceate account -b2
@@ -86,10 +86,51 @@ def create(text,b2,b1,b3,b4,preview_image):
     pwd_entry.insert(0,'Password')
     user_entry.pack(pady=20,padx=50)
     pwd_entry.pack(pady=20,padx=50)
-    Button(form,text="Create Account",width=15,command=partial(show_message,u_name,pwd,names)).pack(pady=20)
+    Button(form,text="Create Account",width=15,command=partial(show_message,u_name,pwd,names),cursor="dotbox").pack(pady=20)
 
     form.mainloop()
+#====================================================================GUEST
+def guest(text,menu,b1,b2,b3,b4,preview_image):
+    switch(b1,b2,b3,b4)
+    text.pack_forget()
+    preview_image.pack_forget()
+    menu.pack_forget()
+    menu=Frame(root,bg="#171717",relief=SUNKEN)
+    menu.pack(side=LEFT,fill=Y)
+    text=Label(font="poppins 10 bold",fg='#ffffff',bg='#000000',text="DATA VISUALISATION SOFTWARE")
+    text.pack(fill=X,pady=35,padx=(0,200))
 
+    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Line Graph",width=22,font="poppins 10",cursor="dotbox")
+    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Bar Graph",width=22,font="poppins 10",cursor="dotbox")
+    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Histogram",width=22,font="poppins 10",cursor="dotbox")
+    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Pie Chart",width=22,font="poppins 10",cursor="dotbox")
+    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Scatter Plot",width=22,font="poppins 10",cursor="dotbox")
+    b6=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Heatmap",width=22,font="poppins 10",cursor="dotbox")
+    b7=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Area Chart",width=22,font="poppins 10",cursor="dotbox")
+    b8=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Radar Chart",width=22,font="poppins 10",cursor="dotbox")
+    b9=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Polar Scatter Plot",width=22,font="poppins 10",cursor="dotbox")
+    b10=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Candle Charts",width=22,font="poppins 10",cursor="dotbox")
+    b11=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Maps",width=22,font="poppins 10",cursor="dotbox")
+    b13=Button(menu,fg='#ffffff',bg='#1a1a1a',text="3d Scatter",width=22,font="poppins 10",cursor="dotbox")
+    b14=Button(menu,fg='#ffffff',bg='#1a1a1a',text="3D Surface",width=22,font="poppins 10",cursor="dotbox")
+    b12=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Live Graphs",width=22,font="poppins 10",cursor="dotbox")
+    b15=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Go to Home",width=22,font="poppins 10",command=main,cursor="dotbox")
+    
+    b1.pack(pady=(30,5),padx=15)
+    b2.pack(pady=5,padx=15)
+    b3.pack(pady=5,padx=15)
+    b4.pack(pady=5,padx=15)
+    b5.pack(pady=5,padx=15)
+    b6.pack(pady=5,padx=15)
+    b7.pack(pady=5,padx=15)
+    b8.pack(pady=5,padx=15)
+    b9.pack(pady=5,padx=15)
+    b10.pack(pady=5,padx=15)
+    b11.pack(pady=5,padx=15)
+    b13.pack(pady=5,padx=15)
+    b14.pack(pady=5,padx=15)
+    b12.pack(pady=5,padx=15)
+    b15.pack(pady=5,padx=15)
 #====================================================================Delete Account- b4
 def delete(text,b4,b1,b3,b2,preview_image):
     def show_message(u_name,u_id,pwd,names):
@@ -138,7 +179,7 @@ def delete(text,b4,b1,b3,b2,preview_image):
     user_entry.pack(pady=20,padx=50)
     user_id.pack(pady=20,padx=50)
     pwd_entry.pack(pady=20,padx=50)
-    Button(form,text="Delete Account",width=15,command=partial(show_message,u_name,u_id,pwd,names)).pack(pady=20)
+    Button(form,text="Delete Account",width=15,command=partial(show_message,u_name,u_id,pwd,names),cursor="dotbox").pack(pady=20)
 
     form.mainloop()
 
@@ -168,11 +209,11 @@ def user_menu(u_id,u_name):
     name=Label(profile,font="poppins 15 bold",fg='#ffffff',bg='#171717',text=u_name.title())
     name.pack(fill=X,padx=20,pady=10)
 
-    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Add Data",width=22,font="poppins 10",command=partial(insert,u_id,u_name))
-    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="View Data",width=22,command=view,font="poppins 10")
-    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Visualise Data",width=22,font="poppins 10",command=partial(visualize,u_name))
-    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Data",width=22,font="poppins 10",command=partial(delete_data,u_id))
-    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Save & Logout",width=22,command=lambda: [main(), clear(menu,text,profile)],font="poppins 10")
+    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Add Data",width=22,font="poppins 10",command=partial(insert,u_id,u_name),cursor="dotbox")
+    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="View Data",width=22,command=view,font="poppins 10",cursor="dotbox")
+    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Visualise Data",width=22,font="poppins 10",command=partial(visualize,u_name),cursor="dotbox")
+    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Data",width=22,font="poppins 10",command=partial(delete_data,u_id),cursor="dotbox")
+    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Save & Logout",width=22,command=main,font="poppins 10",cursor="dotbox")
     
     b1.pack(pady=(30,5),padx=15)
     b2.pack(pady=5,padx=15)
@@ -230,12 +271,12 @@ def insert(u_id,u_name):
         value=Entry(form,textvariable=variables[i-1],width=50)
         value.insert(0,0)
         value.pack(pady=(0,0),padx=50)
-    Button(form,text="Add Data",width=15, command=show_message).pack(pady=20)
+    Button(form,text="Add Data",width=15, command=show_message,cursor="dotbox").pack(pady=20)
     form.mainloop()
     
 def delete_data(u_id):
     def show(u_id,e_date):
-        q="select * from money where u_id=%d and entryDate=`%s`" %(u_id,e_date)
+        q="select * from money where u_id=%d and entryDate=%s" %(u_id,e_date)
         cursor.execute(q)
         data=cursor.fetchall()
         if len(data)==0:
@@ -253,7 +294,7 @@ def delete_data(u_id):
     date_entry=Entry(form,textvariable=e_date,width=30)
     date_entry.insert(0,'YYYY-MM-DD')
     date_entry.pack(pady=20,padx=50)
-    Button(form,text="Delete Data",width=15,command=partial(show,u_id,e_date)).pack(pady=20)
+    Button(form,text="Delete Data",width=15,command=partial(show,u_id,e_date),cursor="dotbox").pack(pady=20)
 
     form.mainloop()
 
@@ -308,16 +349,17 @@ def main():
     preview_image=Label(bg='#000000',image = preview, borderwidth=1, relief="solid",padx=15,pady=15)
     preview_image.pack(anchor=W,padx=40,pady=50)
 
-    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Login",width=22,font="poppins 10")
-    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Create Account",width=22,font="poppins 10")
-    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Continue as Guest",width=22,font="poppins 10")
-    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Account",width=22,font="poppins 10")
+    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Finance Tracker",width=22,font="poppins 10",cursor="dotbox")
+    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Data Visualisation",width=22,font="poppins 10",cursor="dotbox")
+    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Create Account",width=22,font="poppins 10",cursor="dotbox")
+    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Account",width=22,font="poppins 10",cursor="dotbox")
     b1.pack(pady=(30,5),padx=15)
-    b2.pack(pady=5,padx=15)
     b3.pack(pady=5,padx=15)
+    b2.pack(pady=5,padx=15)
     b4.pack(pady=5,padx=15)
 
     b1.config(command=partial(login,text,menu,b1,b2,b3,b4,preview_image))
+    b3.config(command=partial(guest,text,menu,b3,b1,b4,b2,preview_image))
     b2.config(command=partial(create,text,b2,b1,b3,b4,preview_image))
     b4.config(command=partial(delete,text,b4,b1,b3,b2,preview_image))
     root.mainloop()

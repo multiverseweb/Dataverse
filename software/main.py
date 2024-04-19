@@ -3,18 +3,16 @@ import matplotlib.pyplot as plt
 import time
 import datetime
 import getpass
-import functions                          #user-defined modules
-import plot
-from tkinter import messagebox
+import financeTracker as financeTracker                          #user-defined modules
+import dataVisualization as dataVisualization
 
-messagebox.showinfo(title="Greet", message="Hello!")
 z=0                 #failed login attempts
 colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","cyan","#7e03a8","tomato","tan","#0d0887","green","blue","indigo","violet"]
 #===============================================================================================================connecting mySQL
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
 cursor=mycon.cursor()
 cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id INT PRIMARY KEY, u_name VARCHAR(255), pwd VARCHAR(255))")
-cursor.execute("CREATE TABLE IF NOT EXISTS money (u_id INT, fiat FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total DOUBLE AS (salary + gold + stocks + commodity + sales - expenditure), entryDate date);")
+cursor.execute("CREATE TABLE IF NOT EXISTS money (u_id INT, fiat FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total DOUBLE AS (fiat + gold + stocks + commodity + sales - expenditure), entryDate date);")
 
 #=======================================================================================================================
 #function defined in user-defined module "functions.py"
@@ -29,15 +27,15 @@ def main_menu(u_id):
         print(201*"=","\n",100*" ","MENU\n",201*"=","\n","1. Add Data\n2. View Data\n3. Visualise Data\n4. Save & Logout",sep="")
         ch=int(input("Enter your choice: "))
         if ch==1:
-            functions.add_data(u_id)
+            financeTracker.add_data(u_id)
         elif ch==2:
-            functions.view_data(u_id)
+            financeTracker.view_data(u_id)
         elif ch==3:
-            requireds=plot.fetch_data(u_id)                             #in progress
+            requireds=dataVisualization.fetch_data(u_id)                             #in progress
             if requireds==None:
                 print("Not enough data to visualize.")
             else:
-                plot.plot_data(requireds,u_name)
+                dataVisualization.plot_data(requireds,u_name)
         elif ch==4:
             print("Data saved successfully. ✓")
             break

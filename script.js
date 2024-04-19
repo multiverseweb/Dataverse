@@ -12,6 +12,38 @@ var logo = document.getElementById("logo");
 var theme=document.getElementById("theme");
 var buttons=document.getElementById("buttons");
 
+var sq=document.getElementById("square");
+var fixed=document.getElementById("fixed");
+function changeCss() {
+    this.scrollY > 10 ? square.style.opacity = 0 : square.style.opacity = 1;
+    this.scrollY > 140 ? fixed.style.opacity="0" : fixed.style.opacity=1;
+    this.scrollY > 140 ? document.getElementById("c1").style.height="53vh" : document.getElementById("c1").style.height="0vh";
+    this.scrollY > 300 ? document.getElementById("c2").style.width="27vw" : document.getElementById("c2").style.width="0vw";
+    this.scrollY > 300 ? document.getElementById("info").style.opacity="1" : document.getElementById("info").style.opacity="0";
+    this.scrollY > 300 ? document.getElementById("info").style.marginLeft="5vw" : document.getElementById("info").style.marginLeft="3vw";
+}
+
+window.addEventListener("scroll", changeCss, false);
+
+
+const targetCount = 7;
+const counterElement = document.getElementById('users');
+function updateCounter(count) {
+    counterElement.textContent = count;
+}
+function startCounter() {
+    let count = 0;
+    const intervalId = setInterval(function () {
+        if (count < targetCount) {
+            count++;
+            updateCounter(count);
+        } else {
+            clearInterval(intervalId);
+        }
+    }, 200);
+}
+window.onload = startCounter;
+
 function show() {
     l1.style.transform = "rotate(45deg)";
     l2.style.opacity = 0;
@@ -51,6 +83,7 @@ var light = function theme() {
     navbar.style.backgroundColor = "rgba(149, 149, 149, 0.738)";
     logo.style.filter = "invert(1)";
     cover.style.backgroundColor = "rgba(149, 149, 149, 0.738)";
+    buttons.style.pointerEvents="fixed";
 }
 
 var dark = function theme2() {

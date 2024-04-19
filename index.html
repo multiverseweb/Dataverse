@@ -11,15 +11,7 @@
 
 <body id="body">
     <button id="top" onclick="topFunction()">△</button>
-    <div class="buttons" id="buttons">
-    <button class="theme" onclick="light()" id="theme">
-        <div class="glow" id="glow">
-            <div class="sun" id="sun"></div>
-        </div>
-    </button>
-    <a href="https://github.com/multiverseweb/finance_tracker/blob/main/README.md"><img
-            src="https://icons.veryicon.com/png/o/miscellaneous/light-weight-line-icon/st-github.png" id="github"></a>
-        </div>
+    
     <nav id="navbar">
         <a href="index.html"><img src="web_images/3dlogo.svg" alt="" class="logo" id="logo"></a>
         <button class="hamburger" onclick="hide()" id="hide"></button>
@@ -34,9 +26,46 @@
             <li class="tab"><a href="#" class="tab_link">Download</a></li>
             <li class="tab"><a href="#" class="tab_link">Contact Us</a></li>
         </ul>
+
+        <div class="buttons" id="buttons">
+            <button class="theme" onclick="light()" id="theme">
+                <div class="glow" id="glow">
+                    <div class="sun" id="sun"></div>
+                </div>
+            </button>
+            <a href="https://github.com/multiverseweb/finance_tracker/blob/main/README.md"><img
+                    src="https://icons.veryicon.com/png/o/miscellaneous/light-weight-line-icon/st-github.png"
+                    id="github"></a>
+        </div>
         <div class="cover" id="cover"></div>
     </nav>
-    <div class="graph"></div>
+
+    <div class="fixed" id="fixed">
+        <p class="title">Dataverse: Visualize. Track. Master.</p>
+        <div class="statistics">
+            <p class="stats" id="users">0</p>
+            <p class="stats">15+</p>
+        </div>
+        <div class="names">
+            <div class="small">Users</div>
+            <div class="small">Types of Plots</div>
+        </div>
+        <br>
+<a href="https://github.com/multiverseweb/Dataverse/blob/main/software/mainGUI.py"><button class="login">Get Software</button></a>
+        <a href="https://github.com/multiverseweb/Dataverse/blob/main/README.md"><button class="login" id="create">Contribute</button></a>
+    </div>
+
+    <div class="info" id="info">Designed & developed by Tejas, Ojas & Nandana, Dataverse is a comprehensive software that empowers you to effortlessly visualize your data and manage your personal finances in one convenient platform. Whether you're a data aficionado, financial planner, or simply someone keen on staying organized, Dataverse offers a suite of tools to meet your needs.<br><br>
+        With Dataverse, transforming raw data into captivating charts is a breeze. Choose from a variety of chart types, including bar graphs, pie charts, and line graphs, to bring your data to life and gain valuable insights at a glance.
+        </div>
+    <div class="square" id="square"></div>
+    <div class="block" id="b1"></div>
+    <div class="connect" id="c1"></div>
+    <div class="block" id="b2"></div>
+    <div class="connect" id="c2"></div>
+    <div class="block" id="b3"></div>
+    <footer>&copy; Dataverse 2024 <br>All Rights Reserved!</footer>
+    
     <!--<iframe src="README.md" frameborder="0" markdown=1 class="readme"></iframe>-->
     <script src="script.js"></script>
 </body>

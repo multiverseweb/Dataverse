@@ -1,5 +1,5 @@
 import tkinter as tk                                                #for GUI
-from tkinter import *
+from tkinter import *                                               #for GUI
 from tkinter import messagebox                                      #for GUI messages
 from PIL import Image, ImageTk                                      #for GUI images
 from functools import partial                                       #for calling button functions
@@ -10,13 +10,16 @@ import time                                                         #for getting
 import webbrowser                                                   #for opening external link
 import ctypes as ct                                                 #for styling windows
 import financeTracker as financeTracker                             #user defined module - finance
-import dataVisualization as dataVisualization                       #user defined module - data visualization
+import dataVisualization as dataVisualization                       #user defined module - data visualizationfunctions
+import matplotlib.pyplot as plt                                     #for plotting graphs
+import matplotlib                                                   #for plotting graphs
+import numpy as np                                                  #for x-axis time arange
 #===================================================================================================================plot colors
 colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","cyan","#7e03a8","tomato","tan","#0d0887","green","blue","indigo","violet"]
 #===================================================================================================================connecting mySQL
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
 cursor=mycon.cursor()
-cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id INT PRIMARY KEY, u_name VARCHAR(255), pwd VARCHAR(255))")
+cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id INT PRIMARY KEY, u_name VARCHAR(255), pwd VARCHAR(255), country varchar(50) default 'India')")
 cursor.execute("CREATE TABLE IF NOT EXISTS money (u_id INT, fiat FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total DOUBLE AS (fiat + gold + stocks + commodity + sales - expenditure), entryDate date);")
 #===================================================================================================================================
 #============================================================================================Dataverse Operations
@@ -59,24 +62,26 @@ def login(b1,b2,b3,b4,preview_image):
     pwd_entry.insert(0,'Password')
     user_entry.pack(pady=20,padx=50)
     pwd_entry.pack(pady=20,padx=50)
-    Button(form,text="Login",width=15,command=show_message,cursor="dotbox").pack(pady=20)
+    Button(form,text="Login",width=15,command=show_message,cursor="hand2").pack(pady=20)
     form.mainloop()
     
 #====================================================================== Create account -b2
 def create(b2,b1,b3,b4,preview_image):
-    def show_message(u_name,pwd,names):
+    def show_message(u_name,pwd,country,names):
         u_name=f"{u_name.get()}"
         pwd=f"{pwd.get()}"
+        country=f"{country.get()}"
         if u_name in names:
             messagebox.showinfo(title="Username Not Available", message="That username is already taken. Try another one.",icon="info")
         else:
             u_id = datetime.datetime.now().strftime("%H%M%S")
-            q="insert into user values({},'{}','{}')".format(u_id,u_name,pwd)
+            q="insert into user values({},'{}','{}','{}')".format(u_id,u_name,pwd,country)
             cursor.execute(q)
             mycon.commit()
             msg="Account Created Successfully! ✓\nYour User ID is: {}\n".format(u_id)
-            show=Label(font="poppins 10 bold",fg='#ffffff',bg='#000000',text=msg)
-            show.pack(fill=X,pady=35,padx=(0,200))
+            global text
+            text=Label(font="poppins 10 bold",fg='#ffffff',bg='#000000',text=msg)
+            text.pack(fill=X,pady=35,padx=(0,200))
             messagebox.showinfo(title="Important", message="This User ID is required while deleting the account.",icon="warning")
 
     switch(b2,b1,b3,b4)
@@ -101,13 +106,17 @@ def create(b2,b1,b3,b4,preview_image):
     title.pack(fill=Y,pady=35,padx=0)
     u_name=StringVar()
     pwd=StringVar()
+    country=StringVar()
     user_entry=Entry(form,textvariable=u_name,width=30)
     pwd_entry=Entry(form,textvariable=pwd,width=30)
+    country_entry=Entry(form,textvariable=country,width=30)
     user_entry.insert(0,'Username')
     pwd_entry.insert(0,'Password')
+    country_entry.insert(0,'India')
     user_entry.pack(pady=20,padx=50)
     pwd_entry.pack(pady=20,padx=50)
-    Button(form,text="Create Account",width=15,command=partial(show_message,u_name,pwd,names),cursor="dotbox").pack(pady=20)
+    country_entry.pack(pady=20,padx=50)
+    Button(form,text="Create Account",width=15,command=partial(show_message,u_name,pwd,country,names),cursor="hand2").pack(pady=20)
 
     form.mainloop()
 #=========================================================================GUEST
@@ -129,21 +138,23 @@ def guest(b1,b2,b3,b4,preview_image):
     title=Label(font="poppins 10 bold",fg='#ffffff',bg='#000000',text="DATA VISUALISATION SOFTWARE")
     title.pack(fill=X,pady=35,padx=(0,200))
 
-    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Line Graph",width=22,font="poppins 10",cursor="dotbox")
-    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Bar Graph",width=22,font="poppins 10",cursor="dotbox")
-    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Histogram",width=22,font="poppins 10",cursor="dotbox")
-    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Pie Chart",width=22,font="poppins 10",cursor="dotbox")
-    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Scatter Plot",width=22,font="poppins 10",cursor="dotbox")
-    b6=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Heatmap",width=22,font="poppins 10",cursor="dotbox")
-    b7=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Area Chart",width=22,font="poppins 10",cursor="dotbox")
-    b8=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Radar Chart",width=22,font="poppins 10",cursor="dotbox")
-    b9=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Polar Scatter Plot",width=22,font="poppins 10",cursor="dotbox")
-    b10=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Candle Charts",width=22,font="poppins 10",cursor="dotbox")
-    b11=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Maps",width=22,font="poppins 10",cursor="dotbox")
-    b13=Button(menu,fg='#ffffff',bg='#1a1a1a',text="3d Scatter",width=22,font="poppins 10",cursor="dotbox")
-    b14=Button(menu,fg='#ffffff',bg='#1a1a1a',text="3D Surface",width=22,font="poppins 10",cursor="dotbox")
-    b12=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Live Graphs",width=22,font="poppins 10",cursor="dotbox")
-    b15=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Go to Home",width=22,font="poppins 10",command=main,cursor="dotbox")
+    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Line Graph",width=22,font="poppins 10",cursor="hand2")
+    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Bar Graph",width=22,font="poppins 10",cursor="hand2")
+    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Histogram",width=22,font="poppins 10",cursor="hand2")
+    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Pie Chart",width=22,font="poppins 10",cursor="hand2")
+    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Scatter Plot",width=22,font="poppins 10",cursor="hand2")
+    b6=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Heatmap",width=22,font="poppins 10",cursor="hand2")
+    b7=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Area Chart",width=22,font="poppins 10",cursor="hand2")
+    b8=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Radar Chart",width=22,font="poppins 10",cursor="hand2")
+    b9=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Polar Scatter Plot",width=22,font="poppins 10",cursor="hand2")
+    b10=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Candle Charts",width=22,font="poppins 10",cursor="hand2")
+    b11=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Maps",width=22,font="poppins 10",cursor="hand2")
+    b13=Button(menu,fg='#ffffff',bg='#1a1a1a',text="3d Scatter",width=22,font="poppins 10",cursor="hand2")
+    b14=Button(menu,fg='#ffffff',bg='#1a1a1a',text="3D Surface",width=22,font="poppins 10",cursor="hand2")
+    b12=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Live Graphs",width=22,font="poppins 10",cursor="hand2")
+    b15=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Go to Home",width=22,font="poppins 10",command=main,cursor="hand2")
+
+    b1.config(command=partial(line,1))
     
     b1.pack(pady=(30,5),padx=15)
     b2.pack(pady=5,padx=15)
@@ -214,7 +225,7 @@ def delete(b4,b1,b3,b2,preview_image):
     user_entry.pack(pady=20,padx=50)
     user_id.pack(pady=20,padx=50)
     pwd_entry.pack(pady=20,padx=50)
-    Button(form,text="Delete Account",width=15,command=partial(show_message,u_name,u_id,pwd,names),cursor="dotbox").pack(pady=20)
+    Button(form,text="Delete Account",width=15,command=partial(show_message,u_name,u_id,pwd,names),cursor="hand2").pack(pady=20)
 
     form.mainloop()
 #=============================================================================================USER OPERATIONS
@@ -237,14 +248,22 @@ def user_menu(u_id,u_name):
 
     profile=Frame(root,bg="#171717",relief=SUNKEN,width=25,height=100)
     profile.pack(side=RIGHT,fill=Y,anchor=NE)
-    name=Label(profile,font="poppins 15 bold",fg='#ffffff',bg='#171717',text=u_name.title())
+    q="select entryDate from money where u_id={}".format(u_id)
+    cursor.execute(q)
+    data=cursor.fetchall()
+    since="NA"
+    last="NA"
+    if len(data)!=0:
+        since=data[0][0].strftime("%d-%m-%y")
+        last=data[-1][0].strftime("%d-%m-%y")
+    name=Label(profile,font="poppins 10 bold",fg='#ffffff',bg='#171717',text="{}\n\n\nMember since: {}\n\nLast active on: {}".format(u_name.title(),since,last))
     name.pack(fill=X,padx=30,pady=10)
 
-    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Add Data",width=22,font="poppins 10",command=partial(insert,u_id,u_name),cursor="dotbox")
-    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="View Data",width=22,command=partial(view,u_id,u_name),font="poppins 10",cursor="dotbox")
-    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Visualise Data",width=22,font="poppins 10",command=partial(visualize,u_name),cursor="dotbox")
-    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Data",width=22,font="poppins 10",command=partial(delete_data,u_id),cursor="dotbox")
-    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Save & Logout",width=22,command=main,font="poppins 10",cursor="dotbox")
+    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Add Data",width=22,font="poppins 10",command=partial(insert,u_id,u_name),cursor="hand2")
+    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="View Data",width=22,command=partial(view,u_id,u_name),font="poppins 10",cursor="hand2")
+    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Visualise Data",width=22,font="poppins 10",command=partial(visualize,u_name),cursor="hand2")
+    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Data",width=22,font="poppins 10",command=partial(delete_data,u_id),cursor="hand2")
+    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Save & Logout",width=22,command=main,font="poppins 10",cursor="hand2")
     
     b1.pack(pady=(30,5),padx=15)
     b2.pack(pady=5,padx=15)
@@ -281,11 +300,11 @@ def visualize(u_name):
     q="select u_id from user where u_name='{}'".format(u_name)
     cursor.execute(q)
     u_id=cursor.fetchall()[0][0]
-    requireds=dataVisualization.fetch_data(u_id)                             #in progress
+    requireds=financeTracker.fetch_data(u_id)                             #in progress
     if requireds==None:
             messagebox.showinfo(title="", message="Not enough data to visualize. ✖",icon="warning")
     else:
-        values=dataVisualization.plot_data(requireds,u_name)
+        values=financeTracker.plot_data(requireds,u_name)
         report="Total Amount= {}\nMax Till Now= {}".format(values[0],values[1])
         text=Label(font="poppins 10 bold",fg='#ffffff',bg='#000000',text=report)
         text.pack(fill=X,pady=35,padx=(0,200))
@@ -331,7 +350,7 @@ def insert(u_id,u_name):
         value=Entry(form,textvariable=variables[i-1],width=50)
         value.insert(0,'')
         value.pack(pady=(0,0),padx=50)
-    Button(form,text="Add Data",width=15, command=show_message,cursor="dotbox").pack(pady=20)
+    Button(form,text="Add Data",width=15, command=show_message,cursor="hand2").pack(pady=20)
     form.mainloop()
 
 #==========================================================================================delete data
@@ -361,7 +380,7 @@ def delete_data(u_id):
     date_entry=Entry(form,textvariable=e_date,width=30)
     date_entry.insert(0,'YYYY-MM-DD')
     date_entry.pack(pady=20,padx=50)
-    Button(form,text="Delete Data",width=15,command=partial(show,u_id,e_date),cursor="dotbox").pack(pady=20)
+    Button(form,text="Delete Data",width=15,command=partial(show,u_id,e_date),cursor="hand2").pack(pady=20)
 
     form.mainloop()
 
@@ -381,6 +400,198 @@ def switch(b1,b2,b3,b4):
 #==================================================================================open link
 def callback(url):
     webbrowser.open_new(url)
+
+
+
+#=====================================================================================================================================DATA VISUALIZATION
+x = []
+y = []
+d_attr=[]
+count=0
+def line(c):
+    global form
+    form.pack_forget()
+    form=Frame(root,bg="#171717",relief=SUNKEN)
+    form.pack(side=LEFT,pady=20,padx=20,anchor=NW)
+    global title
+    title.pack_forget()
+    title_var=StringVar()
+    x_var=StringVar()
+    y_var=IntVar()
+    title_label = Label(form, text = 'Title: ', font=('calibre',10),fg='#ffffff',bg='#171717')
+    title_entry = Entry(form,textvariable = title_var, font=('calibre',10))
+    x_label = Label(form, text = 'Name of Independent Variable: ', font = ('calibre',10),fg='#ffffff',bg='#171717')
+    x_entry=Entry(form, textvariable = x_var, font = ('calibre',10))
+    y_label = Label(form, text = 'No. of Dependent Variable(s): ', font = ('calibre',10),fg='#ffffff',bg='#171717')
+    y_entry=Entry(form, textvariable = y_var, font = ('calibre',10))
+    
+    title_entry.insert(0,'Untitled')
+    x_entry.insert(0,'x')
+
+    title_label.grid(row=0,column=0,padx=(15,10),pady=(15,5))
+    title_entry.grid(row=0,column=1,padx=(10,15),pady=(15,5))
+    x_label.grid(row=1,column=0,padx=(15,10),pady=5)
+    x_entry.grid(row=1,column=1,padx=(10,15),pady=5)
+    y_label.grid(row=2,column=0,padx=(15,10),pady=5)
+    y_entry.grid(row=2,column=1,padx=(10,15),pady=5)
+    sub_btn=Button(form,text="Create",width=15,cursor="hand2")
+    sub_btn.grid(row=3,column=1,padx=(10,15),pady=(15,15))
+    sub_btn.configure(command=partial(plot_line,title_var,x_var,y_var))
+
+    form.mainloop()
+
+
+    heading=input("Title: ")
+    x_label=input("Name of independent attribute (x-axis): ")
+    start=int(input("{} start value: ".format(x_label)))
+    end=int(input("{} end value: ".format(x_label)))
+    width=int(input("{} class width: ".format(x_label)))
+    for i in range(start,end+1,width):
+        x.append(i)
+        count+=1
+    resume=False
+    while resume==False:
+        dependent=int(input("No. of dependent attributes: "))
+        if dependent>16:
+            print("Too many variables! The maximum limit is 16\nNOTE: Enter 0 to exit.")
+        elif dependent==0:
+            break
+        else:
+            resume=True
+    if dependent==0:
+        pass
+    else:
+        for i in range(dependent):
+            d_attr.append(input("Dependent Attribute {}: ".format(i+1)))
+        y.append(d_attr)
+
+        for i in range(dependent):
+            print("Enter {} observations of {}: ".format(count,d_attr[i]))
+            values=[]
+            for j in range(count):
+                value=float(input("{}{}: ".format(d_attr[i],j+1)))
+                values.append(value)
+            y.append(values)
+        fig, ax=plt.subplots()
+        width=1
+        for i in range(dependent):
+            if c==1:
+                plt.bar(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
+            elif c==2:
+                plt.hist(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
+            elif c==3:
+                plt.scatter(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
+            else:
+                plt.plot(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
+            width-=0.2
+        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+        plt.title(heading)
+        plt.xticks(rotation=30)
+        plt.xlabel(x_label)
+        ax.spines['bottom'].set_color('teal')
+        ax.spines['top'].set_color('#ffffff40') 
+        ax.spines['right'].set_color('#ffffff40')
+        ax.spines['left'].set_color('darkturquoise')
+        ax.grid(linestyle = "dashed",linewidth = 1, alpha = 0.25)
+        #plt.savefig("example.png", dpi=1000)
+        plt.show()
+
+
+def plot_line(title_var,x_var,y_var):
+
+    def y_values(start,end,width,names_form,x_label):
+        Label(names_form, text = "For y-axis", font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=5,column=0,padx=(15,10),pady=(15,5))
+        for i in range(start.get(),end.get()+1,width.get()):
+            x.append(i)
+            #count+=1
+        for i in range(y_var):
+            Label(names_form, text = "Dependent Attribute {}: ".format(i+1), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=6+i,column=0,padx=(15,10),pady=(10,5))
+            Entry(names_form,textvariable = d_attr[i], font=('calibre',10)).grid(row=6+i,column=1,padx=(15,10),pady=(10,5))
+        enter_btn=Button(names_form,text="Enter Values",width=15,cursor="hand2")
+        enter_btn.grid(row=7+y_var,column=1,padx=(10,15),pady=10)
+        enter_btn.configure(command=partial(enter_values,start,end,width,x_label))
+
+    def enter_values(start,end,width,x_label):
+        for i in range(len(d_attr)):
+            d_attr[i]=d_attr[i].get()
+
+        for i in range(y_var):
+            default=[]
+            for j in range(start.get(),end.get()+1,width.get()):
+                default.append(0)
+                x.append(j)
+            y.append(default)
+        for i in y:
+            for j in i:
+                i=IntVar()
+
+        values_form=customtkinter.CTkScrollableFrame(root,
+                                                  width=250,
+                                                  height=665,
+                                                  label_text="Dependent Variable(s) Values",
+                                                  border_width=1,
+                                                  fg_color="#171717",
+                                                  scrollbar_button_hover_color="#ffffff",
+                                                  border_color="#000000"
+                                                  )
+        values_form.place(relx=1.0, rely=1.0, x=-900, y=-740,anchor=NW)
+        row=0
+        for i in range(len(y)):
+            Label(values_form, text = "For {}".format(d_attr[i].title()), font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=row,column=0,padx=(15,10),pady=(15,5))
+            for j in range(len(y[0])):
+                Label(values_form, text = "{}({}={}): ".format(d_attr[i],x_label,x[j]), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=row+j+1,column=0,padx=(15,10),pady=(10,5))
+                entry=Entry(values_form,textvariable = y[i][j], font=('calibre',10),width=15).grid(row=row+j+1,column=1,padx=(15,10),pady=(10,5))
+                #entry.insert(0,0)
+                row = row+1
+            row+=len(y[0])
+
+        plot_btn=Button(values_form,text="Plot",width=15,cursor="hand2")
+        plot_btn.grid(row=row,column=1,padx=(10,15),pady=10)
+        #plot_btn.configure(command=partial(y_values,start,end,width,values_form))
+
+
+
+    heading=title_var.get()
+    x_label=x_var.get()
+    y_var=y_var.get()
+
+    names_form=customtkinter.CTkScrollableFrame(root,
+                                                  width=360,
+                                                  height=480,
+                                                  label_text="{} Values".format(heading),
+                                                  border_width=1,
+                                                  fg_color="#171717",
+                                                  scrollbar_button_hover_color="#ffffff",
+                                                  border_color="#000000"
+                                                  )
+    names_form.place(relx=1.0, rely=1.0, x=-1300, y=-555,anchor=NW)
+
+    start=IntVar()
+    end=IntVar()
+    width=IntVar()
+    Label(names_form, text = "For {}".format(x_label), font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=0,column=0,padx=(15,10),pady=(15,5))
+    start_label = Label(names_form, text = "{} Start Value: ".format(x_label), font=('calibre',10),fg='#ffffff',bg='#171717')
+    start_entry = Entry(names_form,textvariable = start, font=('calibre',10))
+    end_label = Label(names_form, text = "{} End Value: ".format(x_label), font = ('calibre',10),fg='#ffffff',bg='#171717')
+    end_entry=Entry(names_form, textvariable = end, font = ('calibre',10))
+    width_label = Label(names_form, text = "{} Class Width: ".format(x_label), font = ('calibre',10),fg='#ffffff',bg='#171717')
+    width_entry=Entry(names_form, textvariable = width, font = ('calibre',10))
+
+    start_label.grid(row=1,column=0,padx=(15,10),pady=(10,5))
+    start_entry.grid(row=1,column=1,padx=(10,15),pady=5)
+    end_label.grid(row=2,column=0,padx=(15,10),pady=5)
+    end_entry.grid(row=2,column=1,padx=(10,15),pady=5)
+    width_label.grid(row=3,column=0,padx=(15,10),pady=5)
+    width_entry.grid(row=3,column=1,padx=(10,15),pady=5)
+
+    next_btn=Button(names_form,text="Next",width=15,cursor="hand2")
+    next_btn.grid(row=4,column=1,padx=(10,15),pady=10)
+    next_btn.configure(command=partial(y_values,start,end,width,names_form,x_label))
+
+    for i in range(y_var):
+        d_attr.append("NA")
+        d_attr[i]=StringVar()
+    
 #===========================================================================================================MAIN
 def main():
     global relation
@@ -407,7 +618,7 @@ But Dataverse is more than just a data visualization tool. It's also a robust pe
 ● This software can be used to visualise data in many forms.
 ● It allows the user to download the generated charts.
 ● It can be used as a finance tracker, providing various useful outputs.
-● The data can also be stored for later use.\n\n\n\n\n<--- You can visit our website to know more :)\n\n\n\n\n\n''')
+● The data can also be stored for later use.\n\n\n\n\n<--- You can visit our website to know more :)\n''')
     text.pack(pady=20,padx=40,side=TOP,anchor=W,fill=BOTH)
 
     image = Image.open("/Users/iamte/OneDrive/Desktop/Dataverse/software/images/preview.png")
@@ -418,10 +629,10 @@ But Dataverse is more than just a data visualization tool. It's also a robust pe
 
 
 
-    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Finance Tracker",width=22,font="poppins 10",cursor="dotbox")
-    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Data Visualisation",width=22,font="poppins 10",cursor="dotbox")
-    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Create Account",width=22,font="poppins 10",cursor="dotbox")
-    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Account",width=22,font="poppins 10",cursor="dotbox")
+    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Finance Tracker",width=22,font="poppins 10",cursor="hand2")
+    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Data Visualisation",width=22,font="poppins 10",cursor="hand2")
+    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Create Account",width=22,font="poppins 10",cursor="hand2")
+    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Account",width=22,font="poppins 10",cursor="hand2")
     b1.pack(pady=(30,5),padx=15)
     b3.pack(pady=5,padx=15)
     b2.pack(pady=5,padx=15)
@@ -431,8 +642,8 @@ But Dataverse is more than just a data visualization tool. It's also a robust pe
     b2.config(command=partial(create,b2,b1,b3,b4,preview_image))
     b4.config(command=partial(delete,b4,b1,b3,b2,preview_image))
 
-    link1 = Label(menu,fg='#ffffff',bg='#1a1a1a',text="Visit Website",width=17,cursor="dotbox",font="Courier 12", relief="sunken")
-    link1.pack(pady=280,padx=5)
+    link1 = Label(menu,fg='#ffffff',bg='#1a1a1a',text="Visit Website",width=22,cursor="hand2",font="poppins 10", relief="sunken")
+    link1.pack(pady=280,padx=15)
     link1.bind("<Button-1>", lambda e: callback("https://multiverseweb.github.io/Dataverse/"))
 
     root.mainloop()

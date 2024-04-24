@@ -140,11 +140,11 @@ def guest(b1,b2,b3,b4,preview_image):
 
     b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Line Graph",width=22,font="poppins 10",cursor="hand2")
     b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Bar Graph",width=22,font="poppins 10",cursor="hand2")
-    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Histogram",width=22,font="poppins 10",cursor="hand2")
-    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Pie Chart",width=22,font="poppins 10",cursor="hand2")
-    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Scatter Plot",width=22,font="poppins 10",cursor="hand2")
-    b6=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Heatmap",width=22,font="poppins 10",cursor="hand2")
-    b7=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Area Chart",width=22,font="poppins 10",cursor="hand2")
+    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Scatter Plot",width=22,font="poppins 10",cursor="hand2")
+    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Area Chart",width=22,font="poppins 10",cursor="hand2")
+    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Histogram",width=22,font="poppins 10",cursor="hand2")
+    b6=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Pie Chart",width=22,font="poppins 10",cursor="hand2")
+    b7=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Heatmap",width=22,font="poppins 10",cursor="hand2")
     b8=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Radar Chart",width=22,font="poppins 10",cursor="hand2")
     b9=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Polar Scatter Plot",width=22,font="poppins 10",cursor="hand2")
     b10=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Candle Charts",width=22,font="poppins 10",cursor="hand2")
@@ -154,7 +154,10 @@ def guest(b1,b2,b3,b4,preview_image):
     b12=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Live Graphs",width=22,font="poppins 10",cursor="hand2")
     b15=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Go to Home",width=22,font="poppins 10",command=main,cursor="hand2")
 
-    b1.config(command=partial(line,1))
+    b1.config(command=partial(line,c="line"))
+    b2.config(command=partial(line,c="bar"))
+    b3.config(command=partial(line,c="scatter"))
+    b4.config(command=partial(line,c="area"))
     
     b1.pack(pady=(30,5),padx=15)
     b2.pack(pady=5,padx=15)
@@ -428,78 +431,22 @@ def line(c):
     title_entry.insert(0,'Untitled')
     x_entry.insert(0,'x')
 
-    title_label.grid(row=0,column=0,padx=(15,10),pady=(15,5))
-    title_entry.grid(row=0,column=1,padx=(10,15),pady=(15,5))
-    x_label.grid(row=1,column=0,padx=(15,10),pady=5)
-    x_entry.grid(row=1,column=1,padx=(10,15),pady=5)
-    y_label.grid(row=2,column=0,padx=(15,10),pady=5)
-    y_entry.grid(row=2,column=1,padx=(10,15),pady=5)
-    sub_btn=Button(form,text="Create",width=15,cursor="hand2")
+    title_label.grid(row=0,column=0,padx=(5,5),pady=(15,5))
+    title_entry.grid(row=0,column=1,padx=(0,10),pady=(15,5))
+    x_label.grid(row=1,column=0,padx=(5,5),pady=5)
+    x_entry.grid(row=1,column=1,padx=(0,10),pady=5)
+    y_label.grid(row=2,column=0,padx=(5,5),pady=5)
+    y_entry.grid(row=2,column=1,padx=(0,10),pady=5)
+    sub_btn=Button(form,text="Create",width=10,cursor="hand2")
     sub_btn.grid(row=3,column=1,padx=(10,15),pady=(15,15))
-    sub_btn.configure(command=partial(plot_line,title_var,x_var,y_var))
+    sub_btn.configure(command=partial(line_values,c,title_var,x_var,y_var))
 
     form.mainloop()
 
 
-    heading=input("Title: ")
-    x_label=input("Name of independent attribute (x-axis): ")
-    start=int(input("{} start value: ".format(x_label)))
-    end=int(input("{} end value: ".format(x_label)))
-    width=int(input("{} class width: ".format(x_label)))
-    for i in range(start,end+1,width):
-        x.append(i)
-        count+=1
-    resume=False
-    while resume==False:
-        dependent=int(input("No. of dependent attributes: "))
-        if dependent>16:
-            print("Too many variables! The maximum limit is 16\nNOTE: Enter 0 to exit.")
-        elif dependent==0:
-            break
-        else:
-            resume=True
-    if dependent==0:
-        pass
-    else:
-        for i in range(dependent):
-            d_attr.append(input("Dependent Attribute {}: ".format(i+1)))
-        y.append(d_attr)
+def line_values(c,title_var,x_var,y_var):
 
-        for i in range(dependent):
-            print("Enter {} observations of {}: ".format(count,d_attr[i]))
-            values=[]
-            for j in range(count):
-                value=float(input("{}{}: ".format(d_attr[i],j+1)))
-                values.append(value)
-            y.append(values)
-        fig, ax=plt.subplots()
-        width=1
-        for i in range(dependent):
-            if c==1:
-                plt.bar(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
-            elif c==2:
-                plt.hist(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
-            elif c==3:
-                plt.scatter(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
-            else:
-                plt.plot(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
-            width-=0.2
-        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
-        plt.title(heading)
-        plt.xticks(rotation=30)
-        plt.xlabel(x_label)
-        ax.spines['bottom'].set_color('teal')
-        ax.spines['top'].set_color('#ffffff40') 
-        ax.spines['right'].set_color('#ffffff40')
-        ax.spines['left'].set_color('darkturquoise')
-        ax.grid(linestyle = "dashed",linewidth = 1, alpha = 0.25)
-        #plt.savefig("example.png", dpi=1000)
-        plt.show()
-
-
-def plot_line(title_var,x_var,y_var):
-
-    def y_values(start,end,width,names_form,x_label):
+    def y_values(c,y,start,end,width,names_form,x_label):
         Label(names_form, text = "For y-axis", font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=5,column=0,padx=(15,10),pady=(15,5))
         for i in range(start.get(),end.get()+1,width.get()):
             x.append(i)
@@ -507,26 +454,23 @@ def plot_line(title_var,x_var,y_var):
         for i in range(y_var):
             Label(names_form, text = "Dependent Attribute {}: ".format(i+1), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=6+i,column=0,padx=(15,10),pady=(10,5))
             Entry(names_form,textvariable = d_attr[i], font=('calibre',10)).grid(row=6+i,column=1,padx=(15,10),pady=(10,5))
-        enter_btn=Button(names_form,text="Enter Values",width=15,cursor="hand2")
+        enter_btn=Button(names_form,text="Enter Values",width=10,cursor="hand2")
         enter_btn.grid(row=7+y_var,column=1,padx=(10,15),pady=10)
-        enter_btn.configure(command=partial(enter_values,start,end,width,x_label))
+        enter_btn.configure(command=partial(enter_values,c,y,start,end,width,x_label))
 
-    def enter_values(start,end,width,x_label):
-        for i in range(len(d_attr)):
-            d_attr[i]=d_attr[i].get()
-
+    def enter_values(c,y,start,end,width,x_label):
         for i in range(y_var):
             default=[]
             for j in range(start.get(),end.get()+1,width.get()):
                 default.append(0)
-                x.append(j)
             y.append(default)
         for i in y:
             for j in i:
                 i=IntVar()
-
+        global values_form
+        values_form.place_forget()
         values_form=customtkinter.CTkScrollableFrame(root,
-                                                  width=250,
+                                                  width=230,
                                                   height=665,
                                                   label_text="Dependent Variable(s) Values",
                                                   border_width=1,
@@ -534,29 +478,35 @@ def plot_line(title_var,x_var,y_var):
                                                   scrollbar_button_hover_color="#ffffff",
                                                   border_color="#000000"
                                                   )
-        values_form.place(relx=1.0, rely=1.0, x=-900, y=-740,anchor=NW)
+        values_form.place(relx=1.0, rely=1.0, x=-930, y=-740,anchor=NW)
         row=0
+        entry_widgets = []
         for i in range(len(y)):
-            Label(values_form, text = "For {}".format(d_attr[i].title()), font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=row,column=0,padx=(15,10),pady=(15,5))
+            entries=[]
+            Label(values_form, text = "For {}".format(d_attr[i].get().title()), font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=row,column=0,padx=(15,10),pady=(15,5))
             for j in range(len(y[0])):
-                Label(values_form, text = "{}({}={}): ".format(d_attr[i],x_label,x[j]), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=row+j+1,column=0,padx=(15,10),pady=(10,5))
-                entry=Entry(values_form,textvariable = y[i][j], font=('calibre',10),width=15).grid(row=row+j+1,column=1,padx=(15,10),pady=(10,5))
-                #entry.insert(0,0)
+                Label(values_form, text = "{}({}={}): ".format(d_attr[i].get(),x_label,x[j]), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=row+j+1,column=0,padx=(15,10),pady=(10,5))
+                #entry=Entry(values_form,textvariable = y[i][j], font=('calibre',10),width=15).grid(row=row+j+1,column=1,padx=(15,10),pady=(10,5))
+                entry = Entry(values_form, font=('calibre',10),width=15)
+                entry.grid(row=row+j+1,column=1,padx=(15,10),pady=(10,5))
+                entry.insert(0,0)
+                entries.append(entry)
                 row = row+1
+            entry_widgets.append(entries)
             row+=len(y[0])
-
-        plot_btn=Button(values_form,text="Plot",width=15,cursor="hand2")
+        plot_btn=Button(values_form,text="Plot",width=10,cursor="hand2")
         plot_btn.grid(row=row,column=1,padx=(10,15),pady=10)
-        #plot_btn.configure(command=partial(y_values,start,end,width,values_form))
-
-
+        plot_btn.configure(command=partial(plot_line,c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets))
 
     heading=title_var.get()
     x_label=x_var.get()
     y_var=y_var.get()
-
+    global values_form
+    values_form.place_forget()
+    global names_form
+    names_form.place_forget()
     names_form=customtkinter.CTkScrollableFrame(root,
-                                                  width=360,
+                                                  width=330,
                                                   height=480,
                                                   label_text="{} Values".format(heading),
                                                   border_width=1,
@@ -584,14 +534,53 @@ def plot_line(title_var,x_var,y_var):
     width_label.grid(row=3,column=0,padx=(15,10),pady=5)
     width_entry.grid(row=3,column=1,padx=(10,15),pady=5)
 
-    next_btn=Button(names_form,text="Next",width=15,cursor="hand2")
+    next_btn=Button(names_form,text="Next",width=10,cursor="hand2")
     next_btn.grid(row=4,column=1,padx=(10,15),pady=10)
-    next_btn.configure(command=partial(y_values,start,end,width,names_form,x_label))
+    next_btn.configure(command=partial(y_values,c,y,start,end,width,names_form,x_label))
 
     for i in range(y_var):
         d_attr.append("NA")
         d_attr[i]=StringVar()
-    
+
+def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
+    start=start.get()
+    end=end.get()
+    width=width.get()
+    #for i in range(start,end+1,width):
+        #x.append(i)
+        #count+=1
+
+    for i in range(len(entry_widgets)):
+        #for j in range(len(y[0])):
+        y[i]=[float(entry.get()) for entry in entry_widgets[i]]
+
+    plt.style.use('dark_background')
+    fig, ax=plt.subplots(figsize=(6.5, 5))
+    plt.subplots_adjust(bottom=0.152,right=0.81)
+    width=0.9
+    for i in range(len(y)):
+        if c=="line":
+            plt.plot(x,y[i], label=d_attr[i].get(),color=colors[i],linewidth=0.7)
+        elif c=="bar":
+            plt.bar(x,y[i], label=d_attr[i].get(),color=colors[i],linewidth=0.7,width=width, alpha = 0.7)
+            width-=0.2
+        elif c=="scatter":
+            plt.scatter(x,y[i], label=d_attr[i].get(),color=colors[i],linewidth=0.7)
+        else:
+            plt.fill_between(x, y[i],label=d_attr[i].get(),color=colors[i], alpha = 0.7)
+    plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+    plt.title(heading)
+    plt.xticks(rotation=30)
+    plt.xlabel(x_label)
+    ax.spines['bottom'].set_color('teal')
+    ax.spines['top'].set_color('#ffffff40') 
+    ax.spines['right'].set_color('#ffffff40')
+    ax.spines['left'].set_color('darkturquoise')
+    ax.grid(linestyle = "dashed",linewidth = 1, alpha = 0.25)
+    #plt.savefig("example.png", dpi=1000)
+    financeTracker.move_figure(fig, 865, 125)
+    plt.show()
+
 #===========================================================================================================MAIN
 def main():
     global relation
@@ -604,6 +593,10 @@ def main():
     menu.pack_forget()
     global text
     text.pack_forget()
+    global names_form
+    names_form.place_forget()
+    global values_form
+    values_form.place_forget()
     menu=Frame(root,bg="#171717",relief=SUNKEN)
     menu.pack(side=LEFT,fill=Y)
 
@@ -695,6 +688,10 @@ text=Label(font="poppins 10 bold",fg='#ffffff',bg='#000000',text="")
 text.pack(fill=X,pady=35,padx=(0,200))
 form=Frame(root,bg="#171717",relief=SUNKEN)
 form.pack(side=TOP,fill=Y,pady=0,padx=(0,0))
+names_form=Frame(root,bg="#171717",relief=SUNKEN)
+names_form.place(relx=1.0, rely=1.0, x=-1300, y=-555,anchor=NW)
+values_form=Frame(root,bg="#171717",relief=SUNKEN)
+values_form.place(relx=1.0, rely=1.0, x=-1300, y=-555,anchor=NW)
 relation=customtkinter.CTkScrollableFrame(root,width=0,height=0,border_width=0,fg_color="#000000",scrollbar_button_hover_color="#000000",scrollbar_button_color="#000000")
 relation.pack(side=RIGHT)
 menu=Frame(root,bg="#171717",relief=SUNKEN)

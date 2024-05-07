@@ -285,8 +285,17 @@ hr{
     form{
         width: calc(80vw - 30px);
     }
+    .heading{
+        font-size: x-large;
+    }
     .subheading{
-        font-size: large;
+        font-size: larger;
+    }
+    .text{
+        font-size: medium;
+    }
+    .tags{
+        font-size: medium;
     }
     .end-logo{
         height: 30px;

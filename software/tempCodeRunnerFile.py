@@ -1,2 +1,2 @@
-    global values_form
-        values_form.place_forget()
+          )
+        values_form.place(relx=1.0, rely

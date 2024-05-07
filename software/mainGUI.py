@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt                                     #for plottin
 import matplotlib                                                   #for plotting graphs
 import numpy as np                                                  #for x-axis time arange
 #===================================================================================================================plot colors
-colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","cyan","#7e03a8","tomato","tan","#0d0887","green","blue","indigo","violet"]
+colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","cyan","#7e03a8","tomato","tan","#0d0887","green","blue","indigo","red"]
 #===================================================================================================================connecting mySQL
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
 cursor=mycon.cursor()
@@ -158,6 +158,9 @@ def guest(b1,b2,b3,b4,preview_image):
     b2.config(command=partial(line,c="bar"))
     b3.config(command=partial(line,c="scatter"))
     b4.config(command=partial(line,c="area"))
+    b5.config(command=partial(line,c="hist"))
+    b9.config(command=partial(line,c="polar"))
+    b6.config(command=partial(pie,c="pie"))
     
     b1.pack(pady=(30,5),padx=15)
     b2.pack(pady=5,padx=15)
@@ -173,7 +176,7 @@ def guest(b1,b2,b3,b4,preview_image):
     b13.pack(pady=5,padx=15)
     b14.pack(pady=5,padx=15)
     b12.pack(pady=5,padx=15)
-    b15.pack(pady=5,padx=15)
+    b15.pack(pady=30,padx=15)
 #==================================================================================Delete Account- b4
 def delete(b4,b1,b3,b2,preview_image):
     def show_message(u_name,u_id,pwd,names):
@@ -283,7 +286,7 @@ def view(u_id,u_name):
     relation.pack_forget()
     relation=customtkinter.CTkScrollableFrame(root,
                                                 width=900,
-                                                height=500,
+                                                height=700,
                                                 label_text="{}'s Data".format(u_name.title()),
                                                 border_width=1,
                                                 fg_color="#000000",
@@ -445,10 +448,13 @@ def line(c):
 
 
 def line_values(c,title_var,x_var,y_var):
-
     def y_values(c,y,start,end,width,names_form,x_label):
+        if width.get()==0:
+            width=width.get()+1
+        else:
+            width=width.get()
         Label(names_form, text = "For y-axis", font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=5,column=0,padx=(15,10),pady=(15,5))
-        for i in range(start.get(),end.get()+1,width.get()):
+        for i in range(start.get(),end.get()+1,width):
             x.append(i)
             #count+=1
         for i in range(y_var):
@@ -461,7 +467,7 @@ def line_values(c,title_var,x_var,y_var):
     def enter_values(c,y,start,end,width,x_label):
         for i in range(y_var):
             default=[]
-            for j in range(start.get(),end.get()+1,width.get()):
+            for j in range(start.get(),end.get()+1,width):
                 default.append(0)
             y.append(default)
         for i in y:
@@ -495,57 +501,62 @@ def line_values(c,title_var,x_var,y_var):
             entry_widgets.append(entries)
             row+=len(y[0])
         plot_btn=Button(values_form,text="Plot",width=10,cursor="hand2")
-        plot_btn.grid(row=row,column=1,padx=(10,15),pady=10)
+        plot_btn.grid(row=row,column=0,padx=(10,15),pady=10)
         plot_btn.configure(command=partial(plot_line,c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets))
 
     heading=title_var.get()
     x_label=x_var.get()
     y_var=y_var.get()
-    global values_form
-    values_form.place_forget()
-    global names_form
-    names_form.place_forget()
-    names_form=customtkinter.CTkScrollableFrame(root,
-                                                  width=330,
-                                                  height=480,
-                                                  label_text="{} Values".format(heading),
-                                                  border_width=1,
-                                                  fg_color="#171717",
-                                                  scrollbar_button_hover_color="#ffffff",
-                                                  border_color="#000000"
-                                                  )
-    names_form.place(relx=1.0, rely=1.0, x=-1300, y=-555,anchor=NW)
 
-    start=IntVar()
-    end=IntVar()
-    width=IntVar()
-    Label(names_form, text = "For {}".format(x_label), font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=0,column=0,padx=(15,10),pady=(15,5))
-    start_label = Label(names_form, text = "{} Start Value: ".format(x_label), font=('calibre',10),fg='#ffffff',bg='#171717')
-    start_entry = Entry(names_form,textvariable = start, font=('calibre',10))
-    end_label = Label(names_form, text = "{} End Value: ".format(x_label), font = ('calibre',10),fg='#ffffff',bg='#171717')
-    end_entry=Entry(names_form, textvariable = end, font = ('calibre',10))
-    width_label = Label(names_form, text = "{} Class Width: ".format(x_label), font = ('calibre',10),fg='#ffffff',bg='#171717')
-    width_entry=Entry(names_form, textvariable = width, font = ('calibre',10))
+    if y_var>16:
+        messagebox.showwarning(message="Too many dependent variables!\nThe maximum limit is 16.")
+    elif y_var<=0:
+        messagebox.showwarning(message="No. of dependent variables should be greater than 0.")
+    else:
+        global values_form
+        values_form.place_forget()
+        global names_form
+        names_form.place_forget()
+        names_form=customtkinter.CTkScrollableFrame(root,
+                                                    width=330,
+                                                    height=480,
+                                                    label_text="{} Values".format(heading),
+                                                    border_width=1,
+                                                    fg_color="#171717",
+                                                    scrollbar_button_hover_color="#ffffff",
+                                                    border_color="#000000"
+                                                    )
+        names_form.place(relx=1.0, rely=1.0, x=-1300, y=-555,anchor=NW)
 
-    start_label.grid(row=1,column=0,padx=(15,10),pady=(10,5))
-    start_entry.grid(row=1,column=1,padx=(10,15),pady=5)
-    end_label.grid(row=2,column=0,padx=(15,10),pady=5)
-    end_entry.grid(row=2,column=1,padx=(10,15),pady=5)
-    width_label.grid(row=3,column=0,padx=(15,10),pady=5)
-    width_entry.grid(row=3,column=1,padx=(10,15),pady=5)
+        start=IntVar()
+        end=IntVar()
+        width=IntVar()
+        Label(names_form, text = "For {}".format(x_label), font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=0,column=0,padx=(15,10),pady=(15,5))
+        start_label = Label(names_form, text = "{} Start Value: ".format(x_label), font=('calibre',10),fg='#ffffff',bg='#171717')
+        start_entry = Entry(names_form,textvariable = start, font=('calibre',10))
+        end_label = Label(names_form, text = "{} End Value: ".format(x_label), font = ('calibre',10),fg='#ffffff',bg='#171717')
+        end_entry=Entry(names_form, textvariable = end, font = ('calibre',10))
+        width_label = Label(names_form, text = "{} Class Width: ".format(x_label), font = ('calibre',10),fg='#ffffff',bg='#171717')
+        width_entry=Entry(names_form, textvariable = width, font = ('calibre',10))
 
-    next_btn=Button(names_form,text="Next",width=10,cursor="hand2")
-    next_btn.grid(row=4,column=1,padx=(10,15),pady=10)
-    next_btn.configure(command=partial(y_values,c,y,start,end,width,names_form,x_label))
+        start_label.grid(row=1,column=0,padx=(15,10),pady=(10,5))
+        start_entry.grid(row=1,column=1,padx=(10,15),pady=5)
+        end_label.grid(row=2,column=0,padx=(15,10),pady=5)
+        end_entry.grid(row=2,column=1,padx=(10,15),pady=5)
+        width_label.grid(row=3,column=0,padx=(15,10),pady=5)
+        width_entry.grid(row=3,column=1,padx=(10,15),pady=5)
 
-    for i in range(y_var):
-        d_attr.append("NA")
-        d_attr[i]=StringVar()
+        next_btn=Button(names_form,text="Next",width=10,cursor="hand2")
+        next_btn.grid(row=4,column=1,padx=(10,15),pady=10)
+        next_btn.configure(command=partial(y_values,c,y,start,end,width,names_form,x_label))
+
+        for i in range(y_var):
+            d_attr.append("NA")
+            d_attr[i]=StringVar()
 
 def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
     start=start.get()
     end=end.get()
-    width=width.get()
     #for i in range(start,end+1,width):
         #x.append(i)
         #count+=1
@@ -558,6 +569,8 @@ def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
     fig, ax=plt.subplots(figsize=(6.5, 5))
     plt.subplots_adjust(bottom=0.152,right=0.81)
     width=0.9
+    if c=="polar":
+        ax = fig.add_subplot(projection='polar')
     for i in range(len(y)):
         if c=="line":
             plt.plot(x,y[i], label=d_attr[i].get(),color=colors[i],linewidth=0.7)
@@ -566,21 +579,144 @@ def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
             width-=0.2
         elif c=="scatter":
             plt.scatter(x,y[i], label=d_attr[i].get(),color=colors[i],linewidth=0.7)
-        else:
+        elif c=="area":
             plt.fill_between(x, y[i],label=d_attr[i].get(),color=colors[i], alpha = 0.7)
-    plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
-    plt.title(heading)
-    plt.xticks(rotation=30)
-    plt.xlabel(x_label)
-    ax.spines['bottom'].set_color('teal')
-    ax.spines['top'].set_color('#ffffff40') 
-    ax.spines['right'].set_color('#ffffff40')
-    ax.spines['left'].set_color('darkturquoise')
-    ax.grid(linestyle = "dashed",linewidth = 1, alpha = 0.25)
+        elif c=="hist":
+            for i in range(len(x)):
+                x[i]=round(x[i])
+            plt.hist(x, y[i],label=d_attr[i].get(),color=colors[i], alpha = 0.7)                                                #PROBLEM HERE
+        elif c=="polar":
+            r = 2 * np.random.rand(len(x))
+            area = 200 * r**2
+            ax.scatter(x, y[i], color=colors[i], s=area, alpha=0.75)
+        else:
+            messagebox.showerror(message="Some error occured.")
+            return
+    if c in ["line","bar","scatter","hist","area"]:
+        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+        plt.title(heading)
+        plt.xticks(rotation=30)
+        plt.xlabel(x_label)
+        ax.spines['bottom'].set_color('teal')
+        ax.spines['top'].set_color('#ffffff40') 
+        ax.spines['right'].set_color('#ffffff40')
+        ax.spines['left'].set_color('darkturquoise')
+        ax.grid(linestyle = "dashed",linewidth = 1, alpha = 0.25)
     #plt.savefig("example.png", dpi=1000)
     financeTracker.move_figure(fig, 865, 125)
     plt.show()
 
+def pie(c):
+    if c=="pie":
+        global form
+        form.pack_forget()
+        form=Frame(root,bg="#171717",relief=SUNKEN)
+        form.pack(side=LEFT,pady=20,padx=20,anchor=NW)
+        global title
+        title.pack_forget()
+        title_var=StringVar()
+        y_var=IntVar()
+        title_label = Label(form, text = 'Title: ', font=('calibre',10),fg='#ffffff',bg='#171717')
+        title_entry = Entry(form,textvariable = title_var, font=('calibre',10))
+        y_label = Label(form, text = 'No. of Variable(s): ', font = ('calibre',10),fg='#ffffff',bg='#171717')
+        y_entry=Entry(form, textvariable = y_var, font = ('calibre',10))
+        
+        title_entry.insert(0,'Untitled')
+
+        title_label.grid(row=0,column=0,padx=(5,5),pady=(15,5))
+        title_entry.grid(row=0,column=1,padx=(0,10),pady=(15,5))
+        y_label.grid(row=2,column=0,padx=(5,5),pady=5)
+        y_entry.grid(row=2,column=1,padx=(0,10),pady=5)
+        sub_btn=Button(form,text="Create",width=10,cursor="hand2")
+        sub_btn.grid(row=3,column=1,padx=(10,15),pady=(15,15))
+        sub_btn.configure(command=partial(pie_values,c,title_var,y_var))
+
+        form.mainloop()
+def pie_values(c,title_var,y_var):
+    def enter_pie_values(c,y):
+        '''for i in range(y_var):
+            y.append(0)
+            y[i]=IntVar()'''
+        global values_form
+        values_form.place_forget()
+        values_form=customtkinter.CTkScrollableFrame(root,
+                                                  width=230,
+                                                  height=665,
+                                                  label_text="Variable(s) Values",
+                                                  border_width=1,
+                                                  fg_color="#171717",
+                                                  scrollbar_button_hover_color="#ffffff",
+                                                  border_color="#000000"
+                                                  )
+        values_form.place(relx=1.0, rely=1.0, x=-930, y=-740,anchor=NW)
+        row=0
+        entries=[]
+        for i in range(y_var):
+            Label(values_form, text = "{}: ".format(d_attr[i].get()), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=row+1,column=0,padx=(15,10),pady=(10,5))
+            #entry=Entry(values_form,textvariable = y[i][j], font=('calibre',10),width=15).grid(row=row+j+1,column=1,padx=(15,10),pady=(10,5))
+            entry = Entry(values_form, font=('calibre',10),width=15)
+            entry.grid(row=row+1,column=1,padx=(15,10),pady=(10,5))
+            #entry.insert(0,0)
+            entries.append(entry)
+            row = row+1
+        row+=1
+        plot_btn=Button(values_form,text="Plot",width=10,cursor="hand2")
+        plot_btn.grid(row=row,column=0,padx=(10,15),pady=10)
+        plot_btn.configure(command=partial(plot_pie,c,y,d_attr,heading,entries))
+
+    y_var=y_var.get()
+    heading=title_var.get()
+    if y_var>16:
+        messagebox.showwarning(message="Too many variables!\nThe maximum limit is 16.")
+    elif y_var<=0:
+        messagebox.showwarning(message="No. of variables should be greater than 0.")
+    else:
+        for i in range(y_var):
+            d_attr.append("NA")
+            d_attr[i]=StringVar()
+        global values_form
+        values_form.place_forget()
+        global names_form
+        names_form.place_forget()
+        names_form=customtkinter.CTkScrollableFrame(root,
+                                                    width=330,
+                                                    height=480,
+                                                    label_text="{} Values".format(heading),
+                                                    border_width=1,
+                                                    fg_color="#171717",
+                                                    scrollbar_button_hover_color="#ffffff",
+                                                    border_color="#000000"
+                                                    )
+        names_form.place(relx=1.0, rely=1.0, x=-1300, y=-555,anchor=NW)
+
+        Label(names_form, text = "Variable Names", font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=5,column=0,padx=(15,10),pady=(15,5))
+        for i in range(y_var):
+            Label(names_form, text = "Attribute {}: ".format(i+1), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=6+i,column=0,padx=(15,10),pady=(10,5))
+            Entry(names_form,textvariable = d_attr[i], font=('calibre',10)).grid(row=6+i,column=1,padx=(15,10),pady=(10,5))
+
+    enter_btn=Button(names_form,text="Enter Values",width=10,cursor="hand2")
+    enter_btn.grid(row=7+y_var,column=1,padx=(10,15),pady=10)
+    enter_btn.configure(command=partial(enter_pie_values,c,y))
+
+
+def plot_pie(c,y,d_attr,heading,entries):
+    for i in range(len(d_attr)):
+        d_attr[i]=d_attr[i].get()
+    plt.style.use('dark_background')
+    fig, ax=plt.subplots(figsize=(6.5, 5))
+    plt.subplots_adjust(bottom=0.152,right=0.81)
+    for i in entries:
+        y.append(i.get())
+    if c=="pie":
+        plt.pie(y, labels=d_attr,colors=colors)
+        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+        plt.title(heading)
+    else:
+        messagebox.showerror(message="Some error occured.")
+        return
+    #plt.savefig("example.png", dpi=1000)
+    financeTracker.move_figure(fig, 865, 125)
+    plt.show()
 #===========================================================================================================MAIN
 def main():
     global relation
@@ -626,8 +762,8 @@ But Dataverse is more than just a data visualization tool. It's also a robust pe
     b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Data Visualisation",width=22,font="poppins 10",cursor="hand2")
     b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Create Account",width=22,font="poppins 10",cursor="hand2")
     b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Account",width=22,font="poppins 10",cursor="hand2")
-    b1.pack(pady=(30,5),padx=15)
-    b3.pack(pady=5,padx=15)
+    b3.pack(pady=(30,5),padx=15)
+    b1.pack(pady=5,padx=15)
     b2.pack(pady=5,padx=15)
     b4.pack(pady=5,padx=15)
     b1.config(command=partial(login,b1,b2,b3,b4,preview_image))
@@ -654,7 +790,7 @@ def dark(window):
 #===============================================================GUI
 root=Tk()
 #root.config(borderwidth=2, bordercolor='red')
-root.geometry("900x400")
+root.geometry("1100x700")
 root.title("Dataverse")
 root.minsize(600,300)
 

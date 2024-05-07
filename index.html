@@ -1,73 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dataverse</title>
+    <link rel="shortcut icon" href="web_images/2dlogo.svg" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="web_images/2dlogo.svg">
 </head>
-
-<body id="body">
-    <button id="top" onclick="topFunction()">△</button>
-    
-    <nav id="navbar">
-        <a href="index.html"><img src="web_images/3dlogo.svg" alt="" class="logo" id="logo"></a>
-        <button class="hamburger" onclick="hide()" id="hide"></button>
-        <button class="hamburger" onclick="show()" id="show">
-            <div class="l" id="l1"></div>
-            <div class="l" id="l2"></div>
-            <div class="l" id="l3"></div>
+<body>
+    <navbar id="navbar">
+        <a href="index.html"><img src="web_images/3dlogo.svg" alt="Dataverse Logo" class="logo"></a>
+        <button id="burger">
+            <div class="line" id="l1"></div>
+            <div class="line" id="l2"></div>
+            <div class="line" id="l3"></div>
         </button>
-        <ul class="tabs" id="tabs">
-            <li class="tab"><a href="#" class="tab_link">Introduction</a></li>
-            <li class="tab"><a href="#" class="tab_link">Details</a></li>
-            <li class="tab"><a href="#" class="tab_link">Download</a></li>
-            <li class="tab"><a href="#" class="tab_link">Contact Us</a></li>
-        </ul>
+    </navbar>
 
-        <div class="buttons" id="buttons">
-            <button class="theme" onclick="light()" id="theme">
-                <div class="glow" id="glow">
-                    <div class="sun" id="sun"></div>
-                </div>
-            </button>
-            <a href="https://github.com/multiverseweb/finance_tracker/blob/main/README.md"><img
-                    src="https://icons.veryicon.com/png/o/miscellaneous/light-weight-line-icon/st-github.png"
-                    id="github"></a>
+    <div class="section" id="about">
+        <div class="about_left">
+            <p class="heading">So, What does this Software do?</p>
+            <p class="subheading">Visualise Data!</p>
+            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nobis optio officia esse aut blanditiis inventore voluptatibus tempore, cupiditate doloribus asperiores recusandae nemo beatae aperiam sequi aliquam hic adipisci. Sequi!</p>
         </div>
-        <div class="cover" id="cover"></div>
-    </nav>
-
-    <div class="fixed" id="fixed">
-        <p class="title">Dataverse: Visualize. Track. Master.</p>
-        <div class="statistics">
-            <p class="stats" id="users">0</p>
-            <p class="stats">15+</p>
+        <div class="about_right">
+            <img src="web_images/about_up.png" class="preview up">
+            <img src="web_images/about_down.png" class="preview down">
         </div>
-        <div class="names">
-            <div class="small">Users</div>
-            <div class="small">Types of Plots</div>
-        </div>
-        <br>
-<a href="https://github.com/multiverseweb/Dataverse/blob/main/software/mainGUI.py"><button class="login">Get Software</button></a>
-        <a href="https://github.com/multiverseweb/Dataverse/blob/main/README.md"><button class="login" id="create">Contribute</button></a>
     </div>
-
-    <div class="info" id="info">Designed & developed by Tejas, Ojas & Nandana, Dataverse is a comprehensive software that empowers you to effortlessly visualize your data and manage your personal finances in one convenient platform. Whether you're a data aficionado, financial planner, or simply someone keen on staying organized, Dataverse offers a suite of tools to meet your needs.<br><br>
-        With Dataverse, transforming raw data into captivating charts is a breeze. Choose from a variety of chart types, including bar graphs, pie charts, and line graphs, to bring your data to life and gain valuable insights at a glance.
+    <div class="section" id="finance">
+        <div class="finance_left">
+            <img src="web_images/finance_up.png" class="preview up">
+            <img src="web_images/finance_down.png" class="preview down">
         </div>
-    <div class="square" id="square"></div>
-    <div class="block" id="b1"></div>
-    <div class="connect" id="c1"></div>
-    <div class="block" id="b2"></div>
-    <div class="connect" id="c2"></div>
-    <div class="block" id="b3"></div>
-    <footer>&copy; Dataverse 2024 <br>All Rights Reserved!</footer>
-    
-    <!--<iframe src="README.md" frameborder="0" markdown=1 class="readme"></iframe>-->
+        <div class="finance_right">
+            <p class="subheading">Track Finances!</p>
+            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nobis optio officia esse aut blanditiis inventore voluptatibus tempore, cupiditate doloribus asperiores recusandae nemo beatae aperiam sequi aliquam hic adipisci. Sequi!</p>
+        </div>
+    </div>
+    <div class="section" id="develop">
+        <div class="develop_left">
+            <p class="heading">Want to contribute to this Project?</p>
+            <p class="subheading">Technologies Used</p>
+            <div class="tags">
+                <p id="pythontag">Python</p>
+                <p id="numpytag">Numpy</p>
+                <p id="pandastag">Pandas</p>
+                <p id="matplotlibtag">Matplotlib</p>
+                <p id="pythontag">Tkinter</p>
+                <p id="mysqltag">MySQL</p>
+                <p id="htmltag">HTML</p>
+                <p id="csstag">CSS</p>
+                <p id="jstag">JavaScript</p>
+            </div>
+            <a href=""><button id="contribute"><p>Contribute</p><img src="https://static-00.iconduck.com/assets.00/github-icon-2048x1999-d37ckpm6.png" id="github">
+            </button></a>
+        </div>
+        <div class="develop_right">
+            <img src="web_images/develop_up.png" class="preview up">
+            <img src="web_images/develop_down.png" class="preview down">
+        </div>
+    </div>
+    <footer>
+        <img src="web_images/cubes.svg" class="cubes">
+        <div class="contact">
+            <div class="name">
+            <img src="web_images/2dlogo.svg" alt="" class="end-logo">
+            <p class="subheading">Dataverse</p>
+        </div>
+        </div>
+        <form action="">
+            <p>Let Me Know Your Thoughts!</p>
+            <input type="text" name="" placeholder="&nbsp;&nbsp;Your Name">
+            <input type="email" name="" placeholder="&nbsp;&nbsp;Your Email ID">
+            <input type="text" name="" placeholder="&nbsp;&nbsp;Your Message">
+            <input type="submit" value="Send" id="send">
+        </form>
+    </footer>
+    <div class="links">
+        <hr>
+        <a href="">&copy;&nbsp;Tejas 2024</a>
+    </div>
     <script src="script.js"></script>
 </body>
-
 </html>

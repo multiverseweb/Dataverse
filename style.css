@@ -29,7 +29,7 @@ a{
     z-index: 100;
     border-bottom: 1px solid rgba(255, 255, 255, 0.121);
     backdrop-filter: blur(7px);
-    background-color: rgba(53, 53, 53,0.77);
+    background-color: rgba(53, 53, 53, 0.511);
 }
 .logo{
     height: 40px;
@@ -114,6 +114,7 @@ a{
 }
 .tags p{
     margin: 10px;
+    font-family: consolas;
 }
 
 #htmltag {
@@ -277,6 +278,7 @@ hr{
         width: 120vw;
         height: 120vw;
         left:-170px;
+        z-index: -10;
     }
     footer{
         margin-top: 50px;

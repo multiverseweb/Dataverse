@@ -114,7 +114,8 @@ a{
 }
 .tags p{
     margin: 10px;
-    font-family: consolas;
+    font-family: "Inconsolata", monospace;
+    font-weight: 500;
 }
 
 #htmltag {
@@ -286,6 +287,9 @@ hr{
     }
     form{
         width: calc(80vw - 30px);
+    }
+    .section{
+        margin-top: 50px;
     }
     .heading{
         font-size: x-large;

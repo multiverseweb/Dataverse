@@ -21,20 +21,80 @@ button{
     display: none;
 }
 
+::selection{
+    background-color: rgba(0, 255, 255, 0.263);
+    color: black;
+}
 a {
     color: white;
     text-decoration: none;
 }
 
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 40px;
+    padding: 15px 0px 15px 0px;
+    background-color: #3b3b3b57;
+    backdrop-filter: blur(2px);
+    border-radius: 40px;
+    top:50vh;
+    left:10px;
+    margin-left: -50px;
+    transition-duration: 0.3s;
+    z-index: 100;
+}
+.buttons button{
+    background-color: #00000000;
+    border: none;
+}
+
+.theme{
+    height: 18px;
+    width: 18px;
+    background-color: #00000000;
+    box-shadow: 0px 0px 10px white;
+    border-radius: 50%;
+    border:2px solid rgba(255, 255, 255, 0.641);
+}
+
+#copy{
+    height: 20px;
+    width: 20px;
+    margin-top: 30px;
+}
+.top{
+    background-color: #3333337b;
+    padding: 10px 7px 10px 7px;
+    border: none;
+    border-radius: 10px;
+    position:fixed;
+    bottom: 10px;
+    right: 10px;
+    backdrop-filter: blur(7px);
+    box-shadow: 5px 5px 10px black;
+    z-index: 50;
+    
+}
+#top{
+    opacity: 0;
+    transition-duration: 0.3s;
+}
+.top img{
+    height: 20px;
+}
 #navbar {
     width: 100vw;
     height: 60px;
     position: fixed;
     top: 0px;
     z-index: 100;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.121);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.082);
     backdrop-filter: blur(7px);
-    background-color: rgba(53, 53, 53, 0.511);
+    background-color: #0000004b;
 }
 
 .logo {
@@ -74,7 +134,7 @@ a {
 .plane{
     height: 100vh;
     width: 0;
-    background-color: #161616bc;
+    background-color: #3b3b3b57;
     backdrop-filter: blur(7px);
     position: fixed;
     z-index: 103;
@@ -87,12 +147,8 @@ a {
     margin-left: 10%;
     width: 45vw;
     border-radius: 7px;
-    box-shadow: 5px 5px 10px rgb(83, 83, 83);
+    box-shadow: 5px -3px 10px rgb(0, 0, 0);
     transition-duration: 0.4s;
-}
-
-.preview:hover {
-    box-shadow: 5px 5px 0px rgba(54, 54, 54, 0);
 }
 
 .down {
@@ -149,16 +205,27 @@ a {
 .examples{
     border-radius: 10px 0px 0px 10px;
     margin-left: 0%;
+    margin-bottom: 60px;
     display: flex;
-    margin-bottom: 120px;
     overflow-x: scroll;
-    background-color: #1e1e1e;
-    box-shadow: 5px 5px 10px rgb(83, 83, 83);
+    background-color: #161616;
+    box-shadow: 5px -3px 10px rgb(0, 0, 0);
+    margin-left: 0px;
 }
 .examples img{
     height: 35vh;
     margin: 20px;
+    box-shadow: 5px -3px 10px rgb(0, 0, 0);
+    border-radius: 3px;
 }
+
+.scroll_animate{
+    background-color: rgba(255, 255, 255, 0);
+    margin-bottom: 30px;
+    height: 4px;
+    width: 7px;
+}
+
 #finance {
     display: flex;
     padding-top: 0;
@@ -300,11 +367,12 @@ footer {
 form {
     background-color: #4c4c4c48;
     backdrop-filter: blur(7px);
-    width: 40vw;
+    width: 30vw;
+    margin-left: 5vw;
     padding: 20px;
     text-align: center;
     border-radius: 5px;
-    box-shadow: 5px 5px 10px black;
+    box-shadow: 0px 0px 10px black;
 }
 
 input {
@@ -393,6 +461,7 @@ input {
     flex-direction: column;
     text-align: left;
 }
+
 /*===========================RESPONSIVE===================================*/
 @media screen and (max-width: 660px) {
     #about {
@@ -462,6 +531,7 @@ input {
 
     form {
         width: calc(80vw - 30px);
+        margin-left: 0vw;
     }
 
     .heading {

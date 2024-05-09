@@ -13,16 +13,25 @@
 </head>
 
 <body id="body">
+    <div class="buttons" id="buttons">
+        <button>
+            <div class="theme" id="theme"></div>
+        </button>
+        <button>
+            <img src="web_images/copy.png" alt="" id="copy">
+        </button>
+    </div>
+    <button class="top" id="top" onclick="topFunction()"><img src="web_images/top.png" alt=""></button>
     <navbar id="navbar">
         <a href="index.html"><img src="web_images/3dlogo.svg" alt="Dataverse Logo" class="logo"></a>
     </navbar>
     <button class="burger" id="burger" onclick="show()"></button>
-        <button id="cross" class="burger" onclick="hide()"></button>
-        <div class="burger" id="lines">
-            <div class="line" id="l1"></div>
-            <div class="line" id="l2"></div>
-            <div class="line" id="l3"></div>
-        </div>
+    <button id="cross" class="burger" onclick="hide()"></button>
+    <div class="burger" id="lines">
+        <div class="line" id="l1"></div>
+        <div class="line" id="l2"></div>
+        <div class="line" id="l3"></div>
+    </div>
     <div class="plane" id="plane"></div>
     <div class="section" id="about">
         <div class="about_left">
@@ -46,6 +55,7 @@
             <img src="web_images/live.gif" alt="">
         </div>
     </div>
+
     <div class="section" id="finance">
         <div class="finance_left">
             <img src="web_images/finance_up.png" class="preview up">

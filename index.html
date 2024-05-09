@@ -14,11 +14,22 @@
 
 <body id="body">
     <div class="buttons" id="buttons">
-        <button>
-            <div class="theme" id="theme"></div>
-        </button>
-        <button>
-            <img src="web_images/copy.png" alt="" id="copy">
+        <div id="indicator"></div>
+        <div class="group">
+            <button id="first_button" onclick="dark()">
+                <img src="https://static.thenounproject.com/png/4066359-200.png" class="copy" id="moon">
+            </button>
+            <button onclick="light()">
+                <div id="theme2">
+                    <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy"
+                        id="sun">
+                </div>
+            </button>
+        </div>
+        <button onclick="copy()">
+            <div id="copy">
+                <img src="web_images/copy.png" alt="" class="copy">
+            </div>
         </button>
     </div>
     <button class="top" id="top" onclick="topFunction()"><img src="web_images/top.png" alt=""></button>
@@ -48,7 +59,7 @@
     </div>
     <div class="section" id="charts">
         <p class="heading">Here are some examples of what you can do with Dataverse.</p>
-        <div class="examples">
+        <div class="examples" id="examples">
             <img src="web_images/3d.gif" alt="">
             <img src="web_images/galaxy.png" alt="">
             <img src="web_images/volcano.gif" alt="">
@@ -72,7 +83,7 @@
         <div class="develop_left">
             <p class="heading">Want to contribute to this Project?</p>
             <p class="subheading">Technologies Used</p>
-            <div class="tags">
+            <div class="tags" id="tags">
                 <p id="pythontag">Python</p>
                 <p id="numpytag">Numpy</p>
                 <p id="pandastag">Pandas</p>

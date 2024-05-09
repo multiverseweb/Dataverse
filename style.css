@@ -11,6 +11,7 @@ body {
     overflow-x: hidden;
     background-color: black;
     color: white;
+    transition-duration: 0.2s;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -41,30 +42,53 @@ a {
     background-color: #3b3b3b57;
     backdrop-filter: blur(2px);
     border-radius: 40px;
-    top:50vh;
+    top:40vh;
     left:10px;
     margin-left: -50px;
     transition-duration: 0.3s;
     z-index: 100;
 }
+
+#indicator{
+    top:10px;
+    height: 50px;
+    width:50px;
+    border-radius: 50%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.608),#00000000,#00000000);
+    position: absolute;
+    transition-duration: 0.3s;
+}
+.group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.236);
+}
 .buttons button{
+    margin-top: 20px;
     background-color: #00000000;
     border: none;
 }
-
-.theme{
-    height: 18px;
-    width: 18px;
-    background-color: #00000000;
-    box-shadow: 0px 0px 10px white;
-    border-radius: 50%;
-    border:2px solid rgba(255, 255, 255, 0.641);
+#first_button{
+    margin-top: 0;
 }
 
-#copy{
+#moon{
+    filter: invert(1);
+}
+#sun{
+    filter: invert(1);
+}
+.copy{
     height: 20px;
     width: 20px;
-    margin-top: 30px;
+}
+#copy{
+    font-size: 20px;
+    color: white;
 }
 .top{
     background-color: #3333337b;
@@ -178,7 +202,7 @@ a {
     display: flex;
     padding-top: 100px;
     padding-bottom: 0;
-    border-image: linear-gradient(black,black, #FDE725, #7AD151, #22A884, #2A788E, #414487, #440154) 1;
+    border-image: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0), #FDE725, #7AD151, #22A884, #2A788E, #414487, #440154) 1;
     border-width: 2px;
     border-style: solid;
     border-top-style: none;
@@ -242,7 +266,7 @@ a {
     display: flex;
     padding-top: 0;
     padding-bottom: 0;
-    border-image: linear-gradient(#F5E020, #C5BD5B, #37B89D, #0C86D4, #2841B2, black) 1;
+    border-image: linear-gradient(#F5E020, #C5BD5B, #37B89D, #0C86D4, #2841B2, rgba(0, 0, 0, 0)) 1;
     border-width: 2px;
     border-style: solid;
     border-top-style: none;
@@ -416,7 +440,7 @@ input {
     margin-left: 15vw;
     margin-bottom: 20px;
     margin-top: 50px;
-    background-image: linear-gradient(to right,black,white,black);
+    background-image: linear-gradient(to right,rgba(0, 0, 0, 0),white,rgba(0, 0, 0, 0));
 }
 
 .links {

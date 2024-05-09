@@ -12,16 +12,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body id="body">
     <navbar id="navbar">
         <a href="index.html"><img src="web_images/3dlogo.svg" alt="Dataverse Logo" class="logo"></a>
         <p class="subheading" id="top_name">Dataverse</p>
-        <button id="burger">
+    </navbar>
+    <button class="burger" id="burger" onclick="show()"></button>
+        <button id="cross" class="burger" onclick="hide()"></button>
+        <div class="burger" id="lines">
             <div class="line" id="l1"></div>
             <div class="line" id="l2"></div>
             <div class="line" id="l3"></div>
-        </button>
-    </navbar>
+        </div>
+    <div class="plane" id="plane"></div>
     <div class="section" id="about">
         <div class="about_left">
             <p class="heading">So, What does this Software do?</p>
@@ -87,7 +90,7 @@
         <div class="contact">
             <div class="name">
                 <img src="web_images/2dlogo.svg" alt="" class="end-logo">
-                <a class="subheading" href="index.html">Dataverse</a>
+                <a class="subheading" href="index.html" id="last_link">Dataverse</a>
             </div>
         </div>
         <form name="Dataverse Reviews" action="POST" data-netlify="true">

@@ -14,6 +14,9 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+button{
+    cursor: pointer;
+}
 ::-webkit-scrollbar {
     display: none;
 }
@@ -50,7 +53,7 @@ a {
     opacity: 1;
 }
 
-#burger {
+.burger {
     background-color: rgba(240, 248, 255, 0);
     border: none;
     position: fixed;
@@ -58,17 +61,37 @@ a {
     right: 10px;
     height: 40px;
     width: 40px;
+    z-index: 120;
 }
-
+#cross{
+    z-index: 110;
+}
+#lines{
+    z-index: 105;
+}
 .line {
     height: 2px;
     width: 35px;
     background-color: rgba(255, 255, 255, 0.821);
     margin-top: 10px;
+    transform-origin: 100%;
+    transition-duration: 0.2s;
 }
 
 #l1 {
     margin-top: 5px;
+}
+
+.plane{
+    height: 100vh;
+    width: 0;
+    background-color: #161616bc;
+    backdrop-filter: blur(7px);
+    position: fixed;
+    z-index: 103;
+    right:0;
+    top:0px;
+    transition-duration: 0.2s;
 }
 
 .preview {
@@ -88,27 +111,26 @@ a {
 }
 
 .heading {
-    font-size: xx-large;
+    font-size: xxx-large;
     margin: 20px;
 }
 
 .subheading {
-    font-size: x-large;
+    font-size: xx-large;
     margin: 20px;
+    margin-top: 50px;
 }
 
 .text {
     width: 35vw;
     word-wrap: break-word;
     margin: 20px;
-    font-size: larger;
+    margin-top: 40px;
+    font-size: x-large;
 }
 
 #about {
-    width: 90vw;
     display: flex;
-    margin-left: 7vw;
-    padding: 10px;
     padding-top: 100px;
     padding-bottom: 0;
     border-image: linear-gradient(black,black, #FDE725, #7AD151, #22A884, #2A788E, #414487, #440154) 1;
@@ -122,7 +144,6 @@ a {
 #charts{
     padding-top: 0;
     margin-top: 0;
-    margin-left: 7vw;
     display: flex;
     border-image: linear-gradient(#440154, cyan,orange,tan, #440154) 1;
     border-width: 2px;
@@ -132,7 +153,6 @@ a {
     border-right-style: none;
 }
 #charts p{
-    margin-left: 3vw;
     width: 100%;
     margin-top: 60px;
 }
@@ -147,14 +167,11 @@ a {
     box-shadow: 5px 5px 10px rgb(83, 83, 83);
 }
 .examples img{
-    height: 40vh;
-    margin: 30px;
+    height: 35vh;
+    margin: 20px;
 }
 #finance {
-    width: 90vw;
     display: flex;
-    margin-left: 7vw;
-    padding: 10px;
     padding-top: 0;
     padding-bottom: 0;
     border-image: linear-gradient(#440154, #260590, #5F01A5, #A31E99, #EC7535, #F2F224) 1;
@@ -166,10 +183,7 @@ a {
 }
 
 #develop {
-    width: 90vw;
     display: flex;
-    margin-left: 7vw;
-    padding: 10px;
     padding-top: 0;
     padding-bottom: 0;
     border-image: linear-gradient(#F5E020, #C5BD5B, #37B89D, #0C86D4, #2841B2, black) 1;
@@ -178,6 +192,11 @@ a {
     border-top-style: none;
     border-bottom-style: none;
     border-right-style: none;
+}
+.section{
+    width: calc(100vw - 60px);
+    margin-left: 30px;
+    padding-left: 30px;
 }
 
 .tags {
@@ -285,7 +304,10 @@ footer {
     padding-left: 10vw;
     padding-right: 10vw;
 }
-
+#last_link{
+    margin-top:16px;
+    margin-left: 10px;
+}
 form {
     background-color: #4c4c4c48;
     backdrop-filter: blur(7px);
@@ -385,50 +407,52 @@ input {
 /*===========================RESPONSIVE===================================*/
 @media screen and (max-width: 660px) {
     #about {
-        width: 80vw;
         margin-top: 0;
         flex-direction: column-reverse;
     }
-    #charts {
-        width: 80vw;
-        margin-top: 0;
-        flex-direction: column;
-    }
 
-    #charts p{
-        margin-left: 7vw;
-    }
-
-    .examples{
-        margin-left: 5vw;
-        width: 87.5vw
+    /*.examples{
+        margin-left: 10vw;
+        width: 82.5vw
     }
     .examples img{
         height: 30vh;
-    }
+    }*/
 
     #finance {
-        width: 80vw;
         margin-top: 0;
         flex-direction: column-reverse;
     }
 
     #develop {
-        width: 80vw;
         margin-top: 0;
         flex-direction: column-reverse;
     }
+    .section{
+        width: calc(100% - 80px);
+    }
+    #charts {
+        flex-direction: column;
+        width: calc(100% - 62px);
+    }
+    #charts p{
+        margin-bottom: 20px;
+        width: calc(100% - 20px);
+    }
 
     .preview {
-        width: 75vw;
+        margin-top: 20px;
+        width: 70vw;
+    }
+    .subheading{
+        margin: 0;
+        margin-top: 20px;
     }
 
     .text {
-        width: 80vw;
-    }
-
-    .tags {
-        width: 80vw;
+        margin: 0;
+        margin-top: 20px;
+        width: 100%;
     }
 
     .cubes {
@@ -447,12 +471,9 @@ input {
         width: calc(80vw - 30px);
     }
 
-    .section {
-        margin-top: 50px;
-    }
-
     .heading {
         font-size: x-large;
+        margin: 0;
     }
 
     .subheading {
@@ -464,7 +485,12 @@ input {
     }
 
     .tags {
+        margin-left: 0;
         font-size: medium;
+        width: 75vw;
+    }
+    #contribute{
+        transform: translate(-55%);
     }
 
     .end-logo {

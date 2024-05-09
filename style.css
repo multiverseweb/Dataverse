@@ -38,6 +38,17 @@ a {
     height: 40px;
     margin: 10px;
 }
+#top_name{
+    position: absolute;
+    margin-top:-45px;
+    left:40px;
+    opacity: 0;
+    transition-duration: 0.3s;
+}
+
+#top_name:hover{
+    opacity: 1;
+}
 
 #burger {
     background-color: rgba(240, 248, 255, 0);

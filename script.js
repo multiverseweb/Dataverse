@@ -49,6 +49,14 @@ function light(){
     tags.style.backgroundColor="#171717";
     contribute.style.borderColor="black";
     contribute.style.color="black";
+    contribute.addEventListener("mouseenter", (event) => { event.target.style.color = "white";
+    github.style.filter="invert(1)";
+     });
+    contribute.addEventListener("mouseleave", (event) => { event.target.style.color = "black";
+    github.style.filter="invert(0)";
+     });
+    contribute.addEventListener("mouseenter", (event) => { event.target.style.backgroundColor = "black" });
+    contribute.addEventListener("mouseleave", (event) => { event.target.style.backgroundColor = "#e8e8e8" });
     github.style.filter="invert(0)";
     last_link.style.color="black";
     indicator.style.top="52px";
@@ -61,8 +69,14 @@ function dark(){
     tags.style.borderColor="rgba(255, 255, 255, 0.323)";
     tags.style.backgroundColor="#00000000";
     contribute.style.borderColor="white";
-    contribute.style.color="white";
-    github.style.filter="invert(1)";
+    contribute.addEventListener("mouseenter", (event) => { event.target.style.color = "black" });
+    contribute.addEventListener("mouseleave", (event) => { event.target.style.color = "white" });
+    contribute.addEventListener("mouseenter", (event) => { event.target.style.backgroundColor = "white";
+    github.style.filter="invert(0)";
+     });
+    contribute.addEventListener("mouseleave", (event) => { event.target.style.backgroundColor = "black";
+    github.style.filter="invert(1)"
+     });
     last_link.style.color="white";
     indicator.style.top="10px";
     indicator.style.backgroundImage="radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";

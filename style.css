@@ -122,12 +122,29 @@ a {
 }
 
 .logo {
+    position: absolute;
     height: 40px;
     margin: 10px;
+    transition-duration: 0s;
+}
+
+#glow{
+    top:-20px;
+    left:-20px;
+    height: 80px;
+    z-index: -10;
+    opacity: 0;
+}
+
+#glow:hover{
+    opacity: 1;
+}
+#normal:hover{
+    z-index: -105;
 }
 
 .burger {
-    background-color: rgba(240, 248, 255, 0);
+    background-color: rgba(73, 89, 103, 0);
     border: none;
     position: fixed;
     top: 10px;
@@ -386,7 +403,7 @@ footer {
 }
 #last_link{
     margin-top:16px;
-    margin-left: 10px;
+    margin-left: 50px;
 }
 form {
     background-color: #4c4c4c48;
@@ -435,6 +452,7 @@ input {
 }
 
 .end-logo {
+    position: absolute;
     height: 40px;
     margin-top: 13px;
 }

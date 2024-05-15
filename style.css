@@ -214,10 +214,17 @@ a {
     margin-top: 40px;
     font-size: x-large;
 }
-
+#download{
+    padding-top:90px;
+    height: calc(100vh - 290px);
+}
+#download p{
+    margin-left: 30px;
+    font-size: xx-large;
+}
 #about {
+    padding-top: 200px;
     display: flex;
-    padding-top: 100px;
     padding-bottom: 0;
     border-image: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0), #FDE725, #7AD151, #22A884, #2A788E, #414487, #440154) 1;
     border-width: 2px;
@@ -290,6 +297,19 @@ a {
     border-bottom-style: none;
     border-right-style: none;
 }
+
+
+.section.big_container{
+    transform: translateX(0);
+    opacity: 1;
+  }
+  .section{
+    position: relative;
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: .5s all ease;
+  }
+
 .section{
     width: calc(100vw - 60px);
     margin-left: 30px;
@@ -613,3 +633,15 @@ input {
         margin-left: 20px;
     }
 }
+
+
+.scrollBar {
+    position: fixed;
+    z-index: 90;
+    top: 59.8px;
+    height: 1.9px;
+    box-shadow: 0px 0px 5px goldenrod;
+    width: 50vw;
+    background: rgb(218, 165, 32);
+    transition: width 200ms linear;
+  }

@@ -92,3 +92,31 @@ function changeCss() {
 }
 
 window.addEventListener("scroll", changeCss, false);
+
+
+function animate() {
+    var reveal = document.querySelectorAll(".section");
+  
+    for (var i = 1; i < reveal.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveal[i].getBoundingClientRect().top;
+      var e = 90;
+  
+      if (elementTop < windowHeight-e) {
+        reveal[i].classList.add("big_container");}
+      else {
+        reveal[i].classList.remove("big_container");
+      }
+    }
+  }
+  
+  window.addEventListener("scroll", animate);
+  
+
+ function progress() {
+    var scroll = this.scrollY;
+    var percent=Math.round((scroll / 2954) * 100);
+    document.getElementById("progress_bar").style.width= percent + 'vw';
+  };
+
+  window.addEventListener("scroll", progress);

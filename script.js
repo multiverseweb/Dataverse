@@ -14,6 +14,8 @@ var contribute = document.getElementById("contribute");
 var github = document.getElementById("github");
 var last_link = document.getElementById("last_link");
 var indicator = document.getElementById("indicator");
+var shadow = document.getElementById("shadow");
+var download = document.getElementById("download_btn");
 
 function copy() {
     navigator.clipboard.writeText("multiverse-dataverse.netlify.app");
@@ -61,6 +63,7 @@ function light(){
     last_link.style.color="black";
     indicator.style.top="52px";
     indicator.style.backgroundImage="radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
+    shadow.style.backgroundImage="linear-gradient(115deg, #00000000,#e8e8e8,#00000000)";
 }
 function dark(){
     body.style.backgroundColor="black";
@@ -80,6 +83,7 @@ function dark(){
     last_link.style.color="white";
     indicator.style.top="10px";
     indicator.style.backgroundImage="radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
+    shadow.style.backgroundImage="linear-gradient(115deg, #00000000,#000000d4,#00000000)";
 }
 
 function topFunction() {
@@ -88,7 +92,9 @@ function topFunction() {
 }
 function changeCss() {
     var top = document.getElementById("top");
+    var scroll_icon = document.getElementById("scroll_icon");
     (this.scrollY > 30 && this.scrollY < 1850) ? top.style.opacity = 1 : top.style.opacity = 0;
+    (this.scrollY > 0) ? scroll_icon.style.opacity = 0 : scroll_icon.style.opacity = 1;
 }
 
 window.addEventListener("scroll", changeCss, false);

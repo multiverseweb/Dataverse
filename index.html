@@ -34,8 +34,8 @@
     </div>
     <button class="top" id="top" onclick="topFunction()"><img src="web_images/top.png" alt=""></button>
     <navbar id="navbar">
-        <a href="index.html"><img src="web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal"></a>
-        <a href="index.html"><img src="web_images/3d_glow.png" alt="Dataverse Logo" class="logo" id="glow"></a>
+        <img src="web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
+        <img src="web_images/3d_glow.png" alt="Dataverse Logo" class="logo" id="glow">
     </navbar>
     <button class="burger" id="burger" onclick="show()"></button>
     <button id="cross" class="burger" onclick="hide()"></button>
@@ -45,9 +45,14 @@
         <div class="line" id="l3"></div>
     </div>
     <div class="plane" id="plane"></div>
-    <div class="scrollBar" id="progress_bar"></div>          <!--PROGRSS BAR-->
+    <div class="scrollBar" id="progress_bar"></div>          <!--PROGRESS BAR-->
+    <div class="scroll_icon" id="scroll_icon">SCROLL TO KNOW MORE
+        <div class="shadow" id="shadow"></div>
+    </div>
     <div class="download" id="download">
-        <p>Dataverse</p>
+        <div class="top_dataverse"><p id="data">Data</p><p>verse</p></div>
+        <p id="intro_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit libero expedita eum, architecto quos deserunt eius nulla beatae voluptatum ipsa. <br><br>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque quas vero suscipit exercitationem corporis magnam iste iusto, in tempore neque.</p>
+        <button id="download_btn">Download Dataverse</button>
         <div class="scroll_animation"></div>
     </div>
     <div class="section big_container"></div>

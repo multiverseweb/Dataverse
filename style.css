@@ -223,7 +223,7 @@ a {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation-name: hue;
-    animation-duration: 4s;
+    animation-duration: 1.5s;
     animation-timing-function: linear;
 }
 
@@ -494,10 +494,10 @@ footer {
 }
 #last_link{
     margin-top:16px;
-    margin-left: 50px;
+    margin-left: 60px;
 }
 form {
-    background-color: #4c4c4c48;
+    background-color: #4c4c4c2a;
     backdrop-filter: blur(7px);
     width: 30vw;
     margin-left: 5vw;
@@ -554,16 +554,17 @@ input {
 
 .design_line {
     height: 1px;
-    width: 70vw;
-    margin-left: 15vw;
+    width: 50vw;
+    margin-left: calc(50vw + 15px);
+    transform: translate(-50%);
     margin-bottom: 20px;
     margin-top: 50px;
-    background-image: linear-gradient(to right,rgba(0, 0, 0, 0),white,rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to right,rgba(0, 0, 0, 0),rgb(255, 255, 255),rgba(0, 0, 0, 0));
 }
 
 .links {
     font-weight: 100;
-    background-color: #191919;
+    background-color: #121212;
     height: 120px;
     margin-top: 50px;
     text-align: center;
@@ -614,11 +615,11 @@ input {
     }
     #intro_text{
         font-size: medium;
-        width: calc(90vw - 60px);
+        width: calc(95vw - 60px);
         margin-left: 60px;
     }
     #download_btn {
-        margin-left: 60px;
+        margin-left: 65px;
     }
     #about {
         margin-top: 0;

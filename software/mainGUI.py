@@ -13,6 +13,7 @@ import financeTracker as financeTracker                             #user define
 import dataVisualization as dataVisualization                       #user defined module - data visualizationfunctions
 import matplotlib.pyplot as plt                                     #for plotting graphs
 import matplotlib                                                   #for plotting graphs
+from matplotlib.widgets import Cursor                               #for lines on hover in plot
 import numpy as np                                                  #for x-axis time arange
 #===================================================================================================================plot colors
 colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","cyan","#7e03a8","tomato","tan","#0d0887","green","blue","indigo","red"]
@@ -604,6 +605,7 @@ def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
         ax.grid(linestyle = "dashed",linewidth = 1, alpha = 0.25)
     #plt.savefig("example.png", dpi=1000)
     financeTracker.move_figure(fig, 865, 125)
+    cursor = Cursor(ax, color='gold', linewidth=0.5)
     plt.show()
 
 def pie(c):
@@ -773,7 +775,7 @@ But Dataverse is more than just a data visualization tool. It's also a robust pe
 
     link1 = Label(menu,fg='#ffffff',bg='#1a1a1a',text="Visit Website",width=22,cursor="hand2",font="poppins 10", relief="sunken")
     link1.pack(pady=280,padx=15)
-    link1.bind("<Button-1>", lambda e: callback("https://multiverseweb.github.io/Dataverse/"))
+    link1.bind("<Button-1>", lambda e: callback("https://multiverse-dataverse.netlify.app/"))
 
     root.mainloop()
 

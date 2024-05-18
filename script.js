@@ -133,7 +133,8 @@ function progress() {
 window.addEventListener("scroll", progress);
 
 
-var map = L.map('map').setView([51.505, -0.09], 2);
+var map = L.map('map').setView([20.5937, 78.9629], 3);
+
 
 // Add OpenStreetMap tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

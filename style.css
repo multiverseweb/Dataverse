@@ -251,6 +251,32 @@ a {
     border-radius: 7px;
 }
 
+#aeroplane{
+    position: absolute;
+    z-index: 410;
+    height: 20px;
+    animation-name: fly;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+/*=====================hiding map watermark=================*/
+.leaflet-control-attribution {
+    display: none !important;
+}
+
+
+@keyframes fly{
+    0%{
+        bottom: -30px;
+        left:15%;
+    }
+    100%{
+        bottom: calc(30px + 70vh);
+        left:75%;
+    }
+}
 .right{
     margin-top: 100px;
 }
@@ -633,23 +659,35 @@ input {
         height: 30vh;
         margin-top: 30px;
     }
+    @keyframes fly{
+        0%{
+            bottom: -30px;
+            left:0%;
+        }
+        100%{
+            bottom: calc(30px + 30vh);
+            left:85%;
+        }
+    }
     .top_dataverse{
-        margin-left: 60px;
+        margin-left: 30px;
     }
     .top_dataverse p{
         font-size: xx-large;
     }
     #intro_text{
         font-size: medium;
-        width: calc(95vw - 60px);
-        margin-left: 60px;
+        width: calc(100vw - 60px);
+        margin-left: 30px;
         margin-top: 10px;
         margin-bottom: 20px;
     }
     #download_btn {
-        margin-left: 65px;
+        margin-left: 50%;
+        transform: translate(-50%);
     }
     #about {
+        padding-top: 90px;
         margin-top: 0;
         flex-direction: column-reverse;
     }

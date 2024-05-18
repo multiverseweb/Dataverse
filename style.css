@@ -256,7 +256,7 @@ a {
     z-index: 410;
     height: 20px;
     animation-name: fly;
-    animation-duration: 10s;
+    animation-duration: 20s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
@@ -272,9 +272,13 @@ a {
         bottom: -30px;
         left:15%;
     }
-    100%{
+    50%{
         bottom: calc(30px + 70vh);
         left:75%;
+    }
+    100%{
+        bottom: calc(30px + 70vh);
+        left:80%;
     }
 }
 .right{
@@ -297,6 +301,7 @@ a {
     font-size: large;
     transition-duration: 0.3s;
     padding: 10px 20px 10px 20px;
+    z-index: 20;
 }
 
 #download_btn:hover {

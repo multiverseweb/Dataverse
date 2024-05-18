@@ -683,7 +683,9 @@ input {
         margin-bottom: 20px;
     }
     #download_btn {
-        margin-left: 50%;
+        position: absolute;
+        left: 50%;
+        margin-top: 40vh;
         transform: translate(-50%);
     }
     #about {

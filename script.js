@@ -22,6 +22,9 @@ function copy() {
   document.getElementById("copy").innerHTML = "✓";
 }
 
+function download_prompt(){
+  alert("Dataverse is currently under development. It will be available for installastion soon.");
+}
 function show() {
   l2.style.opacity = 0;
   l1.style.transform = "rotate(-45deg)";

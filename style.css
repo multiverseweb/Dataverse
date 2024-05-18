@@ -214,7 +214,6 @@ a {
     font-size: x-large;
 }
 .top_dataverse{
-    margin-left: 55vw;
     display: flex;
 }
 
@@ -239,20 +238,33 @@ a {
 #download{
     padding-top:90px;
     height: calc(100vh - 290px);
+    display: flex;
+}
+
+#map {
+    width: 45vw;
+    margin-left: 80px;
+    margin-right: 60px;
+    height: 70vh;
+    transition: background-color 0.5s ease;
+    filter: invert(1) hue-rotate(180deg) brightness(1.2);
+    border-radius: 7px;
+}
+
+.right{
+    margin-top: 100px;
 }
 .top_dataverse p{
     font-size: xxx-large;
 }
 #intro_text{
     font-size: large;
-    margin-left: 55vw;
     width: 40vw;
     word-wrap: break-word;
     margin-top: 40px;
     margin-bottom: 40px;
 }
 #download_btn {
-    margin-left: 55vw;
     background-color: #00000000;
     border: 1px solid white;
     color: white;
@@ -267,7 +279,7 @@ a {
 }
 .scroll_icon{
     position: fixed;
-    bottom: 50px;
+    bottom: 25px;
     left:50vw;
     transform: translate(-50%);
     font-size: x-small;
@@ -607,6 +619,20 @@ input {
 
 /*===========================RESPONSIVE===================================*/
 @media screen and (max-width: 660px) {
+    .right{
+        margin-top: 0px;
+    }
+    #download{
+        padding-top: 70px;
+        height: fit-content;
+        flex-direction: column-reverse;
+    }
+    #map{
+        margin-left: 20px;
+        width: calc(100vw - 40px);
+        height: 30vh;
+        margin-top: 30px;
+    }
     .top_dataverse{
         margin-left: 60px;
     }
@@ -617,6 +643,8 @@ input {
         font-size: medium;
         width: calc(95vw - 60px);
         margin-left: 60px;
+        margin-top: 10px;
+        margin-bottom: 20px;
     }
     #download_btn {
         margin-left: 65px;

@@ -7,6 +7,7 @@ import numpy as np                                                  #for x-axis 
 import report                                                       #for report pdf
 import datetime                                                     #for getting date
 from datetime import datetime, timedelta,date                       #for x-axis time class-width
+from matplotlib.widgets import Cursor as lines
 #===============================================================================================================plot colors
 colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","cyan","#7e03a8","tomato","tan","#0d0887","green","blue","indigo","violet"]
 #==================================================================================================connecting mySQL

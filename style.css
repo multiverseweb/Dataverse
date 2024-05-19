@@ -115,9 +115,28 @@ a {
     position: fixed;
     top: 0px;
     z-index: 100;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.082);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.077);
     backdrop-filter: blur(7px);
     background-color: #0000004b;
+}
+
+table {
+    margin-top: 60px;
+    width: 100%;
+}
+table, th, td {
+    border: none;
+}
+th, td {
+    padding: 20px;
+    text-align: center;
+}
+tr {
+    background-color: #31313100;
+    transition-duration: 0.2s;
+}
+tr:hover{
+    background-color: rgba(59, 59, 59, 0.527);
 }
 
 .logo {
@@ -173,14 +192,15 @@ a {
 
 .plane{
     height: 100vh;
-    width: 0;
+    width: calc(100vw - 60px);
     background-color: #3b3b3b57;
     backdrop-filter: blur(7px);
     position: fixed;
     z-index: 103;
-    right:0;
+    right: -100vw;
     top:0px;
     transition-duration: 0.2s;
+    overflow-y: scroll;
 }
 
 .preview {
@@ -247,7 +267,7 @@ a {
     margin-right: 60px;
     height: 70vh;
     transition: background-color 0.5s ease;
-    filter: invert(1) hue-rotate(180deg) brightness(1.2);
+    filter: invert(1) hue-rotate(180deg) brightness(1.5);
     border-radius: 7px;
 }
 
@@ -302,6 +322,7 @@ a {
     transition-duration: 0.3s;
     padding: 10px 20px 10px 20px;
     z-index: 20;
+    border-radius: 5px;
 }
 
 #download_btn:hover {
@@ -513,6 +534,7 @@ a {
     font-size: large;
     transition-duration: 0.3s;
     padding: 10px 20px 10px 20px;
+    border-radius: 5px;
 }
 
 #contribute:hover {
@@ -575,9 +597,9 @@ input {
 }
 
 .cubes {
-    height: 80vh;
+    height: 60vh;
     position: absolute;
-    right: -200px;
+    right: -120px;
     margin-top: -180px;
 }
 
@@ -608,7 +630,7 @@ input {
 .links {
     font-weight: 100;
     background-color: #121212;
-    height: 120px;
+    height: 80px;
     margin-top: 50px;
     text-align: center;
     padding-top: 20px;
@@ -748,18 +770,20 @@ input {
     }
 
     .cubes {
-        width: 120vw;
-        height: 120vw;
-        left: -170px;
+        width: 70vw;
+        height: 70vw;
+        left: -60px;
         z-index: -10;
+        margin-top: 70px;
     }
 
     footer {
         margin-top: 50px;
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 
     form {
+        margin-top: 40px;
         width: calc(80vw - 30px);
         margin-left: 0vw;
     }

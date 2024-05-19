@@ -22,7 +22,7 @@ function copy() {
   document.getElementById("copy").innerHTML = "✓";
 }
 
-function download_prompt(){
+function download_prompt() {
   alert("Dataverse is currently under development. It will be available for installastion soon.");
 }
 function show() {
@@ -31,7 +31,7 @@ function show() {
   l3.style.transform = "rotate(45deg)";
   burger.style.display = "none";
   cross.style.display = "block";
-  plane.style.width = "calc(100vw - 60px)";
+  plane.style.right=0;
   body.style.overflowY = "hidden";
   buttons.style.marginLeft = 0;
 }
@@ -41,12 +41,14 @@ function hide() {
   l3.style.transform = "rotate(0deg)";
   burger.style.display = "block";
   cross.style.display = "none";
-  plane.style.width = "0";
+  plane.style.right="-100vw";
   body.style.overflowY = "scroll";
   buttons.style.marginLeft = "-50px";
 }
 
 function light() {
+  document.getElementById("map").style.filter = "none";
+  document.getElementById("map").style.zIndex=0;
   body.style.backgroundColor = "#e8e8e8";
   body.style.color = "black";
   examples.style.backgroundColor = "#e8e8e8";
@@ -54,6 +56,8 @@ function light() {
   tags.style.backgroundColor = "#171717";
   contribute.style.borderColor = "black";
   contribute.style.color = "black";
+  download.style.borderColor = "black";
+  download.style.color = "black";
   contribute.addEventListener("mouseenter", (event) => {
     event.target.style.color = "white";
     github.style.filter = "invert(1)";
@@ -71,11 +75,14 @@ function light() {
   shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#e8e8e8,#00000000)";
 }
 function dark() {
+  document.getElementById("map").style.filter = "invert(1) hue-rotate(180deg) brightness(1.5)";
   body.style.backgroundColor = "black";
   body.style.color = "white";
   examples.style.backgroundColor = "#161616";
   tags.style.borderColor = "rgba(255, 255, 255, 0.323)";
   tags.style.backgroundColor = "#00000000";
+  download.style.borderColor = "white";
+  download.style.color = "white";
   contribute.style.borderColor = "white";
   contribute.addEventListener("mouseenter", (event) => { event.target.style.color = "black" });
   contribute.addEventListener("mouseleave", (event) => { event.target.style.color = "white" });
@@ -129,14 +136,18 @@ window.addEventListener("scroll", animate);
 
 function progress() {
   var scroll = this.scrollY;
-  var percent = Math.round((scroll / 2954) * 100);
+  var percent = Math.round((scroll / 2870) * 100);
   document.getElementById("progress_bar").style.width = percent + 'vw';
 };
 
 window.addEventListener("scroll", progress);
 
 
-var map = L.map('map').setView([20.5937, 78.9629], 3);
+var map = L.map('map', {
+  center: [22.5937, 79.9629],
+  zoom: 3,
+  zoomControl: false // Disable the default zoom control
+});
 
 
 // Add OpenStreetMap tile layer

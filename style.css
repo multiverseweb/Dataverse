@@ -109,6 +109,9 @@ a {
 .top img{
     height: 20px;
 }
+navbar{
+    transition-duration: 0.5s;
+}
 #navbar {
     width: 100vw;
     height: 60px;
@@ -170,12 +173,17 @@ tr:hover{
     height: 40px;
     width: 40px;
     z-index: 120;
+    transition-duration: 0.5s;
 }
 #cross{
-    z-index: 110;
+    z-index: 250;
+    display: none;
+}
+#burger{
+    z-index: 250;
 }
 #lines{
-    z-index: 105;
+    z-index: 200;
 }
 .line {
     height: 2px;

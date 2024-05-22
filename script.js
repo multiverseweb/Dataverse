@@ -4,6 +4,7 @@ var l1 = document.getElementById("l1");
 var l2 = document.getElementById("l2");
 var l3 = document.getElementById("l3");
 var burger = document.getElementById("burger");
+var lines = document.getElementById("lines");
 var cross = document.getElementById("cross");
 var plane = document.getElementById("plane");
 var body = document.getElementById("body");
@@ -16,6 +17,29 @@ var last_link = document.getElementById("last_link");
 var indicator = document.getElementById("indicator");
 var shadow = document.getElementById("shadow");
 var download = document.getElementById("download_btn");
+
+let lastScrollTop = 0;
+const navbar = document.querySelector('navbar');
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+        // Scroll down
+        navbar.style.top = '-60px'; 
+        burger.style.top = '-60px'; 
+        lines.style.top = '-60px'; 
+        cross.style.top = '-60px'; 
+    } else {
+        // Scroll up
+        navbar.style.top = '0';
+        burger.style.top = '10px'; 
+        lines.style.top = '10px'; 
+        cross.style.top = '10px'; 
+    }
+
+    lastScrollTop = scrollTop;
+});
 
 function copy() {
   navigator.clipboard.writeText("multiverse-dataverse.netlify.app");

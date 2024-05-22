@@ -109,9 +109,7 @@ a {
 .top img{
     height: 20px;
 }
-navbar{
-    transition-duration: 0.5s;
-}
+
 #navbar {
     width: 100vw;
     height: 60px;
@@ -121,6 +119,7 @@ navbar{
     border-bottom: 1px solid rgba(255, 255, 255, 0.077);
     backdrop-filter: blur(7px);
     background-color: #0000004b;
+    transition-duration: 0.3s;
 }
 
 table {

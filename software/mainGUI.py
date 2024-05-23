@@ -148,7 +148,7 @@ def guest(b1,b2,b3,b4,preview_image):
     b7=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Heatmap",width=22,font="poppins 10",cursor="hand2")
     b8=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Radar Chart",width=22,font="poppins 10",cursor="hand2")
     b9=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Polar Scatter Plot",width=22,font="poppins 10",cursor="hand2")
-    b10=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Candle Charts",width=22,font="poppins 10",cursor="hand2")
+    b10=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Plot Equations",width=22,font="poppins 10",cursor="hand2")
     b11=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Maps",width=22,font="poppins 10",cursor="hand2")
     b13=Button(menu,fg='#ffffff',bg='#1a1a1a',text="3d Scatter",width=22,font="poppins 10",cursor="hand2")
     b14=Button(menu,fg='#ffffff',bg='#1a1a1a',text="3D Surface",width=22,font="poppins 10",cursor="hand2")

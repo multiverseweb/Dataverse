@@ -605,7 +605,7 @@ def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
         ax.grid(linestyle = "dashed",linewidth = 1, alpha = 0.25)
     #plt.savefig("example.png", dpi=1000)
     financeTracker.move_figure(fig, 865, 125)
-    cursor = Cursor(ax, color='gold', linewidth=0.5)
+    cursor = Cursor(ax, color='red', linewidth=0.5)
     plt.show()
 
 def pie(c):

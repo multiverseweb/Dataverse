@@ -1,3 +1,6 @@
+// Array of city names
+var cities = ["Pune", "Moradabad"];
+
 console.log("Tejas' Codes :)");
 
 var l1 = document.getElementById("l1");
@@ -22,23 +25,23 @@ let lastScrollTop = 0;
 const navbar = document.querySelector('navbar');
 
 window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (scrollTop > lastScrollTop) {
-        // Scroll down
-        navbar.style.top = '-60px'; 
-        burger.style.top = '-60px'; 
-        lines.style.top = '-60px'; 
-        cross.style.top = '-60px'; 
-    } else {
-        // Scroll up
-        navbar.style.top = '0';
-        burger.style.top = '10px'; 
-        lines.style.top = '10px'; 
-        cross.style.top = '10px'; 
-    }
+  if (scrollTop > lastScrollTop) {
+    // Scroll down
+    navbar.style.top = '-60px';
+    burger.style.top = '-60px';
+    lines.style.top = '-60px';
+    cross.style.top = '-60px';
+  } else {
+    // Scroll up
+    navbar.style.top = '0';
+    burger.style.top = '10px';
+    lines.style.top = '10px';
+    cross.style.top = '10px';
+  }
 
-    lastScrollTop = scrollTop;
+  lastScrollTop = scrollTop;
 });
 
 function copy() {
@@ -55,7 +58,7 @@ function show() {
   l3.style.transform = "rotate(45deg)";
   burger.style.display = "none";
   cross.style.display = "block";
-  plane.style.right=0;
+  plane.style.right = 0;
   body.style.overflowY = "hidden";
   buttons.style.marginLeft = 0;
 }
@@ -65,14 +68,14 @@ function hide() {
   l3.style.transform = "rotate(0deg)";
   burger.style.display = "block";
   cross.style.display = "none";
-  plane.style.right="-100vw";
+  plane.style.right = "-100vw";
   body.style.overflowY = "scroll";
   buttons.style.marginLeft = "-50px";
 }
 
 function light() {
   document.getElementById("map").style.filter = "none";
-  document.getElementById("map").style.zIndex=0;
+  document.getElementById("map").style.zIndex = 0;
   body.style.backgroundColor = "#e8e8e8";
   body.style.color = "black";
   examples.style.backgroundColor = "#e8e8e8";
@@ -172,8 +175,6 @@ var map = L.map('map', {
   zoom: 3,
   zoomControl: false // Disable the default zoom control
 });
-
-
 // Add OpenStreetMap tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -187,5 +188,23 @@ var redIcon = L.icon({
   shadowSize: [41, 41]
 });
 
-var marker = L.marker([18.45718, 73.8520], { icon: redIcon }).addTo(map);
+// Function to get coordinates for a city and add a marker
+function addMarker(city) {
+  var url = `https://nominatim.openstreetmap.org/search?format=json&q=${city}`;
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      if (data.length > 0) {
+        var lat = data[0].lat;
+        var lon = data[0].lon;
+        L.marker([lat, lon], { icon: redIcon }).addTo(map)
+          .bindPopup(city);
+      } else {
+        console.log("No results found for " + city);
+      }
+    })
+    .catch(error => console.error("Error fetching coordinates for " + city + ": " + error));
+}
 
+// Add markers for each city
+cities.forEach(city => addMarker(city));

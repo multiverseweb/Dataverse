@@ -14,6 +14,8 @@ colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","c
 import mysql.connector as my                                    #required modules
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
 cursor=mycon.cursor()
+
+z=0
 #=========================================================================================view data
 def view_data(u_id):
     q="select * from money where u_id={}".format(u_id)

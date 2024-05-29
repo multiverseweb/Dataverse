@@ -1,5 +1,5 @@
 // Array of city names
-var cities = ["Pune", "Moradabad","Pune"];
+var cities = ["Pune", "Moradabad"];
 
 console.log("Tejas' Codes :)");
 

@@ -48,4 +48,8 @@ ER Diagram for Finance Tracker
 
 ---
 ### Website
+Deployed on
+
+<img height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Netlify_logo_%282%29.svg/1200px-Netlify_logo_%282%29.svg.png">
+
 [Visit Site](https://multiverse-dataverse.netlify.app/)

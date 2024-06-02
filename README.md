@@ -1,21 +1,19 @@
-## Dataverse
+### Dataverse
 ###### Data Visualisation Software & Personal Finance Tracker
+---
+### Table of Contents 
+| [About Dataverse](#what-does-this-software-do) | [Preview](#preview) | [Software Representation](#software-representation) | [Technologies Used](#technologies-used) | [Make Contributions](#contributions) | [Website](#website) |
+|:--:|:--:|:--:|:--:|:--:|:--:|
 
 ---
-
-| Table of Contents |
-|:--:|
-| [About Dataverse](#what-does-this-software-do) |
-| [Preview](#preview) |
-| [Software Representation](#software-representation) |
-| [Technologies Used](#technologies-used) |
-| [Make Contributions](#contributions) |
 
 ### What does this software do?
 - This software can be used to visualise data in many forms.
 - It allows the user to download the generated charts.
 - It can be used as a finance tracker, providing various useful outputs.
 - The data can also be stored for later use.
+
+---
 
 ### Preview
 
@@ -27,11 +25,14 @@ Visualised Finance Data
 Relational Data
 ![](data.png)
 
+---
+
 ### Software Representation
 
 ER Diagram
 ![](ER_diagram.png)
 
+---
 
 ### Technologies used
 ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
@@ -46,4 +47,5 @@ ER Diagram
 
 
 ---
+### Website
 [Visit Site](https://multiverse-dataverse.netlify.app/)

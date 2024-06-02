@@ -29,7 +29,7 @@ Relational Data
 
 ### Software Representation
 
-ER Diagram
+ER Diagram for Finance Tracker
 ![](ER_diagram.png)
 
 ---

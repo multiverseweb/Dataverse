@@ -16,7 +16,7 @@
 ---
 
 ### Preview
-<a href="#table-of-contents" align="right">Back to top</a>
+<sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 <div align=center>
 
 Software GUI
@@ -35,6 +35,7 @@ Relational Data
 ---
 
 ### Software Representation
+<sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 
 ER Diagram for Finance Tracker
 ![](ER_diagram.png)
@@ -42,6 +43,8 @@ ER Diagram for Finance Tracker
 ---
 
 ### Technologies used
+<sup><a href="#table-of-contents" align="right">Back to top</a></sup>
+
 ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white) 
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
@@ -54,6 +57,7 @@ ER Diagram for Finance Tracker
 
 ---
 ### Contributions
+<sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 
 Want to show yourself on the contributions-map?
 
@@ -62,8 +66,9 @@ Want to show yourself on the contributions-map?
 
 ---
 ### Website
+<sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 Deployed on
 
 <img height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Netlify_logo_%282%29.svg/1200px-Netlify_logo_%282%29.svg.png">
 
-[Visit Site](https://multiverse-dataverse.netlify.app/)
+You can visit the live site for Dataverse and related tools [here](https://multiverse-dataverse.netlify.app/).

@@ -19,7 +19,9 @@
 
 ### Preview
 
-Visualised Data
+Software GUI
+![](web_images/about_down.png)
+Visualised Finance Data
 ![](preview.png)
 
 Relational Data
@@ -30,5 +32,3 @@ Relational Data
 
 ---
 [Visit Site](https://multiverse-dataverse.netlify.app/)
-
-Designed & Developed by [Tejas](https://github.com/multiverseweb).

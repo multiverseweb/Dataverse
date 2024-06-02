@@ -1,4 +1,15 @@
-## Personal Finance Tracker & Data Visualisation Software
+## Dataverse
+###### Data Visualisation Software & Personal Finance Tracker
+
+---
+
+| Table of Contents |
+|:--:|
+| [About Dataverse](#what-does-this-software-do) |
+| |
+| |
+| |
+| |
 
 >Technologies used:<br/>
 ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)

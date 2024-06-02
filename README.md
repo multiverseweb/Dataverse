@@ -16,14 +16,20 @@
 ---
 
 ### Preview
+<div align=center>
 
 Software GUI
-![](web_images/about_down.png)
+<br>
+<img src="web_images/about_down.png" width="800px">
+<br><br>
 Visualised Finance Data
-![](preview.png)
-
+<br>
+<img src="preview.png" width="800px">
+<br><br>
 Relational Data
-![](data.png)
+<br>
+<img src="data.png" width="800px">
+</div>
 
 ---
 

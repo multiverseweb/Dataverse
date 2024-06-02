@@ -56,8 +56,8 @@ ER Diagram for Finance Tracker
 
 Want to show yourself on the contributions-map?
 
-- Go to line no. in [index.js](index.js).
-- Append the name of your city to the 
+- Go to `line no. 1` in [script.js](script.js).
+- Append the name of your city to the `cities` array.
 
 ---
 ### Website

@@ -63,6 +63,7 @@ Want to show yourself on the contributions-map?
 
 - Go to `line no. 1` in [script.js](script.js).
 - Append the name of your city to the `cities` array.
+- Create a `pull-request` so I can review and merge it.
 
 ---
 ### Website

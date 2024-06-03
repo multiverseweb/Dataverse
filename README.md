@@ -71,17 +71,17 @@ Now the software should run locally with no errors, feel free to use the softwar
 
 Software GUI
 <br>
-<img src="web_images/about_down.png" width="800px">
+<img src="website/web_images/about_down.png" width="800px">
 <br><br>
 <details> 
  <summary align=left><H4>View More</H4></summary><br>
 Visualised Finance Data
 <br>
-<img src="web_images/preview.png" width="800px">
+<img src="website/web_images/preview.png" width="800px">
 <br><br>
 Relational Data
 <br>
-<img src="web_images/data.png" width="800px">
+<img src="website/web_images/data.png" width="800px">
 </details>
 </div>
 

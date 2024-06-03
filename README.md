@@ -14,6 +14,31 @@
 - The data can also be stored for later use.
 
 ---
+### Get Dataverse
+
+Dataverse is currently under development. It will be available for installastion soon.
+* Steps to run the project locally:
+
+   ` Clone the project`
+
+     `git clone https://github.com/multiverseweb/Dataverse.git`
+
+ * Open folder in VSCode
+
+   `cd Dataverse`
+
+* Go to `mainGUI.py` and run it!
+
+Now the software should run locally with no errors, feel free to use this as a template and make changes into it for your own Portfolio.
+
+### Points to note:
+
+* The main web page is divided into 7 sections with different css file for each.
+* I have used JavaScript libraries such as [TagCloud.js](https://github.com/mcc108/TagCloud), [Swiper.js](https://swiperjs.com/), [AOS Library](https://github.com/michalsnik/aos) for various animations on my web page.
+* For animated rotating words implementation [read this.](https://dev.to/asmit2952/animated-text-sphere-in-javascript-using-tagcloud-js-1p72)
+* For contact forms I have used [formsubmit.co](https://formsubmit.co/) 
+
+---
 
 ### Preview
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>

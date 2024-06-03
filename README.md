@@ -18,7 +18,7 @@
 ### Prerequisites
 
 - You must have a python interpreter installed on your computer.
-- You must have python packages such as 'numpy, pandas, matplotlib, tkinter`.
+- You must have python packages such as `numpy, pandas, matplotlib, tkinter`.
 
   ```
   pip install package_name

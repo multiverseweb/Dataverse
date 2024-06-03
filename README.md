@@ -1,4 +1,4 @@
-# Dataverse
+<img src="web_images/2dglow"><h1>Dataverse</h1>
 ###### Data Visualisation Software & Personal Finance Tracker
 ---
 ### Table of Contents

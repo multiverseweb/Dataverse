@@ -31,10 +31,10 @@ Dataverse is currently under development. It will be available for installastion
      git clone https://github.com/multiverseweb/Dataverse.git
       ```
 
-   -  Open folder in VSCode
+   -  Open `software` folder in VSCode.
 
       ```
-      cd Dataverse/Software
+      cd Dataverse/software
       ```
 
    - Go to `mainGUI.py` and run it.

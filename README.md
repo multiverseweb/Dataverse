@@ -25,7 +25,7 @@
   ```
 <highlight>For Finance Tracker</highlight>
 - For using the Finance Tracker, you must have `MySQL` installed on your computer. If you don't have it you can download it from [here](https://dev.mysql.com/downloads/installer/).
-- Go to `line no. 15` under `connecting MySQL` of `financeTracker.py` and change the values of `'host, user and passwd` according to your MySQL account.
+- Go to `line no. 15` under `connecting MySQL` of `financeTracker.py` and change the values of `host, user and passwd` according to your MySQL account.
 - Also, run the command
   ```
   CREATE DATABASE FINANCE;
@@ -45,11 +45,15 @@ Dataverse is currently under development. It will be available for installastion
 
    - Clone the project
    
-      `git clone https://github.com/multiverseweb/Dataverse.git`
+      ```
+     git clone https://github.com/multiverseweb/Dataverse.git
+      ```
 
    -  Open folder in VSCode
 
-      `cd Dataverse/Software`
+      ```
+      cd Dataverse/Software
+      ```
 
    - Go to `mainGUI.py` and run it.
 

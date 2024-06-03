@@ -39,7 +39,7 @@ Dataverse is currently under development. It will be available for installastion
 
    - Go to `mainGUI.py` and run it.
 
-Now the software should run locally with no errors, feel free to use the software and don't forget to give feedback on the website!
+Now the software should run locally with no errors, feel free to use the software and don't forget to give feedback on the [website](https://multiverse-dataverse.netlify.app/)!
 
 ---
 

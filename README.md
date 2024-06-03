@@ -77,11 +77,11 @@ Software GUI
  <summary align=left><H4>View More</H4></summary><br>
 Visualised Finance Data
 <br>
-<img src="preview.png" width="800px">
+<img src="web_images/preview.png" width="800px">
 <br><br>
 Relational Data
 <br>
-<img src="data.png" width="800px">
+<img src="web_images/data.png" width="800px">
 </details>
 </div>
 
@@ -91,7 +91,7 @@ Relational Data
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 
 ER Diagram for Finance Tracker
-![](ER_diagram.png)
+![](web_images/ER_diagram.png)
 
 ---
 

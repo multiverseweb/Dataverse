@@ -1,9 +1,10 @@
 # Dataverse
 ###### Data Visualisation Software & Personal Finance Tracker
 ---
-### Table of Contents 
-| [About Dataverse](#what-does-this-software-do) | [Use Dataverse](#usedataverse) | [Preview](#preview) | [Software Representation](#software-representation) | [Technologies Used](#technologies-used) | [Make Contributions](#contributions) | [Website](#website) |
-|:--:|:--:|:--:|:--:|:--:|:--:|
+### Table of Contents
+
+| [About Dataverse](#what-does-this-software-do) | [Use Dataverse](#use-dataverse) | [Preview](#preview) | [Software Representation](#software-representation) | [Technologies Used](#technologies-used) | [Make Contributions](#contributions) | [Website](#website) |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 
 ---
 

@@ -23,6 +23,8 @@ Software GUI
 <br>
 <img src="web_images/about_down.png" width="800px">
 <br><br>
+<details> 
+ <summary align=left><H4>View More</H4></summary><br>
 Visualised Finance Data
 <br>
 <img src="preview.png" width="800px">
@@ -30,6 +32,7 @@ Visualised Finance Data
 Relational Data
 <br>
 <img src="data.png" width="800px">
+</details>
 </div>
 
 ---

@@ -91,7 +91,7 @@ Relational Data
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 
 ER Diagram for Finance Tracker
-![](web_images/ER_diagram.png)
+![](website/web_images/ER_diagram.png)
 
 ---
 

@@ -1,5 +1,8 @@
-<img src="web_images/2dglow"><h1>Dataverse</h1>
+# Dataverse
+<img src="web_images/2dglow.png" height=50px align=right>
+
 ###### Data Visualisation Software & Personal Finance Tracker
+
 ---
 ### Table of Contents
 

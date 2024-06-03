@@ -2,7 +2,7 @@
 ###### Data Visualisation Software & Personal Finance Tracker
 ---
 ### Table of Contents 
-| [About Dataverse](#what-does-this-software-do) | [Preview](#preview) | [Software Representation](#software-representation) | [Technologies Used](#technologies-used) | [Make Contributions](#contributions) | [Website](#website) |
+| [About Dataverse](#what-does-this-software-do) | [Use Dataverse](#usedataverse) | [Preview](#preview) | [Software Representation](#software-representation) | [Technologies Used](#technologies-used) | [Make Contributions](#contributions) | [Website](#website) |
 |:--:|:--:|:--:|:--:|:--:|:--:|
 
 ---
@@ -12,25 +12,6 @@
 - It allows the user to download the generated charts.
 - It can be used as a finance tracker, providing various useful outputs.
 - The data can also be stored for later use.
-
----
-
-### Prerequisites
-<highlight>For Data Visualization</highlight>
-- You must have a python interpreter installed on your computer.
-- You must have python packages such as `numpy, pandas, matplotlib, tkinter`.
-
-  ```
-  pip install package_name
-  ```
-<highlight>For Finance Tracker</highlight>
-- For using the Finance Tracker, you must have `MySQL` installed on your computer. If you don't have it you can download it from [here](https://dev.mysql.com/downloads/installer/).
-- Go to `line no. 15` under `connecting MySQL` of `financeTracker.py` and change the values of `host, user and passwd` according to your MySQL account.
-- Also, run the command
-  ```
-  CREATE DATABASE FINANCE;
-  ```
-  on your MySQL workbench or commandline client.
 
 ---
 
@@ -58,6 +39,25 @@ Dataverse is currently under development. It will be available for installastion
    - Go to `mainGUI.py` and run it.
 
 Now the software should run locally with no errors, feel free to use the software and don't forget to give feedback on the website!
+
+---
+
+### Prerequisites
+<highlight>For Data Visualization</highlight>
+- You must have a python interpreter installed on your computer.
+- You must have python packages such as `numpy, pandas, matplotlib, tkinter`.
+
+  ```
+  pip install package_name
+  ```
+<highlight>For Finance Tracker</highlight>
+- For using the Finance Tracker, you must have `MySQL` installed on your computer. If you don't have it you can download it from [here](https://dev.mysql.com/downloads/installer/).
+- Go to `line no. 15` under `connecting MySQL` of `financeTracker.py` and change the values of `host, user and passwd` according to your MySQL account.
+- Also, run the command
+  ```
+  CREATE DATABASE FINANCE;
+  ```
+  on your MySQL workbench or commandline client.
 
 ---
 

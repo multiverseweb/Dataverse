@@ -1,4 +1,4 @@
-### Dataverse
+## Dataverse
 ###### Data Visualisation Software & Personal Finance Tracker
 ---
 ### Table of Contents 

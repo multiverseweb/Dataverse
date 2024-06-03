@@ -53,7 +53,7 @@ Now the software should run locally with no errors, feel free to use the softwar
   ```
 <highlight>For Finance Tracker</highlight>
 - For using the Finance Tracker, you must have `MySQL` installed on your computer. If you don't have it you can download it from [here](https://dev.mysql.com/downloads/installer/).
-- Go to `line no. 15` under `connecting MySQL` of `financeTracker.py` and change the values of `host, user and passwd` according to your MySQL account.
+- Go to `line no. 15` under `connecting MySQL` section of `financeTracker.py` and change the values of `host, user and passwd` according to your MySQL account.
 - Also, run the command
   ```
   CREATE DATABASE FINANCE;

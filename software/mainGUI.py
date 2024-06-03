@@ -10,7 +10,6 @@ import time                                                         #for getting
 import webbrowser                                                   #for opening external link
 import ctypes as ct                                                 #for styling windows
 import financeTracker as financeTracker                             #user defined module - finance
-import dataVisualization as dataVisualization                       #user defined module - data visualizationfunctions
 import matplotlib.pyplot as plt                                     #for plotting graphs
 import matplotlib                                                   #for plotting graphs
 from matplotlib.widgets import Cursor                               #for lines on hover in plot
@@ -18,8 +17,8 @@ import numpy as np                                                  #for x-axis 
 #===================================================================================================================plot colors
 colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","cyan","#7e03a8","tomato","tan","#0d0887","green","blue","indigo","red"]
 #===================================================================================================================connecting mySQL
-mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
-cursor=mycon.cursor()
+mycon=financeTracker.mycon
+cursor=financeTracker.cursor
 cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id INT PRIMARY KEY, u_name VARCHAR(255), pwd VARCHAR(255), country varchar(50) default 'India')")
 cursor.execute("CREATE TABLE IF NOT EXISTS money (u_id INT, fiat FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total DOUBLE AS (fiat + gold + stocks + commodity + sales - expenditure), entryDate date);")
 #===================================================================================================================================

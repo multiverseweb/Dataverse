@@ -6,7 +6,7 @@
 ---
 ### Table of Contents
 
-| [About Dataverse](#what-does-this-software-do) | [Use Dataverse](#use-dataverse) | [Preview](#preview) | [Software Representation](#software-representation) | [Technologies Used](#technologies-used) | [Make Contributions](#contributions) | [Website](#website) |
+| [About Dataverse](#what-does-this-software-do) | [Use Dataverse](#deployment-specifications) | [Preview](#preview) | [Software Representation](#software-representation) | [Technologies Used](#technologies-used) | [Make Contributions](#contributions) | [Website](#website) |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 
 ---
@@ -19,7 +19,7 @@
 
 ---
 
-### Use Dataverse
+### Deployment Specifications
 
 Dataverse is currently under development. It will be available for installastion soon.
 

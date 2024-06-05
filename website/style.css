@@ -154,6 +154,7 @@ tr:hover{
     height: 80px;
     z-index: -10;
     opacity: 0;
+    filter: brightness(1.7);
 }
 
 #glow:hover{

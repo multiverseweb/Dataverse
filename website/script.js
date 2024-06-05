@@ -208,3 +208,15 @@ function addMarker(city) {
 
 // Add markers for each city
 cities.forEach(city => addMarker(city));
+
+
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  dark();
+} else {
+  light();
+}
+
+// Listen for changes in the system preference
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+  if (e.matches == 'dark' ? dark() : light());
+});

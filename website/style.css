@@ -13,6 +13,7 @@ body {
     color: white;
     transition-duration: 0.2s;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
 }
 
 button{
@@ -206,7 +207,7 @@ tr:hover{
 .plane{
     height: 100vh;
     width: calc(100vw - 60px);
-    background-color: #3b3b3b57;
+    background-color: #000000ba;
     backdrop-filter: blur(7px);
     position: fixed;
     z-index: 103;
@@ -317,13 +318,13 @@ tr:hover{
     }
 }
 .right{
-    margin-top: 100px;
+    margin-top:80px;
 }
 .top_dataverse p{
     font-size: xxx-large;
 }
 #intro_text{
-    font-size: large;
+    font-size: x-large;
     width: 40vw;
     word-wrap: break-word;
     margin-top: 40px;

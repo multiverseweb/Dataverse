@@ -70,7 +70,7 @@ function hide() {
   cross.style.display = "none";
   plane.style.right = "-100vw";
   body.style.overflowY = "scroll";
-  buttons.style.marginLeft = "-50px";
+  buttons.style.marginLeft = "-60px";
 }
 
 function light(flag) {

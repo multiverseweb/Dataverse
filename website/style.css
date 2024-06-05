@@ -41,7 +41,7 @@ a {
     background-color: #3b3b3b57;
     backdrop-filter: blur(2px);
     border-radius: 40px;
-    top:40vh;
+    top:35vh;
     left:10px;
     margin-left: -50px;
     transition-duration: 0.3s;
@@ -80,6 +80,10 @@ a {
 }
 #sun{
     filter: invert(1);
+}
+#default{
+    filter: invert(1);
+    margin-top: 20px;
 }
 .copy{
     height: 20px;

@@ -73,7 +73,7 @@ function hide() {
   buttons.style.marginLeft = "-50px";
 }
 
-function light() {
+function light(flag) {
   document.getElementById("map").style.filter = "none";
   document.getElementById("map").style.zIndex = 0;
   body.style.backgroundColor = "#e8e8e8";
@@ -97,11 +97,16 @@ function light() {
   contribute.addEventListener("mouseleave", (event) => { event.target.style.backgroundColor = "#e8e8e8" });
   github.style.filter = "invert(0)";
   last_link.style.color = "black";
-  indicator.style.top = "52px";
+  if (flag == true) {
+    indicator.style.top = "95px";
+  }
+  else {
+    indicator.style.top = "52px";
+  }
   indicator.style.backgroundImage = "radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
   shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#e8e8e8,#00000000)";
 }
-function dark() {
+function dark(flag) {
   document.getElementById("map").style.filter = "invert(1) hue-rotate(180deg) brightness(1.5)";
   body.style.backgroundColor = "black";
   body.style.color = "white";
@@ -122,7 +127,12 @@ function dark() {
     github.style.filter = "invert(1)"
   });
   last_link.style.color = "white";
-  indicator.style.top = "10px";
+  if (flag == true) {
+    indicator.style.top = "95px";
+  }
+  else {
+    indicator.style.top = "10px";
+  }
   indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
   shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#000000d4,#00000000)";
 }
@@ -209,14 +219,15 @@ function addMarker(city) {
 // Add markers for each city
 cities.forEach(city => addMarker(city));
 
-
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  dark();
-} else {
-  light();
+function systemDefault() {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    dark(true);
+    indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
+  } else {
+    indicator.style.backgroundImage = "radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
+    light(true);
+  }
 }
 
-// Listen for changes in the system preference
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-  if (e.matches == 'dark' ? dark() : light());
-});
+systemDefault();
+indicator.style.top = "95px";

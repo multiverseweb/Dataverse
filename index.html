@@ -17,14 +17,17 @@
     <div class="buttons" id="buttons">
         <div id="indicator"></div>
         <div class="group">
-            <button id="first_button" onclick="dark()">
+            <button id="first_button" onclick="dark(false)">
                 <img src="https://static.thenounproject.com/png/4066359-200.png" class="copy" id="moon">
             </button>
-            <button onclick="light()">
+            <button onclick="light(false)">
                 <div id="theme2">
                     <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy"
                         id="sun">
                 </div>
+            </button>
+            <button id="first_button" onclick="systemDefault()">
+                <img src="website/web_images/settings.png" class="copy" id="default">
             </button>
         </div>
         <button onclick="copy()">
@@ -55,7 +58,8 @@
                 <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
             </tr>
             <tr>
-                <td><a href="https://github.com/multiverseweb/Dataverse/blob/main/README.md" class="table_link">Documentation</a></td>
+                <td><a href="https://github.com/multiverseweb/Dataverse/blob/main/README.md"
+                        class="table_link">Documentation</a></td>
             </tr>
             <tr>
                 <td>
@@ -194,4 +198,5 @@
     <script src="website/script.js"></script>
 
 </body>
+
 </html>

@@ -49,9 +49,7 @@ function copy() {
   document.getElementById("copy").innerHTML = "✓";
 }
 
-function download_prompt() {
-  alert("Dataverse is currently under development. It will be available for installastion soon.");
-}
+
 function show() {
   l2.style.opacity = 0;
   l1.style.transform = "rotate(-45deg)";
@@ -72,6 +70,20 @@ function hide() {
   body.style.overflowY = "scroll";
   buttons.style.marginLeft = "-60px";
 }
+
+
+function systemDefault() {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    dark(true);
+    indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
+  } else {
+    indicator.style.backgroundImage = "radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
+    light(true);
+  }
+}
+
+systemDefault();
+indicator.style.top = "95px";
 
 function light(flag) {
   document.getElementById("map").style.filter = "none";
@@ -219,15 +231,14 @@ function addMarker(city) {
 // Add markers for each city
 cities.forEach(city => addMarker(city));
 
-function systemDefault() {
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    dark(true);
-    indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
-  } else {
-    indicator.style.backgroundImage = "radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
-    light(true);
-  }
+function showCustomAlert(message, link, linkText = link) {
+  document.getElementById('alert-message').innerText = message;
+  var alertLink = document.getElementById('alert-link');
+  alertLink.href = link;
+  alertLink.innerText = linkText;
+  document.getElementById('custom-alert').style.display = 'block';
 }
 
-systemDefault();
-indicator.style.top = "95px";
+function closeCustomAlert() {
+  document.getElementById('custom-alert').style.display = 'none';
+}

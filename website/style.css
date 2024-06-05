@@ -13,7 +13,6 @@ body {
     color: white;
     transition-duration: 0.2s;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: 500;
 }
 
 button{
@@ -42,7 +41,7 @@ a {
     background-color: #3b3b3b57;
     backdrop-filter: blur(2px);
     border-radius: 40px;
-    top:35vh;
+    top:33vh;
     left:10px;
     margin-left: -60px;
     transition-duration: 0.3s;
@@ -207,7 +206,7 @@ tr:hover{
 .plane{
     height: 100vh;
     width: calc(100vw - 60px);
-    background-color: #000000ba;
+    background-color: #0f0f0fba;
     backdrop-filter: blur(7px);
     position: fixed;
     z-index: 103;
@@ -847,3 +846,44 @@ input {
     background: rgb(218, 165, 32);
     transition: width 200ms linear;
   }
+
+.custom-alert {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.custom-alert-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70vw;
+    max-width: 400px;
+    transform: translate(-50%, -50%);
+    background-color: rgb(36, 36, 36);
+    border: 1px solid rgb(73, 73, 73);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+}
+
+.custom-alert a {
+    display: block;
+    margin-top: 10px;
+    color: rgb(0, 255, 200);
+    text-decoration: underline;
+}
+
+.custom-alert button {
+    margin-top: 20px;
+    background-color: #efefefeb;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 20px 5px 20px;
+}

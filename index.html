@@ -91,7 +91,17 @@
             <p id="intro_text">An Open-Source Software (OSS) that integrates database management, data visualization
                 and data wrangling.</p>
             <p id="intro_text">The adjoining map shows people who are using or contributing to Dataverse.</p>
-            <button id="download_btn" onclick="download_prompt()">Get Dataverse</button>
+            <button id="download_btn" onclick="showCustomAlert('Dataverse is currently under development. It will be available for installastion soon.\n\nHowever, you can visit the following link to run the project locally on your computer:', 'https://github.com/multiverseweb/Dataverse?tab=readme-ov-file#deployment-specifications','Try Dataverse')">Get Dataverse</button>
+
+    <div id="custom-alert" class="custom-alert">
+        <div class="custom-alert-content">
+            <span id="alert-message"></span>
+            <a id="alert-link" href="#" target="_blank"></a>
+            <button onclick="closeCustomAlert()">OK</button>
+        </div>
+    </div>
+
+
         </div>
         <div class="scroll_animation"></div>
     </div>
@@ -155,7 +165,7 @@
                 interested in adding new features, fixing bugs, or improving documentation, your contributions are
                 valuable. You can contribute to the project by visiting the link to the GitHub repository provided
                 below. Join me in making Dataverse even better for everyone!</p>
-            <a href="https://github.com/multiverseweb/Dataverse/tree/main"><button id="contribute">
+            <a href="https://github.com/multiverseweb/Dataverse?tab=readme-ov-file#contributions"><button id="contribute">
                     <p>Contribute</p><img
                         src="https://static-00.iconduck.com/assets.00/github-icon-2048x1999-d37ckpm6.png" id="github">
                 </button></a>

@@ -772,6 +772,7 @@ input {
     #charts p{
         margin-left: 20px;
         width: calc(100% - 20px);
+        margin-right:20px;
     }
 
     .examples img{

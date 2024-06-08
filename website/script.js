@@ -182,11 +182,18 @@ function animate() {
 
 window.addEventListener("scroll", animate);
 
-
+let lastScroll = 0;
 function progress() {
   var scroll = this.scrollY;
   var percent = Math.round((scroll / 2870) * 100);
   document.getElementById("progress_bar").style.width = percent + 'vw';
+  if (scroll > lastScroll) {
+    examples.scrollLeft+=percent/15;
+  }
+  else{
+    examples.scrollLeft-=percent/15;
+  }
+  lastScroll=scroll;
 };
 
 window.addEventListener("scroll", progress);

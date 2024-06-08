@@ -387,9 +387,12 @@ tr:hover{
 
 #charts{
     padding-top: 0;
-    margin-top: 0;
+    margin-top: 30px;
+    margin-bottom: 120px;
+    margin-left: -30px;
     display: flex;
-    border-image: linear-gradient(#440154, cyan,orange,tan, #440154) 1;
+    flex-direction: column;
+    border-image: linear-gradient(black,black) 1;
     border-width: 2px;
     border-style: solid;
     border-top-style: none;
@@ -397,18 +400,17 @@ tr:hover{
     border-right-style: none;
 }
 #charts p{
+    margin-left: 20px;
     width: 100%;
-    margin-top: 60px;
 }
 
 .examples{
     border-radius: 10px 0px 0px 10px;
     margin-left: 0%;
-    margin-bottom: 60px;
+    width: 100vw;
     display: flex;
     overflow-x: scroll;
-    background-color: #161616;
-    box-shadow: 5px -3px 10px rgb(0, 0, 0);
+    background-color: #16161600;
     margin-left: 0px;
 }
 .examples img{
@@ -429,7 +431,7 @@ tr:hover{
     display: flex;
     padding-top: 0;
     padding-bottom: 0;
-    border-image: linear-gradient(#440154, #260590, #5F01A5, #A31E99, #EC7535, #F2F224) 1;
+    border-image: linear-gradient(#440154, #260590, #5F01A5, #A31E99, #EC7535, #F2F224,rgba(0, 0, 0, 0)) 1;
     border-width: 2px;
     border-style: solid;
     border-top-style: none;
@@ -441,7 +443,7 @@ tr:hover{
     display: flex;
     padding-top: 0;
     padding-bottom: 0;
-    border-image: linear-gradient(#F5E020, #C5BD5B, #37B89D, #0C86D4, #2841B2, rgba(0, 0, 0, 0)) 1;
+    border-image: linear-gradient(rgba(0, 0, 0, 0),#F5E020, #C5BD5B, #37B89D, #0C86D4, #2841B2, rgba(0, 0, 0, 0)) 1;
     border-width: 2px;
     border-style: solid;
     border-top-style: none;
@@ -759,12 +761,16 @@ input {
     .section{
         width: calc(100% - 80px);
     }
+    #examples{
+        margin-top: 30px;
+    }
     #charts {
         flex-direction: column;
-        width: calc(100% - 62px);
+        width: calc(100%);
+        margin-bottom: 40px;
     }
     #charts p{
-        margin-bottom: 20px;
+        margin-left: 20px;
         width: calc(100% - 20px);
     }
 

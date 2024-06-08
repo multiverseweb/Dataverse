@@ -13,6 +13,7 @@ var plane = document.getElementById("plane");
 var body = document.getElementById("body");
 var buttons = document.getElementById("buttons");
 var examples = document.getElementById("examples");
+var examples2 = document.getElementById("examples2");
 var tags = document.getElementById("tags");
 var contribute = document.getElementById("contribute");
 var github = document.getElementById("github");
@@ -90,7 +91,6 @@ function light(flag) {
   document.getElementById("map").style.zIndex = 0;
   body.style.backgroundColor = "#e8e8e8";
   body.style.color = "black";
-  examples.style.backgroundColor = "#e8e8e8";
   tags.style.borderColor = "black";
   tags.style.backgroundColor = "#171717";
   contribute.style.borderColor = "black";
@@ -122,7 +122,6 @@ function dark(flag) {
   document.getElementById("map").style.filter = "invert(1) hue-rotate(180deg) brightness(1.5)";
   body.style.backgroundColor = "black";
   body.style.color = "white";
-  examples.style.backgroundColor = "#161616";
   tags.style.borderColor = "rgba(255, 255, 255, 0.323)";
   tags.style.backgroundColor = "#00000000";
   download.style.borderColor = "white";
@@ -185,13 +184,15 @@ window.addEventListener("scroll", animate);
 let lastScroll = 0;
 function progress() {
   var scroll = this.scrollY;
-  var percent = Math.round((scroll / 2870) * 100);
+  var percent = Math.round((scroll / 3000) * 100);
   document.getElementById("progress_bar").style.width = percent + 'vw';
   if (scroll > lastScroll) {
     examples.scrollLeft+=percent/15;
+    examples2.scrollLeft+=percent/10;
   }
   else{
     examples.scrollLeft-=percent/15;
+    examples2.scrollLeft-=percent/10;
   }
   lastScroll=scroll;
 };

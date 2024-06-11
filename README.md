@@ -12,7 +12,7 @@
 ---
 
 ### What does this software do?
-- This software can be used to visualise data in many forms.
+- This software can be used to visualise data in many basic as well as advanced forms.
 - It allows the user to download the generated charts.
 - It can be used as a finance tracker, providing various useful outputs.
 - The data can also be stored for later use.

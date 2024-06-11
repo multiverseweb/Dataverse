@@ -401,7 +401,7 @@ tr:hover{
 }
 #charts p{
     margin-left: 20px;
-    width: 100%;
+    width: calc(100vw - 40px);
 }
 
 .examples{
@@ -771,7 +771,7 @@ input {
     }
     #charts p{
         margin-left: 20px;
-        width: calc(100% - 20px);
+        width: calc(100vw - 40px);
     }
 
     .examples img{

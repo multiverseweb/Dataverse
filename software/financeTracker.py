@@ -28,9 +28,21 @@ def view_data(u_id):
         table = tabulate.tabulate(data, headers=columns, tablefmt="pretty")
         result=table
     return result
-
+#==============================================================================================password decryption
+def decrypt(pwd):
+    n=len(pwd)
+    d=""
+    if n%2==0:
+        t=pwd[int(n/2):]
+        t+=pwd[:int(n/2)]
+    else:
+        t=pwd[int(n/2)+1:]
+        t+=pwd[:int(n/2)+1]
+    for _ in range(len(t)):
+        d+=chr(ord(t[_])//2)
+    return d
 #==================================================================================================add data
-def check_credentials(u_name,pwd):
+def check_credentials(u_name,passwd):
     q="select u_name from user"
     cursor.execute(q)
     data=cursor.fetchall()
@@ -43,7 +55,8 @@ def check_credentials(u_name,pwd):
         q="select pwd from user where u_name='{}'".format(u_name)
         cursor.execute(q)
         data=cursor.fetchall()
-        if data[0][0]==pwd:
+        decrypted=decrypt(data[0][0])
+        if decrypted==passwd:
             q="select u_id from user where u_name='{}'".format(u_name)
             cursor.execute(q)
             u_id=cursor.fetchall()[0][0]

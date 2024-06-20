@@ -64,12 +64,22 @@ def login(b1,b2,b3,b4,preview_image):
     pwd_entry.pack(pady=20,padx=50)
     Button(form,text="Login",width=15,command=show_message,cursor="hand2").pack(pady=20)
     form.mainloop()
-    
+
+#======================================================================password encryption
+def encrypt(pwd):
+    n=len(pwd)
+    e=""
+    t=pwd[int(n/2):]
+    t+=pwd[:int(n/2)]
+    for _ in range(len(t)):
+        e+=chr(ord(t[_])*2)
+    return e 
 #====================================================================== Create account -b2
 def create(b2,b1,b3,b4,preview_image):
     def show_message(u_name,pwd,country,names):
         u_name=f"{u_name.get()}"
         pwd=f"{pwd.get()}"
+        pwd=encrypt(pwd)
         country=f"{country.get()}"
         if u_name in names:
             messagebox.showinfo(title="Username Not Available", message="That username is already taken. Try another one.",icon="info")

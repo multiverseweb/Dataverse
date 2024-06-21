@@ -592,8 +592,9 @@ def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
         elif c=="area":
             plt.fill_between(x, y[i],label=d_attr[i].get(),color=colors[i], alpha = 0.7)
         elif c=="hist":
-            for i in range(len(x)):
-                x[i]=round(x[i])
+            for j in range(len(x)):
+                x[j]=round(x[j])
+            print(x, y[i])
             plt.hist(x, y[i],label=d_attr[i].get(),color=colors[i], alpha = 0.7)                                                #PROBLEM HERE
         elif c=="polar":
             r = 2 * np.random.rand(len(x))
@@ -612,6 +613,10 @@ def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
         ax.spines['right'].set_color('#ffffff40')
         ax.spines['left'].set_color('darkturquoise')
         ax.grid(linestyle = "dashed",linewidth = 1, alpha = 0.25)
+    elif c in ["polar"]:
+        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+        plt.title(heading)
+        plt.xlabel(x_label)
     #plt.savefig("example.png", dpi=1000)
     financeTracker.move_figure(fig, 865, 125)
     cursor = Cursor(ax, color='red', linewidth=0.5)

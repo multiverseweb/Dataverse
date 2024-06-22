@@ -250,3 +250,12 @@ function showCustomAlert(message, link, linkText = link) {
 function closeCustomAlert() {
   document.getElementById('custom-alert').style.display = 'none';
 }
+
+/*CHANGING DIRECTION OF AEROPLANE*/
+
+function updateAngle() {
+  let randomAngle = Math.floor(Math.random() * 360) + 'deg';
+  document.documentElement.style.setProperty('--angle', randomAngle);
+}
+
+setInterval(updateAngle, 10000);

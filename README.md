@@ -15,7 +15,9 @@
 - This software can be used to visualise data in many basic as well as advanced forms.
 - It allows the user to download the generated charts.
 - It can be used as a finance tracker, providing various useful outputs.
+- It supports data inputs from excel sheets.
 - The data can also be stored for later use.
+- uses encryption techniques to securely store your passwords.
 
 ---
 
@@ -107,6 +109,7 @@ ER Diagram for Finance Tracker
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) 
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) 
+![Microsoft Excel](https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
 
 ---
 ### Contributions

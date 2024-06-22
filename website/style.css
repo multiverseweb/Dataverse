@@ -504,6 +504,12 @@ tr:hover{
     -webkit-text-fill-color: transparent;
 }
 
+#exceltag {
+    background: linear-gradient(to right, #008120, #42ea00,#15672a);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 #pythontag {
     background: linear-gradient(to right, rgb(0, 149, 255), yellow);
     background-clip: text;

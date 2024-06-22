@@ -17,7 +17,7 @@
 - It can be used as a finance tracker, providing various useful outputs.
 - It supports data inputs from excel sheets.
 - The data can also be stored for later use.
-- uses encryption techniques to securely store your passwords.
+- Uses encryption techniques to securely store your passwords.
 
 ---
 

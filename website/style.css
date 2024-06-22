@@ -209,7 +209,7 @@ tr:hover{
 }
 
 .plane{
-    height: 100vh;
+    height: 110vh;
     width: calc(100vw - 60px);
     background-color: #0f0f0fba;
     backdrop-filter: blur(7px);
@@ -720,8 +720,8 @@ input {
     #map{
         margin-left: 20px;
         width: calc(100vw - 40px);
-        height: 30vh;
-        margin-top: 30px;
+        height: 40vh;
+        margin-top: 20px;
     }
     .top_dataverse{
         margin-left: 30px;
@@ -739,7 +739,7 @@ input {
     #download_btn {
         position: absolute;
         left: 50%;
-        margin-top: 40vh;
+        margin-top: 45vh;
         transform: translate(-50%);
     }
     #about {
@@ -878,25 +878,27 @@ input {
     width: 70vw;
     max-width: 400px;
     transform: translate(-50%, -50%);
-    background-color: rgb(36, 36, 36);
-    border: 1px solid rgb(73, 73, 73);
+    background-color: rgb(51, 51, 51);
+    backdrop-filter: blur(4px);
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 4px;
     text-align: center;
     color: white;
 }
 
-.custom-alert a {
-    display: block;
-    margin-top: 10px;
-    color: rgb(0, 255, 200);
-    text-decoration: underline;
-}
 
+.row_buttons{
+    display: flex;
+    justify-content: space-around;
+}
 .custom-alert button {
     margin-top: 20px;
     background-color: #efefefeb;
-    border-radius: 5px;
-    border: none;
+    border-radius: 3px;
+    border: 1px solid white;
     padding: 5px 20px 5px 20px;
+}
+#later{
+    color: white;
+    background-color: #00000000;
 }

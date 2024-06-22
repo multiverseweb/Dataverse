@@ -201,9 +201,9 @@ window.addEventListener("scroll", progress);
 
 
 var map = L.map('map', {
-  center: [22.5937, 79.9629],
-  zoom: 3,
-  zoomControl: false // Disable the default zoom control
+  center: [23.7937, 74.9629],
+  zoom: 5,
+  zoomControl: false
 });
 // Add OpenStreetMap tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -239,11 +239,8 @@ function addMarker(city) {
 // Add markers for each city
 cities.forEach(city => addMarker(city));
 
-function showCustomAlert(message, link, linkText = link) {
+function showCustomAlert(message) {
   document.getElementById('alert-message').innerText = message;
-  var alertLink = document.getElementById('alert-link');
-  alertLink.href = link;
-  alertLink.innerText = linkText;
   document.getElementById('custom-alert').style.display = 'block';
 }
 

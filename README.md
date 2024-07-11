@@ -26,9 +26,9 @@
 Dataverse is currently under development. It will be available for installastion soon.
 
 However, you can follow these steps to run the project locally on your computer:
-  
-   | Don't forget to read the [prerequisites](#prerequisites). |
-   |--|
+> [!IMPORTANT]
+> Don't forget to read the [prerequisites](#prerequisites).
+
 
    - Clone the project
    

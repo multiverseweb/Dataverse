@@ -15,7 +15,7 @@ import matplotlib                                                   #for plottin
 from matplotlib.widgets import Cursor                               #for lines on hover in plot
 import numpy as np                                                  #for x-axis time arange
 #===================================================================================================================plot colors
-colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","cyan","#7e03a8","tomato","tan","#0d0887","green","blue","indigo","red"]
+colors=["#3474eb","#5ec962","yellow","#440154","#f89540","#21918c","#3b528b","#cc4778","cyan","#7e03a8","tomato","tan","#0d0887","green","blue","indigo"]
 #===================================================================================================================connecting mySQL
 mycon=financeTracker.mycon
 cursor=financeTracker.cursor

@@ -9,7 +9,7 @@ import datetime                                                     #for getting
 from datetime import datetime, timedelta,date                       #for x-axis time class-width
 from matplotlib.widgets import Cursor as lines
 #===============================================================================================================plot colors
-colors=["#fde725","#5ec962","#21918c","#3b528b","#440154","#f89540","#cc4778","cyan","#7e03a8","tomato","tan","#0d0887","green","blue","indigo","violet"]
+colors=["#3474eb","#5ec962","yellow","#f89540","#21918c","#3b528b","#cc4778","cyan","#440154","#7e03a8","tomato","tan","#0d0887","green","blue","indigo"]
 #==================================================================================================connecting MySQL
 import mysql.connector as my                                    #required modules
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')

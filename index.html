@@ -38,8 +38,8 @@
     </div>
     <button class="top" id="top" onclick="topFunction()"><img src="website/web_images/top.png" alt=""></button>
     <navbar id="navbar">
-            <img src="website/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
-            <img src="website/web_images/3d_glow.png" alt="Dataverse Logo" class="logo" id="glow">
+        <img src="website/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
+        <img src="website/web_images/3d_glow.png" alt="Dataverse Logo" class="logo" id="glow">
         <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
     </navbar>
     <button class="burger" id="burger" onclick="show()"></button>
@@ -84,7 +84,9 @@
     </div>
     <div class="download" id="download">
         <div class="left">
-            <div id="map"><div class="direction"><img src="https://cdn-icons-png.flaticon.com/512/0/614.png" id="aeroplane"></div></div>
+            <div id="map">
+                <div class="direction"><img src="https://cdn-icons-png.flaticon.com/512/0/614.png" id="aeroplane"></div>
+            </div>
         </div>
         <div class="right">
             <div class="top_dataverse">
@@ -102,9 +104,11 @@
                 <div class="custom-alert-content">
                     <span id="alert-message"></span>
                     <div class="row_buttons">
-                    <a href="https://github.com/multiverseweb/Dataverse?tab=readme-ov-file#deployment-specifications"><button>Try Dataverse</button></a>
-                    <button onclick="closeCustomAlert()" id="later">Later</button>
-                </div>
+                        <a
+                            href="https://github.com/multiverseweb/Dataverse?tab=readme-ov-file#deployment-specifications"><button>Try
+                                Dataverse</button></a>
+                        <button onclick="closeCustomAlert()" id="later">Later</button>
+                    </div>
                 </div>
             </div>
 
@@ -150,13 +154,15 @@
 
             <img src="website/web_images/volcano.gif" alt="">
             <img src="website/web_images/live.gif" alt="">
-            <img src="https://i0.wp.com/learnbyinsight.com/wp-content/uploads/2020/09/sub-plot.png?resize=600%2C398&ssl=1" alt="">
+            <img src="https://i0.wp.com/learnbyinsight.com/wp-content/uploads/2020/09/sub-plot.png?resize=600%2C398&ssl=1"
+                alt="">
             <img src="https://docs.sympy.org/latest/_images/plotting-16.png" alt="">
             <img src="website/web_images/galaxy.png" alt="">
             <img src="website/web_images/3d.gif" alt="">
             <img src="website/web_images/volcano.gif" alt="">
             <img src="website/web_images/live.gif" alt="">
-            <img src="https://i0.wp.com/learnbyinsight.com/wp-content/uploads/2020/09/sub-plot.png?resize=600%2C398&ssl=1" alt="">
+            <img src="https://i0.wp.com/learnbyinsight.com/wp-content/uploads/2020/09/sub-plot.png?resize=600%2C398&ssl=1"
+                alt="">
             <img src="https://docs.sympy.org/latest/_images/plotting-16.png" alt="">
             <img src="website/web_images/galaxy.png" alt="">
             <img src="website/web_images/3d.gif" alt="">
@@ -168,7 +174,8 @@
             <img src="https://matplotlib.org/stable/_images/sphx_glr_polar_scatter_001.png" alt="">
             <img src="website/web_images/wordcloud.png" alt="">
             <img src="https://www.pythoncharts.com/matplotlib/radar-charts/images/radar-chart-step1.png" alt="">
-            <img src="https://discourse.matplotlib.org/uploads/default/original/2X/4/4a1f2f7f8f90b98517aa85b8b984d4c9a3a94c72.jpeg" alt="">
+            <img src="https://discourse.matplotlib.org/uploads/default/original/2X/4/4a1f2f7f8f90b98517aa85b8b984d4c9a3a94c72.jpeg"
+                alt="">
             <img src="https://miro.medium.com/v2/resize:fit:1188/1*kpksgzDd6qKP2h6GM7OVCA.png" alt="">
             <img src="https://miro.medium.com/v2/resize:fit:1140/1*Lc5VzM9Yo4775Omc-vqddQ.png" alt="">
             <img src="website/web_images/portal.png" alt="">
@@ -176,7 +183,8 @@
             <img src="https://matplotlib.org/stable/_images/sphx_glr_polar_scatter_001.png" alt="">
             <img src="website/web_images/wordcloud.png" alt="">
             <img src="https://www.pythoncharts.com/matplotlib/radar-charts/images/radar-chart-step1.png" alt="">
-            <img src="https://discourse.matplotlib.org/uploads/default/original/2X/4/4a1f2f7f8f90b98517aa85b8b984d4c9a3a94c72.jpeg" alt="">
+            <img src="https://discourse.matplotlib.org/uploads/default/original/2X/4/4a1f2f7f8f90b98517aa85b8b984d4c9a3a94c72.jpeg"
+                alt="">
             <img src="https://miro.medium.com/v2/resize:fit:1188/1*kpksgzDd6qKP2h6GM7OVCA.png" alt="">
             <img src="https://miro.medium.com/v2/resize:fit:1140/1*Lc5VzM9Yo4775Omc-vqddQ.png" alt="">
             <img src="website/web_images/portal.png" alt="">
@@ -188,7 +196,7 @@
     <div class="section" id="develop">
         <div class="develop_left">
             <p class="heading">Want to contribute to this Project?</p>
-            <p class="subheading">Technologies Used</p>
+            <div class="subheading" id="technologies"><div class="circle" id="red"></div><div class="circle" id="yellow"></div><div class="circle" id="green"></div><p>Technologies Used</p></div>
             <div class="tags" id="tags">
                 <p id="pythontag">Python</p>
                 <p id="numpytag">Numpy</p>

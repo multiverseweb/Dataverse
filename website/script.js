@@ -202,7 +202,7 @@ window.addEventListener("scroll", progress);
 
 var map = L.map('map', {
   center: [23.7937, 74.9629],
-  zoom: 5,
+  zoom: 4,
   zoomControl: false
 });
 // Add OpenStreetMap tile layer

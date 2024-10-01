@@ -45,10 +45,6 @@ window.addEventListener('scroll', () => {
   lastScrollTop = scrollTop;
 });
 
-function copy() {
-  navigator.clipboard.writeText("multiverse-dataverse.netlify.app");
-  document.getElementById("copy").innerHTML = "✓";
-}
 
 
 function show() {
@@ -74,12 +70,19 @@ function hide() {
 
 
 function systemDefault() {
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    dark(true);
-    indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
-  } else {
-    indicator.style.backgroundImage = "radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
+  const theme = localStorage.getItem('theme');
+
+  if (theme === 'light') {
     light(true);
+    shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#e8e8e8,#00000000)";
+  } else if (theme === 'dark') {
+    dark(true);
+  } else {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      dark(true);
+    } else {
+      ligh(true);
+    }
   }
 }
 
@@ -87,6 +90,7 @@ systemDefault();
 indicator.style.top = "95px";
 
 function light(flag) {
+  localStorage.setItem('theme', 'light');
   document.getElementById("map").style.filter = "none";
   document.getElementById("map").style.zIndex = 0;
   body.style.backgroundColor = "#e8e8e8";
@@ -119,6 +123,7 @@ function light(flag) {
   shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#e8e8e8,#00000000)";
 }
 function dark(flag) {
+  localStorage.setItem('theme', 'dark');
   document.getElementById("map").style.filter = "invert(1) hue-rotate(180deg) brightness(1.5)";
   body.style.backgroundColor = "black";
   body.style.color = "white";

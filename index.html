@@ -233,13 +233,13 @@
                 <a class="subheading" href="index.html" id="last_link">Dataverse</a>
             </div>
         </div>
-        <form name="Dataverse Reviews" action="POST" data-netlify="true">
+        <form name="Dataverse Reviews" method="POST" data-netlify="true" onsubmit="return validateForm()">
             <p>Let Me Know Your Thoughts!</p>
-            <input type="text" name="Name" placeholder="&nbsp;&nbsp;Your Name">
-            <input type="email" name="Email" placeholder="&nbsp;&nbsp;Your Email ID">
-            <input type="text" name="Message" placeholder="&nbsp;&nbsp;Your Message">
+            <input type="text" name="Name" placeholder="Your Name" required>
+            <input type="email" name="Email" placeholder="Your Email ID" required>
+            <textarea name="Message" placeholder="Your Message" required></textarea>
             <input type="submit" value="Send" id="send">
-        </form>
+        </form>  
     </footer>
     <div class="links">
         <p>Designed & Developed by Tejas Gupta</p>

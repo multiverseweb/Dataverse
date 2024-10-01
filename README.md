@@ -22,6 +22,8 @@
 ###### Data Visualisation Software & Personal Finance Tracker
 
 ---
+
+[![License: MIT](https://cdn.prod.website-files.com/5e0f1144930a8bc8aace526c/65dd9eb5aaca434fac4f1c34_License-MIT-blue.svg)](/LICENSE#L3)
 ### Table of Contents
 
 | [About Dataverse](#what-does-this-software-do) | [Use Dataverse](#deployment-specifications) | [Preview](#preview) | [Software Representation](#software-representation) | [Technologies Used](#technologies-used) | [Make Contributions](#contributions) | [Website](#website) |
@@ -143,10 +145,12 @@ Want to show yourself on the contributions-map?
 
 ---
 ### Website
-<sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 
 Deployed on
 
 <img height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Netlify_logo_%282%29.svg/1200px-Netlify_logo_%282%29.svg.png">
 
 You can visit the live site for Dataverse and related tools [here](https://multiverse-dataverse.netlify.app/).
+
+
+<sup><a href="#table-of-contents" align="right">Back to top</a></sup>

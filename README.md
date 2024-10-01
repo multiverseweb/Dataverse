@@ -13,7 +13,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) 
 ![Microsoft Excel](https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
 
-#### Read the description below and [start contributing](#contributions) now!
+#### Read the description below and [start contributing](#contributions) now! If you like the project, show some love ❤️ and star the repo! ⭐
 ---
 
 # Dataverse

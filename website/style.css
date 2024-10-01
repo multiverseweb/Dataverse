@@ -641,10 +641,11 @@ form {
 input {
     background-color: #76767639;
     border: 0.1px solid rgba(255, 255, 255, 0.193);
-    width: 100%;
+    width: 85%;
     height: 30px;
     margin-top: 20px;
     border-radius: 5px;
+    padding: 5px 10px;
 }
 
 #send {

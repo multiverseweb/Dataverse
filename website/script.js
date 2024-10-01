@@ -256,3 +256,28 @@ function updateAngle() {
 }
 
 setInterval(updateAngle, 10000);
+
+function validateForm() { 
+  const name = document.querySelector('input[name="Name"]').value.trim();
+  const email = document.querySelector('input[name="Email"]').value.trim();
+  const message = document.querySelector('textarea[name="Message"]').value.trim();
+
+  console.log("Name:", name);
+  console.log("Email:", email);
+  console.log("Message:", message);
+
+  if (!name) {
+      alert("Please enter your name.");
+      return false;
+  }
+  if (!email) {
+      alert("Please enter your email.");
+      return false;
+  }
+  if (!message) {
+      alert("Please enter your message.");
+      return false;
+  }
+  
+  return true; 
+}

@@ -136,7 +136,7 @@ ER Diagram for Finance Tracker
 Want to show yourself on the contributions-map?
 
 - Contribute to this project.
-- Go to [issues](https://github.com/multiverseweb/Dataverse/issues) and resolve the one that you can.
+- Go to [issues](https://github.com/multiverseweb/Dataverse/issues), resolve the one that you can or create a new issue.
 - Go to [`line no. 1` in script.js](https://github.com/multiverseweb/Dataverse/blob/main/website/script.js#L1-L2).
 - Append the name of your city to the `cities` array.
 - Create a `pull-request` so I can review and merge it.

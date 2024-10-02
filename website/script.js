@@ -280,7 +280,7 @@ async function validateEmailWithAPI(email) {
       return true;
   }
 }
-function validateForm() { 
+async function validateForm() { 
   const name = document.querySelector('input[name="Name"]').value.trim();
   const email = document.querySelector('input[name="Email"]').value.trim();
   const message = document.querySelector('textarea[name="Message"]').value.trim();

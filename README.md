@@ -28,6 +28,14 @@
 ![GitHub Pull Requests](https://img.shields.io/github/issues-pr/multiverseweb/Dataverse)
 ![Stars](https://img.shields.io/github/stars/multiverseweb/Dataverse)
 
+### Featured In
+
+| Event Logo | Event Name | Event Description |
+|------------|------------|-------------------|
+| <img src="https://user-images.githubusercontent.com/63473496/213306279-338f7ce9-9a9f-4427-8c2a-3e344874498f.png#gh-dark-mode-only" width="400" height="auto"> | **GirlScript Summer of Code 2024** | GirlScript Summer of Code is a three-month-long Open Source Program conducted every summer by GirlScript Foundation. It is an initiative to bring more beginners to Open-Source Software Development. |
+
+---
+
 ### Table of Contents
 
 | [About Dataverse](#what-does-this-software-do) | [Use Dataverse](#deployment-specifications) | [Preview](#preview) | [Software Representation](#software-representation) | [Technologies Used](#technologies-used) | [Make Contributions](#contributions) | [Website](#website) |

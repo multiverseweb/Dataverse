@@ -352,7 +352,7 @@ tr:hover{
 
 #download_btn:hover {
     background-color: white;
-    color: black;
+    color: black !important;
 }
 .scroll_icon{
     position: fixed;

@@ -1,5 +1,5 @@
 // Array of city names
-var cities = ["Pune", "Moradabad", "Dehradun","Delhi",];
+var cities = ["Pune", "Moradabad", "Dehradun", "Delhi"];
 
 console.log("Tejas' Codes :)");
 
@@ -23,7 +23,7 @@ var shadow = document.getElementById("shadow");
 var download = document.getElementById("download_btn");
 
 let lastScrollTop = 0;
-const navbar = document.querySelector('navbar');
+const navbar = document.querySelector('.navbar'); // Corrected selector
 
 window.addEventListener('scroll', () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -45,8 +45,6 @@ window.addEventListener('scroll', () => {
   lastScrollTop = scrollTop;
 });
 
-
-
 function show() {
   l2.style.opacity = 0;
   l1.style.transform = "rotate(-45deg)";
@@ -57,6 +55,7 @@ function show() {
   body.style.overflowY = "hidden";
   buttons.style.marginLeft = 0;
 }
+
 function hide() {
   l2.style.opacity = 1;
   l1.style.transform = "rotate(0deg)";
@@ -67,7 +66,6 @@ function hide() {
   body.style.overflowY = "scroll";
   buttons.style.marginLeft = "-60px";
 }
-
 
 function systemDefault() {
   const theme = localStorage.getItem('theme');
@@ -81,7 +79,7 @@ function systemDefault() {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       dark(true);
     } else {
-      ligh(true);
+      light(true);
     }
   }
 }
@@ -101,27 +99,23 @@ function light(flag) {
   contribute.style.color = "black";
   download.style.borderColor = "black";
   download.style.color = "black";
-  contribute.addEventListener("mouseenter", (event) => {
-    event.target.style.color = "white";
-    github.style.filter = "invert(1)";
-  });
-  contribute.addEventListener("mouseleave", (event) => {
-    event.target.style.color = "black";
-    github.style.filter = "invert(0)";
-  });
-  contribute.addEventListener("mouseenter", (event) => { event.target.style.backgroundColor = "black" });
-  contribute.addEventListener("mouseleave", (event) => { event.target.style.backgroundColor = "#e8e8e8" });
+
+  contribute.addEventListener("mouseenter", contributeHoverEffect);
+  contribute.addEventListener("mouseleave", contributeHoverEffect);
+  
   github.style.filter = "invert(0)";
   last_link.style.color = "black";
+  
   if (flag == true) {
     indicator.style.top = "95px";
-  }
-  else {
+  } else {
     indicator.style.top = "52px";
   }
+  
   indicator.style.backgroundImage = "radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
   shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#e8e8e8,#00000000)";
 }
+
 function dark(flag) {
   localStorage.setItem('theme', 'dark');
   document.getElementById("map").style.filter = "invert(1) hue-rotate(180deg) brightness(1.5)";
@@ -132,23 +126,18 @@ function dark(flag) {
   download.style.borderColor = "white";
   download.style.color = "white";
   contribute.style.borderColor = "white";
-  contribute.addEventListener("mouseenter", (event) => { event.target.style.color = "black" });
-  contribute.addEventListener("mouseleave", (event) => { event.target.style.color = "white" });
-  contribute.addEventListener("mouseenter", (event) => {
-    event.target.style.backgroundColor = "white";
-    github.style.filter = "invert(0)";
-  });
-  contribute.addEventListener("mouseleave", (event) => {
-    event.target.style.backgroundColor = "black";
-    github.style.filter = "invert(1)"
-  });
+  
+  contribute.addEventListener("mouseenter", contributeHoverEffect);
+  contribute.addEventListener("mouseleave", contributeHoverEffect);
+  
   last_link.style.color = "white";
+  
   if (flag == true) {
     indicator.style.top = "95px";
-  }
-  else {
+  } else {
     indicator.style.top = "10px";
   }
+  
   indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
   shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#000000d4,#00000000)";
 }
@@ -157,15 +146,19 @@ function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
 function changeCss() {
   var top = document.getElementById("top");
   var scroll_icon = document.getElementById("scroll_icon");
-  (this.scrollY > 30 && this.scrollY < 2450) ? top.style.opacity = 1 : top.style.opacity = 0;
-  (this.scrollY > 0) ? scroll_icon.style.opacity = 0 : scroll_icon.style.opacity = 1;
+  (window.scrollY > 30 && window.scrollY < 2450) ? top.style.opacity = 1 : top.style.opacity = 0;
+  (window.scrollY > 0) ? scroll_icon.style.opacity = 0 : scroll_icon.style.opacity = 1;
 }
 
-window.addEventListener("scroll", changeCss, false);
-
+window.addEventListener("scroll", () => {
+  changeCss();
+  animate();
+  progress();
+}, false);
 
 function animate() {
   var reveal = document.querySelectorAll(".section");
@@ -177,33 +170,26 @@ function animate() {
 
     if (elementTop < windowHeight - e) {
       reveal[i].classList.add("big_container");
-    }
-    else {
+    } else {
       reveal[i].classList.remove("big_container");
     }
   }
 }
 
-window.addEventListener("scroll", animate);
-
 let lastScroll = 0;
 function progress() {
-  var scroll = this.scrollY;
+  var scroll = window.scrollY;
   var percent = Math.round((scroll / 3000) * 100);
   document.getElementById("progress_bar").style.width = percent + 'vw';
   if (scroll > lastScroll) {
-    examples.scrollLeft+=percent/15;
-    examples2.scrollLeft+=percent/10;
+    examples.scrollLeft += percent / 15;
+    examples2.scrollLeft += percent / 10;
+  } else {
+    examples.scrollLeft -= percent / 15;
+    examples2.scrollLeft -= percent / 10;
   }
-  else{
-    examples.scrollLeft-=percent/15;
-    examples2.scrollLeft-=percent/10;
-  }
-  lastScroll=scroll;
-};
-
-window.addEventListener("scroll", progress);
-
+  lastScroll = scroll;
+}
 
 var map = L.map('map', {
   center: [23.7937, 74.9629],
@@ -235,10 +221,14 @@ function addMarker(city) {
         L.marker([lat, lon], { icon: redIcon }).addTo(map)
           .bindPopup(city);
       } else {
-        console.log("No results found for " + city);
+        console.warn(`No coordinates found for city: ${city}`);
+        showCustomAlert(`Could not find coordinates for ${city}`);
       }
     })
-    .catch(error => console.error("Error fetching coordinates for " + city + ": " + error));
+    .catch(error => {
+      console.error(`Error fetching coordinates for ${city}: `, error);
+      showCustomAlert(`Failed to get coordinates for ${city}`);
+    });
 }
 
 // Add markers for each city
@@ -253,36 +243,26 @@ function closeCustomAlert() {
   document.getElementById('custom-alert').style.display = 'none';
 }
 
-/*CHANGING DIRECTION OF AEROPLANE*/
-
+/* CHANGING DIRECTION OF AEROPLANE */
 function updateAngle() {
-  let randomAngle = Math.floor(Math.random() * 360) + 'deg';
-  document.documentElement.style.setProperty('--angle', randomAngle);
+  let randomAngle = Math.random() * 10 + 70;
+  plane.style.transform = `rotate(${randomAngle}deg)`;
+}
+setInterval(updateAngle, 1000);
+
+// Hover effect for contribute button
+function contributeHoverEffect(event) {
+  if (event.type === 'mouseenter') {
+    event.target.style.color = "white";
+    event.target.style.backgroundColor = "black";
+    github.style.filter = "invert(1)";
+  } else if (event.type === 'mouseleave') {
+    event.target.style.color = "black";
+    event.target.style.backgroundColor = "#e8e8e8";
+    github.style.filter = "invert(0)";
+  }
 }
 
-setInterval(updateAngle, 10000);
-
-function validateForm() { 
-  const name = document.querySelector('input[name="Name"]').value.trim();
-  const email = document.querySelector('input[name="Email"]').value.trim();
-  const message = document.querySelector('textarea[name="Message"]').value.trim();
-
-  console.log("Name:", name);
-  console.log("Email:", email);
-  console.log("Message:", message);
-
-  if (!name) {
-      alert("Please enter your name.");
-      return false;
-  }
-  if (!email) {
-      alert("Please enter your email.");
-      return false;
-  }
-  if (!message) {
-      alert("Please enter your message.");
-      return false;
-  }
-  
-  return true; 
-}
+// Adding event listeners for click
+burger.addEventListener("click", show);
+cross.addEventListener("click", hide);

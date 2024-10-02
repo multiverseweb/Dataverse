@@ -157,3 +157,8 @@ You can visit the live site for Dataverse and related tools [here](https://multi
 
 
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
+
+<h1>Our Valuable Contributors ❤️✨</h1>
+
+[![Contributors](https://contrib.rocks/image?repo=multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/graphs/contributors)
+ 

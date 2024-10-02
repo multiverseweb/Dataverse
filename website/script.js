@@ -152,7 +152,15 @@ function dark(flag) {
   } else {
     indicator.style.top = "52px";
   }
-  
+  else {
+    // Use the top position conditionally based on some logic
+    if (/* some condition */) {
+      indicator.style.top = "95px";
+    } else {
+      indicator.style.top = "52px";
+    }
+  }
+
   indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
   shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#000000d4,#00000000)";
   

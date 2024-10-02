@@ -257,6 +257,29 @@ function updateAngle() {
 
 setInterval(updateAngle, 10000);
 
+async function validateEmailWithAPI(email) {
+  const url = `https://emailvalidation.abstractapi.com/v1/?api_key=b1d5083cc90f40b7a0d3b94bc36b11a5&email=agrawalharsh0522@gmail.com`;
+
+  try {
+      const response = await fetch(url);
+      
+      // Check if the request exceeded the quota
+      if (response.status === 429) {  // if 429 status we can skip this by returning true
+          return true;   
+      }
+
+      const data = await response.json();
+
+      if (data.is_valid_format.value && data.is_smtp_valid.value) {
+          return true;  // Email is valid and deliverable
+      } else {
+          return false;  // Invalid or undeliverable email
+      }
+  } catch (error) {
+      console.error("Error validating email:", error);
+      return true;
+  }
+}
 function validateForm() { 
   const name = document.querySelector('input[name="Name"]').value.trim();
   const email = document.querySelector('input[name="Email"]').value.trim();
@@ -276,6 +299,14 @@ function validateForm() {
   }
   if (!message) {
       alert("Please enter your message.");
+      return false;
+  }
+
+  // API response
+  const isEmailValid = await validateEmailWithAPI(email);
+
+  if (!isEmailValid) {
+      alert("Invalid email address.");
       return false;
   }
   

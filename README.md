@@ -32,7 +32,7 @@
 
 | Event Logo | Event Name | Event Description |
 |------------|------------|-------------------|
-| <img src="https://user-images.githubusercontent.com/63473496/213306279-338f7ce9-9a9f-4427-8c2a-3e344874498f.png#gh-dark-mode-only" width="400" height="auto"> | **GirlScript Summer of Code 2024** | GirlScript Summer of Code is a three-month-long Open Source Program conducted every summer by GirlScript Foundation. It is an initiative to bring more beginners to Open-Source Software Development. |
+| <img src="https://user-images.githubusercontent.com/63473496/213306279-338f7ce9-9a9f-4427-8c2a-3e344874498f.png#gh-dark-mode-only" width="400" height="auto"> | **GirlScript Summer of Code 2024** | [GirlScript Summer of Code](https://gssoc.girlscript.tech/) is a three-month-long Open Source Program conducted every summer by GirlScript Foundation. It is an initiative to bring more beginners to Open-Source Software Development. |
 
 ---
 

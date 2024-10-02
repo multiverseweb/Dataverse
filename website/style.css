@@ -350,10 +350,6 @@ tr:hover{
     border-radius: 5px;
 }
 
-#download_btn:hover {
-    background-color: white;
-    color: black;
-}
 .scroll_icon{
     position: fixed;
     bottom: 25px;

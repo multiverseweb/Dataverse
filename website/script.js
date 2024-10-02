@@ -280,18 +280,7 @@ function updateAngle() {
 
 setInterval(updateAngle, 10000);
 
-async function validateEmailWithAPI(email) {
-  const apiUrl = `https://emailvalidation.abstractapi.com/v1/?api_key=b1d5083cc90f40b7a0d3b94bc36b11a5&email=${email}`;
-  
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    return data.is_valid_format.value && data.deliverability === 'DELIVERABLE';
-  } catch (error) {
-    console.error('Error validating email:', error);
-    return false;
-  }
-}
+
 async function validateEmailWithAPI(email) {
   const apiUrl = `https://emailvalidation.abstractapi.com/v1/?api_key=b1d5083cc90f40b7a0d3b94bc36b11a5&email=${email}`;
   

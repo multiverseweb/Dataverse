@@ -121,6 +121,15 @@ function light(flag) {
   }
   indicator.style.backgroundImage = "radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
   shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#e8e8e8,#00000000)";
+  
+  download.addEventListener("mouseenter", (event) => {
+    event.target.style.color = "white";
+    event.target.style.backgroundColor = "black";
+  });
+  download.addEventListener("mouseleave", (event) => {
+    event.target.style.color = "black";
+    event.target.style.backgroundColor = "#e8e8e8";
+  });
 }
 function dark(flag) {
   localStorage.setItem('theme', 'dark');
@@ -147,10 +156,19 @@ function dark(flag) {
     indicator.style.top = "95px";
   }
   else {
-    indicator.style.top = "10px";
+    indicator.style.top = "52px";
   }
   indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
   shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#000000d4,#00000000)";
+  
+  download.addEventListener("mouseenter", (event) => {
+    event.target.style.color = "black";
+    event.target.style.backgroundColor = "white";
+  });
+  download.addEventListener("mouseleave", (event) => {
+    event.target.style.color = "white";
+    event.target.style.backgroundColor = "black";
+  });
 }
 
 function topFunction() {

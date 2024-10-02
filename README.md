@@ -24,6 +24,8 @@
 ---
 
 [![License: MIT](https://cdn.prod.website-files.com/5e0f1144930a8bc8aace526c/65dd9eb5aaca434fac4f1c34_License-MIT-blue.svg)](/LICENSE#L3)
+![GitHub Issues](https://img.shields.io/github/issues/multiverseweb/Dataverse)
+![GitHub Pull Requests](https://img.shields.io/github/issues-pr/multiverseweb/Dataverse)
 ### Table of Contents
 
 | [About Dataverse](#what-does-this-software-do) | [Use Dataverse](#deployment-specifications) | [Preview](#preview) | [Software Representation](#software-representation) | [Technologies Used](#technologies-used) | [Make Contributions](#contributions) | [Website](#website) |

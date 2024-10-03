@@ -1,5 +1,5 @@
 // Array of city names
-var cities = ["Pune", "Moradabad", "Dehradun","Rampur","Delhi","Coimbatore"];
+var cities = ["Pune", "Moradabad", "Dehradun","Rampur","Delhi","Coimbatore","Ahmedabad"];
 
 function topFunction() {
     document.body.scrollTop = 0;
@@ -303,7 +303,29 @@ function updateAngle() {
 
 setInterval(updateAngle, 10000);
 
-function validateForm() { 
+
+async function validateEmailWithAPI(email) {
+  const apiUrl = `https://emailvalidation.abstractapi.com/v1/?api_key=b1d5083cc90f40b7a0d3b94bc36b11a5&email=${email}`;
+  
+  try {
+    const response = await fetch(apiUrl);
+    
+    if (!response.ok) {
+      // If the request fails (e.g., free tier usage is finished), return false
+      console.error('API request failed. Likely due to finished free tier requests.');
+      return true;
+    }
+
+    const data = await response.json();
+    // Return true only if the email is valid and deliverable, otherwise return false
+    return data.is_valid_format.value && data.deliverability === 'DELIVERABLE';
+  } catch (error) {
+    console.error('Error validating email:', error);
+    return true;  // Ignore by using true if there is any error (including free tier exhausted)
+  }
+}
+
+async function validateForm() { 
   const name = document.querySelector('input[name="Name"]').value.trim();
   const email = document.querySelector('input[name="Email"]').value.trim();
   const message = document.querySelector('textarea[name="Message"]').value.trim();
@@ -322,6 +344,11 @@ function validateForm() {
   }
   if (!message) {
       alert("Please enter your message.");
+      return false;
+  }
+  const isValidEmail = await validateEmailWithAPI(email);
+  if (!isValidEmail) {
+      alert("Please enter a valid email address.");
       return false;
   }
   

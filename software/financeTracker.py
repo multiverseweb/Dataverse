@@ -12,7 +12,7 @@ from matplotlib.widgets import Cursor as lines
 colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462","#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato","tan"]
 #==================================================================================================connecting MySQL
 import mysql.connector as my                                   #required modules
-mycon=my.connect(host='localhost',user='root',passwd='Harsh@1632Harsh@1632',database='finance')
+mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
 cursor=mycon.cursor()
 
 z=0

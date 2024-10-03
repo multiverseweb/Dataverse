@@ -644,8 +644,9 @@ input {
 }
 
 #send {
-    margin-left: 80%;
-    width: 20%;
+    margin-left: 100%;
+    transform: translate(calc(-100% - 5px));
+    width: min-content;
     background-color: rgba(0, 123, 121, 0.364);
     cursor: pointer;
     color:rgba(255, 255, 255, 0.63);

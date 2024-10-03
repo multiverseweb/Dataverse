@@ -305,6 +305,7 @@ setInterval(updateAngle, 10000);
 
 
 async function validateEmailWithAPI(email) {
+  console.log("Hehe")
   const apiUrl = `https://emailvalidation.abstractapi.com/v1/?api_key=b1d5083cc90f40b7a0d3b94bc36b11a5&email=${email}`;
   
   try {
@@ -326,9 +327,9 @@ async function validateEmailWithAPI(email) {
 }
 
 async function validateForm() { 
-  const name = document.querySelector('input[name="Name"]').value.trim();
-  const email = document.querySelector('input[name="Email"]').value.trim();
-  const message = document.querySelector('textarea[name="Message"]').value.trim();
+  const name =document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('Message').value.trim();
 
   console.log("Name:", name);
   console.log("Email:", email);

@@ -147,17 +147,18 @@ ER Diagram for Finance Tracker
 ### Contributions
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 
-Want to show yourself on the contributions-map?
+Want to contribute to this project? Follow these steps:
 
-- Contribute to this project.
+- Star the Repository.
+- Go to [issues](https://github.com/multiverseweb/Dataverse/issues), find an issue that you can solve or create a new issue.
+- Fork the repository.
+- Create a new branch (`git checkout -b feature-branch`).
+- Go to [`line no. 1` in script.js](https://github.com/multiverseweb/Dataverse/blob/main/website/script.js#L1-L2) and append the name of your city to the `cities` array. (optional)
+- Make your contributions and commit them (`git commit -m 'Add feature'`).
+- Push to the branch (`git push origin feature-branch`).
+- Create a Pull Request, so I can review and merge it.
 
-> [!IMPORTANT]
-> Create a new branch `gssoc-yourName` before sending the Pull Request.
-- Go to [issues](https://github.com/multiverseweb/Dataverse/issues), resolve the one that you can or create a new issue.
-- Go to [`line no. 1` in script.js](https://github.com/multiverseweb/Dataverse/blob/main/website/script.js#L1-L2).
-- Append the name of your city to the `cities` array.
-- Create a `pull-request` so I can review and merge it.
-
+
 ### Our Valuable Contributors ❤️✨
 
 [![Contributors](https://contrib.rocks/image?repo=multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/graphs/contributors)

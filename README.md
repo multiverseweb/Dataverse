@@ -105,7 +105,7 @@ Now the software should run locally with no errors, feel free to use the softwar
 
 Software GUI
 <br>
-<img src="website/web_images/about_down.png" width="800px">
+<img src="software/images/preview.png" width="800px">
 <br><br>
 <details> 
  <summary align=left><H4>View More</H4></summary><br>

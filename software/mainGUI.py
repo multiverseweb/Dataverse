@@ -904,20 +904,17 @@ def main():
 
     text = tk.Text(root, wrap="word",fg="#e8e8e8",bg="#000000",padx=15,pady=15,font="consolas 12",relief="flat")
 # Insert some text into the Text widget
-    text.insert("end", '''Designed & developed by Tejas, Ojas & Nandana, Dataverse is a comprehensive software that empowers you to effortlessly visualize your data and manage your personal finances in one convenient platform. Whether you're a data aficionado, financial planner, or simply someone keen on staying organized, Dataverse offers a suite of tools to meet your needs.
+    text.insert("end", '''Welcome to Dataverse!\n
+We’re excited to have you onboard! Dataverse is your go-to platform for seamless data visualization and efficient financial tracking, built to simplify your workflow and make data handling effortless.\n\nData Visualization
+Easily transform raw data into visually appealing charts such as bar graphs, pie charts, and line graphs. It also supports advanced data visualisation techniques like heatmaps, Radar charts, 3D Surface Plots, etc.
 
-With Dataverse, transforming raw data into captivating charts is a breeze. Choose from a variety of chart types, including bar graphs, pie charts, and line graphs, to bring your data to life and gain valuable insights at a glance.
-
-But Dataverse is more than just a data visualization tool. It's also a robust personal finance tracker, allowing you to keep tabs on your income, expenses, savings, and investments all in one place. Set financial goals, track your progress, and make informed decisions about your finances with confidence.
-\n\nWhat does this software do?\n
-● This software can be used to visualise data in many forms.
-● It allows the user to download the generated charts.
-● It can be used as a finance tracker, providing various useful outputs.
-● The data can also be stored for later use.\n\n\n\n\n<--- You can visit our website to know more :)\n''')
+You can also download the generated plots for later use.\n\n
+Finance Tracking
+Managing finances has never been easier! Dataverse’s finance tracking features allow you to monitor expenses, manage income and generate insightful reports. With detailed financial data at your fingertips, you can download and review reports whenever you need, keeping your finances organized and accessible.\n\n\n\n\n\n\n<--- You can visit our website to know more :)''')
     text.pack(pady=20,padx=40,side=TOP,anchor=W,fill=BOTH)
 
     image = Image.open("software/images/preview.png")
-    resize_image = image.resize((580, 370))
+    resize_image = image.resize((650, 370))
     preview = ImageTk.PhotoImage(resize_image)
     preview_image=Label(bg='#000000',image = preview, borderwidth=1, relief="solid",padx=15,pady=15)
     preview_image.place(relx=1.0, rely=1.0, x=-40, y=-40,anchor="se")

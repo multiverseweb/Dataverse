@@ -913,6 +913,10 @@ Finance Tracking
 Managing finances has never been easier! Dataverse’s finance tracking features allow you to monitor expenses, manage income and generate insightful reports. With detailed financial data at your fingertips, you can download and review reports whenever you need, keeping your finances organized and accessible.\n\n\n\n\n\n\n<--- You can visit our website to know more :)''')
     text.pack(pady=20,padx=40,side=TOP,anchor=W,fill=BOTH)
 
+    version = tk.Text(root, wrap="word",fg="#e8e8e8",bg="#000000",padx=15,pady=15,font="consolas 8",relief="flat")
+    version.insert("end","Current Version: 05.10.2024\nDesigned by Tejas 2023")
+    version.pack(pady=80,padx=40,side=TOP,anchor=W,fill=Y)
+
     image = Image.open("software/images/preview.png")
     resize_image = image.resize((650, 370))
     preview = ImageTk.PhotoImage(resize_image)

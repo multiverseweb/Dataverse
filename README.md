@@ -32,7 +32,7 @@
 
 | Event Logo | Event Name | Event Description |
 |------------|------------|-------------------|
-| <img src="https://user-images.githubusercontent.com/63473496/213306279-338f7ce9-9a9f-4427-8c2a-3e344874498f.png#gh-dark-mode-only" width="400" height="auto"> | **GirlScript Summer of Code 2024** | [GirlScript Summer of Code](https://gssoc.girlscript.tech/) is a three-month-long Open Source Program conducted every summer by GirlScript Foundation. It is an initiative to bring more beginners to Open-Source Software Development. |
+| <img src="https://user-images.githubusercontent.com/63473496/213306279-338f7ce9-9a9f-4427-8c2a-3e344874498f.png#gh-dark-mode-only" width="400" height="auto"> | **GirlScript Summer of Code Extended 2024** | [GirlScript Summer of Code](https://gssoc.girlscript.tech/) is a three-month-long Open Source Program conducted every summer by GirlScript Foundation. It is an initiative to bring more beginners to Open-Source Software Development. |
 
 ---
 
@@ -105,7 +105,7 @@ Now the software should run locally with no errors, feel free to use the softwar
 
 Software GUI
 <br>
-<img src="website/web_images/about_down.png" width="800px">
+<img src="software/images/preview.png" width="800px">
 <br><br>
 <details> 
  <summary align=left><H4>View More</H4></summary><br>
@@ -158,7 +158,9 @@ Want to contribute to this project? Follow these steps:
 - Push to the branch (`git push origin feature-branch`).
 - Create a Pull Request, so I can review and merge it.
 
-
+
+
+
 ### Our Valuable Contributors ❤️✨
 
 [![Contributors](https://contrib.rocks/image?repo=multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/graphs/contributors)

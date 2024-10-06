@@ -11,6 +11,7 @@ import webbrowser                                                   #for opening
 import ctypes as ct                                                 #for styling windows
 import financeTracker as financeTracker                             #user defined module - finance
 import matplotlib.pyplot as plt                                     #for plotting graphs
+from mpl_toolkits.mplot3d import Axes3D                             #for 3d plotting
 import matplotlib                                                   #for plotting graphs
 from matplotlib.widgets import Cursor                               #for lines on hover in plot
 import numpy as np                                                  #for x-axis time arange
@@ -173,6 +174,7 @@ def guest(b1,b2,b3,b4,preview_image):
     b8.config(command=partial(line,c="radar"))
     b9.config(command=partial(line,c="polar"))
     b6.config(command=partial(pie,c="pie"))
+    b13.config(command=partial(scatter,c="scatter3d"))
     
     b1.pack(pady=(30,5),padx=15)
     b2.pack(pady=5,padx=15)
@@ -849,6 +851,7 @@ def plot_radar(c,x,y,d_attr,heading,x_label,x_no_value,entry_widgets):
     financeTracker.move_figure(fig, 865, 125)    
     plt.show()
 
+
 import plotly.graph_objects as go
 from tkinter import messagebox, Label, Entry, Button, StringVar, IntVar
 from functools import partial
@@ -991,6 +994,122 @@ def plot_heatmap(c, x, entry_widgets, x_no_value):
     
     fig.show()
 
+
+
+def scatter(c):
+    if c=="scatter3d":
+        global form
+        form.pack_forget()
+        form=Frame(root,bg="#171717",relief=SUNKEN)
+        form.pack(side=LEFT,pady=20,padx=20,anchor=NW)
+        global title
+        title.pack_forget()
+        title_var=StringVar()     
+        x_var=StringVar()
+        y_var=StringVar()
+        z_var=StringVar()
+        no_values_var=IntVar() # Number of values variable
+        title_label = Label(form, text = 'Title: ', font=('calibre',10),fg='#ffffff',bg='#171717')
+        title_entry = Entry(form,textvariable = title_var, font=('calibre',10))
+        x_label = Label(form, text = 'Name of Dependent Variable(x): ', font = ('calibre',10),fg='#ffffff',bg='#171717')
+        x_entry=Entry(form, textvariable = x_var, font = ('calibre',10))    
+        y_label = Label(form, text = 'Name of Dependent Variable(y): ', font = ('calibre',10),fg='#ffffff',bg='#171717')
+        y_entry=Entry(form, textvariable = y_var, font = ('calibre',10))
+        z_label = Label(form, text = 'Name of Dependent Variable(z): ', font = ('calibre',10),fg='#ffffff',bg='#171717')
+        z_entry=Entry(form, textvariable = z_var, font = ('calibre',10)) 
+        no_values_label=Label(form, text = 'Number of Values to Plot: ', font = ('calibre',10),fg='#ffffff',bg='#171717')
+        no_values_entry=Entry(form, textvariable = no_values_var, font = ('calibre',10)) 
+
+        title_entry.insert(0,'Untitled')
+        x_entry.insert(0,'x')
+        y_entry.insert(0,'y')
+        z_entry.insert(0,'z')
+
+        title_label.grid(row=0,column=0,padx=(5,5),pady=(15,5))
+        title_entry.grid(row=0,column=1,padx=(0,10),pady=(15,5))
+        x_label.grid(row=1,column=0,padx=(5,5),pady=5)
+        x_entry.grid(row=1,column=1,padx=(0,10),pady=5)
+        y_label.grid(row=2,column=0,padx=(5,5),pady=5)
+        y_entry.grid(row=2,column=1,padx=(0,10),pady=5)
+        z_label.grid(row=3,column=0,padx=(5,5),pady=5)
+        z_entry.grid(row=3,column=1,padx=(0,10),pady=5)
+        no_values_label.grid(row=4,column=0,padx=(5,5),pady=5)
+        no_values_entry.grid(row=4,column=1,padx=(0,10),pady=5)   
+        sub_btn=Button(form,text="Create",width=10,cursor="hand2")
+        sub_btn.grid(row=5,column=1,padx=(10,15),pady=(15,15))
+        sub_btn.configure(command=partial(scatter_enter_values,c,title_var,x_var,y_var,z_var,no_values_var))
+        
+        form.mainloop()
+
+def scatter_enter_values(c,title_var,x_var,y_var,z_var,no_values_var):
+    heading=title_var.get()
+    x_label=x_var.get()
+    y_label=y_var.get()
+    z_label=z_var.get()
+    no_values=no_values_var.get()
+
+    if no_values>16:
+        messagebox.showwarning(message="Too many values to plot!\nThe maximum limit is 16.")
+    elif no_values<=0:
+        messagebox.showwarning(message="No. of values to plot should be greater than 0.")
+    else:
+        x=[]
+        y=[]
+        z=[]
+        for i in range(no_values):
+            x.append(0)
+            y.append(0)
+            z.append(0)
+            x[i]=IntVar()
+            y[i]=IntVar()
+            z[i]=IntVar()
+
+        global values_form
+        values_form.place_forget()
+        values_form=customtkinter.CTkScrollableFrame(root,
+                                                  width=800,
+                                                  height=665,
+                                                  label_text="Variable(s) Values",
+                                                  border_width=1,
+                                                  fg_color="#171717",
+                                                  scrollbar_button_hover_color="#ffffff",
+                                                  border_color="#000000"
+                                                  )
+        values_form.place(relx=1.0, rely=1.0, x=-930, y=-740,anchor=NW)
+        
+        Label(values_form, text = "Variable Values", font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=0,column=0,padx=(12,8),pady=(12,4))
+        for i in range(no_values):
+            Label(values_form, text = "Value {}: ".format(i+1), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=1+i,column=0,padx=(12,8),pady=(8,4))
+            Label(values_form, text = "{} =".format(x_label), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=1+i,column=1,padx=(12,8),pady=(8,4))
+            Entry(values_form,textvariable = x[i], font=('calibre',10)).grid(row=1+i,column=2,padx=(12,8),pady=(8,4))        
+            Label(values_form, text = "{} =".format(y_label), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=1+i,column=3,padx=(12,8),pady=(8,4))
+            Entry(values_form,textvariable = y[i], font=('calibre',10)).grid(row=1+i,column=4,padx=(12,8),pady=(8,4))
+            Label(values_form, text = "{} =".format(z_label), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=1+i,column=5,padx=(12,8),pady=(8,4))
+            Entry(values_form,textvariable = z[i], font=('calibre',10)).grid(row=1+i,column=6,padx=(12,8),pady=(8,4))
+        plot_btn=Button(values_form,text="Plot",width=10,cursor="hand2")
+        plot_btn.grid(row=no_values+1,column=0,padx=(10,15),pady=10)
+        plot_btn.configure(command=partial(plot_scatter,c,x,y,z,x_label,y_label,z_label,heading,no_values))
+
+def plot_scatter(c,x,y,z,x_label,y_label,z_label,heading,no_values):
+    for i in range(no_values):
+        x[i]=float(x[i].get())
+        y[i]=float(y[i].get())
+        z[i]=float(z[i].get())
+    plt.style.use('dark_background')
+    fig, ax=plt.subplots(figsize=(6.5, 5))
+    plt.subplots_adjust(bottom=0.152,right=0.81)
+    ax = fig.add_subplot(projection="3d")
+    scatter = ax.scatter(x,y,z,marker='o',c=z,cmap="viridis",alpha=0.5,s=60)  # color map based on z
+    fig.colorbar(scatter, ax=ax, shrink=0.5, aspect=5,location="left")
+    ax.set_xlabel(x_label)
+    ax.set_ylabel(y_label)
+    ax.set_zlabel(z_label)
+    # plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+    plt.tight_layout()
+    plt.title(heading)
+    financeTracker.move_figure(fig, 865, 125)    
+    plt.show()    
+
 #===========================================================================================================MAIN
 def main():
     global relation
@@ -1014,20 +1133,21 @@ def main():
 
     text = tk.Text(root, wrap="word",fg="#e8e8e8",bg="#000000",padx=15,pady=15,font="consolas 12",relief="flat")
 # Insert some text into the Text widget
-    text.insert("end", '''Designed & developed by Tejas, Ojas & Nandana, Dataverse is a comprehensive software that empowers you to effortlessly visualize your data and manage your personal finances in one convenient platform. Whether you're a data aficionado, financial planner, or simply someone keen on staying organized, Dataverse offers a suite of tools to meet your needs.
+    text.insert("end", '''Welcome to Dataverse!\n
+We’re excited to have you onboard! Dataverse is your go-to platform for seamless data visualization and efficient financial tracking, built to simplify your workflow and make data handling effortless.\n\nData Visualization
+Easily transform raw data into visually appealing charts such as bar graphs, pie charts, and line graphs. It also supports advanced data visualisation techniques like heatmaps, Radar charts, 3D Surface Plots, etc.
 
-With Dataverse, transforming raw data into captivating charts is a breeze. Choose from a variety of chart types, including bar graphs, pie charts, and line graphs, to bring your data to life and gain valuable insights at a glance.
-
-But Dataverse is more than just a data visualization tool. It's also a robust personal finance tracker, allowing you to keep tabs on your income, expenses, savings, and investments all in one place. Set financial goals, track your progress, and make informed decisions about your finances with confidence.
-\n\nWhat does this software do?\n
-● This software can be used to visualise data in many forms.
-● It allows the user to download the generated charts.
-● It can be used as a finance tracker, providing various useful outputs.
-● The data can also be stored for later use.\n\n\n\n\n<--- You can visit our website to know more :)\n''')
+You can also download the generated plots for later use.\n\n
+Finance Tracking
+Managing finances has never been easier! Dataverse’s finance tracking features allow you to monitor expenses, manage income and generate insightful reports. With detailed financial data at your fingertips, you can download and review reports whenever you need, keeping your finances organized and accessible.\n\n\n\n\n\n\n<--- You can visit our website to know more :)''')
     text.pack(pady=20,padx=40,side=TOP,anchor=W,fill=BOTH)
 
+    #version = tk.Text(root, wrap="word",fg="#e8e8e8",bg="#000000",padx=15,pady=15,font="consolas 8",relief="flat")
+    #version.insert("end","Current Version: 05.10.2024\nDesigned by Tejas 2023")
+    #version.pack(pady=80,padx=40,side=TOP,anchor=W,fill=Y)
+
     image = Image.open("software/images/preview.png")
-    resize_image = image.resize((580, 370))
+    resize_image = image.resize((650, 370))
     preview = ImageTk.PhotoImage(resize_image)
     preview_image=Label(bg='#000000',image = preview, borderwidth=1, relief="solid",padx=15,pady=15)
     preview_image.place(relx=1.0, rely=1.0, x=-40, y=-40,anchor="se")

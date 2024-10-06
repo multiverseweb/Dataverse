@@ -266,21 +266,57 @@ function animate() {
 
 window.addEventListener("scroll", animate);
 
-let lastScroll = 0;
-function progress() {
-  var scroll = this.scrollY;
-  var percent = Math.round((scroll / 3000) * 100);
-  document.getElementById("progress_bar").style.width = percent + 'vw';
-  if (scroll > lastScroll) {
-    examples.scrollLeft+=percent/15;
-    examples2.scrollLeft+=percent/10;
-  }
-  else{
-    examples.scrollLeft-=percent/15;
-    examples2.scrollLeft-=percent/10;
-  }
-  lastScroll=scroll;
+let scrollSpeed = 2;
+let currentSpeed = scrollSpeed;
+let autoScroll = true;
+let scrollTimeout;
+
+// Function to scroll the 'examples' and 'examples2' div automatically
+function autoScrollExamples() {
+    if (autoScroll) {
+        examples.scrollLeft += currentSpeed;
+        examples2.scrollLeft += currentSpeed * 1.2;
+
+        // Looping the scroll
+        if (examples.scrollLeft + examples.clientWidth >= examples.scrollWidth) {
+            examples.scrollLeft = 0;
+        }
+        if (examples2.scrollLeft + examples2.clientWidth >= examples2.scrollWidth) {
+            examples2.scrollLeft = 0;
+        }
+    }
+}
+
+setInterval(autoScrollExamples, 30);
+
+// Smoothly adjust scroll speed
+const adjustSpeed = (targetSpeed) => {
+    clearInterval(scrollTimeout);
+    scrollTimeout = setInterval(() => {
+        if (currentSpeed !== targetSpeed) {
+            currentSpeed += (targetSpeed > currentSpeed ? 0.1 : -0.3);
+            currentSpeed = Math.abs(currentSpeed - targetSpeed) < 0.1 ? targetSpeed : currentSpeed;
+        } else {
+            clearInterval(scrollTimeout);
+        }
+    }, 30);
 };
+
+// Hovering behavior with smooth stop/resume
+const stopAutoScroll = () => {
+    autoScroll = false;
+    adjustSpeed(0);
+};
+
+const startAutoScroll = () => {
+    autoScroll = true;
+    adjustSpeed(scrollSpeed);
+};
+
+examples.addEventListener("mouseenter", stopAutoScroll);
+examples.addEventListener("mouseleave", startAutoScroll);
+examples2.addEventListener("mouseenter", stopAutoScroll);
+examples2.addEventListener("mouseleave", startAutoScroll);
 
 window.addEventListener("scroll", progress);
 
@@ -325,5 +361,5 @@ function validateForm() {
       return false;
   }
   
-  return true; 
+  return true;
 }

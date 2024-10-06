@@ -885,7 +885,6 @@ input {
     }
 }
 
-
 .scrollBar {
     position: fixed;
     z-index: 90;
@@ -923,7 +922,6 @@ input {
     color: white;
 }
 
-
 .row_buttons{
     display: flex;
     justify-content: space-around;
@@ -935,7 +933,65 @@ input {
     border: 1px solid white;
     padding: 5px 20px 5px 20px;
 }
+
 #later{
     color: white;
     background-color: #00000000;
+}
+
+.license-content {
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 50px;
+    padding: 50px 50px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    font-size: 16px;
+    width: auto;
+    max-width: auto;
+}
+
+#codeOfconduct {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+#codeOfconduct h1 {
+    text-align: center;
+    font-size: 2em;
+    padding-top: 40px;
+    margin-bottom: 40px;
+}
+
+#codeOfconduct h2 {
+    background: linear-gradient(to bottom, rgba(143, 143, 143, 0.8), #8f8f8f);;
+    text-align: center;
+    font-size: 1.8em;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+#codeOfconduct p {  
+    font-size: 1.1em;
+}
+
+#codeOfconduct ul {
+    padding-left: 20px;
+}
+
+#codeOfconduct ul li {
+    margin-bottom: 10px;
+}
+
+#codeOfconduct a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+#codeOfconduct a:hover {
+    text-decoration: underline;
 }

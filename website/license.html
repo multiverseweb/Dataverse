@@ -3,31 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>License</title>
+    <title>Dataverse MIT License</title>
+    <link rel="shortcut icon" href="web_images/3dlogo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
 </head>
-<body bgcolor="#191a19">
-    <font color="#a4a6a5">
-MIT License
-<br><br>
-Copyright &copy; 2024 Tejas Gupta
-<br><br>
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-<br><br>
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-<br><br>
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-    </font>
+
+<body id="body">
+    <div class="buttons" id="buttons">
+        <div id="indicator"></div>
+        <div class="group">
+            <button id="first_button" onclick="dark(false)">
+                <img src="https://static.thenounproject.com/png/4066359-200.png" class="copy" id="moon">
+            </button>
+            <button onclick="light(false)">
+                <div id="theme2">
+                    <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy"
+                        id="sun">
+                </div>
+            </button>
+            <button id="first_button" onclick="systemDefault()">
+                <img src="web_images/settings.png" class="copy" id="default">
+            </button>
+        </div>
+    </div>
+    <nav id="navbar">
+        <img src="web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
+        <img src="web_images/3d_glow.png" alt="Dataverse Logo" class="logo" id="glow">
+    </nav>
+    
+    <button class="burger" id="burger" onclick="show()"></button>
+    <button id="cross" class="burger" onclick="hide()"></button>
+    <div class="burger" id="lines">
+        <div class="line" id="l1"></div>
+        <div class="line" id="l2"></div>
+        <div class="line" id="l3"></div>
+    </div>
+    <div class="plane" id="plane">
+        <table>
+            <tr>
+                <td><a href="https://codeittool.netlify.app/" class="table_link" target="_blank">CodeIt</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://multiverseweb.github.io/Encryptify/" class="table_link" target="_blank">Encryptify</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link" target="_blank">Github Repository</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://github.com/multiverseweb/Dataverse/blob/main/README.md"
+                        class="table_link" target="_blank">Documentation</a></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="https://www.figma.com/proto/BBbXARgpxercxacjm0qpgX/Dataverse?type=design&node-id=45-25&t=zMFBUgENaIeqhRYZ-1&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=22%3A310&show-proto-sidebar=1&mode=design"
+                        class="table_link" target="_blank">Figma
+                        Design</a>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="codeOfconduct.html" class="table_link">Code of Conduct</a></td>
+            </tr>
+            <tr>
+                <td><a href="license.html" class="table_link">License</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="license-content">
+        <h2>MIT License</h2>
+        <br>
+        <h3>Copyright &copy; 2024 Tejas Gupta</h3>
+        <br>
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        <br><br>
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        <br><br>
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+    </div>
+
+    <script src="license.js"></script>
 </body>
 </html>

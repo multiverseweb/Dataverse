@@ -13,7 +13,14 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) 
 ![Microsoft Excel](https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
 
+### Project Mentors
+[Jency Maheshwari](https://github.com/jency1)
+
+[Shubhrangi Pathak](https://github.com/shubhrangipathak)
+
 #### Read the description below and [start contributing](#contributions) now! If you like the project, show some love ❤️ and star the repo! ⭐
+
+
 ---
 
 # Dataverse
@@ -23,10 +30,17 @@
 
 ---
 
-[![License: MIT](https://cdn.prod.website-files.com/5e0f1144930a8bc8aace526c/65dd9eb5aaca434fac4f1c34_License-MIT-blue.svg)](/LICENSE#L3)
-![GitHub Issues](https://img.shields.io/github/issues/multiverseweb/Dataverse)
-![GitHub Pull Requests](https://img.shields.io/github/issues-pr/multiverseweb/Dataverse)
-![Stars](https://img.shields.io/github/stars/multiverseweb/Dataverse)
+![Github](https://img.shields.io/github/license/multiverseweb/Dataverse?style=for-the-badge)
+![Visitors](https://api.visitorbadge.io/api/visitors?path=multiverseweb/Dataverse%20&countColor=%2523263759&style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/multiverseweb/Dataverse?style=for-the-badge)
+![GitHub contributors](https://img.shields.io/github/contributors/multiverseweb/Dataverse?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/multiverseweb/Dataverse?style=for-the-badge)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/multiverseweb/Dataverse?style=for-the-badge)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/multiverseweb/Dataverse?style=for-the-badge)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/multiverseweb/Dataverse?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/multiverseweb/Dataverse?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/multiverseweb/Dataverse?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/multiverseweb/Dataverse?style=for-the-badge)
 
 ### Featured In
 

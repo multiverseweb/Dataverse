@@ -268,6 +268,52 @@
         <div class="end_line"></div>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script src="website/script.js"></script>
+        <script>
+            function validateForm() {
+
+            const nameInput = document.querySelector('[name="Name"]');
+            const emailInput = document.querySelector('[name="Email"]');
+            const messageInput = document.querySelector('[name="Message"]');
+
+
+            if (nameInput.value === '') {
+                alert('Please enter your name.');
+                return false;
+            }
+  
+            if (!isValidEmail(emailInput.value)) {
+              alert('Please enter a valid email address.');
+            return false;
+            }
+  
+            if (messageInput.value === '') {
+                alert('Please enter your message.');
+                return false;
+            }
+  
+  
+            const formData = {
+                Name: nameInput.value,
+                Email: emailInput.value,
+                Message: messageInput.value
+                };
+                localStorage.setItem('reviewData', JSON.stringify(formData));
+  
+                nameInput.value = '';
+                emailInput.value = '';
+                messageInput.value = '';
+    
+                alert('Your feedback has been submitted');
+
+                return false;
+            } 
+  
+  
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+        </script>
 
 </body>
 

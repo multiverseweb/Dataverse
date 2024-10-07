@@ -18,17 +18,27 @@ High-quality documentation is essential for the success of the project. Contribu
 
 ## 🧾 General Guidelines
 
-- **Communication**:  
-  If you're unsure about a fix or feature, please open an issue or ask questions in the issue’s thread before proceeding.
+- **Communication**:  If you're unsure about a fix or feature, please open an issue or ask questions in the issue’s thread before proceeding.
 
-- **Documentation**:  
-  Make sure to update or add relevant documentation, including comments in the code, if you’re working on a feature.
+- **Documentation**:  Make sure to update or add relevant documentation, including comments in the code, if you’re working on a feature.
 
-- **Testing**:  
-  Run tests after implementing your changes and write new ones if necessary. The project uses [testing tool/framework] for verification.
+- **Testing**:  Run tests after implementing your changes and write new ones if necessary. The project uses [testing tool/framework] for verification.
 
-- **Code Style**:  
-  Follow the coding standards outlined in the [style guide](https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide).
+- **Code Style**: Follow the coding standards outlined in the [style guide](https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide).
+
+- **Reporting Bugs**:
+  If you encounter any bugs, feel free to report them. 
+
+- **Suggesting Features or Enhancements**:
+  We welcome new ideas and suggestions! 
+
+- **Submitting Code**:
+  Keep your pull requests focused on a single change to make reviews easier.
+
+- **Commit Message Format**:
+  Use meaningful and descriptive commit messages.
+
+![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
 
 
  ## How to Contribute?

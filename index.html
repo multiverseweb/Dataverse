@@ -236,11 +236,17 @@
             </div>
         </div>
         <form name="Dataverse Reviews" method="POST" data-netlify="true" onsubmit="return validateForm()">
-            <p>Let Me Know Your Thoughts!</p>
-            <input type="text" name="Name" placeholder="Your Name" required>
-            <input type="email" name="Email" placeholder="Your Email ID" required>
-            <input name="Message" placeholder="Your Message" required>
-            <input type="submit" value="Send" id="send">
+            <h2 class="thoughtsForm">Let Me Know Your Thoughts!</h2>
+            <div class="form-group">
+                <input type="text" name="Name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="Email" placeholder="Your Email ID" required>
+            </div>
+            <div class="form-group">
+                <textarea name="Message" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" id="send">Send</button>
         </form>
     </footer>
     <div class="links">

@@ -669,40 +669,65 @@ footer {
 }
 
 form {
-    background-color: #4c4c4c2a;
+    background-color: rgba(76, 76, 76, 0.1);
     backdrop-filter: blur(7px);
-    width: 30vw;
-    margin-left: 5vw;
-    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
     text-align: center;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px black;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-input {
-    background-color: #76767639;
-    border: 0.1px solid rgba(255, 255, 255, 0.193);
-    width: 85%;
-    height: 30px;
-    margin-top: 20px;
+.thoughtsForm {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input,
+textarea {
+    background-color: rgba(118, 118, 118, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    padding: 10px;
     border-radius: 5px;
-    padding: 5px 10px;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: rgba(0, 123, 121, 0.5);
+    box-shadow: 0 0 5px rgba(0, 123, 121, 0.3);
 }
 
 #send {
-    margin-left: 100%;
-    transform: translate(calc(-100% - 5px));
-    width: min-content;
-    background-color: rgba(0, 123, 121, 0.364);
+    background-color: rgba(0, 123, 121, 0.7);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    color: rgba(255, 255, 255, 0.63);
-    transition-duration: 0.3s;
+    font-size: 16px;
+    transition: all 0.3s ease;
 }
 
 #send:hover {
+    background-color: rgba(0, 240, 236, 0.9);
     color: black;
-    background-color: rgba(0, 240, 236, 0.867);
-    box-shadow: 0px 0px 10px cyan;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
 
 .cubes {

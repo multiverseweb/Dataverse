@@ -130,7 +130,19 @@ a {
 
 #top {
     opacity: 0;
-    transition-duration: 0.3s;
+    transition: opacity 0.3s ease;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#scroll_icon {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
 }
 
 .top img {

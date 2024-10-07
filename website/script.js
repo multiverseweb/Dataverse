@@ -2,14 +2,22 @@
 var cities = ["Pune", "Moradabad", "Dehradun","Rampur","Delhi","Coimbatore"];
 
 function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 }
+
 function changeCss() {
-    var top = document.getElementById("top");
-    var scroll_icon = document.getElementById("scroll_icon");
-    (this.scrollY > 30 && this.scrollY < 2450) ? top.style.opacity = 1 : top.style.opacity = 0;
-    (this.scrollY > 0) ? scroll_icon.style.opacity = 0 : scroll_icon.style.opacity = 1;
+  var top = document.getElementById("top");
+  var scroll_icon = document.getElementById("scroll_icon");
+
+  if (this.scrollY > 30 && this.scrollY < 2450) {
+    top.style.opacity = 1;
+  } else {
+    top.style.opacity = 0;
+  }
+  scroll_icon.style.opacity = this.scrollY > 0 ? 0 : 1;
 }
 
 window.addEventListener("scroll", changeCss, false);

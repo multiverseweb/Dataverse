@@ -511,7 +511,7 @@ tr:hover {
     transform: translate(-50%, -50%) rotate(var(--angle));
 }
 
-/* /=====================hiding map watermark=================/  */
+/*=====================hiding map watermark=================*/ 
 .leaflet-control-attribution {
     display: none !important;
 }
@@ -961,7 +961,7 @@ input {
     text-align: left;
 }
 
-/* /===========================RESPONSIVE===================================/  */
+/*===========================RESPONSIVE===================================*/ 
 @media screen and (max-width: 660px) {
     .plane {
         max-width: 600px;

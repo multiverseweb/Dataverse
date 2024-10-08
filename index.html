@@ -39,42 +39,100 @@
         <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
     </nav>
 
-    <button class="burger" id="burger" onclick="show()"></button>
-    <button id="cross" class="burger" onclick="hide()"></button>
-    <div class="burger" id="lines">
-        <div class="line" id="l1"></div>
-        <div class="line" id="l2"></div>
-        <div class="line" id="l3"></div>
-    </div>
-    <div class="plane" id="plane">
-        <table>
-            <tr>
-                <td><a href="https://codeittool.netlify.app/" class="table_link">CodeIt</a></td>
-            </tr>
-            <tr>
-                <td><a href="https://multiverseweb.github.io/Encryptify/" class="table_link">Encryptify</a></td>
-            </tr>
-            <tr>
-                <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
-            </tr>
-            <tr>
-                <td><a href="https://github.com/multiverseweb/Dataverse/blob/main/README.md"
-                        class="table_link">Documentation</a></td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="https://www.figma.com/proto/BBbXARgpxercxacjm0qpgX/Dataverse?type=design&node-id=45-25&t=zMFBUgENaIeqhRYZ-1&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=22%3A310&show-proto-sidebar=1&mode=design"
-                        class="table_link">Figma
-                        Design</a>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="website/codeOfconduct.html" class="table_link" target="_blank">Code of Conduct</a></td>
-            </tr>
-            <tr>
-                <td><a href="website/license.html" class="table_link">License</a></td>
-            </tr>
-        </table>
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dataverse</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        <link rel="shortcut icon" href="website/web_images/3dlogo.svg" type="image/x-icon">
+        <link rel="stylesheet" href="website/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+        <style>
+            /* Basic styling for the header */
+            body {
+                margin: 0;
+                font-family: 'Inconsolata', monospace;
+                background-color: #f0f0f0;
+            }
+    
+            header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between; /* Ensures space between logo and nav items */
+                padding: 10px;
+                background-color: #000;
+                color: #fff;
+            }
+    
+            .logo-container {
+                display: flex;
+                align-items: center;
+                margin-right: 20px; /* Adjust this margin to control space between the logo and the nav */
+            }
+    
+            .logo {
+                width: 50px; /* Adjust logo size as needed */
+            }
+    
+            nav {
+                flex: 1;
+                display: flex;
+                justify-content: center; /* Centers navigation items */
+            }
+    
+            .header-nav {
+                list-style-type: none;
+                display: flex;
+                gap: 20px;
+                margin: 0;
+                padding: 0;
+            }
+    
+            .header-link {
+                color: #fff;
+                text-decoration: none;
+                font-weight: bold;
+            }
+    
+            .header-link:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    
+    <body id="body">
+        <header id="navbar">
+            <div class="logo-container">
+                <img src="website/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
+                <img src="website/web_images/3d_glow.png" alt="Dataverse Logo" class="logo" id="glow">
+            </div>
+            <nav>
+                <ul class="header-nav">
+                    <li><a href="https://codeittool.netlify.app/" class="header-link">CodeIt</a></li>
+                    <li><a href="https://multiverseweb.github.io/Encryptify/" class="header-link">Encryptify</a></li>
+                    <li><a href="https://github.com/multiverseweb/Dataverse" class="header-link">Github Repository</a></li>
+                    <li><a href="https://github.com/multiverseweb/Dataverse/blob/main/README.md" class="header-link">Documentation</a></li>
+                    <li><a href="https://www.figma.com/proto/BBbXARgpxercxacjm0qpgX/Dataverse?type=design&node-id=45-25&t=zMFBUgENaIeqhRYZ-1&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=22%3A310&show-proto-sidebar=1&mode=design" class="header-link">Figma Design</a></li>
+                    <li><a href="website/codeOfconduct.html" class="header-link" target="_blank">Code of Conduct</a></li>
+                    <li><a href="website/license.html" class="header-link">License</a></li>
+                </ul>
+            </nav>
+        </header>
+    
+        <main>
+            <!-- Content sections as per your design -->
+        </main>
+    </body>
+    
+    </html>
+    
     </div>
     <div class="scroll_icon" id="scroll_icon">SCROLL TO KNOW MORE
         <div class="shadow" id="shadow"></div>

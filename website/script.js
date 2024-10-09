@@ -1,6 +1,12 @@
 // Array of city names
 var cities = ["Pune", "Moradabad", "Dehradun","Rampur","Delhi","Coimbatore"];
 
+// /preloader js styling
+let preloader = document.querySelector("#preloader");
+window.addEventListener("load",function(e){
+    preloader.style.display = "none";
+});
+
 function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
@@ -362,4 +368,50 @@ function validateForm() {
   }
   
   return true;
+}
+
+// FORM VALIDATING FUNCTION
+function validateForm() {
+
+  const nameInput = document.querySelector('[name="Name"]');
+  const emailInput = document.querySelector('[name="Email"]');
+  const messageInput = document.querySelector('[name="Message"]');
+
+
+  if (nameInput.value === '') {
+      alert('Please enter your name.');
+      return false;
+  }
+  
+  if (!isValidEmail(emailInput.value)) {
+    alert('Please enter a valid email address.');
+    return false;
+  }
+  
+  if (messageInput.value === '') {
+      alert('Please enter your message.');
+      return false;
+  }
+  
+  
+  const formData = {
+    Name: nameInput.value,
+    Email: emailInput.value,
+    Message: messageInput.value
+  };
+  localStorage.setItem('reviewData', JSON.stringify(formData));
+  
+  nameInput.value = '';
+  emailInput.value = '';
+  messageInput.value = '';
+    
+  alert('Your feedback has been submitted');
+
+  return false;
+} 
+  
+// EMAIL VALIDATING FUNCTION 
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }

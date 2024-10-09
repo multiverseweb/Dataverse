@@ -170,6 +170,7 @@ def guest(b1,b2,b3,b4,preview_image):
     b3.config(command=partial(line,c="scatter"))
     b4.config(command=partial(line,c="area"))
     b5.config(command=partial(line,c="hist"))
+    b7.config(command=partial(line,c="heat"))
     b8.config(command=partial(line,c="radar"))
     b9.config(command=partial(line,c="polar"))
     b6.config(command=partial(pie,c="pie"))
@@ -425,27 +426,23 @@ def callback(url):
 #=====================================================================================================================================DATA VISUALIZATION
 x = []
 y = []
-d_attr=[]
-count=0
+d_attr = []
+count = 0
+
+root = customtkinter.CTk()
+root.geometry("1300x700")
+
 def line(c):
     global form
     form.pack_forget()
-    form=Frame(root,bg="#171717",relief=SUNKEN)
-    form.pack(side=LEFT,pady=20,padx=20,anchor=NW)
+    form = Frame(root, bg="#171717", relief=SUNKEN)
+    form.pack(side=LEFT, pady=20, padx=20, anchor=NW)
+
     global title
     title.pack_forget()
-    title_var=StringVar()
-    x_var=StringVar()
-    y_var=IntVar()
-    title_label = Label(form, text = 'Title: ', font=('calibre',10),fg='#ffffff',bg='#171717')
-    title_entry = Entry(form,textvariable = title_var, font=('calibre',10))
-    x_label = Label(form, text = 'Name of Independent Variable: ', font = ('calibre',10),fg='#ffffff',bg='#171717')
-    x_entry=Entry(form, textvariable = x_var, font = ('calibre',10))
-    y_label = Label(form, text = 'No. of Dependent Variable(s): ', font = ('calibre',10),fg='#ffffff',bg='#171717')
-    y_entry=Entry(form, textvariable = y_var, font = ('calibre',10))
-    
-    title_entry.insert(0,'Untitled')
-    x_entry.insert(0,'x')
+    title_var = StringVar()
+    x_var = StringVar()
+    y_var = IntVar()
 
     title_label.grid(row=0,column=0,padx=(5,5),pady=(15,5))
     title_entry.grid(row=0,column=1,padx=(0,10),pady=(15,5))
@@ -460,8 +457,23 @@ def line(c):
     else:
         sub_btn.configure(command=partial(line_values,c,title_var,x_var,y_var))
 
+    title_label.grid(row=0,column=0,padx=(5,5),pady=(15,5))
+    title_entry.grid(row=0,column=1,padx=(0,10),pady=(15,5))
+    x_label.grid(row=1,column=0,padx=(5,5),pady=5)
+    x_entry.grid(row=1,column=1,padx=(0,10),pady=5)
+    y_label.grid(row=2,column=0,padx=(5,5),pady=5)
+    y_entry.grid(row=2,column=1,padx=(0,10),pady=5)
+    sub_btn=Button(form,text="Create",width=10,cursor="hand2")
+    sub_btn.grid(row=3,column=1,padx=(10,15),pady=(15,15))
+    sub_btn.configure(command=partial(line_values,c,title_var,x_var,y_var))
+
+
     form.mainloop()
 
+def line_values(c, title_var, x_var, y_var):
+    def get_y_values(c, y, start, end, width, names_form, x_label):
+        width_value = width.get() if width.get() > 0 else 1
+        Label(names_form, text="For y-axis", font=('calibre', 10, "bold"), fg='#ffffff', bg='#171717').grid(row=5, column=0, padx=(15, 10), pady=(15, 5))
 
 def line_values(c,title_var,x_var,y_var):
     def y_values(c,y,start,end,width,names_form,x_label):
@@ -482,243 +494,198 @@ def line_values(c,title_var,x_var,y_var):
 
     def enter_values(c,y,start,end,width,x_label):
         for i in range(y_var):
-            default=[]
-            for j in range(start.get(),end.get()+1,width):
-                default.append(0)
-            y.append(default)
-        for i in y:
-            for j in i:
-                i=IntVar()
+            Label(names_form, text=f"Dependent Attribute {i + 1}: ", font=('calibre', 10), fg='#ffffff', bg='#171717').grid(row=6 + i, column=0, padx=(15, 10), pady=(10, 5))
+            entry = Entry(names_form, textvariable=d_attr[i], font=('calibre', 10))
+            entry.grid(row=6 + i, column=1, padx=(15, 10), pady=(10, 5))
+
+        enter_btn = Button(names_form, text="Enter Values", width=10, cursor="hand2")
+        enter_btn.grid(row=7 + y_var, column=1, padx=(10, 15), pady=10)
+        enter_btn.configure(command=partial(enter_values, c, y, start, end, width, x_label))
+
+    def enter_values(c, y, start, end, width, x_label):
         global values_form
         values_form.place_forget()
-        values_form=customtkinter.CTkScrollableFrame(root,
-                                                  width=230,
-                                                  height=665,
-                                                  label_text="Dependent Variable(s) Values",
-                                                  border_width=1,
-                                                  fg_color="#171717",
-                                                  scrollbar_button_hover_color="#ffffff",
-                                                  border_color="#000000"
-                                                  )
-        values_form.place(relx=1.0, rely=1.0, x=-930, y=-740,anchor=NW)
-        row=0
+        values_form = customtkinter.CTkScrollableFrame(root,
+                                                        width=230,
+                                                        height=665,
+                                                        label_text="Dependent Variable(s) Values",
+                                                        border_width=1,
+                                                        fg_color="#171717",
+                                                        scrollbar_button_hover_color="#ffffff",
+                                                        border_color="#000000"
+                                                        )
+        values_form.place(relx=1.0, rely=1.0, x=-930, y=-740, anchor=NW)
+
+        row = 0
         entry_widgets = []
         for i in range(len(y)):
-            entries=[]
-            Label(values_form, text = "For {}".format(d_attr[i].get().title()), font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=row,column=0,padx=(15,10),pady=(15,5))
+            entries = []
+            Label(values_form, text="For {}".format(d_attr[i].get().title()), font=('calibre', 10, "bold"), fg='#ffffff', bg='#171717').grid(row=row, column=0, padx=(15, 10), pady=(15, 5))
             for j in range(len(y[0])):
-                Label(values_form, text = "{}({}={}): ".format(d_attr[i].get(),x_label,x[j]), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=row+j+1,column=0,padx=(15,10),pady=(10,5))
-                #entry=Entry(values_form,textvariable = y[i][j], font=('calibre',10),width=15).grid(row=row+j+1,column=1,padx=(15,10),pady=(10,5))
-                entry = Entry(values_form, font=('calibre',10),width=15)
-                entry.grid(row=row+j+1,column=1,padx=(15,10),pady=(10,5))
-                entry.insert(0,0)
+                Label(values_form, text="{}({}={}): ".format(d_attr[i].get(), x_label, x[j]), font=('calibre', 10), fg='#ffffff', bg='#171717').grid(row=row + j + 1, column=0, padx=(15, 10), pady=(10, 5))
+                entry = Entry(values_form, font=('calibre', 10), width=15)
+                entry.grid(row=row + j + 1, column=1, padx=(15, 10), pady=(10, 5))
+                entry.insert(0, 0)
                 entries.append(entry)
-                row = row+1
+                row += 1
             entry_widgets.append(entries)
-            row+=len(y[0])
-        plot_btn=Button(values_form,text="Plot",width=10,cursor="hand2")
-        plot_btn.grid(row=row,column=0,padx=(10,15),pady=10)
-        plot_btn.configure(command=partial(plot_line,c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets))
+            row += len(y[0])
 
-    heading=title_var.get()
-    x_label=x_var.get()
-    y_var=y_var.get()
+        plot_btn = Button(values_form, text="Plot", width=10, cursor="hand2")
+        plot_btn.grid(row=row, column=0, padx=(10, 15), pady=10)
+        plot_btn.configure(command=partial(plot_line, c, x, y, d_attr, title_var.get(), x_label, start.get(), end.get(), width.get(), entry_widgets))
 
-    if y_var>16:
+    heading = title_var.get()
+    x_label = x_var.get()
+    y_var = y_var.get()
+
+    # Input validation
+    if y_var > 16:
         messagebox.showwarning(message="Too many dependent variables!\nThe maximum limit is 16.")
-    elif y_var<=0:
+    elif y_var <= 0:
         messagebox.showwarning(message="No. of dependent variables should be greater than 0.")
     else:
         global values_form
         values_form.place_forget()
         global names_form
         names_form.place_forget()
-        names_form=customtkinter.CTkScrollableFrame(root,
-                                                    width=330,
-                                                    height=480,
-                                                    label_text="{} Values".format(heading),
-                                                    border_width=1,
-                                                    fg_color="#171717",
-                                                    scrollbar_button_hover_color="#ffffff",
-                                                    border_color="#000000"
-                                                    )
-        names_form.place(relx=1.0, rely=1.0, x=-1300, y=-555,anchor=NW)
+        names_form = customtkinter.CTkScrollableFrame(root,
+                                                      width=330,
+                                                      height=480,
+                                                      label_text="{} Values".format(heading),
+                                                      border_width=1,
+                                                      fg_color="#171717",
+                                                      scrollbar_button_hover_color="#ffffff",
+                                                      border_color="#000000"
+                                                      )
+        names_form.place(relx=1.0, rely=1.0, x=-1300, y=-555, anchor=NW)
 
-        start=IntVar()
-        end=IntVar()
-        width=IntVar()
-        Label(names_form, text = "For {}".format(x_label), font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=0,column=0,padx=(15,10),pady=(15,5))
-        start_label = Label(names_form, text = "{} Start Value: ".format(x_label), font=('calibre',10),fg='#ffffff',bg='#171717')
-        start_entry = Entry(names_form,textvariable = start, font=('calibre',10))
-        end_label = Label(names_form, text = "{} End Value: ".format(x_label), font = ('calibre',10),fg='#ffffff',bg='#171717')
-        end_entry=Entry(names_form, textvariable = end, font = ('calibre',10))
-        width_label = Label(names_form, text = "{} Class Width: ".format(x_label), font = ('calibre',10),fg='#ffffff',bg='#171717')
-        width_entry=Entry(names_form, textvariable = width, font = ('calibre',10))
+        start = IntVar()
+        end = IntVar()
+        width = IntVar()
+        Label(names_form, text="For {}".format(x_label), font=('calibre', 10, "bold"), fg='#ffffff', bg='#171717').grid(row=0, column=0, padx=(15, 10), pady=(15, 5))
+        
+        start_label = Label(names_form, text="{} Start Value: ".format(x_label), font=('calibre', 10), fg='#ffffff', bg='#171717')
+        start_entry = Entry(names_form, textvariable=start, font=('calibre', 10))
+        
+        end_label = Label(names_form, text="{} End Value: ".format(x_label), font=('calibre', 10), fg='#ffffff', bg='#171717')
+        end_entry = Entry(names_form, textvariable=end, font=('calibre', 10))
+        
+        width_label = Label(names_form, text="{} Class Width: ".format(x_label), font=('calibre', 10), fg='#ffffff', bg='#171717')
+        width_entry = Entry(names_form, textvariable=width, font=('calibre', 10))
 
-        start_label.grid(row=1,column=0,padx=(15,10),pady=(10,5))
-        start_entry.grid(row=1,column=1,padx=(10,15),pady=5)
-        end_label.grid(row=2,column=0,padx=(15,10),pady=5)
-        end_entry.grid(row=2,column=1,padx=(10,15),pady=5)
-        width_label.grid(row=3,column=0,padx=(15,10),pady=5)
-        width_entry.grid(row=3,column=1,padx=(10,15),pady=5)
+        start_label.grid(row=1, column=0, padx=(15, 10), pady=(10, 5))
+        start_entry.grid(row=1, column=1, padx=(10, 15), pady=5)
+        end_label.grid(row=2, column=0, padx=(15, 10), pady=5)
+        end_entry.grid(row=2, column=1, padx=(10, 15), pady=5)
+        width_label.grid(row=3, column=0, padx=(15, 10), pady=5)
+        width_entry.grid(row=3, column=1, padx=(10, 15), pady=5)
 
-        next_btn=Button(names_form,text="Next",width=10,cursor="hand2")
-        next_btn.grid(row=4,column=1,padx=(10,15),pady=10)
-        next_btn.configure(command=partial(y_values,c,y,start,end,width,names_form,x_label))
+        next_btn = Button(names_form, text="Next", cursor="hand2", command=partial(get_y_values, c, y, start, end, width, names_form, x_label))
+        next_btn.grid(row=4, column=1, padx=(10, 15), pady=10)
 
-        for i in range(y_var):
-            d_attr.append("NA")
-            d_attr[i]=StringVar()
+    values_form.mainloop()
 
-def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
-    start=start.get()
-    end=end.get()
-    #for i in range(start,end+1,width):
-        #x.append(i)
-        #count+=1
-
+def plot_line(c, x, y, d_attr, title, x_label, start, end, width, entry_widgets):
+    data = []
     for i in range(len(entry_widgets)):
-        #for j in range(len(y[0])):
-        y[i]=[float(entry.get()) for entry in entry_widgets[i]]
+        y_values = []
+        for entry in entry_widgets[i]:
+            try:
+                value = int(entry.get())
+                y_values.append(value)
+            except ValueError:
+                messagebox.showwarning(message=f"Please enter valid integers for {d_attr[i].get()}!")
+                return
+        
+        trace = go.Scatter(
+            x=x,
+            y=y_values,
+            mode='lines+markers',
+            name=d_attr[i].get().title()
+        )
+        data.append(trace)
 
-    plt.style.use('dark_background')
-    fig, ax=plt.subplots(figsize=(6.5, 5))
-    plt.subplots_adjust(bottom=0.152,right=0.81)
-    width=0.9
-    if c=="polar":
-        ax = fig.add_subplot(projection='polar')
-    for i in range(len(y)):
-        if c=="line":
-            plt.plot(x,y[i], label=d_attr[i].get(),color=colors[i],linewidth=0.7)
-        elif c=="bar":
-            plt.bar(x,y[i], label=d_attr[i].get(),color=colors[i],linewidth=0.7,width=width, alpha = 0.7)
-            width-=0.2
-        elif c=="scatter":
-            plt.scatter(x,y[i], label=d_attr[i].get(),color=colors[i],linewidth=0.7)
-        elif c=="area":
-            plt.fill_between(x, y[i],label=d_attr[i].get(),color=colors[i], alpha = 0.7)
-        elif c=="hist":
-            for j in range(len(x)):
-                x[j]=round(x[j])
-            print(x, y[i])
-            plt.hist(x, y[i],label=d_attr[i].get(),color=colors[i], alpha = 0.7)                                                #PROBLEM HERE
-        elif c=="polar":
-            r = 2 * np.random.rand(len(x))
-            area = 200 * r**2
-            ax.scatter(x, y[i], color=colors[i], s=area, alpha=0.75)
-        else:
-            messagebox.showerror(message="Some error occured.")
-            return
-    if c in ["line","bar","scatter","hist","area"]:
-        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
-        plt.title(heading)
-        plt.xticks(rotation=30)
-        plt.xlabel(x_label)
-        ax.spines['bottom'].set_color('teal')
-        ax.spines['top'].set_color('#ffffff40') 
-        ax.spines['right'].set_color('#ffffff40')
-        ax.spines['left'].set_color('darkturquoise')
-        ax.grid(linestyle = "dashed",linewidth = 1, alpha = 0.25)
-    elif c in ["polar"]:
-        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
-        plt.title(heading)
-        plt.xlabel(x_label)
-    #plt.savefig("example.png", dpi=1000)
-    financeTracker.move_figure(fig, 865, 125)
-    cursor = Cursor(ax, color='red', linewidth=0.5)
-    plt.show()
+    fig = go.Figure(data=data)
+    fig.update_layout(
+        title=title,
+        xaxis_title=x_label,
+        yaxis_title='Dependent Variables',
+        legend_title='Legend',
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(255,255,255,0.85)',
+    )
+    fig.show()
 
 def pie(c):
-    if c=="pie":
+    if c == "pie":
         global form
         form.pack_forget()
-        form=Frame(root,bg="#171717",relief=SUNKEN)
-        form.pack(side=LEFT,pady=20,padx=20,anchor=NW)
+        form = Frame(root, bg="#171717", relief=SUNKEN)
+        form.pack(side=LEFT, pady=20, padx=20, anchor=NW)
+
         global title
         title.pack_forget()
-        title_var=StringVar()
-        y_var=IntVar()
-        title_label = Label(form, text = 'Title: ', font=('calibre',10),fg='#ffffff',bg='#171717')
-        title_entry = Entry(form,textvariable = title_var, font=('calibre',10))
-        y_label = Label(form, text = 'No. of Variable(s): ', font = ('calibre',10),fg='#ffffff',bg='#171717')
-        y_entry=Entry(form, textvariable = y_var, font = ('calibre',10))
-        
-        title_entry.insert(0,'Untitled')
+        title_var = StringVar()
+        y_var = IntVar()
 
-        title_label.grid(row=0,column=0,padx=(5,5),pady=(15,5))
-        title_entry.grid(row=0,column=1,padx=(0,10),pady=(15,5))
-        y_label.grid(row=2,column=0,padx=(5,5),pady=5)
-        y_entry.grid(row=2,column=1,padx=(0,10),pady=5)
-        sub_btn=Button(form,text="Create",width=10,cursor="hand2")
-        sub_btn.grid(row=3,column=1,padx=(10,15),pady=(15,15))
-        sub_btn.configure(command=partial(pie_values,c,title_var,y_var))
+        title_label = Label(form, text='Title: ', font=('calibre', 10), fg='#ffffff', bg='#171717')
+        title_entry = Entry(form, textvariable=title_var, font=('calibre', 10))
+        y_label = Label(form, text='No. of Variable(s): ', font=('calibre', 10), fg='#ffffff', bg='#171717')
+        y_entry = Entry(form, textvariable=y_var, font=('calibre', 10))
 
-        form.mainloop()
-def pie_values(c,title_var,y_var):
-    def enter_pie_values(c,y):
-        '''for i in range(y_var):
-            y.append(0)
-            y[i]=IntVar()'''
-        global values_form
-        values_form.place_forget()
-        values_form=customtkinter.CTkScrollableFrame(root,
-                                                  width=230,
-                                                  height=665,
-                                                  label_text="Variable(s) Values",
-                                                  border_width=1,
-                                                  fg_color="#171717",
-                                                  scrollbar_button_hover_color="#ffffff",
-                                                  border_color="#000000"
-                                                  )
-        values_form.place(relx=1.0, rely=1.0, x=-930, y=-740,anchor=NW)
-        row=0
-        entries=[]
-        for i in range(y_var):
-            Label(values_form, text = "{}: ".format(d_attr[i].get()), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=row+1,column=0,padx=(15,10),pady=(10,5))
-            #entry=Entry(values_form,textvariable = y[i][j], font=('calibre',10),width=15).grid(row=row+j+1,column=1,padx=(15,10),pady=(10,5))
-            entry = Entry(values_form, font=('calibre',10),width=15)
-            entry.grid(row=row+1,column=1,padx=(15,10),pady=(10,5))
-            #entry.insert(0,0)
-            entries.append(entry)
-            row = row+1
-        row+=1
-        plot_btn=Button(values_form,text="Plot",width=10,cursor="hand2")
-        plot_btn.grid(row=row,column=0,padx=(10,15),pady=10)
-        plot_btn.configure(command=partial(plot_pie,c,y,d_attr,heading,entries))
+        title_entry.insert(0, 'Untitled')
 
-    y_var=y_var.get()
-    heading=title_var.get()
-    if y_var>16:
-        messagebox.showwarning(message="Too many variables!\nThe maximum limit is 16.")
-    elif y_var<=0:
-        messagebox.showwarning(message="No. of variables should be greater than 0.")
-    else:
-        for i in range(y_var):
-            d_attr.append("NA")
-            d_attr[i]=StringVar()
-        global values_form
-        values_form.place_forget()
-        global names_form
-        names_form.place_forget()
-        names_form=customtkinter.CTkScrollableFrame(root,
-                                                    width=330,
-                                                    height=480,
-                                                    label_text="{} Values".format(heading),
+        title_label.grid(row=0, column=0, padx=(5, 5), pady=(15, 5))
+        title_entry.grid(row=0, column=1, padx=(0, 10), pady=(15, 5))
+        y_label.grid(row=2, column=0, padx=(5, 5), pady=5)
+        y_entry.grid(row=2, column=1, padx=(0, 10), pady=5)
+
+        sub_btn = Button(form, text="Create", width=10, cursor="hand2")
+        sub_btn.grid(row=3, column=1, padx=(10, 15), pady=(15, 15))
+        sub_btn.configure(command=partial(pie_values, c, title_var, y_var))
+
+def pie_values(c, title_var, y_var):
+    y_var = y_var.get()
+
+    # Create a frame for variable values
+    global values_form
+    values_form.place_forget()
+    values_form = customtkinter.CTkScrollableFrame(root,
+                                                    width=230,
+                                                    height=665,
+                                                    label_text="Variable(s) Values",
                                                     border_width=1,
                                                     fg_color="#171717",
                                                     scrollbar_button_hover_color="#ffffff",
                                                     border_color="#000000"
                                                     )
-        names_form.place(relx=1.0, rely=1.0, x=-1300, y=-555,anchor=NW)
+    values_form.place(relx=1.0, rely=1.0, x=-930, y=-740, anchor=NW)
 
-        Label(names_form, text = "Variable Names", font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=5,column=0,padx=(15,10),pady=(15,5))
-        for i in range(y_var):
-            Label(names_form, text = "Attribute {}: ".format(i+1), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=6+i,column=0,padx=(15,10),pady=(10,5))
-            Entry(names_form,textvariable = d_attr[i], font=('calibre',10)).grid(row=6+i,column=1,padx=(15,10),pady=(10,5))
+    entries = []
+    for i in range(y_var):
+        var_label = Label(values_form, text=f"Variable {i + 1}: ", font=('calibre', 10), fg='#ffffff', bg='#171717')
+        var_label.grid(row=i, column=0, padx=(15, 10), pady=(10, 5))
+        entry = Entry(values_form, font=('calibre', 10), width=15)
+        entry.grid(row=i, column=1, padx=(15, 10), pady=(10, 5))
+        entries.append(entry)
 
-    enter_btn=Button(names_form,text="Enter Values",width=10,cursor="hand2")
-    enter_btn.grid(row=7+y_var,column=1,padx=(10,15),pady=10)
-    enter_btn.configure(command=partial(enter_pie_values,c,y))
+    enter_btn = Button(values_form, text="Plot", width=10, cursor="hand2")
+    enter_btn.grid(row=y_var, column=1, padx=(10, 15), pady=10)
+    enter_btn.configure(command=partial(plot_pie, title_var.get(), entries))
+
+def plot_pie(title, entries):
+    labels = [entry.get() for entry in entries]
+    values = [int(entry.get()) for entry in entries]
+
+    # Create a Plotly figure
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
+
+    # Update layout with titles
+    fig.update_layout(title=title, template='plotly_dark')
+
+    # Show the figure
+    fig.show()
 
 
 def plot_pie(c,y,d_attr,heading,entries):
@@ -885,6 +852,150 @@ def plot_radar(c,x,y,d_attr,heading,x_label,x_no_value,entry_widgets):
     plt.show()
 
 
+import plotly.graph_objects as go
+from tkinter import messagebox, Label, Entry, Button, StringVar, IntVar
+from functools import partial
+import customtkinter
+def heatmap_values(c, title_var, x_var, y_var):
+    def x_no_values(c, y, x_no_value, names_form, x_label):
+        if x_no_value.get() < 2:
+            messagebox.showwarning(message="No. of values for independent variable should be greater than 1.")
+        elif x_no_value.get() > 16:
+            messagebox.showwarning(message="Too many values for independent variable!\nThe maximum limit is 16.")
+        else:
+            x_no_value = x_no_value.get()
+            Label(names_form, text="For x-axis values", font=('calibre', 10, "bold"), fg='#ffffff', bg='#171717').grid(row=5, column=0, padx=(15, 10), pady=(15, 5))
+            global x
+            x = [StringVar() for _ in range(x_no_value)]
+            for i in range(x_no_value):
+                Label(names_form, text="{} Value {}: ".format(x_label, i + 1), font=('calibre', 10), fg='#ffffff', bg='#171717').grid(row=6 + i, column=0, padx=(15, 10), pady=(10, 5))
+                Entry(names_form, textvariable=x[i], font=('calibre', 10)).grid(row=6 + i, column=1, padx=(15, 10), pady=(10, 5))
+            nxt_btn = Button(names_form, text="Next", width=10, cursor="hand2")
+            nxt_btn.grid(row=7 + i, column=1, padx=(10, 15), pady=10)
+            nxt_btn.configure(command=partial(y_values, c, x, x_no_value, x_label))
+
+    def y_values(c, x, x_no_value, x_label):
+        global values_1_form
+        values_1_form.place_forget()
+        values_1_form = customtkinter.CTkScrollableFrame(root,
+                                                          width=330,
+                                                          height=480,
+                                                          label_text="{} Values".format(heading),
+                                                          border_width=1,
+                                                          fg_color="#171717",
+                                                          scrollbar_button_hover_color="#ffffff",
+                                                          border_color="#000000"
+                                                          )
+        values_1_form.place(relx=1.0, rely=1.0, x=-1300, y=-555, anchor=NW)
+        Label(values_1_form, text="For y-axis", font=('calibre', 10, "bold"), fg='#ffffff', bg='#171717').grid(row=0, column=0, padx=(15, 10), pady=(15, 5))
+        global y_var_values
+        y_var_values = [StringVar() for _ in range(y_var)]
+        for i in range(y_var):
+            Label(values_1_form, text="Dependent Variable {}: ".format(i + 1), font=('calibre', 10), fg='#ffffff', bg='#171717').grid(row=1 + i, column=0, padx=(15, 10), pady=(10, 5))
+            Entry(values_1_form, textvariable=y_var_values[i], font=('calibre', 10)).grid(row=1 + i, column=1, padx=(15, 10), pady=(10, 5))
+
+        enter_btn = Button(values_1_form, text="Enter Values", width=10, cursor="hand2")
+        enter_btn.grid(row=2 + i, column=1, padx=(10, 15), pady=10)
+        enter_btn.configure(command=partial(enter_values, c, x, x_no_value))
+
+    def enter_values(c, x, x_no_value):
+        data_matrix = np.zeros((y_var, x_no_value))  # Initialize the matrix for heatmap data
+
+        global values_form
+        values_form.place_forget()
+        values_form = customtkinter.CTkScrollableFrame(root,
+                                                        width=350,
+                                                        height=665,
+                                                        label_text="Heatmap Values",
+                                                        border_width=1,
+                                                        fg_color="#171717",
+                                                        scrollbar_button_hover_color="#ffffff",
+                                                        border_color="#000000"
+                                                        )
+        values_form.place(relx=1.0, rely=1.0, x=-930, y=-740, anchor=NW)
+
+        row = 0
+        entry_widgets = []
+        for i in range(y_var):
+            entries = []
+            Label(values_form, text="For {}".format(y_var_values[i].get().title()), font=('calibre', 10, "bold"), fg='#ffffff', bg='#171717').grid(row=row, column=0, padx=(15, 10), pady=(15, 5))
+            for j in range(x_no_value):
+                Label(values_form, text="Value for {} ({}={}): ".format(y_var_values[i].get(), x_label, x[j].get()), font=('calibre', 10), fg='#ffffff', bg='#171717').grid(row=row + j + 1, column=0, padx=(15, 10), pady=(10, 5))
+                entry = Entry(values_form, font=('calibre', 10), width=15)
+                entry.grid(row=row + j + 1, column=1, padx=(15, 10), pady=(10, 5))
+                entry.insert(0, 0)
+                entries.append(entry)
+                row = row + 1
+            entry_widgets.append(entries)
+            row += len(x_no_value)
+
+        plot_btn = Button(values_form, text="Plot", width=10, cursor="hand2")
+        plot_btn.grid(row=row, column=0, padx=(10, 15), pady=10)
+        plot_btn.configure(command=partial(plot_heatmap, c, x, entry_widgets, x_no_value))
+
+    heading = title_var.get()
+    x_label = x_var.get()
+    if y_var > 16:
+        messagebox.showwarning(message="Too many dependent variables!\nThe maximum limit is 16.")
+    elif y_var <= 0:
+        messagebox.showwarning(message="No. of dependent variables should be greater than 0.")
+    else:
+        global names_form
+        names_form.place_forget()
+        names_form = customtkinter.CTkScrollableFrame(root,
+                                                      width=330,
+                                                      height=480,
+                                                      label_text="{} Values".format(heading),
+                                                      border_width=1,
+                                                      fg_color="#171717",
+                                                      scrollbar_button_hover_color="#ffffff",
+                                                      border_color="#000000"
+                                                      )
+        names_form.place(relx=1.0, rely=1.0, x=-1300, y=-555, anchor=NW)
+
+        x_no_value = IntVar()
+        Label(names_form, text="For {}".format(x_label), font=('calibre', 10, "bold"), fg='#ffffff', bg='#171717').grid(row=0, column=0, padx=(15, 10), pady=(15, 5))
+        x_no_value_label = Label(names_form, text="{} Number of values: ".format(x_label), font=('calibre', 10), fg='#ffffff', bg='#171717')
+        x_no_value_entry = Entry(names_form, textvariable=x_no_value, font=('calibre', 10))
+
+        x_no_value_label.grid(row=1, column=0, padx=(15, 10), pady=(10, 5))
+        x_no_value_entry.grid(row=1, column=1, padx=(10, 15), pady=5)
+
+        next_btn = Button(names_form, text="Next", width=10, cursor="hand2")
+        next_btn.grid(row=4, column=1, padx=(10, 15), pady=10)
+        next_btn.configure(command=partial(x_no_values, c, y_var, x_no_value, names_form, x_label))
+
+
+def plot_heatmap(c, x, entry_widgets, x_no_value):
+    data_matrix = np.zeros((len(entry_widgets), x_no_value))
+
+    for i in range(len(entry_widgets)):
+        for j in range(x_no_value):
+            data_matrix[i, j] = float(entry_widgets[i][j].get())  # Get values from entry widgets
+
+    # Create a heatmap using Plotly
+    fig = go.Figure(data=go.Heatmap(
+        z=data_matrix,
+        x=[x[i].get() for i in range(x_no_value)],
+        y=[var.get() for var in y_var_values],
+        colorscale='Viridis',
+        colorbar=dict(title='Value'),
+        hovertemplate='Value: %{z}<br>%{x}<br>%{y}<extra></extra>'
+    ))
+
+    fig.update_layout(
+        title="Heatmap: {}".format(c),
+        xaxis_title="X-axis: {}".format(x_var.get()),
+        yaxis_title="Y-axis: {}".format(title_var.get()),
+        width=800,
+        height=600,
+        template='plotly_dark'
+    )
+    
+    fig.show()
+
+
+
 def scatter(c):
     if c=="scatter3d":
         global form
@@ -998,6 +1109,7 @@ def plot_scatter(c,x,y,z,x_label,y_label,z_label,heading,no_values):
     plt.title(heading)
     financeTracker.move_figure(fig, 865, 125)    
     plt.show()    
+
 #===========================================================================================================MAIN
 def main():
     global relation

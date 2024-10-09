@@ -1,6 +1,12 @@
 // Array of city names
 var cities = ["Pune", "Moradabad", "Dehradun","Rampur","Delhi","Coimbatore"];
 
+// /preloader js styling
+let preloader = document.querySelector("#preloader");
+window.addEventListener("load",function(e){
+    preloader.style.display = "none";
+});
+
 function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;

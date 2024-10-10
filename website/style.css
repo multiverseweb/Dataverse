@@ -1180,15 +1180,22 @@ input {
 
 .license-content {
     font-family: 'Times New Roman', Times, serif;
-    margin-top: 50px;
+    transition: all 0.5s ease-in-out;
+    margin: 8rem auto;
     padding: 50px 50px;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     text-align: center;
     font-size: 16px;
-    width: auto;
+    width: 50rem;
     max-width: auto;
+    border: 2px solid black;
+    border-radius: 2rem;
+    height: 30rem;
+}
+
+.license-content:hover{
+    box-shadow: 10px 10px 40px 10px gray;
 }
 
 #codeOfconduct {

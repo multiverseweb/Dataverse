@@ -44,14 +44,14 @@ function systemDefault() {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       dark(true);
     } else {
-      ligh(true);
+      light(true);
     }
   }
 }
 
 function light(flag) {
   localStorage.setItem('theme', 'light');
-  body.style.backgroundColor = "#e8e8e8";
+  body.style.backgroundColor = "white";
   body.style.color = "black";
 
   licenseContents.forEach(content => {

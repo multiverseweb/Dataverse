@@ -258,7 +258,7 @@ a {
     margin-top: 0;
 }
 
-#moon {
+/*#moon {
     filter: invert(1);
 }
 
@@ -269,7 +269,63 @@ a {
 #default {
     filter: invert(1);
     margin-top: 20px;
+}*/
+/* Apply inversion only to specific elements */
+/* General styles for light mode */
+body {
+    background-color: white; /* Light mode background */
+    color: black; /* Default text color in light mode */
 }
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: black; /* Dark mode background */
+    color: white; /* Default text color in dark mode */
+}
+
+/* Specific footer styles for light mode */
+footer {
+    background-color: white; /* Light mode footer background */
+    color: black; /* Light mode footer text color */
+    padding: 20px; /* Padding for the footer */
+    border-top: 1px solid #ccc; /* Optional: border for separation */
+}
+
+/* Dark mode footer styling */
+body.dark-mode footer {
+    background-color: black; /* Dark mode footer background */
+    color: white; /* Dark mode footer text color */
+}
+
+/* Footer heading styles for light mode */
+footer h3 {
+    margin: 0; /* Remove default margin */
+    color: black; /* Light mode h3 text color */
+}
+
+/* Dark mode heading styles */
+body.dark-mode footer h3 {
+    color: white; /* Ensure h3 text is white in dark mode */
+}
+body.light-mode footer h3{
+    color: black;
+}
+#moon, #sun {
+    filter: invert(1);
+}
+
+#default {
+    filter: invert(1);
+    margin-top: 20px;
+}
+
+/* Specific styles for the footer to ensure text remains dark */
+footer {
+    color: black; /* Set footer text color to black */
+    background-color: white; /* Set footer background to white */
+    /* Other footer styles can go here */
+}
+
 
 .copy {
     height: 20px;
@@ -829,7 +885,50 @@ footer {
     flex-direction: row;
     padding-left: 10vw;
     padding-right: 10vw;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for dark mode */
+    color: silver; /* Silver text for good contrast */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+    justify-content: space-between; /* Ensures even spacing between elements */
+    align-items: center; /* Vertically centers the elements */
 }
+
+footer a {
+    color: silver; /* Silver links */
+    transition: color 0.3s; /* Smooth transition for links */
+}
+
+footer a:hover {
+    color: white; /* Change link color on hover */
+}
+
+footer .contact {
+    margin-right: auto; /* Aligns the contact section to the left */
+}
+
+footer input[type="text"],
+footer input[type="email"],
+footer input[name="Message"],
+footer input[type="submit"] {
+    margin: 10px 0; /* Margin between inputs */
+    padding: 10px; /* Padding for better usability */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid silver; /* Silver border */
+    background-color: rgba(255, 255, 255, 0.1); /* Light background for inputs in dark mode */
+    color: silver; /* Silver text for inputs */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for inputs */
+}
+
+footer input[type="submit"] {
+    background-color: silver; /* Silver background for the submit button */
+    color: black; /* Black text for visibility */
+    cursor: pointer; /* Pointer cursor for button */
+}
+
+footer input[type="submit"]:hover {
+    background-color: white; /* White background on hover */
+    color: black; /* Keep black text on hover */
+}
+
 
 #last_link {
     margin-top: 16px;

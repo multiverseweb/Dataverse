@@ -228,11 +228,12 @@ a {
     box-shadow: 0px 0px 10px black, 0px 0px 10px black;
 }
 
-#indicator {
-    top: 10px;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
+#indicator 
+{
+    top: 100px;
+    height: 80px;
+    width: 80px;
+    border-radius: 30%;
     background-image: radial-gradient(rgba(255, 255, 255, 0.608), #00000000, #00000000);
     position: absolute;
     transition-duration: 0.3s;
@@ -254,22 +255,23 @@ a {
     border: none;
 }
 
-#first_button {
+#darkButton {
     margin-top: 0;
 }
 
-/*#moon {
-    filter: invert(1);
-}
 
-#sun {
+/* #moon {
     filter: invert(1);
-}
+}  */
 
-#default {
+/* #sun {
+    filter: invert(1);
+} */
+
+#defaultButton {
     filter: invert(1);
     margin-top: 20px;
-}*/
+}
 /* Apply inversion only to specific elements */
 /* General styles for light mode */
 body {
@@ -326,6 +328,12 @@ footer {
     /* Other footer styles can go here */
 }
 
+.glow {
+    box-shadow: 0 0 10px 5px rgba(255, 255, 0, 0.7); /* Customize glow style */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+  
 
 .copy {
     height: 20px;

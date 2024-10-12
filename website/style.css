@@ -216,7 +216,7 @@ a {
     justify-content: center;
     position: fixed;
     width: 40px;
-    padding: 15px 0px 15px 0px;
+    padding: 8px 0px;
     background-color: #3b3b3b57;
     backdrop-filter: blur(2px);
     border-radius: 40px;
@@ -228,16 +228,27 @@ a {
     box-shadow: 0px 0px 10px black, 0px 0px 10px black;
 }
 
-#indicator 
+/* #indicator 
 {
-    top: 100px;
-    height: 80px;
-    width: 80px;
-    border-radius: 30%;
+    top: 50px;
+    height: 60px;
+    width: 60px;
+    border-radius: 10%;
     background-image: radial-gradient(rgba(255, 255, 255, 0.608), #00000000, #00000000);
     position: absolute;
     transition-duration: 0.3s;
+} */
+
+#indicator {
+    height: 40px; /* Set the height of the indicator slightly larger than buttons */
+    width: 40px; /* Set the width to match */
+    border-radius: 40%; /* Ensure circular shape */
+    position: absolute;
+    transition-duration: 0.3s;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0)); /* Glow effect */
 }
+
+
 
 .group {
     display: flex;
@@ -249,11 +260,25 @@ a {
     border: 1px solid rgba(255, 255, 255, 0.236);
 }
 
-.buttons button {
+/* .buttons button {
     margin-top: 20px;
     background-color: #00000000;
     border: none;
+} */
+
+.buttons button {
+    margin-top: 20px;
+    background-color: transparent;
+    border: none;
+    width: 40px; /* Uniform button size */
+    height: 40px; /* Ensure consistent height */
+    padding: 0;
+    display: block;
+    position: relative;
 }
+
+
+
 
 #darkButton {
     margin-top: 0;

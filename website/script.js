@@ -140,21 +140,36 @@ function hide() {
 }
 
 
+// function updateIndicator(button) {
+//   // Set the position of the indicator to align with the selected button
+//   const adjustment = (button.offsetHeight - indicator.offsetHeight) / 2;
+//   indicator.style.top = `${button.offsetTop + adjustment}px`;
+
+//   // Set the glow effect based on the theme
+//   const currentTheme = localStorage.getItem('theme');
+//   if (currentTheme === 'light') {
+//       indicator.style.backgroundImage = "radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70%)"; // Black glow in light mode
+//       // indicator.style.boxShadow = "0 0 5px 3px rgba(0, 0, 0, 0.7)"; // Adjust the box-shadow radius and spread here
+//   } else {
+//       indicator.style.backgroundImage = "radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%)"; // White glow in dark mode
+//       // indicator.style.boxShadow = "0 0 5px 3px rgba(255, 255, 255, 0.7)"; // Adjust the box-shadow radius and spread here
+//   }
+// }
+
 function updateIndicator(button) {
-  // Set the position of the indicator to align with the selected button
   const adjustment = (button.offsetHeight - indicator.offsetHeight) / 2;
   indicator.style.top = `${button.offsetTop + adjustment}px`;
 
-  // Set the glow effect based on the theme
   const currentTheme = localStorage.getItem('theme');
   if (currentTheme === 'light') {
-      indicator.style.backgroundImage = "radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70%)"; // Black glow in light mode
-      // indicator.style.boxShadow = "0 0 5px 3px rgba(0, 0, 0, 0.7)"; // Adjust the box-shadow radius and spread here
+      indicator.style.backgroundImage = "radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))"; // Black glow for light mode
+      // indicator.style.boxShadow = "0 0 5px 3px rgba(0, 0, 0, 0.7)"; // Subtle black glow
   } else {
-      indicator.style.backgroundImage = "radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%)"; // White glow in dark mode
-      // indicator.style.boxShadow = "0 0 5px 3px rgba(255, 255, 255, 0.7)"; // Adjust the box-shadow radius and spread here
+      indicator.style.backgroundImage = "radial-gradient(circle, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0))"; // White glow for dark mode
+      // indicator.style.boxShadow = "0 0 5px 3px rgba(255, 255, 255, 0.7)"; // Subtle white glow
   }
 }
+
 
 
 function light(flag) {

@@ -38,23 +38,43 @@ function hide() {
     buttons.style.marginLeft = "-60px";
 }
 
-function updateIndicator(button) {
-    if (!button || !indicator) return;
+// function updateIndicator(button) {
+//     if (!button || !indicator) return;
 
-    // Adjust the indicator position to align with the selected button
+//     // Adjust the indicator position to align with the selected button
+//     const adjustment = (button.offsetHeight - indicator.offsetHeight) / 2;
+//     indicator.style.top = `${button.offsetTop + adjustment}px`;
+
+//     // Update the indicator's color based on the theme
+//     const currentTheme = localStorage.getItem('theme');
+//     if (currentTheme === 'light') {
+//         indicator.style.backgroundImage = "radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70%)"; // Black glow in light mode
+//     } else {
+//         indicator.style.backgroundImage = "radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%)"; // White glow in dark mode
+//     }
+
+//     console.log(`Indicator updated: ${currentTheme} mode, positioned at ${button.id}`);
+// }
+
+function updateIndicator(button) {
+    // Calculate the vertical adjustment for perfect centering of the indicator over the button
     const adjustment = (button.offsetHeight - indicator.offsetHeight) / 2;
+
+    // Correct the top position based on the button's offsetTop value
     indicator.style.top = `${button.offsetTop + adjustment}px`;
 
-    // Update the indicator's color based on the theme
+    // Apply the correct glow effect based on the current theme
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme === 'light') {
         indicator.style.backgroundImage = "radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70%)"; // Black glow in light mode
+        indicator.style.boxShadow = "none"; // No box-shadow needed for glow
     } else {
         indicator.style.backgroundImage = "radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%)"; // White glow in dark mode
+        indicator.style.boxShadow = "none"; // No box-shadow needed for glow
     }
-
-    console.log(`Indicator updated: ${currentTheme} mode, positioned at ${button.id}`);
 }
+
+
 
 function light(flag) {
     localStorage.setItem('theme', 'light');

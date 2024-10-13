@@ -107,3 +107,83 @@ footer form input[type="submit"]:hover {
 footer .fa {
     margin-right: 5px;
 }
+
+$durCharFwd: 0.08;
+$durFullGap: 1.5;
+$durCharBwd: 0.06;
+$durDoneGap: 0.8;
+
+// Keyframe animations for typing and beam blink
+@keyframes typed {
+  0%, 100% {
+    content: "";
+  }
+  50% {
+    content: "▌"; // Cursor beam
+  }
+}
+
+@keyframes beam-blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+
+body {
+  background-color: #000;
+  color: rgb(239, 241, 239);
+  font-family: 'VT323', monospace, sans-serif;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+
+p {
+  position: relative;
+  color: rgb(247, 249, 247);
+  text-shadow: 0 0 5px rgba(243, 245, 243, 0.75);
+  white-space: nowrap;
+
+  &::after {
+    content: "▌"; // Cursor beam
+    position: absolute;
+    right: -10px;
+    border-right: 3px solid rgba(239, 242, 239, 0.75);
+    animation: beam-blink 1s step-end infinite;
+  }
+}
+
+// Styling each part dynamically
+.top_dataverse p#data::before {
+  content: "Data";
+  animation: typingEffect 4s steps(4) 2s forwards;
+}
+
+.top_dataverse p:nth-child(2)::before {
+  content: "verse";
+  animation: typingEffect 4s steps(5) 4s forwards;
+}
+
+
+.heading {
+  display: inline-block;
+}
+
+.subheading {
+  display: inline-block;
+}
+
+
+@keyframes typingEffect {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}

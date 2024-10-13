@@ -128,8 +128,8 @@
         </div>
         <div class="right">
             <div class="top_dataverse">
-                <p id="data">Data</p>
-                <p>verse</p>
+                <p id="data" data-text="Data"></p>
+                <p data-text="verse"></p>
             </div>
             <p id="intro_text">An Open-Source Software (OSS) that integrates database management, data visualization
                 and data wrangling.</p>
@@ -158,8 +158,8 @@
     <div class="section big_container"></div>
     <div class="section" id="about">
         <div class="about_left">
-            <p class="heading">So, What does this Software do?</p>
-            <p class="subheading">Visualise Data!</p>
+            <p class="heading" data-text="So, What does this Software do?"></p>
+            <p class="subheading" data-text="Visualise Data!"></p>
             <p class="text">Easily transform raw data into visually appealing charts such as bar graphs, pie charts,
                 and
                 line graphs. It also supports advanced data visualisation techniques like heatmaps, Radar charts, 3D
@@ -179,7 +179,7 @@
             <img src="website/web_images/finance_down.png" class="preview down">
         </div>
         <div class="finance_right">
-            <p class="subheading">Track Finances!</p>
+            <p class="subheading" data-text="Track Finances!"></p>
             <p class="text">Manage your finances by providing data such as income, expense, investment, etc. and get
                 useful results such as visualization of data, extrapolated data, max expenditure, etc. Also, the
                 software automatically stores data with a timestamp.</p>
@@ -187,7 +187,7 @@
     </div>
 
     <div class="section" id="charts">
-        <p class="heading">Here are some examples of what you can do with Dataverse</p>
+        <p class="heading" data-text="Here are some examples of what you can do with Dataverse"></p>
         <div class="examples" id="examples">
 
             <img src="website/web_images/volcano.gif" alt="">
@@ -233,7 +233,7 @@
 
     <div class="section" id="develop">
         <div class="develop_left">
-            <p class="heading">Want to contribute to this Project?</p>
+            <p class="heading" data-text="Want to contribute to this Project?"></p>
             <div class="subheading" id="technologies">
                 <div class="circle" id="red"></div>
                 <div class="circle" id="yellow"></div>
@@ -257,7 +257,7 @@
                 valuable. You can contribute to the project by visiting the link to the GitHub repository provided
                 below. Join me in making Dataverse even better for everyone!</p>
             <a href="https://github.com/multiverseweb/Dataverse?tab=readme-ov-file#contributions"
-                target="_blank"><button id="contribute">
+                target="_blank"><button id="contribute" class="glow-on-hover">
                     <p>Contribute</p><img
                         src="https://static-00.iconduck.com/assets.00/github-icon-2048x1999-d37ckpm6.png" id="github">
                 </button></a>
@@ -312,6 +312,26 @@
         <div class="end_line"></div>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script src="website/script.js"></script>
+        <script>
+            // JavaScript for dynamically typing effect
+            const typingEffects = document.querySelectorAll('[data-text]');
+            
+            typingEffects.forEach((element, index) => {
+                const text = element.getAttribute('data-text');
+                let i = 0;
+                const typingDelay = 100; // Adjust typing speed here
+                
+                function type() {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(type, typingDelay);
+                    }
+                }
+    
+                setTimeout(type, index * 1500); // Adjust the delay before starting each typing effect
+            });
+        </script>
         
 
 </body>

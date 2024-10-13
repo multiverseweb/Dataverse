@@ -742,7 +742,17 @@ tr:hover {
     border-top-style: none;
     border-bottom-style: none;
     border-right-style: none;
+    
 }
+.finance_right{
+      margin-top: 160px;
+}
+
+.subheading{
+    font-size: 54px;
+
+}
+
 
 #develop {
     display: flex;

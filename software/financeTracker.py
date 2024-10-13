@@ -16,14 +16,15 @@ colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462
 
 #==================================================================================================connecting MySQL
 try:
-    mycon = my.connect(host='localhost', user='root', passwd='tejas123', database='finance')
-    cursor = mycon.cursor()
+    mycon = my.connect(host='localhost', user='root', passwd='tejas123', database='finance')  # Declared as constant
+    cursor = mycon.cursor()  # Declared as constant
 except Error as e:
     print(f"Error connecting to MySQL: {e}")
     messagebox.showerror("Database Error", f"Failed to connect to the database: {e}")
     exit()  # Exit the program if the database connection fails
 
-z = 0
+z = 0  # Declared as constant
+
 #=========================================================================================view data
 def view_data(user_id):
     try:
@@ -115,7 +116,7 @@ def fetch_data(user_id):
 def plot_data(requireds, username):
     try:
         download_report = messagebox.askyesno(message="Do you want to download today's report?", icon="question")
-        if download_report == "Yes":
+        if download_report == True:
             plt.savefig("plot.png", dpi=150)
             report.save(username, total_amount)
             messagebox.showinfo(message="Report downloaded. ✓")
@@ -126,26 +127,94 @@ def plot_data(requireds, username):
         gs = GridSpec(2, 2, width_ratios=[2, 2], height_ratios=[1.5, 1])
 
         # Create the subplots
-        ax[0, 0] = plt.subplot(gs[0, :])
-        ax[1, 0] = plt.subplot(gs[1, 0])
-        ax[1, 1] = plt.subplot(gs[1, 1])
+        ax[0, 0] = plt.subplot(gs[0, :])  # Line chart
+        ax[1, 0] = plt.subplot(gs[1, 0])  # Pie chart
+        ax[1, 1] = plt.subplot(gs[1, 1])  # Bar chart
 
         for subplot in fig.get_axes():
             subplot.tick_params(bottom=False, labelbottom=False, left=False, right=False, labelleft=False)
 
         columns = requireds[0]
         data_pool = requireds[1]
+
+        # Generate time labels for x-axis
         time_range = np.arange(min(data_pool["entryDate"]), date.today() + timedelta(days=2), timedelta(days=1)).astype(datetime)
         formatted_dates = [x.date().isoformat() for x in time_range]
         time_labels = np.array(formatted_dates)
         date_entries = [x.strftime('%Y-%m-%d') for x in data_pool["entryDate"]]
 
-        # Additional plotting logic...
+        # ================================ Line Chart ====================================
+        line_data = list(data_pool.values())
+        for i in range(1, len(line_data) - 1):
+            current_data = []
+            index = 0
+            for j in range(len(time_range)):
+                if time_labels[j] not in date_entries:
+                    current_data.append((current_data[j - 1] if j > 0 else 0))  # Use previous value or 0
+                else:
+                    current_data.append(data_pool[columns[i]][index])
+                    index += 1
+            ax[0, 0].plot(time_range, current_data, label=columns[i].title(), color=colors[i], linewidth=0.7, marker=".", markersize=0.0)
+
+        ax[0, 0].tick_params(bottom=True, labelbottom=True, left=True, right=True, labelleft=True)
+        ax[0, 0].legend(bbox_to_anchor=(1.01, 1), loc='upper left', borderaxespad=0)
+        ax[0, 0].set_title(f"{username.title()}_{date.today()}\nLine Chart")
+        ax[0, 0].set_xlabel("Time")
+        ax[0, 0].set_ylabel("Amount (₹)")
+        ax[0, 0].axvline(x=date.today(), color='lime', linewidth=0.6, linestyle="dashed", label="Today")
+        ax[0, 0].grid(linestyle="dashed", linewidth=1, alpha=0.25)
+
+        # Spines customization for the line chart
+        ax[0, 0].spines['bottom'].set_color('teal')
+        ax[0, 0].spines['top'].set_color('#ffffff40') 
+        ax[0, 0].spines['right'].set_color('#ffffff30')
+        ax[0, 0].spines['left'].set_color('darkturquoise')
+
+        # ================================ Pie Chart ====================================
+        total_amount = line_data[-2][-1]
+        pie_data = [val[-1] for val in line_data[1:-2]]
+        pie_explode = [0] * (len(pie_data) - 1) + [0.1]  # Explode the last slice
+
+        ax[1, 0].pie(pie_data, explode=pie_explode, colors=colors[1:len(columns) + 1])
+        ax[1, 0].set_title(f"Money Distribution - {date.today()}")
+        ax[1, 0].legend(labels=columns[1:len(columns) - 2], bbox_to_anchor=(1.1, 1), loc='upper left', borderaxespad=0)
+
+        # Spines customization for the pie chart
+        ax[1, 0].spines['bottom'].set_color('black')
+        ax[1, 0].spines['top'].set_color('black') 
+        ax[1, 0].spines['right'].set_color('black')
+        ax[1, 0].spines['left'].set_color('black')
+
+        # ================================ Bar Graph (Expenditure) ======================
+        expenditure_data = line_data[-3]
+        max_expenditure = max(expenditure_data)
+        max_index = expenditure_data.index(max_expenditure)
+
+        ax[1, 1].bar(line_data[-1], expenditure_data, color=colors[2], label=columns[-3].title())
+        ax[1, 1].bar(line_data[-1][max_index], expenditure_data[max_index], color="red", label="Max Expenditure")
+        ax[1, 1].set_title("Expenditure Till Now")
+        ax[1, 1].legend(bbox_to_anchor=(1.1, 1), loc='upper left', borderaxespad=0)
+        ax[1, 1].set_xlabel("Time")
+        ax[1, 1].set_ylabel("Expenditure")
+        ax[1, 1].grid(linestyle="dashed", linewidth=1, alpha=0.25)
+
+        # Spines customization for the bar chart
+        ax[1, 1].spines['bottom'].set_color('black')
+        ax[1, 1].spines['top'].set_color('black') 
+        ax[1, 1].spines['right'].set_color('black')
+        ax[1, 1].spines['left'].set_color('black')
+
+        # Positioning the graph window
+        move_figure(fig, 220, 170)
         plt.show()
+        plt.tight_layout()
+
+        return [total_amount, max_expenditure]
     except Exception as e:
         print(f"Error in plotting data: {e}")
         messagebox.showerror("Plot Error", f"Failed to plot data: {e}")
-    return None
+        return None
+
 
 #=========================================================setting position of graph window
 def move_figure(fig, x, y):

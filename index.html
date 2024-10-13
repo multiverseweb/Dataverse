@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body id="body">
@@ -41,16 +42,16 @@
     <div class="buttons" id="buttons">
         <div id="indicator"></div>
         <div class="group">
-            <button id="first_button" onclick="dark(false)">
+            <button id="darkButton" onclick="dark(false)">
                 <img src="https://static.thenounproject.com/png/4066359-200.png" class="copy" id="moon">
             </button>
-            <button onclick="light(false)">
-                <div id="theme2">
+            <button id="lightButton" onclick="light(false)">
+                <!-- <div id="theme2"> -->
                     <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy"
                         id="sun">
-                </div>
+                <!-- </div> -->
             </button>
-            <button id="first_button" onclick="systemDefault()">
+            <button id="defaultButton" onclick="systemDefault()">
                 <img src="website/web_images/settings.png" class="copy" id="default">
             </button>
         </div>
@@ -60,8 +61,22 @@
         <img src="website/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
         <img src="website/web_images/3d_glow.png" alt="Dataverse Logo" class="logo" id="glow">
         <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
-    </nav>
+        <button style="
+        background-color: dimgray;
+        position: relative;
+        left: 1300px;
+        top: 8px;
+        height: 40px;
+        width: 130px; 
+        font-size: 17px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
+        "><a href="login.html">Login/Signup</a>
+        </button>
+    </nav>
+    
     <button class="burger" id="burger" onclick="show()"></button>
     <button id="cross" class="burger" onclick="hide()"></button>
     <div class="burger" id="lines">
@@ -270,9 +285,12 @@
         </form>
     </footer>
     <div class="links">
-        <p>
+        <p>  
         <h3> Designed & Developed by Tejas Gupta</h3>
         </p>
+        <!--<p>
+            <h4>Copyright &copy; 2024 Tejas Gupta</h4>
+        </p>-->
         <div class="end_line"></div>
         <div class="small">
             <div class="link_class">

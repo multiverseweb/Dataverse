@@ -817,7 +817,8 @@ textarea:focus {
     text-align: left;
 }
 
-/===========================RESPONSIVE===================================/ @media screen and (max-width: 660px) {
+/* ===========================RESPONSIVE=================================== */
+@media screen and (max-width: 660px) {
     .plane {
         max-width: 600px;
     }

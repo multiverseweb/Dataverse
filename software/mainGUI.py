@@ -149,14 +149,24 @@ def guest(b1,b2,b3,b4,preview_image):
     title=Label(font="poppins 10 bold",fg='#ffffff',bg='#000000',text="DATA VISUALISATION SOFTWARE")
     title.pack(fill=X,pady=35,padx=(0,200))
 
-    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Line Graph",width=22,font="poppins 10",cursor="hand2")
-    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Bar Graph",width=22,font="poppins 10",cursor="hand2")
-    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Scatter Plot",width=22,font="poppins 10",cursor="hand2")
-    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Area Chart",width=22,font="poppins 10",cursor="hand2")
-    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Histogram",width=22,font="poppins 10",cursor="hand2")
-    b6=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Pie Chart",width=22,font="poppins 10",cursor="hand2")
-    b7=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Heatmap",width=22,font="poppins 10",cursor="hand2")
-    b8=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Radar Chart",width=22,font="poppins 10",cursor="hand2")
+    # adding images to button 
+    line_graph = PhotoImage(file="software/images/line_graph.png")
+    bar_graph = PhotoImage(file="software/images/bar_graph.png")
+    histogram = PhotoImage(file="software/images/histogram.png")
+    area_chart = PhotoImage(file="software/images/area_chart.png")
+    scatter_plot = PhotoImage(file="software/images/scatter_plot.png")
+    heatmap_plot = PhotoImage(file="software/images/heatmap_plot.png")
+    radar_chart = PhotoImage(file="software/images/radar_chart.png")
+    pie_chart = PhotoImage(file="software/images/pie_chart.png")
+
+    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',image=line_graph,text="Line Graph",compound='left',width=180,font="poppins 10",cursor="hand2",padx=10)
+    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',image=bar_graph,text="Bar Graph",compound='left',width=180,font="poppins 10",cursor="hand2",padx=10)
+    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',image=scatter_plot,text="Scatter Plot",compound='left',width=180,font="poppins 10",cursor="hand2",padx=10)
+    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',image=area_chart,text="Area Chart",compound='left',width=180,font="poppins 10",cursor="hand2",padx=10)
+    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',image=histogram,text="Histogram",compound='left',width=180,font="poppins 10",cursor="hand2",padx=10)
+    b6=Button(menu,fg='#ffffff',bg='#1a1a1a',image=pie_chart,text="Pie Chart",compound='left',width=180,font="poppins 10",cursor="hand2",padx=10)
+    b7=Button(menu,fg='#ffffff',bg='#1a1a1a',image=heatmap_plot,text="Heatmap",compound='left',width=180,font="poppins 10",cursor="hand2",padx=10)
+    b8=Button(menu,fg='#ffffff',bg='#1a1a1a',image=radar_chart,text="Radar Chart",compound='left',width=180,font="poppins 10",cursor="hand2",padx=10)
     b9=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Polar Scatter Plot",width=22,font="poppins 10",cursor="hand2")
     b10=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Plot Equations",width=22,font="poppins 10",cursor="hand2")
     b11=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Maps",width=22,font="poppins 10",cursor="hand2")
@@ -164,6 +174,15 @@ def guest(b1,b2,b3,b4,preview_image):
     b14=Button(menu,fg='#ffffff',bg='#1a1a1a',text="3D Surface",width=22,font="poppins 10",cursor="hand2")
     b12=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Live Graphs",width=22,font="poppins 10",cursor="hand2")
     b15=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Go to Home",width=22,font="poppins 10",command=main,cursor="hand2")
+
+    b1.image = line_graph
+    b2.image = bar_graph
+    b3.image = scatter_plot
+    b4.image = area_chart
+    b5.image = histogram
+    b6.image = pie_chart
+    b7.image = heatmap_plot
+    b8.image = radar_chart
 
     b1.config(command=partial(line,c="line"))
     b2.config(command=partial(line,c="bar"))

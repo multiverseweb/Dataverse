@@ -370,28 +370,26 @@ footer {
     color: white;
 }
 
-.top {
-    background-color: #3333337b;
-    padding: 10px 7px 10px 7px;
-    border: none;
-    border-radius: 10px;
+.go-top-btn {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
-    backdrop-filter: blur(7px);
-    box-shadow: 5px 5px 10px black;
-    z-index: 50;
+    bottom: 35px;
+    right: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 65px;
+    width: 65px;
+    background: #fff;
+    border: 3px solid #333;
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .go-top-btn img {
+    width: 50px;
+    height: 50px;
+  }
 
-}
-
-#top {
-    opacity: 0;
-    transition-duration: 0.3s;
-}
-
-.top img {
-    height: 20px;
-}
 
 #navbar {
     width: 100vw;

@@ -105,10 +105,16 @@ function dark(flag) {
     updateIndicator(darkButton);
 }
 
+// Display the current year in the copyright section
+function displayCopyright() {
+    const year = new Date().getFullYear();
+    document.getElementById("copyright").innerText = year;
+  }
+
 function systemDefault() {
     const theme = localStorage.getItem('theme');
     const defaultButton = document.getElementById("defaultButton");
-
+    displayCopyright();
     if (theme === 'light') {
         light(true);
         updateIndicator(document.getElementById("lightButton"));

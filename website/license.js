@@ -33,6 +33,7 @@ function hide() {
 }
 
 function systemDefault() {
+  displayCopyright();
   const theme = localStorage.getItem('theme');
 
   if (theme === 'light') {
@@ -87,6 +88,12 @@ function dark(flag) {
   }
   indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
   shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#000000d4,#00000000)";
+}
+
+// Display the current year in the copyright section
+function displayCopyright() {
+  const year = new Date().getFullYear();
+  document.getElementById("copyright").innerText = year;
 }
 
 systemDefault();

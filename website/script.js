@@ -5,6 +5,7 @@ var cities = ["Pune", "Moradabad", "Dehradun","Rampur","Delhi","Coimbatore"];
 let preloader = document.querySelector("#preloader");
 window.addEventListener("load",function(e){
     preloader.style.display = "none";
+    displayCopyright();
 });
 
 function topFunction() {
@@ -414,4 +415,10 @@ function validateForm() {
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+// Display the current year in the copyright section
+function displayCopyright() {
+    const year = new Date().getFullYear();
+    document.getElementById("copyright").innerText = year;
 }

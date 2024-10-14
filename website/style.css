@@ -1053,6 +1053,10 @@ input {
     color: rgba(255, 255, 255, 0.433);
 }
 
+.links h4 {
+    color: rgba(255, 255, 255, 0.433);
+}
+
 .end_line {
     width: 80vw;
     margin-top: 25px;

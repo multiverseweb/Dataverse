@@ -198,7 +198,9 @@ button {
 ::-webkit-scrollbar {
     display: none;
 }
-
+.button{
+    height:30px;
+}
 ::selection {
     background-color: rgba(0, 255, 255, 0.263);
     color: black;
@@ -215,14 +217,16 @@ a {
     align-items: center;
     justify-content: center;
     position: fixed;
-    width: 40px;
+    width: 50px;
     padding: 8px 0px;
     background-color: #3b3b3b57;
     backdrop-filter: blur(2px);
     border-radius: 40px;
-    top: 33vh;
+    top: 8px;
     left: 10px;
     margin-left: -60px;
+    font-size: 15px;
+    height: 2px;
     transition-duration: 0.3s;
     z-index: 100;
     box-shadow: 0px 0px 10px black, 0px 0px 10px black;
@@ -395,7 +399,7 @@ footer {
 
 #navbar {
     width: 100vw;
-    height: 60px;
+    height: 50px;
     position: fixed;
     top: 0px;
     z-index: 100;
@@ -433,7 +437,7 @@ tr:hover {
 
 .logo {
     position: absolute;
-    height: 40px;
+    height: 30px;
     margin: 10px;
     transition-duration: 0s;
 }
@@ -460,9 +464,9 @@ tr:hover {
     border: none;
     position: fixed;
     top: 10px;
-    right: 10px;
-    height: 40px;
-    width: 40px;
+    right: 35px;
+    height: 150px;
+    width: 10px;
     z-index: 120;
     transition-duration: 0.5s;
 }
@@ -482,9 +486,9 @@ tr:hover {
 
 .line {
     height: 2px;
-    width: 35px;
+    width: 25px;
     background-color: rgba(255, 255, 255, 0.821);
-    margin-top: 10px;
+    margin-top: 5px;
     transform-origin: 100%;
     transition-duration: 0.2s;
 }
@@ -823,6 +827,7 @@ tr:hover {
     margin: 10px;
     font-family: "Inconsolata", monospace;
     font-weight: 400;
+    font-size: 30px;
 }
 
 #htmltag {
@@ -1008,7 +1013,7 @@ input {
 .cubes {
     height: 60vh;
     position: absolute;
-    right: -120px;
+    right: -100px;
     margin-top: -180px;
 }
 

@@ -382,6 +382,7 @@ footer {
     border: 3px solid #333;
     display: none;
     justify-content: center;
+    z-index: 1000; 
     align-items: center;
   }
   

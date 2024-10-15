@@ -24,7 +24,7 @@
 ---
 
 # Dataverse
-<img src="website/web_images/2dglow.png" height=50px align=right>
+<img src="website/web_images/3d_glow.png" height=50px align=right>
 
 ###### Data Visualisation Software & Personal Finance Tracker
 
@@ -46,7 +46,7 @@
 
 | Event Logo | Event Name | Event Description |
 |------------|------------|-------------------|
-| <img src="https://user-images.githubusercontent.com/63473496/213306279-338f7ce9-9a9f-4427-8c2a-3e344874498f.png#gh-dark-mode-only" width="400" height="auto"> | **GirlScript Summer of Code Extended 2024** | [GirlScript Summer of Code](https://gssoc.girlscript.tech/) is a three-month-long Open Source Program conducted every summer by GirlScript Foundation. It is an initiative to bring more beginners to Open-Source Software Development. |
+| <img src="https://user-images.githubusercontent.com/63473496/213306279-338f7ce9-9a9f-4427-8c2a-3e344874498f.png#gh-dark-mode-only" width="400" height="auto"> | **GirlScript Summer of Code Extended 2024** | [GirlScript Summer of Code](https://gssoc.girlscript.tech/) Extended 2024 is a month-long open source program that encourages participants to contribute to various open source projects. It provides a collaborative platform for developers to enhance their coding skills, work on real-world projects, and give back to the community. Contributors engage in meaningful contributions by fixing bugs, adding features, improving documentation, and collaborating with project maintainers. This program is a fantastic opportunity for open source enthusiasts to learn, grow, and make an impact! |
 
 ---
 

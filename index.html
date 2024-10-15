@@ -15,22 +15,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body id="body">
+    <!-- preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <circle id="test" cx="40" cy="40" r="32"></circle>
+            </svg>
+        </div>
+
+        <div class="loader triangle">
+            <svg viewBox="0 0 86 80">
+                <polygon points="43 8 79 72 7 72"></polygon>
+            </svg>
+        </div>
+
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <rect x="8" y="8" width="64" height="64"></rect>
+            </svg>
+        </div>
+
+        <!-- dribbble -->
+        <a class="dribbble" href="https://dribbble.com/shots/5878367-Loaders" target="_blank"><img src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg" alt=""></a>
+    </div>
     <div class="buttons" id="buttons">
         <div id="indicator"></div>
         <div class="group">
-            <button id="first_button" onclick="dark(false)">
+            <button id="darkButton" onclick="dark(false)">
                 <img src="https://static.thenounproject.com/png/4066359-200.png" class="copy" id="moon">
             </button>
-            <button onclick="light(false)">
-                <div id="theme2">
+            <button id="lightButton" onclick="light(false)">
+                <!-- <div id="theme2"> -->
                     <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy"
                         id="sun">
-                </div>
+                <!-- </div> -->
             </button>
-            <button id="first_button" onclick="systemDefault()">
+            <button id="defaultButton" onclick="systemDefault()">
                 <img src="website/web_images/settings.png" class="copy" id="default">
             </button>
         </div>
@@ -40,8 +64,22 @@
         <img src="website/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
         <img src="website/web_images/3d_glow.png" alt="Dataverse Logo" class="logo" id="glow">
         <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
-    </nav>
+        <button style="
+        background-color: dimgray;
+        position: relative;
+        left: 1300px;
+        top: 8px;
+        height: 40px;
+        width: 130px; 
+        font-size: 17px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
+        "><a href="login.html">Login/Signup</a>
+        </button>
+    </nav>
+    
     <button class="burger" id="burger" onclick="show()"></button>
     <button id="cross" class="burger" onclick="hide()"></button>
     <div class="burger" id="lines">
@@ -53,9 +91,6 @@
         <table>
             <tr>
                 <td><a href="index.html" class="table_link">Home</a></td>
-            </tr>
-            <tr>
-                <td><a href="https://codeittool.netlify.app/" class="table_link">CodeIt</a></td>
             </tr>
             <tr>
                 <td><a href="https://multiverseweb.github.io/Encryptify/" class="table_link">Encryptify</a></td>
@@ -250,9 +285,11 @@
         </form>
     </footer>
     <div class="links">
-        <p>
+        <p>  
         <h3> Designed & Developed by Tejas Gupta</h3>
         </p>
+        <br>
+            <h4>Copyright &copy; <span id="copyright">32949832</span> Tejas Gupta</h4>
         <div class="end_line"></div>
         <div class="small">
             <div class="link_class">
@@ -274,52 +311,7 @@
         <div class="end_line"></div>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script src="website/script.js"></script>
-        <script>
-            function validateForm() {
-
-            const nameInput = document.querySelector('[name="Name"]');
-            const emailInput = document.querySelector('[name="Email"]');
-            const messageInput = document.querySelector('[name="Message"]');
-
-
-            if (nameInput.value === '') {
-                alert('Please enter your name.');
-                return false;
-            }
-  
-            if (!isValidEmail(emailInput.value)) {
-              alert('Please enter a valid email address.');
-            return false;
-            }
-  
-            if (messageInput.value === '') {
-                alert('Please enter your message.');
-                return false;
-            }
-  
-  
-            const formData = {
-                Name: nameInput.value,
-                Email: emailInput.value,
-                Message: messageInput.value
-                };
-                localStorage.setItem('reviewData', JSON.stringify(formData));
-  
-                nameInput.value = '';
-                emailInput.value = '';
-                messageInput.value = '';
-    
-                alert('Your feedback has been submitted');
-
-                return false;
-            } 
-  
-  
-            function isValidEmail(email) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return emailRegex.test(email);
-            }
-        </script>
+        
 
 </body>
 

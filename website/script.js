@@ -118,7 +118,6 @@ window.addEventListener('scroll', () => {
 });
 
 
-
 function show() {
   l2.style.opacity = 0;
   l1.style.transform = "rotate(-45deg)";

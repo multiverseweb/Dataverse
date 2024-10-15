@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataverse Contributors</title>
+    <link rel="stylesheet" href="contributor.css">
+</head>
+<body>
+        <div class="containerr">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Welcome to Dataverse</h1>
+                    <p>Empowering writers, one commit at a time</p>
+                    <button class="btn btn-primary" onclick="scrollToContribute()">Become a Contributor</button>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats">
+                <h2>Project Statistics</h2>
+                <div class="stats-grid" id="statsGrid">
+                    <!-- Stats will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- Contributors Grid -->
+            <section class="contributors">
+                <h2>Meet Our Contributors</h2>
+                <div class="contributors-grid" id="contributorsGrid">
+                    <!-- Contributors will be dynamically inserted here -->
+                </div>
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section id="contribute" class="cta">
+                <h2>Ready to Make an Impact?</h2>
+                <p>Join our community and help shape the future of Dataverse.</p>
+                <form id="subscribeForm">
+                    <input type="email" id="emailInput" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-secondary">Get Started</button>
+                </form>
+                <div id="notification" class="notification hidden"></div>
+            </section>
+        </div>
+
+    <script src="contributor.js"></script>
+</body>
+</html>

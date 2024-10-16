@@ -5,6 +5,7 @@ var cities = ["Pune", "Moradabad", "Dehradun","Rampur","Delhi","Coimbatore"];
 let preloader = document.querySelector("#preloader");
 window.addEventListener("load",function(e){
     preloader.style.display = "none";
+    displayCopyright();
 });
 
 function topFunction() {
@@ -89,6 +90,9 @@ var last_link = document.getElementById("last_link");
 var indicator = document.getElementById("indicator");
 var shadow = document.getElementById("shadow");
 var download = document.getElementById("download_btn");
+const lightButton = document.getElementById("lightButton");
+const darkButton = document.getElementById("darkButton");
+
 
 let lastScrollTop = 0;
 //const navbar = document.querySelector('navbar');
@@ -124,7 +128,6 @@ function updateProgressBar() {
   document.getElementById("progressBar").style.width = scrollPercent + "%";
 }
 
-
 function show() {
   l2.style.opacity = 0;
   l1.style.transform = "rotate(-45deg)";
@@ -147,107 +150,96 @@ function hide() {
 }
 
 
-function systemDefault() {
-  const theme = localStorage.getItem('theme');
+// function updateIndicator(button) {
+//   // Set the position of the indicator to align with the selected button
+//   const adjustment = (button.offsetHeight - indicator.offsetHeight) / 2;
+//   indicator.style.top = `${button.offsetTop + adjustment}px`;
 
-  if (theme === 'light') {
-    light(true);
-    shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#e8e8e8,#00000000)";
-  } else if (theme === 'dark') {
-    dark(true);
+//   // Set the glow effect based on the theme
+//   const currentTheme = localStorage.getItem('theme');
+//   if (currentTheme === 'light') {
+//       indicator.style.backgroundImage = "radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70%)"; // Black glow in light mode
+//       // indicator.style.boxShadow = "0 0 5px 3px rgba(0, 0, 0, 0.7)"; // Adjust the box-shadow radius and spread here
+//   } else {
+//       indicator.style.backgroundImage = "radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%)"; // White glow in dark mode
+//       // indicator.style.boxShadow = "0 0 5px 3px rgba(255, 255, 255, 0.7)"; // Adjust the box-shadow radius and spread here
+//   }
+// }
+
+function updateIndicator(button) {
+  const adjustment = (button.offsetHeight - indicator.offsetHeight) / 2;
+  indicator.style.top = `${button.offsetTop + adjustment}px`;
+
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme === 'light') {
+      indicator.style.backgroundImage = "radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))"; // Black glow for light mode
+      // indicator.style.boxShadow = "0 0 5px 3px rgba(0, 0, 0, 0.7)"; // Subtle black glow
   } else {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      dark(true);
-    } else {
-      ligh(true);
-    }
+      indicator.style.backgroundImage = "radial-gradient(circle, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0))"; // White glow for dark mode
+      // indicator.style.boxShadow = "0 0 5px 3px rgba(255, 255, 255, 0.7)"; // Subtle white glow
   }
 }
 
-systemDefault();
-indicator.style.top = "95px";
+
 
 function light(flag) {
   localStorage.setItem('theme', 'light');
-  document.getElementById("map").style.filter = "none";
-  document.getElementById("map").style.zIndex = 0;
-  body.style.backgroundColor = "#e8e8e8";
-  body.style.color = "black";
-  tags.style.borderColor = "black";
-  tags.style.backgroundColor = "#171717";
-  contribute.style.borderColor = "black";
-  contribute.style.color = "black";
-  download.style.borderColor = "black";
-  download.style.color = "black";
-  contribute.addEventListener("mouseenter", (event) => {
-    event.target.style.color = "white";
-    github.style.filter = "invert(1)";
-  });
-  contribute.addEventListener("mouseleave", (event) => {
-    event.target.style.color = "black";
-    github.style.filter = "invert(0)";
-  });
-  contribute.addEventListener("mouseenter", (event) => { event.target.style.backgroundColor = "black" });
-  contribute.addEventListener("mouseleave", (event) => { event.target.style.backgroundColor = "#e8e8e8" });
-  github.style.filter = "invert(0)";
-  last_link.style.color = "black";
-  if (flag == true) {
-    indicator.style.top = "95px";
-  }
-  else {
-    indicator.style.top = "52px";
-  }
-  indicator.style.backgroundImage = "radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
-  shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#e8e8e8,#00000000)";
-  
-  download.addEventListener("mouseenter", (event) => {
-    event.target.style.color = "white";
-    event.target.style.backgroundColor = "black";
-  });
-  download.addEventListener("mouseleave", (event) => {
-    event.target.style.color = "black";
-    event.target.style.backgroundColor = "#e8e8e8";
-  });
+  body.classList.remove('dark-mode');
+  body.classList.add('light-mode');
+
+  const lightButton = document.getElementById("lightButton");
+  updateIndicator(lightButton); // Update the indicator position and style for the light button
 }
+
 function dark(flag) {
   localStorage.setItem('theme', 'dark');
-  document.getElementById("map").style.filter = "invert(1) hue-rotate(180deg) brightness(1.5)";
-  body.style.backgroundColor = "black";
-  body.style.color = "white";
-  tags.style.borderColor = "rgba(255, 255, 255, 0.323)";
-  tags.style.backgroundColor = "#00000000";
-  download.style.borderColor = "white";
-  download.style.color = "white";
-  contribute.style.borderColor = "white";
-  contribute.addEventListener("mouseenter", (event) => { event.target.style.color = "black" });
-  contribute.addEventListener("mouseleave", (event) => { event.target.style.color = "white" });
-  contribute.addEventListener("mouseenter", (event) => {
-    event.target.style.backgroundColor = "white";
-    github.style.filter = "invert(0)";
-  });
-  contribute.addEventListener("mouseleave", (event) => {
-    event.target.style.backgroundColor = "black";
-    github.style.filter = "invert(1)"
-  });
-  last_link.style.color = "white";
-  if (flag == true) {
-    indicator.style.top = "95px";
-  }
-  else {
-    indicator.style.top = "52px";
-  }
-  indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
-  shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#000000d4,#00000000)";
-  
-  download.addEventListener("mouseenter", (event) => {
-    event.target.style.color = "black";
-    event.target.style.backgroundColor = "white";
-  });
-  download.addEventListener("mouseleave", (event) => {
-    event.target.style.color = "white";
-    event.target.style.backgroundColor = "black";
-  });
+  body.classList.remove('light-mode');
+  body.classList.add('dark-mode');
+
+  const darkButton = document.getElementById("darkButton");
+  updateIndicator(darkButton); // Update the indicator position and style for the dark button
 }
+
+function systemDefault() {
+  const theme = localStorage.getItem('theme');
+  const defaultButton = document.getElementById("defaultButton");
+
+  if (theme === 'light') {
+      light(true);
+      updateIndicator(document.getElementById("lightButton")); // Ensure the indicator moves to the light button
+  } else if (theme === 'dark') {
+      dark(true);
+      updateIndicator(document.getElementById("darkButton")); // Ensure the indicator moves to the dark button
+  } else {
+      // Fallback based on system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          dark(true);
+          updateIndicator(document.getElementById("darkButton")); // If system preference is dark
+      } else {
+          light(true);
+          updateIndicator(document.getElementById("lightButton")); // If system preference is light
+      }
+  }
+
+  // Move indicator to the default button when explicitly selected
+  updateIndicator(defaultButton);
+}
+
+// Initialize the theme and indicator position on page load
+systemDefault();
+document.getElementById("lightButton").addEventListener("click", () => {
+  light(false);
+  updateIndicator(document.getElementById("lightButton"));
+});
+document.getElementById("darkButton").addEventListener("click", () => {
+  dark(false);
+  updateIndicator(document.getElementById("darkButton"));
+});
+document.getElementById("defaultButton").addEventListener("click", () => {
+  systemDefault();
+  updateIndicator(document.getElementById("defaultButton"));
+});
+
 
 function topFunction() {
   document.body.scrollTop = 0;
@@ -424,4 +416,10 @@ function validateForm() {
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+// Display the current year in the copyright section
+function displayCopyright() {
+  const year = new Date().getFullYear();
+  document.getElementById("copyright").innerText = year;
 }

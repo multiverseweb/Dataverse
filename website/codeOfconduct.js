@@ -32,20 +32,17 @@ function hide() {
   buttons.style.marginLeft = "-60px";
 }
 
-function systemDefault() {
-  const theme = localStorage.getItem('theme');
+function updateIndicator(button) {
+  // Set the position of the indicator to align with the selected button
+  const adjustment = (button.offsetHeight - indicator.offsetHeight) / 2;
+  indicator.style.top = `${button.offsetTop + adjustment}px`;
 
-  if (theme === 'light') {
-    light(true);
-    shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#e8e8e8,#00000000)";
-  } else if (theme === 'dark') {
-    dark(true);
+  // Set the color of the indicator based on the theme
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme === 'light') {
+    indicator.style.backgroundImage = "radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70%)"; // Black glow in light mode
   } else {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      dark(true);
-    } else {
-      ligh(true);
-    }
+    indicator.style.backgroundImage = "radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%)"; // White glow in dark mode
   }
 }
 
@@ -54,17 +51,11 @@ function light(flag) {
   body.style.backgroundColor = "white";
   body.style.color = "black";
 
-  codeOfConductSection.style.backgroundColor = "white"; 
-  codeOfConductSection.style.color = "black"; 
+  codeOfConductSection.style.backgroundColor = "white";
+  codeOfConductSection.style.color = "black";
 
-  if (flag == true) {
-    indicator.style.top = "95px";
-  }
-  else {
-    indicator.style.top = "52px";
-  }
-  indicator.style.backgroundImage = "radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
-  shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#e8e8e8,#00000000)";
+  const lightButton = document.getElementById("lightButton");
+  updateIndicator(lightButton);
 }
 
 function dark(flag) {
@@ -73,16 +64,41 @@ function dark(flag) {
   body.style.color = "white";
 
   codeOfConductSection.style.backgroundColor = "black";
-  codeOfConductSection.style.color = "white"; 
+  codeOfConductSection.style.color = "white";
 
-  if (flag == true) {
-    indicator.style.top = "95px";
-  }
-  else {
-    indicator.style.top = "52px";
-  }
-  indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
-  shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#000000d4,#00000000)";
+  const darkButton = document.getElementById("darkButton");
+  updateIndicator(darkButton);
 }
 
+function systemDefault() {
+  const theme = localStorage.getItem('theme');
+  const defaultButton = document.getElementById("defaultButton");
+
+  if (theme === 'light') {
+    light(true);
+    updateIndicator(document.getElementById("lightButton")); // Ensure the indicator moves to the light button
+  } else if (theme === 'dark') {
+    dark(true);
+    updateIndicator(document.getElementById("darkButton")); // Ensure the indicator moves to the dark button
+  } else {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      dark(true);
+      updateIndicator(document.getElementById("darkButton")); // If system preference is dark
+    } else {
+      light(true);
+      updateIndicator(document.getElementById("lightButton")); // If system preference is light
+    }
+  }
+}
+
+// Initialize the theme and indicator position on page load
 systemDefault();
+
+// Add event listeners to ensure the glow moves when buttons are clicked
+document.getElementById("lightButton").addEventListener("click", () => light(false));
+document.getElementById("darkButton").addEventListener("click", () => dark(false));
+document.getElementById("defaultButton").addEventListener("click", () => {
+  systemDefault();
+  updateIndicator(document.getElementById("defaultButton")); // Move indicator to the default button
+});
+

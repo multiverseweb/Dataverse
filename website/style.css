@@ -12,6 +12,33 @@ html {
     scroll-behavior: smooth;
 }
 
+#progressBarContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: black; 
+    z-index: 9999; 
+  }
+  
+  #progressBar {
+    height: 100%;
+    width: 0%; 
+    background: linear-gradient(
+        to right, 
+        #FDE725, 
+        #7AD151,
+        #22A884, 
+        #2A788E, 
+        #414487, 
+        #440154
+      );
+      border-radius: 15px 0 0 15px; 
+    transition: width 0.2s ease; 
+  }
+  
+l̥
 /* Preloader styling  */
 #preloader{
     background: #ddbea9;

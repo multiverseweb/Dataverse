@@ -304,6 +304,11 @@ body {
     color: black; /* Default text color in light mode */
 }
 
+.dark-mode  #download_btn{
+    color: white;
+    border: 1px solid #fff;
+}
+
 /* Dark mode styles */
 body.dark-mode {
     background-color: black; /* Dark mode background */
@@ -637,8 +642,8 @@ tr:hover {
 
 #download_btn {
     background-color: #00000000;
-    border: 1px solid white;
-    color: white;
+    border: 1px solid black;
+    color: black;
     font-size: large;
     transition-duration: 0.3s;
     padding: 10px 20px 10px 20px;
@@ -1141,7 +1146,11 @@ input {
         left: 50%;
         margin-top: 45vh;
         transform: translate(-50%);
+        color: #333;
     }
+
+    
+
 
     #about {
         padding-top: 90px;

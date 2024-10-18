@@ -95,7 +95,8 @@ const darkButton = document.getElementById("darkButton");
 
 
 let lastScrollTop = 0;
-const navbar = document.querySelector('navbar');
+//const navbar = document.querySelector('navbar');
+const navbar = document.getElementById('navbar');  // Make sure 'navbar' has the correct id
 
 window.addEventListener('scroll', () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -115,8 +116,17 @@ window.addEventListener('scroll', () => {
   }
 
   lastScrollTop = scrollTop;
+
+  updateProgressBar();
 });
 
+function updateProgressBar() {
+  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrollPercent = (scrollTop / scrollHeight) * 100;
+  
+  document.getElementById("progressBar").style.width = scrollPercent + "%";
+}
 
 function show() {
   l2.style.opacity = 0;
@@ -316,7 +326,7 @@ examples.addEventListener("mouseleave", startAutoScroll);
 examples2.addEventListener("mouseenter", stopAutoScroll);
 examples2.addEventListener("mouseleave", startAutoScroll);
 
-window.addEventListener("scroll", progress);
+//window.addEventListener("scroll", progress);
 
 
 function showCustomAlert(message) {

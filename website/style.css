@@ -974,17 +974,25 @@ footer input[type="submit"]:hover {
     margin-left: 60px;
 }
 
+/* Form styling */
 form {
     background-color: #4c4c4c2a;
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(5px);
     width: 30vw;
     margin-left: 5vw;
     padding: 20px;
     text-align: center;
     border-radius: 5px;
     box-shadow: 0px 0px 10px black;
+    transition: transform 0.3s ease-in-out;
 }
 
+/* Form hover effect */
+form:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+/* Input field styling */
 input {
     background-color: #76767639;
     border: 0.1px solid rgba(255, 255, 255, 0.193);
@@ -993,18 +1001,29 @@ input {
     margin-top: 20px;
     border-radius: 5px;
     padding: 5px 10px;
+    transition: transform 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 
+/* Input hover effect */
+input:hover {
+    transform: scale(1.02); /* Slightly enlarge on hover */
+    border: 0.1px solid rgba(255, 255, 255, 0.5); /* Add border effect */
+}
+
+/* Send button styling */
 #send {
-    margin-left: 100%;
-    transform: translate(calc(-100% - 5px));
+    display: block;
+    margin: 20px auto; /* Center the button horizontally */
     width: min-content;
     background-color: rgba(0, 123, 121, 0.364);
     cursor: pointer;
     color: rgba(255, 255, 255, 0.63);
-    transition-duration: 0.3s;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Send button hover effect */
 #send:hover {
     color: black;
     background-color: rgba(0, 240, 236, 0.867);

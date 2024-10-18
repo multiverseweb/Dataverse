@@ -977,7 +977,7 @@ footer input[type="submit"]:hover {
 /* Form styling */
 form {
     background-color: #4c4c4c2a;
-/*     backdrop-filter: blur(4px); */
+    backdrop-filter: blur(5px);
     width: 30vw;
     margin-left: 5vw;
     padding: 20px;

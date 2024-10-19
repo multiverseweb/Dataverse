@@ -4,7 +4,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Signup</title>
     <style>
         body {
             background: linear-gradient(to bottom, #4facfe, #00f2fe, #667eea, #764ba2);
@@ -32,7 +32,7 @@
         }
 
         .form-label {
-            color: #fff;
+            color: #000000;
             margin-bottom: 5px;
             text-align: left;
             display: block;
@@ -49,30 +49,30 @@
         }
 
         .form-text {
-            color: #fff;
+            color: #000000;
             font-size: 12px;
             text-align: left;
         }
 
-        .btn-primary {
+        .btn-primary, .btn-secondary {
             background-color: #f7b42c;
             background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
             border: none;
             padding: 10px;
             border-radius: 20px;
             width: 100%;
-            color: #fff;
+            color: #000000;
             font-size: 16px;
             cursor: pointer;
             transition: background 0.3s ease;
         }
 
-        .btn-primary:hover {
+        .btn-primary:hover, .btn-secondary:hover {
             background-image: linear-gradient(315deg, #fc575e 0%, #f7b42c 74%);
         }
 
         .login-container a {
-            color: #fff;
+            color: #000000;
             text-decoration: none;
         }
 
@@ -81,18 +81,15 @@
         }
 
         .login-container p {
-            color: #fff;
+            color: #000000;
             margin-top: 10px;
         }
     </style>
 </head>
 
 <body>
-    <div style="text-align: right; margin: 10px;">
-        <a href="index.html" class="btn btn-secondary" style="width: 150px; position: relative; right: 1330px;">Back to Home</a>
-    </div>
     <div class="login-container">
-        <h2>Signup</h2>
+        <h2 style='color:#000000'>Signup</h2>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email address</label>
             <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
@@ -109,33 +106,57 @@
             <input type="password" placeholder="Confirm your Password" id="confirmPasswordInput" class="form-control" aria-describedby="passwordHelpBlock">
         </div>
         <button type="button" class="btn btn-primary" id="signupButton">Signup</button>
+        <div class="back-to-home" style="margin-top: 10px;">
+            <a href="index.html" class="btn btn-secondary">Back to Home</a>
+        </div>
         <div style="text-align: center; margin-top: 10px;">
             <p>Already have an account? <a href="login.html">Login</a></p>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel" style="color: #fff;">Success</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="color: #fff;">
+                    Your account has been created successfully!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.getElementById('signupButton').addEventListener('click', function() {
             const emailInput = document.getElementById('emailInput');
             const passwordInput = document.getElementById('passwordInput');
             const confirmPasswordInput = document.getElementById('confirmPasswordInput');
             const emailValue = emailInput.value.trim();
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailRegex.test(emailValue)) {
-      alert('Invalid email address');
-      return;
-    }
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            
+            if (!emailRegex.test(emailValue)) {
+                alert('Invalid email address');
+                return;
+            }
 
-    // Check if passwords match
-    if (passwordInput.value !== confirmPasswordInput.value) {
-      alert('Both Passwords do not match');
-      return;
-    }
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                alert('Both Passwords do not match');
+                return;
+            }
+
             emailInput.value = '';
             passwordInput.value = '';
             confirmPasswordInput.value = '';
 
-            window.location.href = 'login.html';
-            alert('Your Accout has been cteated successfully!');
+            // Show the success modal
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

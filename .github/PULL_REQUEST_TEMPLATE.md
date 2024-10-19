@@ -1,5 +1,5 @@
 ### Description
-Please include a summary of the changes and the related issue. Also, explain the motivation behind this PR.
+<!--Please include a summary of the changes and the related issue. Also, explain the motivation behind this PR.-->
 
 ### Related Issue
 Fixes # (issue)

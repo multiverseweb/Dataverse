@@ -6,14 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .login-container{
-            width: 500px;
-            height: 450px;
-            position: relative;
-            top: 100px;
-            left: 450px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        body {
+            background: linear-gradient(to bottom, #4facfe, #00f2fe, #667eea, #764ba2);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px 40px;
+            width: 460px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .form-label {
+            color: #fff;
+            margin-bottom: 5px;
+            text-align: left;
+            display: block;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-text {
+            color: #fff;
+            font-size: 12px;
+            text-align: left;
+        }
+
+        .btn-primary {
+            background-color: #f7b42c;
+            background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
+            border: none;
+            padding: 10px;
+            border-radius: 20px;
+            width: 100%;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-image: linear-gradient(315deg, #fc575e 0%, #f7b42c 74%);
+        }
+
+        .login-container a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+
+        .login-container p {
+            color: #fff;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -22,24 +91,25 @@
     <div style="text-align: right; margin: 10px;">
         <a href="index.html" class="btn btn-secondary" style="width: 150px; position: relative; right: 1330px;">Back to Home</a>
     </div>
-    <div class="login-container" style="padding-top: 20px;">
+    
+<div class="login-container">
         <h2 style="text-align: center;">Login</h2>
-        <div class="mb-3" style="margin-left: 40px;">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" style="width: 400px;">
-          </div>
-          <div class="mb-3" style="margin-left: 40px;">
-          <label for="inputPassword5" class="form-label">Password</label>
-<input type="password" id="passwordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 400px">
-<div id="passwordHelpBlock" class="form-text" style="width: 400px">
-  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-</div>
-</div>
-<button type="button" class="btn btn-primary" id="loginButton" style="width: 400px; margin-left: 40px;">Login</button>
-<div style="text-align: center; margin-top: 10px;">
-    <p>Don't have an accout ?  <a href="signup.html" style="text-decoration: none;"> Sign UP</a></p>
-    <p style="text-align: center;"><a href="#" style=" text-decoration: none;">Forget Password</a></p>
-</div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label" style="text-align: left;">Email address</label>
+            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="inputPassword5" class="form-label" style="text-align: left;">Password</label>
+            <input type="password" id="passwordInput" class="form-control" aria-describedby="passwordHelpBlock">
+            <div id="passwordHelpBlock" class="form-text">
+                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="loginButton">Login</button>
+        <div style="text-align: center; margin-top: 10px;">
+            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+            <p><a href="#">Forgot Password?</a></p>
+        </div>
     </div>
     <script>
         document.getElementById('loginButton').addEventListener('click', function() {

@@ -15,7 +15,7 @@ function topFunction() {
 function changeCss() {
     var top = document.getElementById("top");
     var scroll_icon = document.getElementById("scroll_icon");
-    (this.scrollY > 30 && this.scrollY < 2450) ? top.style.opacity = 1 : top.style.opacity = 0;
+    (this.scrollY > 30) ? top.style.opacity = 1 : top.style.opacity = 0;
     (this.scrollY > 0) ? scroll_icon.style.opacity = 0 : scroll_icon.style.opacity = 1;
 }
 
@@ -92,6 +92,7 @@ var shadow = document.getElementById("shadow");
 var download = document.getElementById("download_btn");
 const lightButton = document.getElementById("lightButton");
 const darkButton = document.getElementById("darkButton");
+const technologies = document.getElementById("technologies");
 
 
 let lastScrollTop = 0;
@@ -120,13 +121,16 @@ window.addEventListener('scroll', () => {
   updateProgressBar();
 });
 
-function updateProgressBar() {
-  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+let lastScroll = 0;
+function progress() {
+  var scroll = this.scrollY;
   var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrollPercent = (scrollTop / scrollHeight) * 100;
-  
-  document.getElementById("progressBar").style.width = scrollPercent + "%";
-}
+  var percent = Math.round((scroll / scrollHeight) * 100);
+  document.getElementById("progress_bar").style.width = percent + 'vw';
+};
+
+window.addEventListener("scroll", progress);
 
 function show() {
   l2.style.opacity = 0;
@@ -186,15 +190,29 @@ function light(flag) {
   localStorage.setItem('theme', 'light');
   body.classList.remove('dark-mode');
   body.classList.add('light-mode');
-
+  document.getElementById("map").style.filter = "none";
+  document.getElementById("map").style.zIndex = 0;
+  tags.style.borderColor = "black";
+  tags.style.backgroundColor = "#171717";
+  indicator.style.backgroundImage = "radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
+  shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#f9f9f9,#00000000)";
+  contribute.style.filter="invert(1)";
+  technologies.style.border="1px solid #00000044";
   const lightButton = document.getElementById("lightButton");
   updateIndicator(lightButton); // Update the indicator position and style for the light button
 }
 
 function dark(flag) {
   localStorage.setItem('theme', 'dark');
+  document.getElementById("map").style.filter = "invert(1) hue-rotate(180deg) brightness(1.5)";
+  tags.style.borderColor = "rgba(255, 255, 255, 0.323)";
+  tags.style.backgroundColor = "#00000000";
+  indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
+  shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#000000d4,#00000000)";
   body.classList.remove('light-mode');
   body.classList.add('dark-mode');
+  contribute.style.filter="invert(0)";
+  technologies.style.border="1px solid #ffffff044";
 
   const darkButton = document.getElementById("darkButton");
   updateIndicator(darkButton); // Update the indicator position and style for the dark button
@@ -239,20 +257,6 @@ document.getElementById("defaultButton").addEventListener("click", () => {
   systemDefault();
   updateIndicator(document.getElementById("defaultButton"));
 });
-
-
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
-function changeCss() {
-  var top = document.getElementById("top");
-  var scroll_icon = document.getElementById("scroll_icon");
-  (this.scrollY > 30 && this.scrollY < 2450) ? top.style.opacity = 1 : top.style.opacity = 0;
-  (this.scrollY > 0) ? scroll_icon.style.opacity = 0 : scroll_icon.style.opacity = 1;
-}
-
-window.addEventListener("scroll", changeCss, false);
 
 
 function animate() {

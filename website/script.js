@@ -121,7 +121,8 @@ window.addEventListener('scroll', () => {
 let lastScroll = 0;
 function progress() {
   var scroll = this.scrollY;
-  var percent = Math.round((scroll / 3500) * 100);
+  var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var percent = Math.round((scroll / scrollHeight) * 100);
   document.getElementById("progress_bar").style.width = percent + 'vw';
 };
 

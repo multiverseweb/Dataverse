@@ -8,6 +8,8 @@ import report                                                       #for report 
 import datetime                                                     #for getting date
 from datetime import datetime, timedelta,date                       #for x-axis time class-width
 from matplotlib.widgets import Cursor as lines
+from sklearn.linear_model import LinearRegression
+import pandas as pd
 #===============================================================================================================plot colors
 colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462","#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato","tan"]
 #==================================================================================================connecting MySQL
@@ -98,6 +100,87 @@ def fetch_data(u_id):
             pool[i]=column_values
         requireds=[columns,pool]
         return requireds
+    
+#=======================================================================================================Predictive Analytics (Linear Regression)
+
+def predict_future_expenditure(pool):
+    if 'entryDate' not in pool or 'total' not in pool:
+        print("Missing required columns in pool.")
+        return
+
+    try:
+        entry_dates = [datetime.strptime(date, '%Y-%m-%d') for date in pool['entryDate']]
+    except ValueError as e:
+        print(f"Error parsing entryDate: {e}")
+        return
+
+    total = pool['total']
+    if not isinstance(total, list) or not all(isinstance(x, (int, float)) for x in total):
+        print("Invalid total values. Ensure all values are numeric.")
+        return
+    
+    if len(entry_dates) != len(total):
+        print("Mismatch in lengths of entryDate and total.")
+        return
+
+    X = np.array([i for i in range(len(entry_dates))]).reshape(-1, 1)
+    y = np.array(total)
+
+    model = LinearRegression().fit(X, y)
+
+    # Predict for the next 30 days
+    future_dates = np.array([i for i in range(len(entry_dates), len(entry_dates) + 30)]).reshape(-1, 1)
+    future_predictions = model.predict(future_dates)
+
+    # Plotting
+    plt.figure(figsize=(10, 5))
+    future_dates_list = [entry_dates[-1] + timedelta(days=i) for i in range(1, 31)]
+    plt.plot(entry_dates, y, label="Past Data")
+    plt.plot(future_dates_list, future_predictions, label="Predicted", color='red')
+    plt.legend()
+    plt.title("Future Expenditure Prediction")
+    plt.xlabel("Date")
+    plt.ylabel("Expenditure")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
+
+#=======================================================================================================Monthly Comparison
+
+def monthly_comparison(pool):
+    if 'entryDate' not in pool or 'expenditure' not in pool:
+        print("Missing required columns in pool.")
+        return
+
+    try:
+        entry_dates = pd.to_datetime(pool['entryDate'])
+    except ValueError as e:
+        print(f"Error parsing entryDate: {e}")
+        return
+
+    expenditure = pool['expenditure']
+    if not isinstance(expenditure, list) or not all(isinstance(x, (int, float)) for x in expenditure):
+        print("Invalid expenditure values. Ensure all values are numeric.")
+        return
+
+    if len(entry_dates) != len(expenditure):
+        print("Mismatch in lengths of entryDate and expenditure.")
+        return
+
+    df = pd.DataFrame({'entryDate': entry_dates, 'expenditure': expenditure})
+
+    df['month'] = df['entryDate'].dt.to_period('M')  
+    monthly_data = df.groupby('month')['expenditure'].sum()  
+
+    # Plotting
+    plt.figure(figsize=(10, 6))
+    monthly_data.plot(kind='bar', color='skyblue')
+    plt.title("Monthly Expenditure Comparison")
+    plt.xlabel("Month")
+    plt.ylabel("Total Expenditure")
+    plt.xticks(rotation=45)  
+    plt.tight_layout()  
+    plt.show()
 
 #=======================================================================================================visualize/plot data
 def plot_data(requireds,u_name):
@@ -207,4 +290,3 @@ def move_figure(fig, x, y):
         fig.canvas.manager.window.SetPosition((x, y))
     else:
         fig.canvas.manager.window.move(x, y)
-

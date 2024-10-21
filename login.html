@@ -14,6 +14,28 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            position: relative; /* For positioning the back button */
+        }
+
+        .back-to-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-to-home a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 20px;
+            background-color: #f7b42c;
+            background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
+            transition: background 0.3s ease;
+        }
+
+        .back-to-home a:hover {
+            background-image: linear-gradient(315deg, #fc575e 0%, #f7b42c 74%);
         }
 
         .login-container {
@@ -23,12 +45,12 @@
             width: 460px;
             backdrop-filter: blur(10px);
             box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         .login-container h2 {
             margin-bottom: 20px;
             color: #000000;
-            text-align: center;
         }
 
         .form-label {
@@ -54,7 +76,7 @@
             text-align: left;
         }
 
-        .btn-primary, .btn-secondary {
+        .btn-primary {
             background-color: #f7b42c;
             background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
             border: none;
@@ -67,7 +89,7 @@
             transition: background 0.3s ease;
         }
 
-        .btn-primary:hover, .btn-secondary:hover {
+        .btn-primary:hover {
             background-image: linear-gradient(315deg, #fc575e 0%, #f7b42c 74%);
         }
 
@@ -88,6 +110,9 @@
 </head>
 
 <body>
+    <div class="back-to-home">
+        <a href="index.html">Back to Home</a>
+    </div>
     <div class="login-container">
         <h2>Login</h2>
         <div class="mb-3">
@@ -102,9 +127,6 @@
             </div>
         </div>
         <button type="button" class="btn btn-primary" id="loginButton">Login</button>
-        <div class="back-to-home" style="margin-top: 10px;">
-            <a href="index.html" class="btn btn-secondary">Back to Home</a>
-        </div>
         <div style="text-align: center; margin-top: 10px;">
             <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
             <p><a href="#">Forgot Password?</a></p>

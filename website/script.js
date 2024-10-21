@@ -425,26 +425,58 @@ function displayCopyright() {
   document.getElementById("copyright").innerText = year;
 }
 
+const scrollBar = document.getElementById('draggableScrollBar');
 const scrollHandle = document.getElementById('scrollHandle');
-let isDragging = false;
-let startY, startScrollTop;
 
+let isDragging = false;
+let startY, startScrollTop, maxScrollTop, maxScrollHandleTop;
+
+// Function to update the size of the scroll handle based on the scrollable content
+function updateScrollHandleSize() {
+  const windowHeight = window.innerHeight;
+  const scrollHeight = document.documentElement.scrollHeight;
+  const handleHeight = Math.max((windowHeight / scrollHeight) * windowHeight, 60); // Min handle size 60px
+  scrollHandle.style.height = `${handleHeight}px`;
+  maxScrollHandleTop = windowHeight - handleHeight;
+}
+
+// Update handle position based on page scroll
+function updateScrollHandlePosition() {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const handleTop = (scrollTop / scrollHeight) * maxScrollHandleTop;
+  scrollHandle.style.top = `${handleTop}px`;
+}
+
+// When the handle is clicked
 scrollHandle.addEventListener('mousedown', function (e) {
   isDragging = true;
   startY = e.clientY;
   startScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-  document.body.style.userSelect = 'none';
+  document.body.style.userSelect = 'none'; // Disable text selection while dragging
 });
 
+// Handle dragging of the scroll handle
 window.addEventListener('mousemove', function (e) {
   if (!isDragging) return;
   const deltaY = e.clientY - startY;
-  const scrollAmount = deltaY * (document.documentElement.scrollHeight / window.innerHeight);
-  document.documentElement.scrollTop = startScrollTop + scrollAmount;
-  document.body.scrollTop = startScrollTop + scrollAmount;
+  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollRatio = deltaY / maxScrollHandleTop;
+  const newScrollTop = startScrollTop + scrollRatio * scrollHeight;
+  document.documentElement.scrollTop = newScrollTop;
+  document.body.scrollTop = newScrollTop;
 });
 
+// Stop dragging
 window.addEventListener('mouseup', function () {
   isDragging = false;
-  document.body.style.userSelect = '';
+  document.body.style.userSelect = ''; // Enable text selection again
+});
+
+// Sync handle size and position on page load or window resize
+window.addEventListener('resize', updateScrollHandleSize);
+window.addEventListener('scroll', updateScrollHandlePosition);
+window.addEventListener('load', () => {
+  updateScrollHandleSize();
+  updateScrollHandlePosition();
 });

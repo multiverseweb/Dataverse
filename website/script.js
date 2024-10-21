@@ -424,6 +424,7 @@ function displayCopyright() {
   const year = new Date().getFullYear();
   document.getElementById("copyright").innerText = year;
 }
+}
 
 const scrollHandle = document.getElementById('scrollHandle');
 let isDragging = false;

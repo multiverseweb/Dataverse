@@ -424,3 +424,27 @@ function displayCopyright() {
   const year = new Date().getFullYear();
   document.getElementById("copyright").innerText = year;
 }
+
+const scrollHandle = document.getElementById('scrollHandle');
+let isDragging = false;
+let startY, startScrollTop;
+
+scrollHandle.addEventListener('mousedown', function (e) {
+  isDragging = true;
+  startY = e.clientY;
+  startScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  document.body.style.userSelect = 'none';
+});
+
+window.addEventListener('mousemove', function (e) {
+  if (!isDragging) return;
+  const deltaY = e.clientY - startY;
+  const scrollAmount = deltaY * (document.documentElement.scrollHeight / window.innerHeight);
+  document.documentElement.scrollTop = startScrollTop + scrollAmount;
+  document.body.scrollTop = startScrollTop + scrollAmount;
+});
+
+window.addEventListener('mouseup', function () {
+  isDragging = false;
+  document.body.style.userSelect = '';
+});

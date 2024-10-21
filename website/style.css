@@ -1361,3 +1361,33 @@ input {
 #codeOfconduct a:hover {
     text-decoration: underline;
 }
+#draggableScrollBar {
+    position: fixed;
+    right: 10px;
+    top: 0;
+    width: 15px;
+    height: 100%;
+    background-color: #f1f1f1;
+    z-index: 99;
+    display: block;
+  }
+  
+  #scrollHandle {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    background-color: #555;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  #scrollHandle:hover {
+    background-color: #333;
+  }
+  
+  @media (max-width: 768px) {
+    #draggableScrollBar {
+      display: none;
+    }
+  }
+  

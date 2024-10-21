@@ -11,6 +11,17 @@
 html {
     scroll-behavior: smooth;
 }
+/* Cursor styling */
+.circle {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    position: fixed;
+    background-color: black;  /* Default color of circles */
+    pointer-events: none;     /* Prevent interaction with circles */
+    z-index: 9999;
+    transition: transform 0.1s ease-out;
+    }
 
 /* Preloader styling  */
 #preloader{

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body {
-            background: linear-gradient(to bottom, #4facfe, #00f2fe, #667eea, #764ba2);
+            background-color: #f5f7fa;
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            position: relative; /* For positioning the back button */
+            position: relative;
         }
 
         .back-to-home {
@@ -24,135 +24,142 @@
         }
 
         .back-to-home a {
-            color: #000000;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
             padding: 10px 20px;
             border-radius: 20px;
-            background-color: #f7b42c;
-            background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
+            background-color: #f953c6;
+            background-image: linear-gradient(135deg, #f953c6 0%, #b91d73 100%);
             transition: background 0.3s ease;
         }
 
         .back-to-home a:hover {
-            background-image: linear-gradient(315deg, #fc575e 0%, #f7b42c 74%);
+            background-image: linear-gradient(135deg, #b91d73 0%, #f953c6 100%);
         }
 
         .login-container {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 20px 40px;
-            width: 460px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .login-form {
+            padding: 40px;
+            width: 50%;
+        }
+
+        .welcome-section {
+            background: linear-gradient(135deg, #f953c6 0%, #b91d73 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            color: white;
             text-align: center;
         }
 
-        .login-container h2 {
+        .welcome-section h2 {
+            font-size: 24px;
             margin-bottom: 20px;
-            color: #000000;
         }
 
         .form-label {
-            color: #000000;
             margin-bottom: 5px;
-            text-align: left;
-            display: block;
+            color: #333;
         }
 
         .form-control {
-            width: 100%;
+            border-radius: 30px;
             padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 20px;
-            border: none;
-            outline: none;
-            background: rgba(255, 255, 255, 0.8);
-        }
-
-        .form-text {
-            color: #000000;
-            font-size: 12px;
-            text-align: left;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
         }
 
         .btn-primary {
-            background-color: #f7b42c;
-            background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
+            background: linear-gradient(135deg, #f953c6 0%, #b91d73 100%);
             border: none;
             padding: 10px;
-            border-radius: 20px;
+            border-radius: 30px;
             width: 100%;
-            color: #000000;
+            color: white;
             font-size: 16px;
             cursor: pointer;
             transition: background 0.3s ease;
         }
 
         .btn-primary:hover {
-            background-image: linear-gradient(315deg, #fc575e 0%, #f7b42c 74%);
+            background: linear-gradient(135deg, #b91d73 0%, #f953c6 100%);
         }
 
-        .login-container a {
-            color: #000000;
+        .additional-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input {
+            margin-right: 5px;
+        }
+
+        .social-icons {
+            margin: 20px 0;
+        }
+
+        .social-icons a {
+            margin: 0 5px;
+            color: #333;
+            font-size: 18px;
             text-decoration: none;
-        }
-
-        .login-container a:hover {
-            text-decoration: underline;
-        }
-
-        .login-container p {
-            color: #000000;
-            margin-top: 10px;
         }
     </style>
 </head>
-
 <body>
     <div class="back-to-home">
         <a href="index.html">Back to Home</a>
     </div>
     <div class="login-container">
-        <h2>Login</h2>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
-        </div>
-        <div class="mb-3">
-            <label for="inputPassword5" class="form-label">Password</label>
-            <input type="password" id="passwordInput" class="form-control" aria-describedby="passwordHelpBlock">
-            <div id="passwordHelpBlock" class="form-text">
-                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+        <div class="login-form">
+            <h2>Sign In</h2>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
+            <div class="mb-3">
+                <label for="usernameInput" class="form-label">Username</label>
+                <input type="text" class="form-control" id="usernameInput" placeholder="Username">
+            </div>
+            <div class="mb-3">
+                <label for="passwordInput" class="form-label">Password</label>
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+            </div>
+            <div class="additional-options">
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Remember Me</label>
+                </div>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button type="button" class="btn btn-primary">Sign In</button>
         </div>
-        <button type="button" class="btn btn-primary" id="loginButton">Login</button>
-        <div style="text-align: center; margin-top: 10px;">
-            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
-            <p><a href="#">Forgot Password?</a></p>
+        <div class="welcome-section">
+            <h2>Welcome to login</h2>
+            <p>Don't have an account?</p>
+            <a href="signup.html" class="btn btn-light" style="border-radius: 30px; padding: 10px 20px; color: #b91d73; background: white; text-decoration: none;">Sign Up</a>
         </div>
     </div>
-    <script>
-        document.getElementById('loginButton').addEventListener('click', function() {
-            const emailInput = document.getElementById('emailInput');
-            const passwordInput = document.getElementById('passwordInput');
-            const emailValue = emailInput.value.trim();
-            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-            if (!emailRegex.test(emailValue)) {
-                alert('Invalid email address');
-                return;
-            }
-
-            emailInput.value = '';
-            passwordInput.value = '';
-
-            // Redirect to index.html
-            window.location.href = 'index.html';
-            alert('Login successful!');
-        });
-    </script>
-
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

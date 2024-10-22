@@ -4,7 +4,7 @@ from matplotlib.gridspec import GridSpec                            #for showing
 import matplotlib.pyplot as plt                                     #for plotting graphs
 import matplotlib                                                   #for plotting graphs
 import numpy as np                                                  #for x-axis time arange
-import report                                                       #for report pdf
+#import report                                                       #for report pdf
 import datetime                                                     #for getting date
 from datetime import datetime, timedelta,date                       #for x-axis time class-width
 from matplotlib.widgets import Cursor as lines

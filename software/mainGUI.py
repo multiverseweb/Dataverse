@@ -17,6 +17,7 @@ from matplotlib.widgets import Cursor                               #for lines o
 import numpy as np                                                  #for x-axis time arange
 #===================================================================================================================plot colors
 colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462","#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato","tan"]
+maxLimit = 16 # maximum limit for colors
 #===================================================================================================================connecting mySQL
 mycon=financeTracker.mycon
 cursor=financeTracker.cursor
@@ -560,7 +561,7 @@ def line_values(c,title_var,x_var,y_var):
     x_label=x_var.get()
     y_var=y_var.get()
 
-    if y_var>16:
+    if y_var>maxLimit:
         messagebox.showwarning(message="Too many dependent variables!\nThe maximum limit is 16.")
     elif y_var<=0:
         messagebox.showwarning(message="No. of dependent variables should be greater than 0.")
@@ -724,7 +725,7 @@ def pie_values(c,title_var,y_var):
 
     y_var=y_var.get()
     heading=title_var.get()
-    if y_var>16:
+    if y_var>maxLimit:
         messagebox.showwarning(message="Too many variables!\nThe maximum limit is 16.")
     elif y_var<=0:
         messagebox.showwarning(message="No. of variables should be greater than 0.")
@@ -781,7 +782,7 @@ def radar_values(c,title_var,x_var,y_var):
     def x_no_values(c,y,x_no_value,names_form,x_label):
         if x_no_value.get()<3:
             messagebox.showwarning(message="No. of values for independent variable should be greater than 2.")
-        elif x_no_value.get()>16:
+        elif x_no_value.get()>maxLimit:
             messagebox.showwarning(message="Too many values for independent variable!\nThe maximum limit is 16.")
         else:
             x_no_value = x_no_value.get()
@@ -861,7 +862,7 @@ def radar_values(c,title_var,x_var,y_var):
     x_label=x_var.get()
     y_var=y_var.get()
     
-    if y_var>16:
+    if y_var>maxLimit:
         messagebox.showwarning(message="Too many dependent variables!\nThe maximum limit is 16.")
     elif y_var<=0:
         messagebox.showwarning(message="No. of dependent variables should be greater than 0.")
@@ -973,7 +974,7 @@ def scatter_enter_values(c,title_var,x_var,y_var,z_var,no_values_var):
     z_label=z_var.get()
     no_values=no_values_var.get()
 
-    if no_values>16:
+    if no_values>maxLimit:
         messagebox.showwarning(message="Too many values to plot!\nThe maximum limit is 16.")
     elif no_values<=0:
         messagebox.showwarning(message="No. of values to plot should be greater than 0.")
@@ -1079,7 +1080,7 @@ def heatmap_values(c,title_var,x_var,y_var,d_var):
     def x_value(c,names_form,x_values,x_label):
         x_values=x_values.get()
 
-        if x_values>16:
+        if x_values>maxLimit:
             messagebox.showwarning(message="Too many values for independent variable!\nThe maximum limit is 16.")
         elif x_values<=0:
             messagebox.showwarning(message="No. of values for independent variable should be greater than 0.")
@@ -1124,7 +1125,7 @@ def heatmap_values(c,title_var,x_var,y_var,d_var):
     def y_values1(c,values_form,y_values,y_label):
         y_values=y_values.get()
 
-        if y_values>16:
+        if y_values>maxLimit:
             messagebox.showwarning(message="Too many values for independent variable!\nThe maximum limit is 16.")
         elif y_values<=0:
             messagebox.showwarning(message="No. of values for independent variable should be greater than 0.")

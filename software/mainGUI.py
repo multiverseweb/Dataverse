@@ -150,30 +150,41 @@ def guest(b1,b2,b3,b4,preview_image):
     title.pack(fill=X,pady=35,padx=(0,200))
 
     # adding images to button 
-    line_graph = PhotoImage(file="software/images/line_graph.png")
-    bar_graph = PhotoImage(file="software/images/bar_graph.png")
-    histogram = PhotoImage(file="software/images/histogram.png")
-    area_chart = PhotoImage(file="software/images/area_chart.png")
-    scatter_plot = PhotoImage(file="software/images/scatter_plot.png")
-    heatmap_plot = PhotoImage(file="software/images/heatmap_plot.png")
-    radar_chart = PhotoImage(file="software/images/radar_chart.png")
-    pie_chart = PhotoImage(file="software/images/pie_chart.png")
+    def resize_image(image_path, width=20, height=20):
+        image = Image.open(image_path)
+        image = image.resize((width, height), Image.Resampling.LANCZOS)
+        return ImageTk.PhotoImage(image)
 
-    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',image=line_graph,text="Line Graph",compound='left',width=180,anchor='w',font="poppins 10",cursor="hand2",padx=10)
-    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',image=bar_graph,text="Bar Graph",compound='left',width=180,anchor='w',font="poppins 10",cursor="hand2",padx=10)
-    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',image=scatter_plot,text="Scatter Plot",compound='left',width=180,anchor='w',font="poppins 10",cursor="hand2",padx=10)
-    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',image=area_chart,text="Area Chart",compound='left',width=180,anchor='w',font="poppins 10",cursor="hand2",padx=10)
-    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',image=histogram,text="Histogram",compound='left',width=180,anchor='w',font="poppins 10",cursor="hand2",padx=10)
-    b6=Button(menu,fg='#ffffff',bg='#1a1a1a',image=pie_chart,text="Pie Chart",compound='left',width=180,anchor='w',font="poppins 10",cursor="hand2",padx=10)
-    b7=Button(menu,fg='#ffffff',bg='#1a1a1a',image=heatmap_plot,text="Heatmap",compound='left',width=180,anchor='w',font="poppins 10",cursor="hand2",padx=10)
-    b8=Button(menu,fg='#ffffff',bg='#1a1a1a',image=radar_chart,text="Radar Chart",compound='left',width=180,anchor='w',font="poppins 10",cursor="hand2",padx=10)
-    b9=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Polar Scatter Plot",width=22,font="poppins 10",cursor="hand2")
-    b10=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Plot Equations",width=22,font="poppins 10",cursor="hand2")
-    b11=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Maps",width=22,font="poppins 10",cursor="hand2")
-    b13=Button(menu,fg='#ffffff',bg='#1a1a1a',text="3d Scatter",width=22,font="poppins 10",cursor="hand2")
-    b14=Button(menu,fg='#ffffff',bg='#1a1a1a',text="3D Surface",width=22,font="poppins 10",cursor="hand2")
-    b12=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Live Graphs",width=22,font="poppins 10",cursor="hand2")
-    b15=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Go to Home",width=22,font="poppins 10",command=main,cursor="hand2")
+    # Resizing all images to 20x20
+    line_graph = resize_image("software/images/line_graph.png", 20)
+    bar_graph = resize_image("software/images/bar_graph.png", 20)
+    histogram = resize_image("software/images/histogram.png", 20)
+    area_chart = resize_image("software/images/area_chart.png", 20)
+    scatter_plot = resize_image("software/images/scatter_plot.png", 20)
+    heatmap_plot = resize_image("software/images/heatmap_plot.png",20)
+    radar_chart = resize_image("software/images/radar_chart.png", 20)
+    pie_chart = resize_image("software/images/pie_chart.png", 20)
+    _3dScatter = resize_image("software/images/3dScatter.png", 20)
+    equation = resize_image("software/images/equation.png", 20)
+    polarScatter = resize_image("software/images/polarScatter.png", 20)
+    surface = resize_image("software/images/surface.png", 20)
+    home = resize_image("software/images/home.png", 20)
+
+    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',image=line_graph,text="Line Graph",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',image=bar_graph,text="Bar Graph",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',image=scatter_plot,text="Scatter Plot",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',image=area_chart,text="Area Chart",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',image=histogram,text="Histogram",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    b6=Button(menu,fg='#ffffff',bg='#1a1a1a',image=pie_chart,text="Pie Chart",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    b7=Button(menu,fg='#ffffff',bg='#1a1a1a',image=heatmap_plot,text="Heatmap",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    b8=Button(menu,fg='#ffffff',bg='#1a1a1a',image=radar_chart,text="Radar Chart",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    b9=Button(menu,fg='#ffffff',bg='#1a1a1a',image=polarScatter,text="Polar Scatter Plot",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    b10=Button(menu,fg='#ffffff',bg='#1a1a1a',image=equation,text="Equations",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    #b11=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Maps",width=22,font="poppins 10",cursor="hand2")
+    b13=Button(menu,fg='#ffffff',bg='#1a1a1a',image=_3dScatter,text="3D Scatter",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    b14=Button(menu,fg='#ffffff',bg='#1a1a1a',image=surface,text="3D Surface",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    #b12=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Live Graphs",width=22,font="poppins 10",cursor="hand2")
+    b15=Button(menu,fg='#ffffff',bg='#1a1a1a',image=home,text="Go To Home",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10,command=main)
 
     b1.image = line_graph
     b2.image = bar_graph
@@ -183,6 +194,11 @@ def guest(b1,b2,b3,b4,preview_image):
     b6.image = pie_chart
     b7.image = heatmap_plot
     b8.image = radar_chart
+    b13.image = _3dScatter
+    b10.image = equation
+    b9.image = polarScatter
+    b14.image = surface
+    b15.image = home
 
     b1.config(command=partial(line,c="line"))
     b2.config(command=partial(line,c="bar"))
@@ -205,10 +221,10 @@ def guest(b1,b2,b3,b4,preview_image):
     b8.pack(pady=5,padx=15)
     b9.pack(pady=5,padx=15)
     b10.pack(pady=5,padx=15)
-    b11.pack(pady=5,padx=15)
+    #b11.pack(pady=5,padx=15)
     b13.pack(pady=5,padx=15)
     b14.pack(pady=5,padx=15)
-    b12.pack(pady=5,padx=15)
+    #b12.pack(pady=5,padx=15)
     b15.pack(pady=30,padx=15)
 #==================================================================================Delete Account- b4
 def delete(b4,b1,b3,b2,preview_image):

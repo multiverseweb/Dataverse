@@ -58,13 +58,16 @@ def reset(event):
     symax.reset()
     update_plot()
 
-# Input equation
+# Input equation with validation
 while True:
     equation = input("Enter an equation in the form y = f(x) (e.g., y = 2*x + 3 or y = sin(x)): ")
     try:
         lhs, equation_rhs = equation.replace(' ', '').split('=')
         if lhs != 'y':
             raise ValueError("Invalid equation format. Please use the format 'y = f(x)'.")
+        # Additional validation to ensure rhs is a valid expression
+        if not all(char.isalnum() or char in ['+', '-', '*', '/', '(', ')', 'x', ' ', '.', 'sin', 'cos', 'tan', 'sqrt', 'log', 'exp', 'abs', 'pi', 'e'] for char in equation_rhs):
+            raise ValueError("Invalid characters in the equation. Only numerical values, operators, and allowed functions are permitted.")
         break  
     except ValueError as ve:
         print(ve)

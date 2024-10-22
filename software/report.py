@@ -2,11 +2,16 @@ import fpdf
 import matplotlib
 from matplotlib import pyplot as plt
 from datetime import date
+import os
 
 def save(u_name, total):
     # Validate that u_name and total are not empty or invalid
-    if not u_name or not isinstance(total, (int, float)):
-        print("Error: Invalid username or total value.")
+    if not u_name or not isinstance(u_name, str):
+        print("Error: Invalid username. Please provide a valid string.")
+        return
+    
+    if not isinstance(total, (int, float)):
+        print("Error: Invalid total value. Please provide a numeric value.")
         return
 
     #=================================================Designing and saving report PDF
@@ -22,10 +27,14 @@ def save(u_name, total):
         pdf.cell(200, 10, txt="\n\nTotal={}".format(total), ln=1, align="L", fill=True)
         
         # Attempt to add the image; catch any file errors
-        try:
-            pdf.image('plot.png', x=None, y=None, w=190, h=120, type='', link='plot.png')
-        except RuntimeError:
+        image_path = 'plot.png'
+        if not os.path.exists(image_path):
             print("Error: The image file 'plot.png' was not found. Please ensure it exists.")
+        else:
+            try:
+                pdf.image(image_path, x=None, y=None, w=190, h=120, type='', link=image_path)
+            except RuntimeError as e:
+                print("Error while adding image to PDF:", str(e))
 
         pdf.cell(200, 20, txt="-Tejas, Ojas & Nandana :)", ln=1, align="R", fill=True)
 

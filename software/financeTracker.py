@@ -1,13 +1,14 @@
 import tabulate
-from tkinter import messagebox                                      #for showing messages
-from matplotlib.gridspec import GridSpec                            #for showing graph grid
-import matplotlib.pyplot as plt                                     #for plotting graphs
-import matplotlib                                                   #for plotting graphs
-import numpy as np                                                  #for x-axis time arange
-import report                                                       #for report pdf
-import datetime                                                     #for getting date
-from datetime import datetime, timedelta, date                       #for x-axis time class-width
+from tkinter import messagebox                                      # for showing messages
+from matplotlib.gridspec import GridSpec                            # for showing graph grid
+import matplotlib.pyplot as plt                                     # for plotting graphs
+import matplotlib                                                   # for plotting graphs
+import numpy as np                                                  # for x-axis time arange
+import report                                                       # for report pdf
+import datetime                                                     # for getting date
+from datetime import datetime, timedelta, date                       # for x-axis time class-width
 from matplotlib.widgets import Cursor as lines
+import mysql.connector as my                                         # Ensure to import mysql.connector
 
 #===============================================================================================================plot colors
 colors = ["#440154", "#3b528b", "#21918c", "#5ec962", "#fde725", "#f89540", "#e16462", "#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato", "tan"]
@@ -23,9 +24,13 @@ z = 0
 
 #=========================================================================================view data
 def view_data(u_id):
+    if u_id is None:
+        messagebox.showerror("Input Error", "User ID cannot be None.")
+        return None
+
     try:
-        q = "SELECT * FROM money WHERE u_id={}".format(u_id)
-        cursor.execute(q)
+        q = "SELECT * FROM money WHERE u_id=%s"
+        cursor.execute(q, (u_id,))
         data = cursor.fetchall()
         if len(data) == 0:
             result = "Your dataset is empty."
@@ -49,7 +54,7 @@ def decrypt(pwd):
         t = pwd[int(n/2)+1:]
         t += pwd[:int(n/2)+1]
     for _ in range(len(t)):
-        d += chr(ord(t[_])//2)
+        d += chr(ord(t[_]) // 2)
     return d
 
 #==================================================================================================add data
@@ -63,18 +68,18 @@ def check_credentials(u_name, passwd):
         cursor.execute(q)
         data = cursor.fetchall()
         names = [i[0] for i in data]
-        
+
         if str(u_name) not in names:
             message = "No account exists with that username."
         else:
-            q = "SELECT pwd FROM user WHERE u_name='{}'".format(u_name)
-            cursor.execute(q)
+            q = "SELECT pwd FROM user WHERE u_name=%s"
+            cursor.execute(q, (u_name,))
             data = cursor.fetchall()
             if data:
                 decrypted = decrypt(data[0][0])
                 if decrypted == passwd:
-                    q = "SELECT u_id FROM user WHERE u_name='{}'".format(u_name)
-                    cursor.execute(q)
+                    q = "SELECT u_id FROM user WHERE u_name=%s"
+                    cursor.execute(q, (u_name,))
                     u_id = cursor.fetchall()[0][0]
                     message = "Login Successful. ✓\nUser ID: {}".format(u_id)
                 else:
@@ -91,14 +96,18 @@ def check_credentials(u_name, passwd):
 
 #============================================================================================================fetch user's money data
 def fetch_data(u_id):
+    if u_id is None:
+        messagebox.showerror("Input Error", "User ID cannot be None.")
+        return None
+
     try:
-        q = "SELECT * FROM money WHERE u_id={}".format(u_id)
-        cursor.execute(q)
+        q = "SELECT * FROM money WHERE u_id=%s"
+        cursor.execute(q, (u_id,))
         data = cursor.fetchall()
-        
+
         if len(data) == 0:
             return None
-        
+
         cursor.execute("DESCRIBE money")
         schema = cursor.fetchall()
         columns = [i[0] for i in schema]
@@ -107,13 +116,13 @@ def fetch_data(u_id):
         pool = {}
         for i in columns:
             column_values = []
-            q = "SELECT {} FROM money WHERE u_id={}".format(i, u_id)
-            cursor.execute(q)
+            q = "SELECT {} FROM money WHERE u_id=%s".format(i)
+            cursor.execute(q, (u_id,))
             values = cursor.fetchall()
             for j in values:
                 column_values.append(j[0])
             pool[i] = column_values
-            
+
         requireds = [columns, pool]
         return requireds
     except my.Error as e:
@@ -122,9 +131,13 @@ def fetch_data(u_id):
 
 #=======================================================================================================visualize/plot data
 def plot_data(requireds, u_name):
+    if requireds is None or not u_name:
+        messagebox.showerror("Input Error", "Required data cannot be None or empty.")
+        return None
+
     try:
         a = messagebox.askyesno(message="Do you want to download today's report?", icon="question")
-        if a == "Yes":
+        if a:
             plt.savefig("plot.png", dpi=150)
             report.save(u_name, total)
             messagebox.showinfo(message="Report downloaded. ✓")
@@ -152,12 +165,12 @@ def plot_data(requireds, u_name):
         #=======================================================================================================================Line chart
         l = list(pool.values())
         f1 = plt.figure(1)
-        for i in range(1, len(l)-1):
+        for i in range(1, len(l) - 1):
             c = 0
             wrangled_data = []
             for j in range(len(t)):
                 if t_new[j] not in pool_new:
-                    wrangled_data.append((wrangled_data[j-1]))
+                    wrangled_data.append(wrangled_data[j - 1])
                 else:
                     wrangled_data.append(pool[columns[i]][c])
                     c += 1
@@ -180,57 +193,36 @@ def plot_data(requireds, u_name):
         #===================================================================================piechart
         total = l[-2][-1]
         maximum = max(l[-2])
-        q = "SELECT entryDate FROM money WHERE total={}".format(maximum)
-        cursor.execute(q)
+        q = "SELECT entryDate FROM money WHERE total=%s"
+        cursor.execute(q, (maximum,))
         max_date = cursor.fetchall()
         ax[0, 0].axvline(x=max_date, color='yellow', linewidth=0.6, linestyle="dashed", label="Max_till_now")
         sectors = []
         explode = []
-        for i in l[1:len(l)-2]:
+        for i in l[1:len(l) - 2]:
             sectors.append(i[-1])
-            explode.append(0)
-        explode[-1] = 0.1
+            explode.append(0.1)
 
-        ax[1, 0].pie(sectors, explode=explode, colors=colors[1:len(columns)+1])
-        ax[1, 0].set_title("Money Distribution- {}".format(date.today()))
-        ax[1, 0].legend(labels=columns[1:len(columns)-2], bbox_to_anchor=(1.1, 1), loc='upper left', borderaxespad=0)
-        ax[1, 0].spines['bottom'].set_color('black')
-        ax[1, 0].spines['top'].set_color('black')
-        ax[1, 0].spines['right'].set_color('black')
-        ax[1, 0].spines['left'].set_color('black')
+        ax[1, 0].pie(sectors, labels=columns[1:len(columns) - 2], explode=explode, autopct='%1.1f%%', startangle=90)
+        ax[1, 0].set_title("{}_{}\nPie Chart".format(u_name.title(), date.today()))
 
-        #============================================================================bar graph-expenditure
-        max_expend = max(l[-3])
-        index = l[-3].index(max_expend)
+        #=================================================================================scatter chart
+        ax[1, 1].scatter(pool["entryDate"], pool[columns[-2]], color=colors[-2], label="Scatter")
+        ax[1, 1].set_title("{}_{}\nScatter Chart".format(u_name.title(), date.today()))
+        ax[1, 1].set_xlabel("Date")
+        ax[1, 1].set_ylabel(columns[-2].title())
 
-        ax[1, 1].bar(l[-1], l[-3], color=colors[2], label=columns[-3].title())
-        ax[1, 1].tick_params(bottom=True, labelbottom=True, left=True, right=True, labelleft=True)
-        ax[1, 1].bar(l[-1][index], l[-3][index], color="red", label="Max Expenditure")
-        ax[1, 1].set_title("Expenditure Till Now")
-        ax[1, 1].legend(bbox_to_anchor=(1.1, 1), loc='upper left', borderaxespad=0)
-        ax[1, 1].spines['bottom'].set_color('black')
-        ax[1, 1].spines['top'].set_color('black')
-        ax[1, 1].spines['right'].set_color('black')
-        ax[1, 1].spines['left'].set_color('black')
-        ax[1, 1].set_xlabel("Time")
-        ax[1, 1].set_ylabel("Expenditure")
-        ax[1, 1].grid(linestyle="dashed", linewidth=1, alpha=0.25)
-
-        move_figure(fig, 220, 170)
+        #==================================================================saving final plot as .png file
+        plt.savefig("plot.png", dpi=150)
         plt.show()
-        plt.tight_layout()
-        return [total, maximum]
-    
     except Exception as e:
-        messagebox.showerror("Error", f"An error occurred while plotting data: {e}")
-        return None
+        messagebox.showerror("Plotting Error", f"An error occurred while plotting data: {e}")
 
-#=========================================================setting position of graph window
-def move_figure(fig, x, y):
-    backend = matplotlib.get_backend()
-    if backend == 'TkAgg':
-        fig.canvas.manager.window.wm_geometry("+%d+%d" % (x, y))
-    elif backend == 'WXAgg':
-        fig.canvas.manager.window.SetPosition((x, y))
-    else:
-        fig.canvas.manager.window.move(x, y)
+#=================================================================================================exit gracefully
+def exit():
+    try:
+        cursor.close()
+        mycon.close()
+        messagebox.showinfo("Exit", "Exiting the application.")
+    except my.Error as e:
+        messagebox.showerror("Database Error", f"Error closing the database connection: {e}")

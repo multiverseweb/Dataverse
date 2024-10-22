@@ -8,21 +8,6 @@ import report                                                       # for report
 import datetime                                                     # for getting date
 from datetime import datetime, timedelta, date                       # for x-axis time class-width
 from matplotlib.widgets import Cursor as lines
-<<<<<<< HEAD
-import mysql.connector as my                                         # Ensure to import mysql.connector
-
-#===============================================================================================================plot colors
-colors = ["#440154", "#3b528b", "#21918c", "#5ec962", "#fde725", "#f89540", "#e16462", "#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato", "tan"]
-
-#==================================================================================================connecting MySQL
-try:
-    mycon = my.connect(host='localhost', user='root', passwd='tejas123', database='finance')
-    cursor = mycon.cursor()
-except my.Error as e:
-    messagebox.showerror("Database Error", f"Could not connect to the database: {e}")
-
-z = 0
-=======
 from sklearn.linear_model import LinearRegression
 import pandas as pd
 #===============================================================================================================plot colors
@@ -31,7 +16,6 @@ colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462
 import mysql.connector as my                                    #required modules
 mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
 cursor=mycon.cursor()
->>>>>>> origin/main
 
 #=========================================================================================view data
 def view_data(u_id):
@@ -136,11 +120,9 @@ def fetch_data(u_id):
 
         requireds = [columns, pool]
         return requireds
-<<<<<<< HEAD
     except my.Error as e:
         messagebox.showerror("Database Error", f"Error fetching data: {e}")
         return None
-=======
     
 #=======================================================================================================Predictive Analytics (Linear Regression)
 
@@ -222,7 +204,6 @@ def monthly_comparison(pool):
     plt.xticks(rotation=45)  
     plt.tight_layout()  
     plt.show()
->>>>>>> origin/main
 
 #=======================================================================================================visualize/plot data
 def plot_data(requireds, u_name):
@@ -309,7 +290,6 @@ def plot_data(requireds, u_name):
 
         #==================================================================saving final plot as .png file
         plt.savefig("plot.png", dpi=150)
-<<<<<<< HEAD
         plt.show()
     except Exception as e:
         messagebox.showerror("Plotting Error", f"An error occurred while plotting data: {e}")
@@ -322,7 +302,6 @@ def exit():
         messagebox.showinfo("Exit", "Exiting the application.")
     except my.Error as e:
         messagebox.showerror("Database Error", f"Error closing the database connection: {e}")
-=======
         report.save(u_name,total)
         messagebox.showinfo(message="Report downloaded. ✓")
     plt.style.use('dark_background')
@@ -426,4 +405,3 @@ def move_figure(fig, x, y):
         fig.canvas.manager.window.SetPosition((x, y))
     else:
         fig.canvas.manager.window.move(x, y)
->>>>>>> origin/main

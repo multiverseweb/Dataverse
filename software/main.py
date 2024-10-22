@@ -26,321 +26,132 @@ cursor.execute("CREATE TABLE IF NOT EXISTS money (u_id INT, fiat FLOAT DEFAULT 0
 #===================================================================================================================================
 #============================================================================================Dataverse Operations
 #=============================================================================Login- b1
-def login(b1,b2,b3,b4,preview_image):
-    switch(b1,b2,b3,b4)
+def login(b1, b2, b3, b4, preview_image):
+    switch(b1, b2, b3, b4)
     preview_image.place_forget()
+
     def show_message():
-        message=financeTracker.check_credentials(f"{user.get()}",f"{pwd.get()}")
-        word=message.split(' ')[0]
-        if word=='Login':
-            messagebox.showinfo(title="", message=message,icon="info")
+        message = financeTracker.check_credentials(f"{user.get()}", f"{pwd.get()}")
+        word = message.split(' ')[0]
+        if word == 'Login':
+            messagebox.showinfo(title="", message=message, icon="info")
             global menu
             menu.pack_forget()
             form.pack_forget()
-            user_menu(message.split(' ')[-1],f"{user.get()}")
-        elif word=='No':
-            messagebox.showinfo(title="", message=message,icon="info")
-        elif word=='Incorrect':
-            messagebox.showinfo(title="", message=message,icon="error")
+            user_menu(message.split(' ')[-1], f"{user.get()}")
+        elif word == 'No':
+            messagebox.showinfo(title="", message=message, icon="info")
+        elif word == 'Incorrect':
+            messagebox.showinfo(title="", message=message, icon="error")
         else:
-            messagebox.showinfo(title="", message="Some unknown error occured.",icon="warning")
+            messagebox.showinfo(title="", message="Some unknown error occurred.", icon="warning")
+
     global relation
     relation.pack_forget()
     global text
     text.pack_forget()
     global form
     form.pack_forget()
-    form=Frame(root,bg="#171717",relief=SUNKEN)
-    form.pack(side=TOP,fill=Y,pady=140,padx=(0,200))
+    form = Frame(root, bg="#171717", relief=SUNKEN)
+    form.pack(side=TOP, fill=Y, pady=140, padx=(0, 200))
     global title
     title.pack_forget()
-    title=Label(form,font="poppins 10",fg='#ffffff',bg='#171717',text="PERSONAL FINANCE TRACKER")
-    title.pack(fill=Y,pady=35,padx=0)
-    user=StringVar()
-    pwd=StringVar()
-    user_entry=Entry(form,textvariable=user,width=30)
-    pwd_entry=Entry(form,textvariable=pwd,width=30,show="●")
-    user_entry.insert(0,'Username')
-    pwd_entry.insert(0,'Password')
-    user_entry.pack(pady=20,padx=50)
-    pwd_entry.pack(pady=20,padx=50)
-    Button(form,text="Login",width=15,command=show_message,cursor="hand2").pack(pady=20)
+    title = Label(form, font="poppins 10", fg='#ffffff', bg='#171717', text="PERSONAL FINANCE TRACKER")
+    title.pack(fill=Y, pady=35, padx=0)
+    user = StringVar()
+    pwd = StringVar()
+    user_entry = Entry(form, textvariable=user, width=30)
+    pwd_entry = Entry(form, textvariable=pwd, width=30, show="●")
+    user_entry.insert(0, 'Username')
+    pwd_entry.insert(0, 'Password')
+    user_entry.pack(pady=20, padx=50)
+    pwd_entry.pack(pady=20, padx=50)
+    Button(form, text="Login", width=15, command=show_message, cursor="hand2").pack(pady=20)
     form.mainloop()
 
 #======================================================================password encryption
 def encrypt(pwd):
-    n=len(pwd)
-    e=""
-    t=pwd[int(n/2):]
-    t+=pwd[:int(n/2)]
-    for _ in range(len(t)):
-        e+=chr(ord(t[_])*2)
-    return e 
+    if not isinstance(pwd, str) or len(pwd) == 0:
+        raise ValueError("Password must be a non-empty string.")
+    
+    try:
+        n = len(pwd)
+        e = ""
+        t = pwd[int(n/2):]
+        t += pwd[:int(n/2)]
+        for _ in range(len(t)):
+            e += chr(ord(t[_]) * 2)
+        return e
+    except Exception as e:
+        print(f"An error occurred during encryption: {e}")
 #====================================================================== Create account -b2
-def create(b2,b1,b3,b4,preview_image):
-    def show_message(u_name,pwd,country,names):
-        u_name=f"{u_name.get()}"
-        pwd=f"{pwd.get()}"
-        pwd=encrypt(pwd)
-        country=f"{country.get()}"
+def create(b2, b1, b3, b4, preview_image):
+    def show_message(u_name, pwd, country, names):
+        u_name = f"{u_name.get()}"
+        pwd = f"{pwd.get()}"
+        country = f"{country.get()}"
+
+        if not u_name or not pwd:
+            messagebox.showinfo(title="Input Error", message="Username and Password cannot be empty.", icon="error")
+            return
+        
+        if not isinstance(country, str) or len(country) == 0:
+            messagebox.showinfo(title="Input Error", message="Country must be a non-empty string.", icon="error")
+            return
+        
         if u_name in names:
-            messagebox.showinfo(title="Username Not Available", message="That username is already taken. Try another one.",icon="info")
+            messagebox.showinfo(title="Username Not Available", message="That username is already taken. Try another one.", icon="info")
         else:
             u_id = datetime.datetime.now().strftime("%H%M%S")
-            q="insert into user values({},'{}','{}','{}')".format(u_id,u_name,pwd,country)
-            cursor.execute(q)
-            mycon.commit()
-            msg="Account Created Successfully! ✓\nYour User ID is: {}\n".format(u_id)
-            global text
-            text=Label(font="poppins 10 bold",fg='#ffffff',bg='#000000',text=msg)
-            text.pack(fill=X,pady=35,padx=(0,200))
-            messagebox.showinfo(title="Important", message="This User ID is required while deleting the account.",icon="warning")
+            q = "INSERT INTO user VALUES({}, '{}', '{}', '{}')".format(u_id, u_name, encrypt(pwd), country)
+            try:
+                cursor.execute(q)
+                mycon.commit()
+                msg = "Account Created Successfully! ✓\nYour User ID is: {}\n".format(u_id)
+                global text
+                text = Label(font="poppins 10 bold", fg='#ffffff', bg='#000000', text=msg)
+                text.pack(fill=X, pady=35, padx=(0, 200))
+                messagebox.showinfo(title="Important", message="This User ID is required while deleting the account.", icon="warning")
+            except Exception as e:
+                print(f"An error occurred while creating the account: {e}")
+                messagebox.showinfo(title="Error", message="Failed to create account. Please try again.", icon="error")
 
-    switch(b2,b1,b3,b4)
+    switch(b2, b1, b3, b4)
     preview_image.place_forget()
-    names=[]
-    q="select u_name from user"
+    names = []
+    q = "SELECT u_name FROM user"
     cursor.execute(q)
-    data=cursor.fetchall()
+    data = cursor.fetchall()
     for i in data:
         names.append(i[0])
+
     global relation
     relation.pack_forget()
     global text
     text.pack_forget()
     global form
     form.pack_forget()
-    form=Frame(root,bg="#171717",relief=SUNKEN)
-    form.pack(side=TOP,fill=Y,pady=140,padx=(0,200))
+    form = Frame(root, bg="#171717", relief=SUNKEN)
+    form.pack(side=TOP, fill=Y, pady=140, padx=(0, 200))
     global title
     title.pack_forget()
-    title=Label(form,font="poppins 10",fg='#ffffff',bg='#171717',text="Create Dataverse Account")
-    title.pack(fill=Y,pady=35,padx=0)
-    u_name=StringVar()
-    pwd=StringVar()
-    country=StringVar()
-    user_entry=Entry(form,textvariable=u_name,width=30)
-    pwd_entry=Entry(form,textvariable=pwd,width=30)
-    country_entry=Entry(form,textvariable=country,width=30)
-    user_entry.insert(0,'Username')
-    pwd_entry.insert(0,'Password')
-    country_entry.insert(0,'India')
-    user_entry.pack(pady=20,padx=50)
-    pwd_entry.pack(pady=20,padx=50)
-    country_entry.pack(pady=20,padx=50)
-    Button(form,text="Create Account",width=15,command=partial(show_message,u_name,pwd,country,names),cursor="hand2").pack(pady=20)
+    title = Label(form, font="poppins 10", fg='#ffffff', bg='#171717', text="Create Dataverse Account")
+    title.pack(fill=Y, pady=35, padx=0)
 
-<<<<<<< HEAD
-            for i in range(dependent):
-                print("Enter {} observations of {}: ".format(count,d_attr[i]))
-                values=[]
-                for j in range(count):
-                    value=float(input("{}{}: ".format(d_attr[i],j+1)))
-                    values.append(value)
-                y.append(values)
-            width=1
-            fig, ax=plt.subplots(2,2)
-            for i in range(dependent):
-                ax[0, 0].bar(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
-                ax[0, 0].set_title("Bar Graph") 
-                ax[0, 0].legend(loc="upper left")
-                ax[0, 0].legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
-                ax[0, 1].hist(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7,width=width)
-                ax[0, 1].set_title("Histogram") 
-                ax[0, 1].legend(loc="upper left")
-                ax[0, 1].legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
-                ax[1, 0].scatter(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
-                ax[1, 0].set_title("Scatter Plot") 
-                ax[1, 0].legend(loc="upper left")
-                ax[1, 0].legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
-                ax[1, 1].plot(x,y[i+1], label=y[0][i],color=colors[i],linewidth=0.7)
-                ax[1, 1].set_title("Line Chart")
-                ax[1, 1].legend(loc="upper left")
-                ax[1, 1].legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
-                width-=0.05
-            plt.title(heading)
-            plt.xticks(rotation=30)
-            plt.xlabel(x_label)
-            #plt.savefig("example.png", dpi=1000)
-            plt.show() 
-    else:
-        print("Invalid Choice! ✖")
-        print(201*"=")
-            
-#=========================================================================================================Start of execution flow
-#==================================================================================================================================
-while True:
-    print(201 * "=")
-    greet = "PERSONAL FINANCE TRACKER & DATA VISUALIZATION SOFTWARE"
-    print(70 * " ", greet)
-    print(201 * "=", "\n", "1. Login\n2. Create Account\n3. Continue as Guest\n4. Delete Account\n5. Login as Admin\n6. Exit", sep="")
-    try:
-        user_type = int(input("Enter your choice: "))
-        if user_type not in range(1, 7):
-            raise ValueError("Choice must be between 1 and 6.")
-    except ValueError as e:
-        print(f"Invalid input! {e}")
-        continue
+    u_name = StringVar()
+    pwd = StringVar()
+    country = StringVar()
+    user_entry = Entry(form, textvariable=u_name, width=30)
+    pwd_entry = Entry(form, textvariable=pwd, width=30)
+    country_entry = Entry(form, textvariable=country, width=30)
+    user_entry.insert(0, 'Username')
+    pwd_entry.insert(0, 'Password')
+    country_entry.insert(0, 'India')
+    user_entry.pack(pady=20, padx=50)
+    pwd_entry.pack(pady=20, padx=50)
+    country_entry.pack(pady=20, padx=50)
+    Button(form, text="Create Account", width=15, command=partial(show_message, u_name, pwd, country, names), cursor="hand2").pack(pady=20)
 
-    #==========================================================================================================Login
-    if user_type == 1:
-        print(83 * " ", "𝗣𝗲𝗿𝘀𝗼𝗻𝗮𝗹 𝗙𝗶𝗻𝗮𝗻𝗰𝗲 𝗧𝗿𝗮𝗰𝗸𝗲𝗿")
-        u_name = input("Username: ")
-        q = "SELECT u_name FROM user"
-        cursor.execute(q)
-        data = cursor.fetchall()
-        names = [i[0] for i in data]
-
-        if u_name not in names:
-            print("No account exists with that username.")
-        else:
-            try:
-                pwd = getpass.getpass()
-            except Exception as error:
-                print('There was some error: ', error)
-            else:
-                q = "SELECT pwd FROM user WHERE u_name=%s"
-                cursor.execute(q, (u_name,))
-                data = cursor.fetchall()
-                if data and data[0][0] == pwd:
-                    print("Login Successful.")
-                    q = "SELECT u_id FROM user WHERE u_name=%s"
-                    cursor.execute(q, (u_name,))
-                    u_id = cursor.fetchall()[0][0]
-                    print("User ID = ", u_id)
-                    main_menu(u_id)
-                else:
-                    print("Incorrect password! ✖")
-                    z += 1
-                    if z >= 2:
-                        print("Too many failed login attempts. Closing the system.")
-                        time.sleep(0.3)
-                        for _ in range(3):
-                            print(".", end="")
-                            time.sleep(0.3)
-                        print()
-                        break
-                    print(201 * "=")
-
-    #=========================================================================================================Create Account
-    elif user_type == 2:
-        print(83 * " ", "𝗣𝗲𝗿𝘀𝗼𝗻𝗮𝗹 𝗙𝗶𝗻𝗮𝗻𝗰𝗲 𝗧𝗿𝗮𝗰𝗸𝗲𝗿")
-        ok = False
-        names = []
-        q = "SELECT u_name FROM user"
-        cursor.execute(q)
-        data = cursor.fetchall()
-        for i in data:
-            names.append(i[0])
-        while not ok:  
-            u_name = input("\nUsername: ")
-            if u_name == "exit":
-                break
-            elif u_name in names:
-                print("That username is not available. Try another one.\n[Enter 'exit' to cancel account creation.]")
-            else:
-                pwd = input("Password: ")
-                u_id = datetime.datetime.now().strftime("%H%M%S")
-                q = "INSERT INTO user VALUES (%s, %s, %s)"
-                cursor.execute(q, (u_id, u_name, pwd))
-                mycon.commit()
-                print("Account Created Successfully! ✓")
-                print("Your User ID is: ", u_id)
-                ok = True  # Set the flag to exit the loop
-
-    #==========================================================================================================Guest
-    elif user_type == 3:
-        print(81 * " ", "𝗗𝗮𝘁𝗮 𝗩𝗶𝘀𝘂𝗮𝗹𝗶𝘇𝗮𝘁𝗶𝗼𝗻 𝗦𝗼𝗳𝘁𝘄𝗮𝗿𝗲")
-        a = 'y'
-        while a == 'y':
-            guest_plot()  # Ensure this function is defined somewhere
-            a = input("Do you want to continue as guest? (y/n): ").lower()
-            if a not in ['y', 'n']:
-                print("Invalid response! Please enter 'y' or 'n'.")
-        if a == 'n':
-            print("Redirecting to main menu...")
-
-    #=========================================================================================================Delete Account
-    elif user_type == 4:
-        try:
-            u_id = int(input("User ID: "))
-        except ValueError:
-            print("Invalid User ID! Please enter a number.")
-            continue
-
-        q = "SELECT pwd FROM user WHERE u_id = %s"
-        cursor.execute(q, (u_id,))
-        data = cursor.fetchall()
-        if not data:
-            print("No account exists with that user ID.")
-        else:
-            try:
-                pwd = getpass.getpass()
-            except Exception as error:
-                print('There was some error: ', error)
-            else:
-                if pwd == data[0][0]:
-                    q = "DELETE FROM user WHERE u_id = %s"
-                    cursor.execute(q, (u_id,))
-                    mycon.commit()
-                    q = "DELETE FROM money WHERE u_id = %s"
-                    cursor.execute(q, (u_id,))
-                    mycon.commit()
-                    print("Account deleted successfully! ✓")
-                else:
-                    print("Invalid Credentials! ✖")
-
-    #==========================================================================================================Admin mode
-    elif user_type == 5:
-        try:
-            p = getpass.getpass()
-        except Exception as error:
-            print('There was some error: ', error)
-        else:
-            if p == "infinity":
-                print("Hello Sir,")
-                print("Database changed.")
-                q = ""
-                while q.lower() != "exit":
-                    q = input("")
-                    if q.lower() == "exit":
-                        print("Exited the database.")
-                        break
-                    cursor2 = mycon.cursor()
-                    cursor2.execute(q)
-                    data = cursor2.fetchall()
-                    if data:
-                        for row in data:
-                            print(row)
-                    else:
-                        print("Operation performed.")
-                    mycon.commit()
-            else:
-                print("Incorrect Password >:(")
-                z += 1
-                if z >= 2:
-                    print("Too many failed login attempts. Closing the system.")
-                    time.sleep(0.3)
-                    for _ in range(3):
-                        print(".", end="")
-                        time.sleep(0.3)
-                    print()
-                    break
-                print(201 * "=")
-
-    #==========================================================================================================Exit
-    elif user_type == 6:
-        print(201 * "=")
-        print("Tejas' Codes :)")
-        time.sleep(1)
-        for _ in range(3):
-            print(".", end="")
-            time.sleep(1)
-        print("\n" + 201 * "=")
-        break
-    else:
-        print("Invalid choice! ✖")
-=======
     form.mainloop()
 #=========================================================================GUEST
 def guest(b1,b2,b3,b4,preview_image):
@@ -1565,4 +1376,3 @@ relation.pack(side=RIGHT)
 menu=Frame(root,bg="#171717",relief=SUNKEN)
 menu.pack(side=LEFT,fill=Y)
 main()
->>>>>>> origin/main

@@ -3,12 +3,6 @@
 
 ![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
 
-# Code of Conduct
-
-Please read and follow our [Code of Conduct](https://github.com/multiverseweb/Dataverse/blob/main/code_of_conduct.md)
-
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
-
 # What you can contribute? 💭
 
 **🐞Bug Fixing :**
@@ -19,6 +13,12 @@ Contributors can enhance the project by implementing new features or improvement
 
 **📝 Documentation :**
 High-quality documentation is essential for the success of the project. Contributions to the documentation help ensure that users and contributors can understand and use the travel website effectively.
+
+![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+
+# Code of Conduct
+
+Please read and follow our [Code of Conduct](https://github.com/multiverseweb/Dataverse/blob/main/code_of_conduct.md)
 
 ![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
 
@@ -247,6 +247,7 @@ To report an issue, follow these steps:
 
 *🏆 Contribution Levels:*
 All the tasks will be assigned various levels based on the complexity of the task and skills required to complete it. Every level will provide you a different amount of Points that is:
+
 - **🥇 Level 1**: 10 Points  
 - **🥈 Level 2**: 25 Points  
 - **🥉 Level 3**: 45 Points  

@@ -15,7 +15,7 @@
             height: 90.9%;
             object-fit: cover;
             position: absolute;
-            opacity: 65%;
+            opacity: 70%;
             left: 75%;
             top: -10%;
             rotate: 36deg;
@@ -56,30 +56,32 @@
     </div>
     <center>
         <div style="text-align: right; margin: 10px;">
-            <a href="index.html" class="btn btn-secondary" style="width: 200px; position: absolute  ; top: 30px; right: 175px; color: white; font-weight: 500; font-size: 18px;">BACK</a>
+            <a href="index.html" class="btn btn-secondary" style="width: 200px; position: absolute  ; top: 30px; right: 175px; color: white; font-weight: 500; font-size: 18px;">Back To Home</a>
         </div>
         <div class="login-container" style="padding-top: 20px;">
-            <h1 style="text-align: center; color: black; font-weight: 400; font: sans-serif;">Welcome Back</h1>
-            <h6 style="text-align: center; color: rgb(86, 86, 86); font-weight: 500; font-size: 15px;">Please Enter your Details</h6>
-            <div style="text-align: left; margin-left: 10%"class="mb-3">
+            <h1 style="text-align: center; color: black; font-weight: 400; font-size: 35px">HEY! WELCOME BACK</h1>
+            <h6 style="text-align: center; color: rgb(197 197 197); font-weight: 500; font-size: 18px;">Please Enter your Details</h6>
+            <div style="text-align: left; margin-left: 10%;" class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label" style="color: white;">Email address</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" style="width: 400px;">
+                <input type="email" class="form-control" id="emailInput" placeholder="Enter your Email Address" style="width: 400px; margin-top: -5px">
             </div>
-            <div class="mb-3">
-                <label for="inputPassword5" class="form-label">Password</label>
-                <input type="password" id="passwordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 400px">
-                <div id="passwordHelpBlock" class="form-text" style="width: 400px">
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+            <div style="text-align: left; margin-left: 10%;" class="mb-3">
+                <label for="inputPassword5" class="form-label" style="color: white;">Password</label>
+                <input type="password" id="passwordInput" placeholder="Enter Your Password" class="form-control" aria-describedby="passwordHelpBlock" style="width: 400px; margin-top: -5px">
+                <div id="passwordHelpBlock" class="form-text" style="width: 400px; text-align: left; margin-top: -10px; margin-left: 10px;">
+                    <p style="text-align: left; margin-left: 270px; margin-top: 15px; font-size: medium; margin-bottom: 5px; "><a href="#" style=" text-decoration: none; color: #004ab7;">Forget Password ?</a></p>
+                    <span style="color: rgb(0, 0, 0); font-size: 14px; position: relative;">Your password must be :</span><br>
+                    • 8-20 characters long.<br>
+                    • Should contain letters and numbers<br>
+                    • Must not contain spaces, special characters, or emojis.
                 </div>
             </div>
-            <button type="button" class="btn btn-primary" id="loginButton" style="width: 400px; margin-left: 40px;">Login</button>
+            <button type="button" class="btn btn-primary" id="loginButton" style="width: 400px; font-weight: 400;">LOGIN </button>
             <div style="text-align: center; margin-top: 10px;">
-                <p>Don't have an accout ?  <a href="signup.html" style="text-decoration: none;"> Sign UP</a></p>
-                <p style="text-align: center;"><a href="#" style=" text-decoration: none;">Forget Password</a></p>
+                <p>Don't have an account ?  <a href="signup.html" style="text-decoration: underline; color: #004ab7;"> Sign Up</a></p>
             </div>
         </div>
         <!--login form end-->
-        <!--designing elements start-->
     </center>
     <script>
         document.getElementById('loginButton').addEventListener('click', function() {

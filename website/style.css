@@ -1024,15 +1024,15 @@ input {
 }
 
 .links a {
-    color: rgba(255, 255, 255, 0.433);
+    color:white;
 }
 
 .links h3 {
-    color: rgba(255, 255, 255, 0.433);
+    color: white;
 }
 
 .links h4 {
-    color: rgba(255, 255, 255, 0.433);
+    color: white;
 }
 
 .end_line {

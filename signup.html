@@ -2,71 +2,105 @@
 <html lang="en">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="website\style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign Up</title>
     <style>
+        body{
+            background-color: black;
+        }
+        .image1{
+            width: 43%;
+            height: 90.9%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 65%;
+            left: 75%;
+            top: -10%;
+            rotate: 36deg;
+        }
+        .image2{
+            width: 37%;
+            height: 47%;
+            position: absolute;
+            object-fit: contain;
+            opacity: 90%;
+            top: 32%;
+            right: 84%;
+            rotate: -46deg;
+        }
         .login-container{
             width: 500px;
             height: 500px;
             position: relative;
-            top: 100px;
-            left: 450px;
+            background-color: rgba(158, 158, 158, 0.807);
+            top: 45px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
 
-<body>
-    <div style="text-align: right; margin: 10px;">
-        <a href="index.html" class="btn btn-secondary" style="width: 150px; position: relative; right: 1330px;">Back to Home</a>
+<body >
+    <img class="image1"  src="C:\Users\Mimansha\OneDrive\Documents\GitHub\Dataverse\website\web_images\2dglow.png" alt="login_bg">
+    <img class="image2"  src="C:\Users\Mimansha\OneDrive\Documents\GitHub\Dataverse\website\web_images\2dglowhalfbg-removebg-preview.png" alt="login_bg">
+    <img style="
+    margin-left: 10px;
+    position: absolute;
+    width: 80px;
+    height: 80px;" src="website/web_images/3d_glow.png" alt="Dataverse Logo">
+
+    <div style="margin-left: 6%;" class="top_dataverse">
+        <p id="data"> Data</p>
+        <p>verse</p>
     </div>
-    <div class="login-container" style="padding-top: 20px;">
-        <h2 style="text-align: center;">Signup</h2>
-        <div class="mb-3" style="margin-left: 40px;">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" style="width: 400px;">
-          </div>
-          <div class="mb-3" style="margin-left: 40px;">
-          <label for="inputPassword5" class="form-label">Password</label>
+    <center>
+        <div style="text-align: right; margin: 10px;">
+            <a href="index.html" class="btn btn-secondary" style="width: 200px; position: absolute  ; top: 30px; right: 175px; color: white; font-weight: 500; font-size: 18px;">BACK</a>
+        </div>
+        
+
+
+<div class="login-container" style="padding-top: 20px;">
+    <h2 style="text-align: center;">Signup</h2>
+    <div class="mb-3" style="margin-left: 40px;">
+        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" style="width: 400px;">
+      </div>
+      <div class="mb-3" style="margin-left: 40px;">
+      <label for="inputPassword5" class="form-label">Password</label>
 <input type="password" placeholder="Enter your Password" id="passwordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 400px">
 <div id="passwordHelpBlock" class="form-text" style="width: 400px">
-  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
 </div>
 </div>
 <div class="mb-3" style="margin-left: 40px;">
-    <label for="inputPassword5" class="form-label"> Confirm Password</label>
+<label for="inputPassword5" class="form-label"> Confirm Password</label>
 <input type="password" placeholder="Confirm your Password" id="confirmPasswordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 400px">
 </div>
 <button type="button" class="btn btn-primary" id="signupButton" style="width: 400px; margin-left: 40px;">Signup</button>
 <div style="text-align: center; margin-top: 10px;">
-    <p>Already have an accout ?  <a href="login.html" style="text-decoration: none;">Login</a></p>
+<p>Already have an accout ?  <a href="login.html" style="text-decoration: none;">Login</a></p>
 </div>
-    </div>
+</div>
+        <!--login form end-->
+        <!--designing elements start-->
+    </center>
     <script>
-        document.getElementById('signupButton').addEventListener('click', function() {
+        document.getElementById('loginButton').addEventListener('click', function() {
             const emailInput = document.getElementById('emailInput');
             const passwordInput = document.getElementById('passwordInput');
-            const confirmPasswordInput = document.getElementById('confirmPasswordInput');
             const emailValue = emailInput.value.trim();
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(emailValue)) {
       alert('Invalid email address');
       return;
     }
-
-    // Check if passwords match
-    if (passwordInput.value !== confirmPasswordInput.value) {
-      alert('Both Passwords do not match');
-      return;
-    }
             emailInput.value = '';
             passwordInput.value = '';
-            confirmPasswordInput.value = '';
-
-            window.location.href = 'login.html';
-            alert('Your Accout has been cteated successfully!');
+            // Redirect to index.html
+            window.location.href = '/index.html';
+            alert('Login successful!');
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

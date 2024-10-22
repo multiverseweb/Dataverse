@@ -195,22 +195,27 @@ def guest_plot():
 #=========================================================================================================Start of execution flow
 #==================================================================================================================================
 while True: 
-    print(201*"=")
-    greet="PERSONAL FINANCE TRACKER & DATA VISUALIZTAION SOFTWARE"
-    print(70*" ",greet)
-    print(201*"=","\n","1. Login\n2. Create Account\n3. Continue as Guest\n4. Delete Account\n5. Login as Admin\n6. Exit",sep="")                       #Login Menu
-    user_type=int(input("Enter your choice: "))
+    print(201 * "=")
+    greet = "PERSONAL FINANCE TRACKER & DATA VISUALIZATION SOFTWARE"
+    print(70 * " ", greet)
+    print(201 * "=", "\n", "1. Login\n2. Create Account\n3. Continue as Guest\n4. Delete Account\n5. Login as Admin\n6. Exit", sep="") 
+
+    # Input validation for user type
+    try:
+        user_type = int(input("Enter your choice: "))
+    except ValueError:
+        print("Invalid input! Please enter a number between 1 and 6.")
+        continue
 
 #==========================================================================================================Login
-    if user_type==1:
-        print(83*" ","𝗣𝗲𝗿𝘀𝗼𝗻𝗮𝗹 𝗙𝗶𝗻𝗮𝗻𝗰𝗲 𝗧𝗿𝗮𝗰𝗸𝗲𝗿")
-        u_name=input("Username: ")
-        q="select u_name from user "
+    if user_type == 1:
+        print(83 * " ", "𝗣𝗲𝗿𝘀𝗼𝗻𝗮𝗹 𝗙𝗶𝗻𝗮𝗻𝗰𝗲 𝗧𝗿𝗮𝗰𝗸𝗲𝗿")
+        u_name = input("Username: ")
+        q = "SELECT u_name FROM user"
         cursor.execute(q)
-        data=cursor.fetchall()
-        names=[]
-        for i in data:
-            names.append(i[0])
+        data = cursor.fetchall()
+        names = [i[0] for i in data]
+
         if u_name not in names:
             print("No account exists with that username.")
         else:
@@ -219,141 +224,142 @@ while True:
             except Exception as error:
                 print('There was some error: ', error)
             else:
-                q="select pwd from user where u_name='{}'".format(u_name)
+                q = "SELECT pwd FROM user WHERE u_name='{}'".format(u_name)
                 cursor.execute(q)
-                data=cursor.fetchall()
-                if data[0][0]==pwd:
-                    print("Login Successful.")           
-                    q="select u_id from user where u_name='{}'".format(u_name)
+                data = cursor.fetchall()
+                if data and data[0][0] == pwd:
+                    print("Login Successful.")
+                    q = "SELECT u_id FROM user WHERE u_name='{}'".format(u_name)
                     cursor.execute(q)
-                    u_id=cursor.fetchall()[0][0]
-                    print("User ID = ",u_id)
+                    u_id = cursor.fetchall()[0][0]
+                    print("User ID = ", u_id)
                     main_menu(u_id)
                 else:
                     print("Incorrect password! ✖")
-                    z+=1
-                    if z>=2:
+                    z += 1
+                    if z >= 2:
                         print("There have been more than 1 failed login attempts. Closing the system.")
                         time.sleep(0.3)
-                        print(".",end="")
-                        time.sleep(0.3)
-                        print(".",end="")
-                        time.sleep(0.3)
-                        print(".",end="")
-                        time.sleep(0.3)
+                        for _ in range(3):
+                            print(".", end="")
+                            time.sleep(0.3)
+                        print()
                         break
-                    print(201*"=")
+                    print(201 * "=")
+
 #=========================================================================================================Create Account
-    elif user_type==2:
-        print(83*" ","𝗣𝗲𝗿𝘀𝗼𝗻𝗮𝗹 𝗙𝗶𝗻𝗮𝗻𝗰𝗲 𝗧𝗿𝗮𝗰𝗸𝗲𝗿")
-        ok=False
-        names=[]
-        q="select u_name from user"
+    elif user_type == 2:
+        print(83 * " ", "𝗣𝗲𝗿𝘀𝗼𝗻𝗮𝗹 𝗙𝗶𝗻𝗮𝗻𝗰𝗲 𝗧𝗿𝗮𝗰𝗸𝗲𝗿")
+        ok = False
+        names = []
+        q = "SELECT u_name FROM user"
         cursor.execute(q)
-        data=cursor.fetchall()
+        data = cursor.fetchall()
         for i in data:
             names.append(i[0])
-        while ok!=True:                                                  #set up in mySQL before running
-            u_name=input("\nUsername: ")
-            if u_name=="exit" or u_name in names:
-                if u_name=="exit":
+        while not ok:  # set up in MySQL before running
+            u_name = input("\nUsername: ")
+            if u_name == "exit" or u_name in names:
+                if u_name == "exit":
                     break
                 else:
-                    ok=False
                     print("That username is not available. Try another one.\n[Enter 'exit' to cancel account creation.]")
             else:
-                pwd=input("Password: ")
+                pwd = input("Password: ")
                 u_id = datetime.datetime.now().strftime("%H%M%S")
-                q="insert into user values({},'{}','{}')".format(u_id,u_name,pwd)
+                q = "INSERT INTO user VALUES({},'{}','{}')".format(u_id, u_name, pwd)
                 cursor.execute(q)
                 mycon.commit()
                 print("Account Created Successfully! ✓")
-                print("Your User ID is: ",u_id)
+                print("Your User ID is: ", u_id)
                 break
 #==========================================================================================================Guest
-    elif user_type==3:
-        print(81*" ","𝗗𝗮𝘁𝗮 𝗩𝗶𝘀𝘂𝗮𝗹𝗶𝘇𝗮𝘁𝗶𝗼𝗻 𝗦𝗼𝗳𝘁𝘄𝗮𝗿𝗲")
-        a='y'
-        while a=='y':
+    elif user_type == 3:
+        print(81 * " ", "𝗗𝗮𝘁𝗮 𝗩𝗶𝘀𝘂𝗮𝗹𝗶𝘇𝗮𝘁𝗶𝗼𝗻 𝗦𝗼𝗳𝘁𝘄𝗮𝗿𝗲")
+        a = 'y'
+        while a == 'y':
             guest_plot()
-            a=input("Do you want to continue as guest? (y/n): ")
-            if a=='n':
-                break
-        if a!='n':
-            print("Invalid response! ✖\nRedirecting to main menu. . .")
+            a = input("Do you want to continue as guest? (y/n): ").lower()
+            if a not in ['y', 'n']:
+                print("Invalid response! Please enter 'y' or 'n'.")
+        if a == 'n':
+            print("Redirecting to main menu. . .")
+
 #=========================================================================================================Delete Account
-    elif user_type==4:
-        u_id=int(input("User ID: "))
-        q="select pwd from user where u_id = {}".format(u_id)
+    elif user_type == 4:
+        try:
+            u_id = int(input("User ID: "))
+        except ValueError:
+            print("Invalid User ID! Please enter a number.")
+            continue
+
+        q = "SELECT pwd FROM user WHERE u_id = {}".format(u_id)
         cursor.execute(q)
-        data=cursor.fetchall()
-        if len(data)==0:
+        data = cursor.fetchall()
+        if len(data) == 0:
             print("No account exists with that user ID.")
         else:
             try:
                 pwd = getpass.getpass()
             except Exception as error:
                 print('There was some error: ', error)
-            if pwd==data[0][0]:
-                q="delete from user where u_id = {}".format(u_id)
-                cursor.execute(q)
-                mycon.commit()
-                q="delete from money where u_id = {}".format(u_id)
-                cursor.execute(q)
-                mycon.commit()
-                print("Account deleted successfully! ✓")
             else:
-                print("Invalid Credentials! ✖")
+                if pwd == data[0][0]:
+                    q = "DELETE FROM user WHERE u_id = {}".format(u_id)
+                    cursor.execute(q)
+                    mycon.commit()
+                    q = "DELETE FROM money WHERE u_id = {}".format(u_id)
+                    cursor.execute(q)
+                    mycon.commit()
+                    print("Account deleted successfully! ✓")
+                else:
+                    print("Invalid Credentials! ✖")
 #==========================================================================================================Admin mode
-    elif user_type==5:
+    elif user_type == 5:
         try:
             p = getpass.getpass()
         except Exception as error:
             print('There was some error: ', error)
         else:
-            if p=="infinity":
+            if p == "infinity":
                 print("Hello Sir,")
                 print("Database changed.")
-                q=""
-                while(q not in ["exit;","exit"]):
-                    q=input("")
-                    if q.lower()=="exit":
+                q = ""
+                while q not in ["exit;", "exit"]:
+                    q = input("")
+                    if q.lower() == "exit":
                         print("Exited the database.")
                         break
-                    cursor2=mycon.cursor()
+                    cursor2 = mycon.cursor()
                     cursor2.execute(q)
-                    data=cursor2.fetchall()
-                    if len(data)!=0:           
-                        for i in range(0,len(data)):
-                            print(data[i])
+                    data = cursor2.fetchall()
+                    if len(data) != 0:
+                        for row in data:
+                            print(row)
                     else:
                         print("Operation performed.")
                     mycon.commit()
             else:
                 print("Incorrect Password >:(")
-                z+=1
-                if z>=2:
+                z += 1
+                if z >= 2:
                     print("There have been more than 1 failed login attempts. Closing the system.")
                     time.sleep(0.3)
-                    print(".",end="")
-                    time.sleep(0.3)
-                    print(".",end="")
-                    time.sleep(0.3)
-                    print(".",end="")
-                    time.sleep(0.3)
+                    for _ in range(3):
+                        print(".", end="")
+                        time.sleep(0.3)
+                    print()
                     break
-                print(201*"=")
+                print(201 * "=")
 #==========================================================================================================Exit
-    elif user_type==6:
-        print(201*"=")
+    elif user_type == 6:
+        print(201 * "=")
         print("Tejas' Codes :)")
         time.sleep(1)
-        print(".",end="")
-        time.sleep(1)
-        print(".",end="")
-        time.sleep(1)
-        print(".",end="\n")
-        print(201*"=")
+        for _ in range(3):
+            print(".", end="")
+            time.sleep(1)
+        print("\n" + 201 * "=")
         break
     else:
         print("Invalid choice! ✖")

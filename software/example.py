@@ -59,13 +59,19 @@ def reset(event):
     update_plot()
 
 # Input equation
-equation = input("Enter an equation in the form y = f(x) (e.g., y = 2*x + 3 or y = sin(x)): ")
-lhs, equation_rhs = equation.replace(' ', '').split('=')
-if lhs != 'y':
-    raise ValueError("Invalid equation format. Please use the format 'y = f(x)'.")
+while True:
+    equation = input("Enter an equation in the form y = f(x) (e.g., y = 2*x + 3 or y = sin(x)): ")
+    try:
+        lhs, equation_rhs = equation.replace(' ', '').split('=')
+        if lhs != 'y':
+            raise ValueError("Invalid equation format. Please use the format 'y = f(x)'.")
+        break  
+    except ValueError as ve:
+        print(ve)
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
-# Initial plot setup
-plt.ion()  # Turn on interactive mode
+plt.ion()  
 fig, ax = plt.subplots()
 plt.subplots_adjust(left=0.1, bottom=0.35)
 x_vals = np.linspace(x_range[0], x_range[1], 400)
@@ -106,4 +112,3 @@ plt.show()
 while True:
     update_plot()
     plt.pause(0.1)
-    

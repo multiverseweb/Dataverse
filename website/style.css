@@ -1024,15 +1024,15 @@ input {
 }
 
 .links a {
-    color: rgba(255, 255, 255, 0.433);
+    color:white;
 }
 
 .links h3 {
-    color: rgba(255, 255, 255, 0.433);
+    color: white;
 }
 
 .links h4 {
-    color: rgba(255, 255, 255, 0.433);
+    color: white;
 }
 
 .end_line {
@@ -1056,6 +1056,7 @@ input {
     z-index: 10;
     border-bottom: 0px solid rgba(255, 255, 255, 0);
     transition-duration: 0.3s;
+    color:rgb(192, 192, 192);
 }
 
 .small i {

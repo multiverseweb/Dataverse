@@ -370,8 +370,31 @@ body.light-mode footer h3{
     backdrop-filter: blur(7px);
     background-color: #0000004b;
     transition-duration: 0.3s;
+    display: flex;
+    justify-content: space-between; /* Align items to the edges */
+    align-items: center; /* Center items vertically */
+}
+.login-button {
+    background-color: dimgray;
+    position: relative;
+    height: 40px;
+    width: 130px; 
+    font-size: 17px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    margin-left: auto;
+    right:-50px;
 }
 
+@media (max-width: 768px) {
+    .plane {
+        display: block; /* Show the menu on mobile */
+    }
+    .login-button {
+        display: none; /* Hide the login link */
+    }
+}
 table {
     margin-top: 60px;
     width: 100%;

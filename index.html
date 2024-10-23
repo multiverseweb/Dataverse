@@ -17,7 +17,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="website/style.css">
 </head>
 
 <body id="body">
@@ -64,25 +64,15 @@
     <nav id="navbar">
         <img src="website/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
         <img src="website/web_images/3d_glow.png" alt="Dataverse Logo" class="logo" id="glow">
-        <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
-        <button style="
-        background-color: dimgray;
-        position: relative;
-        left: 1240px;
-        top: 8px;
-        height: 40px;
-        width: 130px; 
-        font-size: 17px;
-        border: none;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-
-        "><a href="login.html">Login/Signup</a>
+        <div class="scrollBar" id="progress_bar"></div> <!-- PROGRESS BAR -->
+        
+        <button class="login-button">
+            <a href="login.html">Login/Signup</a>
         </button>
     </nav>
 
-    <button class="burger" id="burger" onclick="show()"></button>
-    <button id="cross" class="burger" onclick="hide()"></button>
+    <button class="burger" id="burger" onclick="show()" aria-label="Open Menu"></button>
+    <button id="cross" class="burger" onclick="hide()" aria-label="Close Menu"></button>
     <div class="burger" id="lines">
         <div class="line" id="l1"></div>
         <div class="line" id="l2"></div>
@@ -115,6 +105,9 @@
             </tr>
             <tr>
                 <td><a href="website/license.html" class="table_link">License</a></td>
+            </tr>
+            <tr>
+                <td><a href="login.html" class="table_link">Login/Signup</a></td>
             </tr>
         </table>
     </div>

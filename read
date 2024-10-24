@@ -1,0 +1,21 @@
+Description
+Variable Naming:
+1.Adopted snake_case for all variable and function names.
+2.Used more descriptive names to clearly indicate the purpose of each variable.
+
+Error Handling:
+
+1.Wrapped database operations and critical sections in try-except blocks to catch and handle potential exceptions.
+2.Added specific error messages to assist in debugging and user notifications.
+
+Related Issue
+Fixes # (issue 97)
+
+Type of change
+Bug fix (non-breaking change which fixes an issue)
+ New feature (non-breaking change which adds functionality)
+ Breaking change (fix or feature that would cause existing functionality to not work as expected)
+Checklist
+My code follows the style guidelines of this project
+I have performed a self-review of my own code
+I have commented on my code, particularly in hard-to-understand areas

@@ -1019,6 +1019,8 @@ input {
     background-color: #000000;
     height: auto;
     margin-top: -5px;
+    display: flex;
+    justify-content: space-around;
     text-align: center;
     padding-top: 20px;
 }
@@ -1028,11 +1030,11 @@ input {
 }
 
 .links h3 {
-    color: white;
+    color: rgba(255, 255, 255, 0.86);
 }
 
 .links h4 {
-    color: white;
+    color: rgba(255, 255, 255, 0.86);
 }
 
 .end_line {
@@ -1073,7 +1075,7 @@ input {
 .link_class {
     display: flex;
     flex-direction: column;
-    text-align: left;
+    text-align: center;
 }
 
 /*===========================RESPONSIVE===================================*/ 

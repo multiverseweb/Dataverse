@@ -93,7 +93,20 @@ html {
         }
     }
 }
+.login_signup_btn{
+    
+    background-color: dimgray;
+    position: absolute;
+    right: 75px;
+    top: 8px;
+    height: 40px;
+    width: 130px; 
+    font-size: 17px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
+}
 @keyframes pathTriangle {
     33% {
         stroke-dashoffset: 74;
@@ -474,6 +487,7 @@ tr:hover {
     max-width: 400px;
     box-shadow: 0px 0px 10px black;
     font-size: 1.2rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.103);
 }
 
 .preview {
@@ -1057,8 +1071,11 @@ input {
     border-bottom: 0px solid rgba(255, 255, 255, 0);
     transition-duration: 0.3s;
     color:rgb(192, 192, 192);
+    transition: color 0.3s ease;
+    &:hover{
+        color: #75fbcb;
+    }
 }
-
 .small i {
     margin-top: 20px;
     z-index: 10;

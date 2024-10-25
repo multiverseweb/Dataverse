@@ -1,6 +1,4 @@
-name: Auto Comment on PR
-
-# Created by @smog-root
+name: Auto Comment on PR (Dataverse)
 
 on:
   pull_request_target:

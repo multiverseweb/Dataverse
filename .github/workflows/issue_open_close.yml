@@ -1,6 +1,4 @@
-name: Issue Auto Comment
-
-# Created by @smog-root
+name: Issue Auto Comment (Dataverse)
 
 on:
   issues:

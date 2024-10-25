@@ -1,6 +1,4 @@
-name: Merge Thank You
-
-# Created by @smog-root
+name: Merge Thank You (Dataverse)
 
 on:
   pull_request_target:

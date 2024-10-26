@@ -389,7 +389,10 @@ body.light-mode footer h3{
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 0 auto; /* Center the button in the navbar */
+    position: absolute; /* Make the button positionable */
+    right: 60px; /* Distance from the right side */
+    top: 10px; /* Adjust the vertical positioning as needed */
+
 }
 
 /* Ensure the button's anchor tag is styled correctly */

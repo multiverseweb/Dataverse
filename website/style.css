@@ -884,8 +884,8 @@ tr:hover {
 footer {
     display: flex;
     flex-direction: row;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding-left: 30vw;
+    padding-right: 30vw;
     background-color: rgb(0, 0, 0); /* Semi-transparent black for dark mode */
     color: silver; /* Silver text for good contrast */
     transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */

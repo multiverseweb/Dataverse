@@ -104,13 +104,13 @@ Thank you for your contribution!!
 3. **Clone the forked repository**
 
 ```bash
-git clone https://github.com/<your-github-username>/Project-Guidance.git
+git clone https://github.com/<your-github-username>/Dataverse.git
 ```
   
 4. **Navigate to the project directory**
 
 ```bash
-cd Project-Guidance
+cd Dataverse
 ```
 
 5. **Create a new branch**
@@ -149,8 +149,8 @@ git push -u origin <your_branch_name>
   Launch GitHub Desktop and log in to your GitHub account if you haven't already.
 
 2. **Clone the Repository:**
-- If you haven't cloned the Project-Guidance repository yet, you can do so by clicking on the "File" menu and selecting "Clone Repository."
-- Choose the Project-Guidance repository from the list of repositories on GitHub and clone it to your local machine.
+- If you haven't cloned the project repository yet, you can do so by clicking on the "File" menu and selecting "Clone Repository."
+- Choose the project repository from the list of repositories on GitHub and clone it to your local machine.
 
 3.**Switch to the Correct Branch:**
 - Ensure you are on the branch that you want to submit a pull request for.
@@ -167,7 +167,7 @@ git push -u origin <your_branch_name>
 - After committing your changes, click the "Push origin" button in the top right corner of GitHub Desktop to push your changes to your forked repository on GitHub.
 
 7. **Create a Pull Request:**
-- Go to the GitHub website and navigate to your fork of the Project-Guidance repository.
+- Go to the GitHub website and navigate to your fork of the project repository.
 - You should see a button to "Compare & pull request" between your fork and the original repository. Click on it.
 
 8. **Review and Submit:**
@@ -175,7 +175,7 @@ git push -u origin <your_branch_name>
 - Once you're satisfied, click the "Create pull request" button to submit your pull request.
 
 9. **Wait for Review:**
-Your pull request will now be available for review by the project maintainers. They may provide feedback or ask for changes before merging your pull request into the main branch of the Project-Guidance repository.
+Your pull request will now be available for review by the project maintainers. They may provide feedback or ask for changes before merging your pull request into the main branch of the project repository.
 
 ![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
 

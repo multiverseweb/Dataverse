@@ -96,7 +96,7 @@ const technologies = document.getElementById("technologies");
 
 
 let lastScrollTop = 0;
-const navbar = document.querySelector('navbar');
+const navbar = document.getElementById("navbar");
 
 window.addEventListener('scroll', () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;

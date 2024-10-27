@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="shortcut icon" href="website/web_images/3dlogo.svg" type="image/x-icon">
     <link rel="stylesheet" href="website/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +38,7 @@
             </svg>
         </div>
 
-        
+
     </div>
     <div class="buttons" id="buttons">
         <div id="indicator"></div>
@@ -55,17 +53,17 @@
                 <!-- </div> -->
             </button>
         </div>
-            <button id="defaultButton" onclick="systemDefault()">
-                <img src="website/web_images/settings.webp" class="copy" id="default">
-            </button>
+        <button id="defaultButton" onclick="systemDefault()">
+            <img src="website/web_images/settings.webp" class="copy" id="default">
+        </button>
     </div>
     <button class="top" id="top" onclick="topFunction()"><img src="website/web_images/top.webp" alt=""></button>
     <nav id="navbar">
         <img src="website/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
         <img src="website/web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
         <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
-        <button class="loginSignupbtn"><a href="website\login.html">Login</a>
-        </button>
+        <a href="website/login.html"><button class="loginSignupbtn">Login
+        </button></a>
     </nav>
 
     <button class="burger" id="burger" onclick="show()"></button>
@@ -81,9 +79,6 @@
                 <td><a href="index.html" class="table_link">Home</a></td>
             </tr>
             <tr>
-                <td><a href="https://multiverseweb.github.io/Encryptify/" class="table_link">Encryptify</a></td>
-            </tr>
-            <tr>
                 <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
             </tr>
             <tr>
@@ -91,10 +86,13 @@
                         class="table_link">Documentation</a></td>
             </tr>
             <tr>
+                <td><a href="website/contributor.html"
+                        class="table_link">Contributors</a></td>
+            </tr>
+            <tr>
                 <td>
                     <a href="https://www.figma.com/proto/BBbXARgpxercxacjm0qpgX/Dataverse?type=design&node-id=45-25&t=zMFBUgENaIeqhRYZ-1&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=22%3A310&show-proto-sidebar=1&mode=design"
-                        class="table_link">Figma
-                        Design</a>
+                        class="table_link">Figma Design</a>
                 </td>
             </tr>
             <tr>
@@ -119,7 +117,8 @@
                 <p id="data">Data</p>
                 <p>verse</p>
             </div>
-            <p id="intro_text">An Open-Source Software (OSS) that allows you to visualize data and track your finances!</p>
+            <p id="intro_text">An Open-Source Software (OSS) that allows organizing, analyzing and visualizing data, providing flexible tools for financial tracking and customized chart creation.
+            </p>
             <p id="intro_text">The adjoining map shows people who are using or contributing to Dataverse.</p>
             <button id="download_btn"
                 onclick="showCustomAlert('Dataverse is currently under development. It will be available for installastion soon.\n\nHowever, you can visit the following link to run the project locally on your computer:')">Get
@@ -273,10 +272,10 @@
     </footer>
     <div class="links">
         <p>
-        <h3 style="color:rgb(187, 187, 187);"> Designed & Developed by Tejas Gupta</h3>
+        <p class="tejas_credits" style="color:rgb(187, 187, 187);"> Designed & Developed by Tejas Gupta</p>
         </p>
         <br>
-        <h4 style="color:rgb(177, 177, 177);">Copyright &copy; <span id="copyright">32949832</span> Tejas Gupta</h4>
+        <p style="color:rgb(177, 177, 177);">&copy; <span id="copyright">32949832</span> Tejas Gupta</p>
         <div class="end_line"></div>
         <div class="small">
             <div class="link_class">

@@ -27,6 +27,9 @@ html {
 #video-loader img{
     height: 80px;
 }
+#video-loader video{
+    height: 80px;
+}
 
 html {
     -webkit-font-smoothing: antialiased;
@@ -1114,7 +1117,7 @@ input {
     #download_btn {
         position: absolute;
         left: 50%;
-        margin-top: 45vh;
+        margin-top: 42vh;
         transform: translate(-50%);
         color: #333;
     }

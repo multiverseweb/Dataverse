@@ -59,6 +59,43 @@
                 <img src="website/web_images/settings.webp" class="copy" id="default">
             </button>
     </div>
+    <div class="feedback-form">
+        <form id="feedbackForm" action="/submit_feedback" method="post">
+            <h2>Let Me Know Your Thoughts!</h2>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email ID" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            
+            <!-- Star Rating Section -->
+            <div class="star-rating">
+                <label>Rate Us:</label>
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5" title="5 stars">★</label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4" title="4 stars">★</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3" title="3 stars">★</label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2" title="2 stars">★</label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1" title="1 star">★</label>
+            </div>
+    
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <div class="feedback-list">
+        <h2>User Feedback</h2>
+        {% for feedback in feedback_list %}
+        <div class="feedback-item">
+            <p><strong>{{ feedback.name }}</strong> ({{ feedback.rating }} stars)</p>
+            <p>{{ feedback.message }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
     <button class="top" id="top" onclick="topFunction()"><img src="website/web_images/top.webp" alt=""></button>
     <nav id="navbar">
         <img src="website/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">

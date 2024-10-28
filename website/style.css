@@ -495,6 +495,14 @@ tr:hover {
     animation-duration: 1.5s;
     animation-timing-function: linear;
 }
+#data:hover{
+    background: linear-gradient(to left, #e2c95b, #9ae5da);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation-name: hue;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+}
 
 @keyframes hue {
     0% {
@@ -577,17 +585,34 @@ tr:hover {
     margin-top: 40px;
     margin-bottom: 40px;
 }
-
 #download_btn {
-    background-color: #00000000;
-    border: 1px solid black;
+    background-color: white;
     color: black;
-    font-size: large;
-    transition-duration: 0.3s;
-    padding: 10px 20px 10px 20px;
-    z-index: 20;
+    font-size: 20px;
+    padding: 12px 20px;
     border-radius: 5px;
+    border: 2px solid #a9a4a4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
+
+
+#download_btn:hover::before {
+    left: 100%;
+}
+
+#download_btn:hover {
+    color: white;
+    box-shadow: 0 0 10px rgba(142, 208, 241, 0.8), 0 0 20px rgba(142, 208, 241, 0.6);
+}
+
+#download_btn:active {
+    transform: scale(0.2);
+    box-shadow: 0 0 5px rgba(142, 208, 241, 0.5);
+}
+
 
 .scroll_icon {
     position: fixed;

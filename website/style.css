@@ -1085,7 +1085,7 @@ input {
     }
 
     #download {
-        margin-top: -50px;
+        margin-top: 80px;
         padding-top: 0px;
         height: fit-content;
         flex-direction: column-reverse;
@@ -1095,7 +1095,7 @@ input {
         margin-left: 20px;
         width: calc(100vw - 40px);
         height: 35vh;
-        margin-top: 20px;
+        margin-top: 0px;
     }
 
     .top_dataverse {
@@ -1116,8 +1116,8 @@ input {
 
     #download_btn {
         position: absolute;
+        margin-top: calc(35vh + 20px);
         left: 50%;
-        margin-top: 42vh;
         transform: translate(-50%);
         color: #333;
     }

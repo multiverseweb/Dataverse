@@ -2,10 +2,14 @@
 var cities = ["Pune", "Moradabad", "Dehradun","Rampur","Delhi","Coimbatore"];
 
 // /preloader js styling
-let preloader = document.querySelector("#preloader");
-window.addEventListener("load",function(e){
-    preloader.style.display = "none";
-    displayCopyright();
+window.addEventListener('DOMContentLoaded', () => {
+  // Hide the loader after 3 seconds
+  setTimeout(() => {
+      const loader = document.getElementById('video-loader');
+      loader.style.display = 'none';
+
+      displayCopyright();
+  }, 3000);
 });
 
 function topFunction() {
@@ -96,7 +100,7 @@ const technologies = document.getElementById("technologies");
 
 
 let lastScrollTop = 0;
-const navbar = document.querySelector('navbar');
+const navbar = document.getElementById("navbar");
 
 window.addEventListener('scroll', () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;

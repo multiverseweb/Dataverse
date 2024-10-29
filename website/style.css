@@ -11,161 +11,24 @@
 html {
     scroll-behavior: smooth;
 }
-
-/* Preloader styling  */
-#preloader{
-    background: #ddbea9;
-    height: 100vh;
-    width: 100%;
+#video-loader {
     position: fixed;
-    z-index: 200;
-    min-height: 100vh;
-    background: #F5F9FF;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    .dribbble {
-        position: fixed;
-        display: block;
-        right: 20px;
-        bottom: 20px;
-        img {
-            display: block;
-            height: 28px;
-        }
-    }
-}
-.loader {
-    --path: goldenrod;
-    --dot: rgb(0, 141, 141);
-    --duration: 3s;
-    width: 44px;
-    height: 44px;
-    position: relative;
-    &:before {
-        content: '';
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        position: absolute;
-        display: block;
-        background: var(--dot);
-        top: 37px;
-        left: 19px;
-        transform: translate(-18px, -18px);
-        animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
-    }
-    svg {
-        display: block;
-        width: 100%;
-        height: 100%;
-        rect,
-        polygon,
-        circle {
-            fill: none;
-            stroke: var(--path);
-            stroke-width: 10px;
-            stroke-linejoin: round;
-            stroke-linecap: round;
-        }
-        polygon {
-            stroke-dasharray: 145 (221 - 145) 145 (221 - 145);
-            stroke-dashoffset: 0;
-            animation: pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
-        }
-        rect {
-            stroke-dasharray: (256 / 4 * 3) (256 / 4) (256 / 4 * 3) (256 / 4);
-            stroke-dashoffset: 0;
-            animation: pathRect 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
-        }
-        circle {
-            stroke-dasharray: (200 / 4 * 3) (200 / 4) (200 / 4 * 3) (200 / 4);
-            stroke-dashoffset: 75;
-            animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
-        }
-    }
-    &.triangle {
-        width: 48px;
-        &:before {
-            left: 21px;
-            transform: translate(-10px, -18px);
-            animation: dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
-        }
-    }
+    background-color: black;
+    z-index: 9999;
 }
 
-@keyframes pathTriangle {
-    33% {
-        stroke-dashoffset: 74;
-    }
-    66% {
-        stroke-dashoffset: 147;
-    }
-    100% {
-        stroke-dashoffset: 221;
-    }
+#video-loader img{
+    height: 80px;
 }
-
-@keyframes dotTriangle {
-    33% {
-        transform: translate(0, 0);
-    }
-    66% {
-        transform: translate(10px, -18px);
-    }
-    100% {
-        transform: translate(-10px, -18px);
-    }
-}
-
-@keyframes pathRect {
-    25% {
-        stroke-dashoffset: 64;
-    }
-    50% {
-        stroke-dashoffset: 128;
-    }
-    75% {
-        stroke-dashoffset: 192;
-    }
-    100% {
-        stroke-dashoffset: 256;
-    }
-}
-
-@keyframes dotRect {
-    25% {
-        transform: translate(0, 0);
-    }
-    50% {
-        transform: translate(18px, -18px);
-    }
-    75% {
-        transform: translate(0, -36px);
-    }
-    100% {
-        transform: translate(-18px, -18px);
-    }
-}
-
-@keyframes pathCircle {
-    25% {
-        stroke-dashoffset: 125;
-    }
-    50% {
-        stroke-dashoffset: 175;
-    }
-    75% {
-        stroke-dashoffset: 225;
-    }
-    100% {
-        stroke-dashoffset: 275;
-    }
-}
-
-.loader {
-    display: inline-block;
-    margin: 0 16px;
+#video-loader video{
+    height: 80px;
 }
 
 html {
@@ -174,11 +37,13 @@ html {
 
 * {
     box-sizing: border-box;
+
     &:before,
     &:after {
         box-sizing: border-box;
     }
 }
+
 body {
     overflow-x: hidden;
     background-color: black;
@@ -230,12 +95,16 @@ a {
 
 
 #indicator {
-    height: 35px; /* Set the height of the indicator slightly larger than buttons */
-    width: 35px; /* Set the width to match */
-    border-radius: 50%; /* Ensure circular shape */
+    height: 35px;
+    /* Set the height of the indicator slightly larger than buttons */
+    width: 35px;
+    /* Set the width to match */
+    border-radius: 50%;
+    /* Ensure circular shape */
     position: absolute;
     transition-duration: 0.3s;
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.501), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)); /* Glow effect */
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.501), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    /* Glow effect */
 }
 
 
@@ -250,8 +119,10 @@ a {
     margin-top: 20px;
     background-color: transparent;
     border: none;
-    width: 40px; /* Uniform button size */
-    height: 40px; /* Ensure consistent height */
+    width: 40px;
+    /* Uniform button size */
+    height: 40px;
+    /* Ensure consistent height */
     padding: 0;
     display: block;
     position: relative;
@@ -266,51 +137,79 @@ a {
 #defaultButton {
     margin-top: 12px;
 }
+
 /* Apply inversion only to specific elements */
 /* General styles for light mode */
 body {
-    background-color: white; /* Light mode background */
-    color: black; /* Default text color in light mode */
+    background-color: white;
+    /* Light mode background */
+    color: black;
+    /* Default text color in light mode */
 }
 
-.dark-mode  #download_btn{
+.dark-mode #download_btn {
     color: white;
     border: 1px solid #fff;
 }
 
+.dark-mode #download_btn:hover {
+    color: rgb(0, 0, 0);
+    background-color: white;
+    border: 1px solid #fff;
+}
+
+.light-mode #download_btn:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    border: 1px solid #000000;
+}
+
 /* Dark mode styles */
 body.dark-mode {
-    background-color: black; /* Dark mode background */
-    color: white; /* Default text color in dark mode */
+    background-color: black;
+    /* Dark mode background */
+    color: white;
+    /* Default text color in dark mode */
 }
 
 /* Specific footer styles for light mode */
 footer {
-    background-color: white; /* Light mode footer background */
-    color: black; /* Light mode footer text color */
-    padding: 20px; /* Padding for the footer */
+    background-color: white;
+    /* Light mode footer background */
+    color: black;
+    /* Light mode footer text color */
+    padding: 20px;
+    /* Padding for the footer */
 }
 
 /* Dark mode footer styling */
 body.dark-mode footer {
-    background-color: black; /* Dark mode footer background */
-    color: white; /* Dark mode footer text color */
+    background-color: black;
+    /* Dark mode footer background */
+    color: white;
+    /* Dark mode footer text color */
 }
 
 /* Footer heading styles for light mode */
 footer h3 {
-    margin: 0; /* Remove default margin */
-    color: black; /* Light mode h3 text color */
+    margin: 0;
+    /* Remove default margin */
+    color: black;
+    /* Light mode h3 text color */
 }
 
 /* Dark mode heading styles */
 body.dark-mode footer h3 {
-    color: white; /* Ensure h3 text is white in dark mode */
+    color: white;
+    /* Ensure h3 text is white in dark mode */
 }
-body.light-mode footer h3{
+
+body.light-mode footer h3 {
     color: black;
 }
-#moon, #sun {
+
+#moon,
+#sun {
     filter: invert(1);
 }
 
@@ -321,11 +220,13 @@ body.light-mode footer h3{
 
 
 .glow {
-    box-shadow: 0 0 10px 5px rgba(255, 255, 0, 0.7); /* Customize glow style */
-    transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+    box-shadow: 0 0 10px 5px rgba(255, 255, 0, 0.7);
+    /* Customize glow style */
+    transition: box-shadow 0.3s ease-in-out;
+    /* Smooth transition */
 }
 
-  
+
 
 .copy {
     height: 20px;
@@ -343,8 +244,8 @@ body.light-mode footer h3{
     border: none;
     border-radius: 10px;
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 80px;
+    right: 25px;
     backdrop-filter: blur(7px);
     box-shadow: 5px 5px 10px black;
     z-index: 50;
@@ -364,12 +265,86 @@ body.light-mode footer h3{
     width: 100vw;
     height: 60px;
     position: fixed;
-    top: 0px;
+    top: 0;
     z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Space between logo and button */
     border-bottom: 1px solid rgba(255, 255, 255, 0.077);
     backdrop-filter: blur(7px);
     background-color: #0000004b;
     transition-duration: 0.3s;
+    padding: 0 20px;
+    /* Padding for left and right spacing */
+}
+
+/* Center the button in the navbar */
+.loginSignupbtn {
+    background-color: rgba(162, 162, 162, 0.203);
+    height: 40px;
+    width: min-content;
+    color: #ffffff;
+    font-size: 17px;
+    border: none;
+    border-radius: 7px;
+    padding: 0px 30px 0px 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    /* Make the button positionable */
+    right: 65px;
+    /* Distance from the right side */
+    top: 10px;
+    /* Adjust the vertical positioning as needed */
+
+}
+
+/* Ensure the button's anchor tag is styled correctly */
+.loginSignupbtn a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Center all items in the navbar */
+#navbar {
+    justify-content: center;
+    /* Center all items in the navbar */
+}
+
+.loginSignupbtn a {
+    color: white;
+    text-decoration: none;
+}
+
+/* To avoid overlap, use flex properties properly for the logo and button */
+.logo {
+    position: absolute;
+    left: 2px;
+    /* Align the logo on the left */
+}
+
+.goBack {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px;
+    background-color: #d0d0d032;
+    backdrop-filter: blur(7px);
+    color: rgb(105, 105, 105);
+    border: none;
+    border-radius: 7px;
+    box-shadow: 0 0 5px black;
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        height: 60px;
+    }
 }
 
 table {
@@ -407,11 +382,12 @@ tr:hover {
 
 #glow {
     top: -20px;
-    left: -20px;
+    left: -17px;
     height: 80px;
     z-index: -10;
     opacity: 0;
     filter: brightness(1.7);
+    height: 78px;
 }
 
 #glow:hover {
@@ -567,7 +543,7 @@ tr:hover {
     transform: translate(-50%, -50%) rotate(var(--angle));
 }
 
-/*=====================hiding map watermark=================*/ 
+/*=====================hiding map watermark=================*/
 .leaflet-control-attribution {
     display: none !important;
 }
@@ -886,24 +862,33 @@ footer {
     flex-direction: row;
     padding-left: 10vw;
     padding-right: 10vw;
-    background-color: rgb(0, 0, 0); /* Semi-transparent black for dark mode */
-    color: silver; /* Silver text for good contrast */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
-    justify-content: space-between; /* Ensures even spacing between elements */
-    align-items: center; /* Vertically centers the elements */
+    background-color: rgb(0, 0, 0);
+    /* Semi-transparent black for dark mode */
+    color: silver;
+    /* Silver text for good contrast */
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth transition effect */
+    justify-content: space-between;
+    /* Ensures even spacing between elements */
+    align-items: center;
+    /* Vertically centers the elements */
 }
 
 footer a {
-    color: silver; /* Silver links */
-    transition: color 0.3s; /* Smooth transition for links */
+    color: silver;
+    /* Silver links */
+    transition: color 0.3s;
+    /* Smooth transition for links */
 }
 
 footer a:hover {
-    color: white; /* Change link color on hover */
+    color: white;
+    /* Change link color on hover */
 }
 
 footer .contact {
-    margin-right: auto; /* Aligns the contact section to the left */
+    margin-right: auto;
+    /* Aligns the contact section to the left */
 }
 
 footer input[type="text"],
@@ -912,24 +897,36 @@ footer input[name="Message"],
 footer input[type="submit"] {
     backdrop-filter: blur(50px);
     box-shadow: 0 0 10px black;
-    margin: 10px 0; /* Margin between inputs */
-    padding: 10px; /* Padding for better usability */
-    border-radius: 5px; /* Rounded corners */
-    border: 1px solid rgba(126, 126, 126, 0.382); /* Silver border */
-    background-color: rgba(255, 255, 255, 0.1); /* Light background for inputs in dark mode */
-    color: rgb(255, 255, 255); /* Silver text for inputs */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for inputs */
+    margin: 10px 0;
+    /* Margin between inputs */
+    padding: 10px;
+    /* Padding for better usability */
+    border-radius: 5px;
+    /* Rounded corners */
+    border: 1px solid rgba(126, 126, 126, 0.382);
+    /* Silver border */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Light background for inputs in dark mode */
+    color: rgb(255, 255, 255);
+    /* Silver text for inputs */
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth transition for inputs */
 }
 
 footer input[type="submit"] {
-    background-color: silver; /* Silver background for the submit button */
-    color: black; /* Black text for visibility */
-    cursor: pointer; /* Pointer cursor for button */
+    background-color: silver;
+    /* Silver background for the submit button */
+    color: black;
+    /* Black text for visibility */
+    cursor: pointer;
+    /* Pointer cursor for button */
 }
 
 footer input[type="submit"]:hover {
-    background-color: white; /* White background on hover */
-    color: black; /* Keep black text on hover */
+    background-color: white;
+    /* White background on hover */
+    color: black;
+    /* Keep black text on hover */
 }
 
 
@@ -966,7 +963,8 @@ input {
 /* Send button styling */
 #send {
     display: block;
-    margin: 20px auto; /* Center the button horizontally */
+    margin: 20px auto;
+    /* Center the button horizontally */
     width: min-content;
     background-color: rgba(0, 123, 121, 0.364);
     cursor: pointer;
@@ -1024,7 +1022,7 @@ input {
 }
 
 .links a {
-    color:white;
+    color: white;
 }
 
 .links h3 {
@@ -1056,7 +1054,7 @@ input {
     z-index: 10;
     border-bottom: 0px solid rgba(255, 255, 255, 0);
     transition-duration: 0.3s;
-    color:rgb(192, 192, 192);
+    color: rgb(192, 192, 192);
 }
 
 .small i {
@@ -1076,7 +1074,7 @@ input {
     text-align: left;
 }
 
-/*===========================RESPONSIVE===================================*/ 
+/*===========================RESPONSIVE===================================*/
 @media screen and (max-width: 660px) {
     .plane {
         max-width: 600px;
@@ -1087,7 +1085,7 @@ input {
     }
 
     #download {
-        margin-top: -30px;
+        margin-top: 80px;
         padding-top: 0px;
         height: fit-content;
         flex-direction: column-reverse;
@@ -1096,8 +1094,8 @@ input {
     #map {
         margin-left: 20px;
         width: calc(100vw - 40px);
-        height: 40vh;
-        margin-top: 20px;
+        height: 35vh;
+        margin-top: 0px;
     }
 
     .top_dataverse {
@@ -1118,13 +1116,13 @@ input {
 
     #download_btn {
         position: absolute;
+        margin-top: calc(35vh + 20px);
         left: 50%;
-        margin-top: 45vh;
         transform: translate(-50%);
         color: #333;
     }
 
-    
+
 
 
     #about {
@@ -1248,6 +1246,7 @@ input {
     position: fixed;
     z-index: 90;
     top: 59.8px;
+    left: 0;
     height: 1.9px;
     box-shadow: 0px 0px 5px goldenrod;
     width: 0vw;
@@ -1300,18 +1299,18 @@ input {
 }
 
 .license-content {
-
     font-family: "Montserrat Alternates", sans-serif;
     font-weight: 400;
     font-style: normal;
     letter-spacing: 0.05em;
-    font-size: 1.1em; /* Slight increase */
-    line-height: 1.3; /* For multi-line text */
+    font-size: 1.1em;
+    /* Slight increase */
+    line-height: 1.3;
+    /* For multi-line text */
     margin-top: 50px;
     padding: 50px 50px;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     text-align: center;
     font-size: 16px;
     width: auto;

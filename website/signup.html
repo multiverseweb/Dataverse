@@ -20,13 +20,22 @@
             margin: 10px 0;
             display: none; /* Initially hidden */
         }
+        .goBack{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px;
+    background-color: #d0d0d032;
+    backdrop-filter: blur(7px);
+    color:rgb(105, 105, 105);
+    border:none;
+    border-radius: 7px;
+    box-shadow: 0 0 5px black;
+}
     </style>
 </head>
 
 <body>
-    <div style="text-align: right; margin: 10px;">
-        <a href="../index.html" class="btn btn-secondary" style="width: 150px; position: relative; right: 1330px;">Back to Home</a>
-    </div>
     <div class="login-container" style="padding-top: 20px;">
         <h2 style="text-align: center;">Signup</h2>
         <div id="errorContainer" class="error-message"></div> <!-- Error message container -->
@@ -50,6 +59,7 @@
             <p>Already have an account? <a href="login.html" style="text-decoration: none;">Login</a></p>
         </div>
     </div>
+    <a href="../index.html"><button class="goBack">Go To Home</button></a>
     <script>
         document.getElementById('signupButton').addEventListener('click', function() {
             const emailInput = document.getElementById('emailInput');

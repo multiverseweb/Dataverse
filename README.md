@@ -176,8 +176,25 @@ Want to contribute to this project? Follow these steps:
 ### Our Valuable Contributors ❤️✨
 
 [![Contributors](https://contrib.rocks/image?repo=multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/graphs/contributors)
- 
+
+
+## Stargazers ❤️
+
+<div align='left'>
+
+[![Stargazers repo roster for @multiverseweb/Dataverse](https://reporoster.com/stars/dark/multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/stargazers)
+
+
+</div>
+
+## Forkers ❤️
+
+[![Forkers repo roster for @multiverseweb/Dataverse](https://reporoster.com/forks/dark/multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/network/members)
+
 ---
+
+
+ 
 ### Website
 
 Deployed on

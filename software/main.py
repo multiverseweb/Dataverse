@@ -1,20 +1,20 @@
-import tkinter as tk                                                #for GUI
-from tkinter import *                                               #for GUI
-from tkinter import messagebox                                      #for GUI messages
-from PIL import Image, ImageTk                                      #for GUI images
-from functools import partial                                       #for calling button functions
-import customtkinter                                                #for scrollable GUI frame
-import mysql.connector as my                                        #for connecting database
-import datetime                                                     #for getting current date
-import time                                                         #for getting current time
-import webbrowser                                                   #for opening external link
-import ctypes as ct                                                 #for styling windows
-import financeTracker as financeTracker                             #user defined module - finance
-import matplotlib.pyplot as plt                                     #for plotting graphs
-from mpl_toolkits.mplot3d import Axes3D                             #for 3d plotting
-import matplotlib                                                   #for plotting graphs
-from matplotlib.widgets import Cursor                               #for lines on hover in plot
-import numpy as np                                                  #for x-axis time arange
+import tkinter as tk                              #for GUI
+from tkinter import *                             #for GUI                                   +---------------------------+
+from tkinter import messagebox                    #for GUI messages                          |        DATAVERSE          |
+import customtkinter                              #for scrollable GUI frame                  |     version 06.02.24      |
+from PIL import Image, ImageTk                    #for GUI images                            |  Designed & Developed By  |
+from functools import partial                     #for calling button functions              |        TEJAS GUPTA        |
+import mysql.connector as my                      #for connecting database                   +---------------------------+
+import datetime                                   #for getting current date                  |developing version 6550(24)|
+import time                                       #for getting current time                  +---------------------------+                 
+import webbrowser                                 #for opening external link
+import ctypes as ct                               #for styling windows
+import financeTracker as financeTracker           #user defined module - finance
+import matplotlib.pyplot as plt                   #for plotting graphs
+from mpl_toolkits.mplot3d import Axes3D           #for 3d plotting
+import matplotlib                                 #for plotting graphs
+from matplotlib.widgets import Cursor             #for lines on hover in plot
+import numpy as np                                #for x-axis time arange
 #===================================================================================================================plot colors
 colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462","#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato","tan"]
 maxLimit = 16 # maximum limit for colors
@@ -25,6 +25,21 @@ cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id INT PRIMARY KEY, u_name VA
 cursor.execute("CREATE TABLE IF NOT EXISTS money (u_id INT, fiat FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total DOUBLE AS (fiat + gold + stocks + commodity + sales - expenditure), entryDate date);")
 #===================================================================================================================================
 #============================================================================================Dataverse Operations
+#======================================================================password encryption
+def encrypt(pwd):
+    if not isinstance(pwd, str) or len(pwd) == 0:
+        raise ValueError("Password must be a non-empty string.")
+    
+    try:
+        n = len(pwd)
+        e = ""
+        t = pwd[int(n/2):]
+        t += pwd[:int(n/2)]
+        for _ in range(len(t)):
+            e += chr(ord(t[_]) * 2)
+        return e
+    except Exception as e:
+        print(f"An error occurred during encryption: {e}")
 #=============================================================================Login- b1
 def login(b1, b2, b3, b4, preview_image):
     switch(b1, b2, b3, b4)
@@ -69,21 +84,6 @@ def login(b1, b2, b3, b4, preview_image):
     Button(form, text="Login", width=15, command=show_message, cursor="hand2").pack(pady=20)
     form.mainloop()
 
-#======================================================================password encryption
-def encrypt(pwd):
-    if not isinstance(pwd, str) or len(pwd) == 0:
-        raise ValueError("Password must be a non-empty string.")
-    
-    try:
-        n = len(pwd)
-        e = ""
-        t = pwd[int(n/2):]
-        t += pwd[:int(n/2)]
-        for _ in range(len(t)):
-            e += chr(ord(t[_]) * 2)
-        return e
-    except Exception as e:
-        print(f"An error occurred during encryption: {e}")
 #====================================================================== Create account -b2
 def create(b2, b1, b3, b4, preview_image):
     def show_message(u_name, pwd, country, names):
@@ -172,12 +172,12 @@ def guest(b1,b2,b3,b4,preview_image):
     title=Label(font="poppins 10 bold",fg='#ffffff',bg='#000000',text="DATA VISUALISATION SOFTWARE")
     title.pack(fill=X,pady=35,padx=(0,200))
 
-    # adding images to button 
+#====================================================================== adding images to buttons
     def resize_image(image_path, width=20, height=20):
         image = Image.open(image_path)
         image = image.resize((width, height), Image.Resampling.LANCZOS)
         return ImageTk.PhotoImage(image)
-
+    
     # Resizing all images to 20x20
     line_graph = resize_image("software/images/line_graph.png", 20)
     bar_graph = resize_image("software/images/bar_graph.png", 20)
@@ -342,7 +342,7 @@ def user_menu(u_id,u_name):
     b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Visualise Data",width=22,font="poppins 10",command=partial(visualize,u_name),cursor="hand2")
     b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Data",width=22,font="poppins 10",command=partial(delete_data,u_id),cursor="hand2")
     b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Save & Logout",width=22,command=main,font="poppins 10",cursor="hand2")
-    
+
     b1.pack(pady=(30,5),padx=15)
     b2.pack(pady=5,padx=15)
     b3.pack(pady=5,padx=15)
@@ -1297,20 +1297,37 @@ Managing finances has never been easier! Dataverse’s finance tracking features
     preview_image=Label(bg='#000000',image = preview, borderwidth=1, relief="solid",padx=15,pady=15)
     preview_image.place(relx=1.0, rely=1.0, x=-40, y=-40,anchor="se")
 
+    
+#====================================================================== adding images to buttons
+    def resize_image(image_path, width=20, height=20):
+        image = Image.open(image_path)
+        image = image.resize((width, height), Image.Resampling.LANCZOS)
+        return ImageTk.PhotoImage(image)
+    
+    user = resize_image("software/images/user.png", 20)
+    visualization = resize_image("software/images/visualization.png", 20)
+    finance = resize_image("software/images/finance.png", 20)
+    delete_user = resize_image("software/images/delete-user.png", 20)
 
 
-    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Finance Tracker",width=22,font="poppins 10",cursor="hand2")
-    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Data Visualisation",width=22,font="poppins 10",cursor="hand2")
-    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Create Account",width=22,font="poppins 10",cursor="hand2")
-    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Account",width=22,font="poppins 10",cursor="hand2")
-    b3.pack(pady=(30,5),padx=15)
-    b1.pack(pady=5,padx=15)
+    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',image=visualization,text="Data Visualisation",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',image=finance,text="Finance Tracker",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',image=user,text="Create Account",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',image=delete_user,text="Delete Account",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
+
+    b1.image = visualization
+    b2.image = finance
+    b3.image = user
+    b4.image = delete_user
+
+    b1.pack(pady=(30,5),padx=15)
     b2.pack(pady=5,padx=15)
+    b3.pack(pady=5,padx=15)
     b4.pack(pady=5,padx=15)
-    b1.config(command=partial(login,b1,b2,b3,b4,preview_image))
-    b3.config(command=partial(guest,b3,b1,b4,b2,preview_image))
-    b2.config(command=partial(create,b2,b1,b3,b4,preview_image))
-    b4.config(command=partial(delete,b4,b1,b3,b2,preview_image))
+    b1.config(command=partial(guest,b1,b2,b3,b4,preview_image))
+    b2.config(command=partial(login,b2,b1,b3,b4,preview_image))
+    b3.config(command=partial(create,b3,b1,b2,b4,preview_image))
+    b4.config(command=partial(delete,b4,b1,b2,b3,preview_image))
 
     link1 = Label(menu,fg='#ffffff',bg='#1a1a1a',text="Visit Website",width=22,cursor="hand2",font="poppins 10", relief="sunken")
     link1.pack(pady=280,padx=15)

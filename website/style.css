@@ -244,8 +244,8 @@ body.light-mode footer h3 {
     border: none;
     border-radius: 10px;
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 80px;
+    right: 25px;
     backdrop-filter: blur(7px);
     box-shadow: 5px 5px 10px black;
     z-index: 50;

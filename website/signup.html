@@ -6,57 +6,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+            background-color: #f8f9fa; /* Light background color */
+        }
         .login-container {
-            width: 500px;
-            height: auto; /* Changed to auto to fit content */
-            position: relative;
-            top: 100px;
-            left: 450px;
+            width: 600px; /* Increased width */
+            height: auto; /* Set to auto to fit content */
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            padding: 20px; /* Added padding for inner spacing */
+            background-color: white; /* White background for the container */
         }
         .error-message {
             color: red;
             margin: 10px 0;
             display: none; /* Initially hidden */
         }
-        .goBack{
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    padding: 10px;
-    background-color: #d0d0d032;
-    backdrop-filter: blur(7px);
-    color:rgb(105, 105, 105);
-    border:none;
-    border-radius: 7px;
-    box-shadow: 0 0 5px black;
-}
+        .goBack {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px;
+            background-color: #d0d0d032;
+            backdrop-filter: blur(7px);
+            color: rgb(105, 105, 105);
+            border: none;
+            border-radius: 7px;
+            box-shadow: 0 0 5px black;
+        }
+        .social-login-buttons button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 14px;
+            width: 70%; /* Keep width consistent */
+            margin: 10px auto;
+        }
+        .btn-google {
+            background-color: #20b837cb;
+            color: white;
+        }
+        .btn-microsoft {
+            background-color: #0078D4;
+            color: white;
+        }
+        .btn-apple {
+            background-color: black;
+            color: white;
+        }
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-primary {
+            background-color: grey; /* Changed to grey */
+            color: white; /* Ensure text is visible */
+            border-radius: 30px; /* Curved signup button */
+            width: 70%; /* Match width of social buttons */
+            margin: 10px auto; /* Center the button */
+            height: 45px; /* Adjusted height for better alignment */
+            border: none; /* Remove border */
+        }
+        h2 {
+            margin-bottom: 20px; /* Add space below the heading */
+        }
     </style>
 </head>
 
 <body>
-    <div class="login-container" style="padding-top: 20px;">
-        <h2 style="text-align: center;">Signup</h2>
+    <div class="login-container">
+        <h2 style="text-align: center;">Sign Up</h2> <!-- Renamed heading -->
         <div id="errorContainer" class="error-message"></div> <!-- Error message container -->
-        <div class="mb-3" style="margin-left: 40px;">
+        <div class="mb-3">
             <label for="emailInput" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" style="width: 400px;">
+            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" style="width: 100%;">
         </div>
-        <div class="mb-3" style="margin-left: 40px;">
+        <div class="mb-3">
             <label for="passwordInput" class="form-label">Password</label>
-            <input type="password" placeholder="Enter your Password" id="passwordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 400px">
-            <div id="passwordHelpBlock" class="form-text" style="width: 400px">
+            <input type="password" placeholder="Enter your Password" id="passwordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 100%;">
+            <div id="passwordHelpBlock" class="form-text">
                 Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
             </div>
         </div>
-        <div class="mb-3" style="margin-left: 40px;">
+        <div class="mb-3">
             <label for="confirmPasswordInput" class="form-label">Confirm Password</label>
-            <input type="password" placeholder="Confirm your Password" id="confirmPasswordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 400px">
+            <input type="password" placeholder="Confirm your Password" id="confirmPasswordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 100%;">
         </div>
-        <button type="button" class="btn btn-primary" id="signupButton" style="width: 400px; margin-left: 40px;">Signup</button>
+        <div class="text-center"> <!-- Center the signup button -->
+            <button type="button" class="btn btn-primary" id="signupButton">Sign Up</button> <!-- Updated button -->
+        </div>
         <div style="text-align: center; margin-top: 10px;">
             <p>Already have an account? <a href="login.html" style="text-decoration: none;">Login</a></p>
+        </div>
+        
+        <div class="social-login-buttons">
+            <!-- Google Login Button -->
+            <button type="button" class="btn btn-google" onclick="window.location.href='https://accounts.google.com'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
+                    alt="Google Icon" style="width: 20px; height: 20px; margin-right: 10px;"> Login with Google
+            </button>
+
+            <!-- Microsoft Login Button -->
+            <button type="button" class="btn btn-microsoft" onclick="window.location.href='https://login.microsoftonline.com/'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
+                    alt="Microsoft Logo" style="width: 20px; height: 20px; margin-right: 10px;"> Login with Microsoft
+            </button>
+
+            <!-- Apple Login Button -->
+            <button type="button" class="btn btn-apple" onclick="window.location.href='https://appleid.apple.com/auth/authorize'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Apple_logo_white.svg/256px-Apple_logo_white.svg.png?20220821122232" 
+                    alt="Apple Logo" style="width: 20px; height: 20px; margin-right: 10px;">
+                Login with Apple
+            </button>
         </div>
     </div>
     <a href="../index.html"><button class="goBack">Go To Home</button></a>
@@ -70,7 +139,7 @@
             const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
             // Trusted email domains
-            const trustedDomains = ["gmail.com", "outlook.com", "yahoo.com", "hotmail.com" , "protonmail.com" , "icloud.com" , "tutanota.com"];
+            const trustedDomains = ["gmail.com", "outlook.com", "yahoo.com", "hotmail.com", "protonmail.com", "icloud.com", "tutanota.com"];
             const emailDomain = emailValue.split('@')[1];
 
             // Clear previous error messages

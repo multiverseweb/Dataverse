@@ -148,14 +148,15 @@ body {
 }
 
 .dark-mode #download_btn {
-    color: white;
+    color: rgb(7, 7, 7);
     border: 1px solid #fff;
 }
 
 .dark-mode #download_btn:hover {
     color: rgb(0, 0, 0);
     background-color: white;
-    border: 1px solid #fff;
+    border: 2px solid #a9a4a4;
+    box-shadow: 0 0 10px rgba(199, 236, 248, 0.8), 0 0 20px rgba(96, 184, 228, 0.6);
 }
 
 .light-mode #download_btn:hover {

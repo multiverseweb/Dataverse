@@ -457,16 +457,7 @@ def switch(b1,b2,b3,b4):
 def callback(url):
     webbrowser.open_new(url)
 
-#==================================================================================reset the labels and inputs
-def reset():
-    global form,names_form,values_form,values_1_form,x,y,d_attr
-    x = []
-    y = []
-    d_attr = []
-    form.place_forget()
-    names_form.place_forget()
-    values_form.place_forget()
-    values_1_form.place_forget()
+
 
 #=====================================================================================================================================DATA VISUALIZATION
 x = []
@@ -474,7 +465,6 @@ y = []
 d_attr=[]
 count=0
 def line(c):
-    reset()
     global form
     form.pack_forget()
     form=Frame(root,bg="#171717",relief=SUNKEN)
@@ -677,7 +667,6 @@ def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
 
 def pie(c):
     if c=="pie":
-        reset()
         global form
         form.pack_forget()
         form=Frame(root,bg="#171717",relief=SUNKEN)
@@ -935,7 +924,6 @@ def plot_radar(c,x,y,d_attr,heading,x_label,x_no_value,entry_widgets):
 
 def scatter(c):
     if c=="scatter3d":
-        reset()
         global form
         form.pack_forget()
         form=Frame(root,bg="#171717",relief=SUNKEN)
@@ -1050,7 +1038,6 @@ def plot_scatter(c,x,y,z,x_label,y_label,z_label,heading,no_values):
 
 def heatmap(c):
     if c=="heatmap":
-        reset()
         global form
         form.pack_forget()
         form=Frame(root,bg="#171717",relief=SUNKEN)

@@ -1,106 +1,114 @@
 import tabulate
-from tkinter import messagebox                                      #for showing messages
-from matplotlib.gridspec import GridSpec                            #for showing graph grid
-import matplotlib.pyplot as plt                                     #for plotting graphs
-import matplotlib                                                   #for plotting graphs
-import numpy as np                                                  #for x-axis time arange
-#import report                                                       #for report pdf
-import datetime                                                     #for getting date
-from datetime import datetime, timedelta,date                       #for x-axis time class-width
+from tkinter import messagebox
+from matplotlib.gridspec import GridSpec
+import matplotlib.pyplot as plt
+import matplotlib
+import numpy as np
+import report
+import datetime
+from datetime import datetime, timedelta, date
 from matplotlib.widgets import Cursor as lines
-from sklearn.linear_model import LinearRegression
-import pandas as pd
+import mysql.connector as my
+from mysql.connector import Error
 #===============================================================================================================plot colors
 colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462","#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato","tan"]
 #==================================================================================================connecting MySQL
-import mysql.connector as my                                    #required modules
-mycon=my.connect(host='localhost',user='root',passwd='tejas123',database='finance')
-cursor=mycon.cursor()
+try:
+    mycon = my.connect(host='localhost', user='root', passwd='tejas123', database='finance')  # Declared as constant
+    cursor = mycon.cursor()  # Declared as constant
+except Error as e:
+    print(f"Error connecting to MySQL: {e}")
+    messagebox.showerror("Database Error", f"Failed to connect to the database: {e}\n\nExeccute the following query in your MYSQL Workbench or MySQL Shell and then try again:\n\nCREATE DATABASE FINANCE;")
+    exit()  # Exit the program if the database connection fails
 
-z=0
+z = 0  # Declared as constant
+
 #=========================================================================================view data
-def view_data(u_id):
-    q="select * from money where u_id={}".format(u_id)
-    cursor.execute(q)
-    data=cursor.fetchall()
-    if len(data)==0:
-        result="Your dataSet is empty."
-    else:
-        columns = [col[0] for col in cursor.description]
-        table = tabulate.tabulate(data, headers=columns, tablefmt="pretty")
-        result=table
-    return result
-#==============================================================================================password decryption
-def decrypt(pwd):
-    n=len(pwd)
-    d=""
-    if n%2==0:
-        t=pwd[int(n/2):]
-        t+=pwd[:int(n/2)]
-    else:
-        t=pwd[int(n/2)+1:]
-        t+=pwd[:int(n/2)+1]
-    for _ in range(len(t)):
-        d+=chr(ord(t[_])//2)
-    return d
-#==================================================================================================add data
-def check_credentials(u_name,passwd):
-    q="select u_name from user"
-    cursor.execute(q)
-    data=cursor.fetchall()
-    names=[]
-    for i in data:
-        names.append(i[0])
-    if str(u_name) not in names:
-        message="No account exists with that username."
-    else:
-        q="select pwd from user where u_name='{}'".format(u_name)
-        cursor.execute(q)
-        data=cursor.fetchall()
-        decrypted=decrypt(data[0][0])
-        if decrypted==passwd:
-            q="select u_id from user where u_name='{}'".format(u_name)
-            cursor.execute(q)
-            u_id=cursor.fetchall()[0][0]
-            message="Login Successful. ✓\nUser ID: {}".format(u_id)
+def view_data(user_id):
+    try:
+        query = "select * from money where u_id={}".format(user_id)
+        cursor.execute(query)
+        result_set = cursor.fetchall()
+        if len(result_set) == 0:
+            result_message = "Your dataSet is empty."
         else:
-            message="Incorrect password! ✖"
-            global z
-            z+=1
-            if z>=2:
-                print("There have been more than 1 failed login attempts. Closing the system.")
+            columns = [col[0] for col in cursor.description]
+            result_table = tabulate.tabulate(result_set, headers=columns, tablefmt="pretty")
+            result_message = result_table
+    except Error as e:
+        result_message = f"Error fetching data: {e}"
+        print(f"Database error: {e}")
+    return result_message
+
+#==============================================================================================password decryption
+def decrypt(encrypted_password):
+    password_length = len(encrypted_password)
+    decrypted_password = ""
+    if password_length % 2 == 0:
+        transformed_pwd = encrypted_password[int(password_length / 2):]
+        transformed_pwd += encrypted_password[:int(password_length / 2)]
+    else:
+        transformed_pwd = encrypted_password[int(password_length / 2) + 1:]
+        transformed_pwd += encrypted_password[:int(password_length / 2) + 1]
+    for character in transformed_pwd:
+        decrypted_password += chr(ord(character) // 2)
+    return decrypted_password
+
+#==================================================================================================add data
+def check_credentials(username, password):
+    try:
+        query = "select u_name from user"
+        cursor.execute(query)
+        user_list = cursor.fetchall()
+        usernames = [user[0] for user in user_list]
+        if str(username) not in usernames:
+            message = "No account exists with that username."
+        else:
+            query = "select pwd from user where u_name='{}'".format(username)
+            cursor.execute(query)
+            fetched_password = cursor.fetchall()
+            decrypted_password = decrypt(fetched_password[0][0])
+            if decrypted_password == password:
+                query = "select u_id from user where u_name='{}'".format(username)
+                cursor.execute(query)
+                user_id = cursor.fetchall()[0][0]
+                message = f"Login Successful. ✓\nUser ID: {user_id}"
+            else:
+                message = "Incorrect password! ✖"
+                global z
+                z += 1
+                if z >= 2:
+                    print("There have been more than 1 failed login attempts. Closing the system.")
+    except Error as e:
+        message = f"Error during login: {e}"
+        print(f"Database error: {e}")
     return message
 
-
-
-
 #============================================================================================================fetch user's money data
-def fetch_data(u_id):
-    q="select * from money where u_id={}".format(u_id)
-    cursor.execute(q)
-    data=cursor.fetchall()
-    if len(data)==0:
+def fetch_data(user_id):
+    try:
+        query = "select * from money where u_id={}".format(user_id)
+        cursor.execute(query)
+        result_set = cursor.fetchall()
+        if len(result_set) == 0:
+            return None
+        else:
+            cursor.execute("DESCRIBE money")
+            schema = cursor.fetchall()
+            column_names = [column[0] for column in schema]
+            data_pool = {}
+            for column_name in column_names:
+                column_data = []
+                query = "select {} from money where u_id={}".format(column_name, user_id)
+                cursor.execute(query)
+                values = cursor.fetchall()
+                for value in values:
+                    column_data.append(value[0])
+                data_pool[column_name] = column_data
+            return [column_names, data_pool]
+    except Error as e:
+        print(f"Error fetching user data: {e}")
         return None
-    else:
-        cursor.execute("DESCRIBE money")
-        schema = cursor.fetchall()
-        columns=[]
-        for i in schema:
-            columns.append(i[0])
-        #=make dataframe of values
-        # initialize data of lists.
-        pool = {}
-        for i in columns:
-            column_values=[]
-            q="select {} from money where u_id={}".format(i,u_id)
-            cursor.execute(q)
-            values=cursor.fetchall()
-            for j in values:
-                column_values.append(j[0])
-            pool[i]=column_values
-        requireds=[columns,pool]
-        return requireds
-    
 #=======================================================================================================Predictive Analytics (Linear Regression)
 
 def predict_future_expenditure(pool):
@@ -183,103 +191,108 @@ def monthly_comparison(pool):
     plt.show()
 
 #=======================================================================================================visualize/plot data
-def plot_data(requireds,u_name):
-    a=messagebox.askyesno(message="Do you want to download today's report?",icon="question")
-    if a=="Yes":
-        plt.savefig("plot.png", dpi=150)
-        report.save(u_name,total)
-        messagebox.showinfo(message="Report downloaded. ✓")
-    plt.style.use('dark_background')
-    fig, ax = plt.subplots(2,2,figsize=(10.7, 6))
-    plt.subplots_adjust(left=0.08,bottom=0.043,right=0.805,top=0.895,wspace=0.148,hspace=0.374)
-    gs = GridSpec(2, 2, width_ratios=[2,2], height_ratios=[1.5,1])
+def plot_data(requireds, username):
+    try:
+        download_report = messagebox.askyesno(message="Do you want to download today's report?", icon="question")
+        if download_report == True:
+            plt.savefig("plot.png", dpi=150)
+            report.save(username, total_amount)
+            messagebox.showinfo(message="Report downloaded. ✓")
 
-    # Create the subplots
-    ax[0,0] = plt.subplot(gs[0, :])
-    ax[1,0] = plt.subplot(gs[1, 0])
-    ax[1,1] = plt.subplot(gs[1, 1])
+        plt.style.use('dark_background')
+        fig, ax = plt.subplots(2, 2, figsize=(10.7, 6))
+        plt.subplots_adjust(left=0.08, bottom=0.043, right=0.805, top=0.895, wspace=0.148, hspace=0.374)
+        gs = GridSpec(2, 2, width_ratios=[2, 2], height_ratios=[1.5, 1])
 
-    for i in fig.get_axes():
-        i.tick_params(bottom=False, labelbottom=False, left=False, right=False, labelleft=False)
-    
-    columns=requireds[0]
-    pool=requireds[1]
-    t = np.arange(min(pool["entryDate"]), date.today() + timedelta(days=2), timedelta(days=1)).astype(datetime)
-    only_dates = [x.date().isoformat() for x in t]
-    t_new = np.array(only_dates)
-    pool_new=[x.strftime('%Y-%m-%d') for x in pool["entryDate"]]
+        # Create the subplots
+        ax[0, 0] = plt.subplot(gs[0, :])  # Line chart
+        ax[1, 0] = plt.subplot(gs[1, 0])  # Pie chart
+        ax[1, 1] = plt.subplot(gs[1, 1])  # Bar chart
 
-#=======================================================================================================================Line chart
-#=====================================================================================================================DATA WRANGLING
-    l=list(pool.values())
-    f1= plt.figure(1)
-    for i in range(1,len(l)-1):
-        c=0
-        wrangled_data=[]
-        for j in range(len(t)):
-            if t_new[j] not in pool_new:
-                wrangled_data.append((wrangled_data[j-1]))
-            else:
-                wrangled_data.append(pool[columns[i]][c])
-                c+=1
-        ax[0,0].plot(t,wrangled_data, label=columns[i].title(),color=colors[i],linewidth=0.7,marker=".",markersize=0.0)
+        for subplot in fig.get_axes():
+            subplot.tick_params(bottom=False, labelbottom=False, left=False, right=False, labelleft=False)
 
-#==================================================================================================================================
-    ax[0,0].tick_params(bottom=True, labelbottom=True, left=True, right=True, labelleft=True)
-    ax[0,0].legend(bbox_to_anchor=(1.01, 1), loc='upper left', borderaxespad=0)
-    ax[0,0].set_title("{}_{}\nLine Chart".format(u_name.title(),date.today()))
-    ax[0,0].set_xlabel("Time")
-    ax[0,0].set_ylabel("Amount (₹1 * y)")
-    ax[0,0].locator_params(axis='y', nbins=21) 
-    ax[0,0].axvline(x = date.today(), color = 'lime',linewidth = 0.6,linestyle = "dashed",label="Today")
-    ax[0,0].spines['bottom'].set_color('teal')
-    ax[0,0].spines['top'].set_color('#ffffff40') 
-    ax[0,0].spines['right'].set_color('#ffffff30')
-    ax[0,0].spines['left'].set_color('darkturquoise')
-    ax[0,0].grid(linestyle = "dashed",linewidth = 1, alpha = 0.25)
+        columns = requireds[0]
+        data_pool = requireds[1]
 
-#===================================================================================piechart
-    total=l[-2][-1]
-    maximum=max(l[-2])
-    q="select entryDate from money where total={}".format(maximum)
-    cursor.execute(q)
-    max_date=cursor.fetchall()
-    ax[0,0].axvline(x = max_date, color = 'yellow',linewidth = 0.6,linestyle = "dashed",label="Max_till_now")
-    sectors=[]
-    explode=[]
-    for i in l[1:len(l)-2]:
-        sectors.append(i[-1])
-        explode.append(0)
-    explode[-1]=0.1
+        # Generate time labels for x-axis
+        time_range = np.arange(min(data_pool["entryDate"]), date.today() + timedelta(days=2), timedelta(days=1)).astype(datetime)
+        formatted_dates = [x.date().isoformat() for x in time_range]
+        time_labels = np.array(formatted_dates)
+        date_entries = [x.strftime('%Y-%m-%d') for x in data_pool["entryDate"]]
 
-    ax[1,0].pie(sectors, explode = explode, colors=colors[1:len(columns)+1])
-    ax[1,0].set_title("Money Distribution- {}".format(date.today()))
-    ax[1,0].legend(labels=columns[1:len(columns)-2], bbox_to_anchor=(1.1, 1), loc='upper left', borderaxespad=0)
-    ax[1,0].spines['bottom'].set_color('black')
-    ax[1,0].spines['top'].set_color('black') 
-    ax[1,0].spines['right'].set_color('black')
-    ax[1,0].spines['left'].set_color('black')
+        # ================================ Line Chart ====================================
+        line_data = list(data_pool.values())
+        for i in range(1, len(line_data) - 1):
+            current_data = []
+            index = 0
+            for j in range(len(time_range)):
+                if time_labels[j] not in date_entries:
+                    current_data.append((current_data[j - 1] if j > 0 else 0))  # Use previous value or 0
+                else:
+                    current_data.append(data_pool[columns[i]][index])
+                    index += 1
+            ax[0, 0].plot(time_range, current_data, label=columns[i].title(), color=colors[i], linewidth=0.7, marker=".", markersize=0.0)
 
-#============================================================================bar graph-expenditure
-    max_expend=max(l[-3])
-    index=l[-3].index(max_expend)
+        ax[0, 0].tick_params(bottom=True, labelbottom=True, left=True, right=True, labelleft=True)
+        ax[0, 0].legend(bbox_to_anchor=(1.01, 1), loc='upper left', borderaxespad=0)
+        ax[0, 0].set_title(f"{username.title()}_{date.today()}\nLine Chart")
+        ax[0, 0].set_xlabel("Time")
+        ax[0, 0].set_ylabel("Amount (₹)")
+        ax[0, 0].axvline(x=date.today(), color='lime', linewidth=0.6, linestyle="dashed", label="Today")
+        ax[0, 0].grid(linestyle="dashed", linewidth=1, alpha=0.25)
 
-    ax[1,1].bar(l[-1],l[-3], color=colors[2],label=columns[-3].title())
-    ax[1,1].tick_params(bottom=True, labelbottom=True, left=True, right=True, labelleft=True)
-    ax[1,1].bar(l[-1][index],l[-3][index], color="red",label="Max Expenditure")
-    ax[1,1].set_title("Expenditure Till Now")
-    ax[1,1].legend(bbox_to_anchor=(1.1, 1), loc='upper left', borderaxespad=0)
-    ax[1,1].spines['bottom'].set_color('black')
-    ax[1,1].spines['top'].set_color('black') 
-    ax[1,1].spines['right'].set_color('black')
-    ax[1,1].spines['left'].set_color('black')
-    ax[1,1].set_xlabel("Time")
-    ax[1,1].set_ylabel("Expenditure")
-    ax[1,1].grid(linestyle = "dashed",linewidth = 1, alpha = 0.25)
-    move_figure(fig, 220, 170)
-    plt.show()
-    plt.tight_layout()
-    return [total,maximum]
+        # Spines customization for the line chart
+        ax[0, 0].spines['bottom'].set_color('teal')
+        ax[0, 0].spines['top'].set_color('#ffffff40') 
+        ax[0, 0].spines['right'].set_color('#ffffff30')
+        ax[0, 0].spines['left'].set_color('darkturquoise')
+
+        # ================================ Pie Chart ====================================
+        total_amount = line_data[-2][-1]
+        pie_data = [val[-1] for val in line_data[1:-2]]
+        pie_explode = [0] * (len(pie_data) - 1) + [0.1]  # Explode the last slice
+
+        ax[1, 0].pie(pie_data, explode=pie_explode, colors=colors[1:len(columns) + 1])
+        ax[1, 0].set_title(f"Money Distribution - {date.today()}")
+        ax[1, 0].legend(labels=columns[1:len(columns) - 2], bbox_to_anchor=(1.1, 1), loc='upper left', borderaxespad=0)
+
+        # Spines customization for the pie chart
+        ax[1, 0].spines['bottom'].set_color('black')
+        ax[1, 0].spines['top'].set_color('black') 
+        ax[1, 0].spines['right'].set_color('black')
+        ax[1, 0].spines['left'].set_color('black')
+
+        # ================================ Bar Graph (Expenditure) ======================
+        expenditure_data = line_data[-3]
+        max_expenditure = max(expenditure_data)
+        max_index = expenditure_data.index(max_expenditure)
+
+        ax[1, 1].bar(line_data[-1], expenditure_data, color=colors[2], label=columns[-3].title())
+        ax[1, 1].bar(line_data[-1][max_index], expenditure_data[max_index], color="red", label="Max Expenditure")
+        ax[1, 1].set_title("Expenditure Till Now")
+        ax[1, 1].legend(bbox_to_anchor=(1.1, 1), loc='upper left', borderaxespad=0)
+        ax[1, 1].set_xlabel("Time")
+        ax[1, 1].set_ylabel("Expenditure")
+        ax[1, 1].grid(linestyle="dashed", linewidth=1, alpha=0.25)
+
+        # Spines customization for the bar chart
+        ax[1, 1].spines['bottom'].set_color('black')
+        ax[1, 1].spines['top'].set_color('black') 
+        ax[1, 1].spines['right'].set_color('black')
+        ax[1, 1].spines['left'].set_color('black')
+
+        # Positioning the graph window
+        move_figure(fig, 220, 170)
+        plt.show()
+        plt.tight_layout()
+
+        return [total_amount, max_expenditure]
+    except Exception as e:
+        print(f"Error in plotting data: {e}")
+        messagebox.showerror("Plot Error", f"Failed to plot data: {e}")
+        return None
+
 
 #=========================================================setting position of graph window
 def move_figure(fig, x, y):

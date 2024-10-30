@@ -16,10 +16,11 @@ html {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh + 50px);
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -50px;
     background-color: black;
     z-index: 9999;
 }

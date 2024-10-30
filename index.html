@@ -270,17 +270,21 @@
                 <a href="https://www.linkedin.com/in/tejascodes/"> LinkedIn</a>
             </div>
             <script>
-                window.embeddedChatbotConfig = {
-                chatbotId: "oKgfHa3hvh7Ic0ypSqDbv",
-                domain: "www.chatbase.co"
-                }
-                </script>
-                <script
-                src="https://www.chatbase.co/embed.min.js"
-                chatbotId="oKgfHa3hvh7Ic0ypSqDbv"
-                domain="www.chatbase.co"
-                defer>
-                </script>
+                // Delay the execution by 3 seconds
+                setTimeout(function() {
+                    window.embeddedChatbotConfig = {
+                        chatbotId: "oKgfHa3hvh7Ic0ypSqDbv",
+                        domain: "www.chatbase.co"
+                    };
+                    
+                    var script = document.createElement("script");
+                    script.src = "https://www.chatbase.co/embed.min.js";
+                    script.setAttribute("chatbotId", "oKgfHa3hvh7Ic0ypSqDbv");
+                    script.setAttribute("domain", "www.chatbase.co");
+                    script.defer = true;
+                    document.body.appendChild(script);
+                }, 3000);
+            </script>
 
         </div>
         <div class="end_line"></div>

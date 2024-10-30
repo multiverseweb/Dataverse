@@ -13,23 +13,23 @@
     <div class="buttons" id="buttons">
         <div id="indicator"></div>
         <div class="group">
-            <button id="first_button" onclick="dark(false)">
+            <button id="darkButton" onclick="dark(false)">
                 <img src="https://static.thenounproject.com/png/4066359-200.png" class="copy" id="moon">
             </button>
-            <button onclick="light(false)">
-                <div id="theme2">
-                    <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy"
-                        id="sun">
-                </div>
+            <button id="lightButton" onclick="light(false)">
+                <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy" id="sun">
             </button>
-            <button id="first_button" onclick="systemDefault()">
-                <img src="web_images/settings.png" class="copy" id="default">
+            <button id="defaultButton" onclick="systemDefault()">
+                <img src="web_images/settings.webp" class="copy" id="default">
             </button>
+            
         </div>
     </div>
     <nav id="navbar">
         <img src="web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
-        <img src="web_images/3d_glow.png" alt="Dataverse Logo" class="logo" id="glow">
+        <img src="web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
+        <a href="login.html"><button class="loginSignupbtn">Login
+        </button></a>
     </nav>
     
     <button class="burger" id="burger" onclick="show()"></button>
@@ -42,30 +42,27 @@
     <div class="plane" id="plane">
         <table>
             <tr>
-                <td><a href="/index.html" class="table_link">Home</a></td>
+                <td><a href="../index.html" class="table_link">Home</a></td>
             </tr>
             <tr>
-                <td><a href="https://codeittool.netlify.app/" class="table_link" target="_blank">CodeIt</a></td>
-            </tr>
-            <tr>
-                <td><a href="https://multiverseweb.github.io/Encryptify/" class="table_link" target="_blank">Encryptify</a></td>
-            </tr>
-            <tr>
-                <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link" target="_blank">Github Repository</a></td>
+                <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
             </tr>
             <tr>
                 <td><a href="https://github.com/multiverseweb/Dataverse/blob/main/README.md"
-                        class="table_link" target="_blank">Documentation</a></td>
+                        class="table_link">Documentation</a></td>
+            </tr>
+            <tr>
+                <td><a href="contributor.html"
+                        class="table_link">Contributors</a></td>
             </tr>
             <tr>
                 <td>
                     <a href="https://www.figma.com/proto/BBbXARgpxercxacjm0qpgX/Dataverse?type=design&node-id=45-25&t=zMFBUgENaIeqhRYZ-1&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=22%3A310&show-proto-sidebar=1&mode=design"
-                        class="table_link" target="_blank">Figma
-                        Design</a>
+                        class="table_link">Figma Design</a>
                 </td>
             </tr>
             <tr>
-                <td><a href="codeOfconduct.html" class="table_link">Code of Conduct</a></td>
+                <td><a href="codeOfconduct.html" class="table_link" target="_blank">Code of Conduct</a></td>
             </tr>
             <tr>
                 <td><a href="license.html" class="table_link">License</a></td>
@@ -76,7 +73,23 @@
     <div class="license-content">
         <h2>MIT License</h2>
         <br>
-        <h3>Copyright &copy; 2024 Tejas Gupta</h3>
+        <style>
+            body{
+                margin:0;
+            }
+            .tejas{
+                background: linear-gradient(180deg,silver,rgb(194, 187, 187));
+                padding: 10px;
+                color: whitesmoke;
+                display: flex;
+                justify-content: center;
+            }
+        </style>
+
+        
+        <div class="tejas">
+        <h3>Copyright &copy; <span id="copyright">32949832</span> Tejas Gupta</h3>
+        </div>
         <br>
         Permission is hereby granted, free of charge, to any person obtaining a copy
         of this software and associated documentation files (the "Software"), to deal
@@ -96,6 +109,7 @@
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
         SOFTWARE.
     </div>
+    <a href="../index.html"><button class="goBack">Go To Home</button></a>
 
     <script src="license.js"></script>
 </body>

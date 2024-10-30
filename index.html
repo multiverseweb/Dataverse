@@ -8,58 +8,45 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="shortcut icon" href="website/web_images/3dlogo.svg" type="image/x-icon">
     <link rel="stylesheet" href="website/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body id="body">
     <!-- preloader -->
-    <div id="preloader">
-        <div class="loader">
-            <svg viewBox="0 0 80 80">
-                <circle id="test" cx="40" cy="40" r="32"></circle>
-            </svg>
-        </div>
-
-        <div class="loader triangle">
-            <svg viewBox="0 0 86 80">
-                <polygon points="43 8 79 72 7 72"></polygon>
-            </svg>
-        </div>
-
-        <div class="loader">
-            <svg viewBox="0 0 80 80">
-                <rect x="8" y="8" width="64" height="64"></rect>
-            </svg>
-        </div>
-
-        <!-- dribbble -->
-        <a class="dribbble" href="https://dribbble.com/shots/5878367-Loaders" target="_blank"><img src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg" alt=""></a>
+    <div id="video-loader">
+        <video src="website/web_images/loader.mp4" alt="Dataverse" autoplay muted>Your browser does not support the
+            video tag.</video>
     </div>
     <div class="buttons" id="buttons">
         <div id="indicator"></div>
         <div class="group">
-            <button id="first_button" onclick="dark(false)">
+            <button id="darkButton" onclick="dark(false)">
                 <img src="https://static.thenounproject.com/png/4066359-200.png" class="copy" id="moon">
             </button>
-            <button onclick="light(false)">
-                <div id="theme2">
-                    <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy"
-                        id="sun">
-                </div>
-            </button>
-            <button id="first_button" onclick="systemDefault()">
-                <img src="website/web_images/settings.png" class="copy" id="default">
+            <button id="lightButton" onclick="light(false)">
+                <!-- <div id="theme2"> -->
+                <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy"
+                    id="sun">
+                <!-- </div> -->
             </button>
         </div>
+        <button id="defaultButton" onclick="systemDefault()">
+            <img src="website/web_images/settings.webp" class="copy" id="default">
+        </button>
     </div>
-    <button class="top" id="top" onclick="topFunction()"><img src="website/web_images/top.png" alt=""></button>
+    <button class="top" id="top" onclick="topFunction()"><img src="website/web_images/top.webp" alt=""></button>
     <nav id="navbar">
         <img src="website/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
-        <img src="website/web_images/3d_glow.png" alt="Dataverse Logo" class="logo" id="glow">
+        <img src="website/web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
         <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
+        <a href="website/login.html"><button class="loginSignupbtn">Login
+            </button></a>
     </nav>
 
     <button class="burger" id="burger" onclick="show()"></button>
@@ -75,12 +62,6 @@
                 <td><a href="index.html" class="table_link">Home</a></td>
             </tr>
             <tr>
-                <td><a href="https://codeittool.netlify.app/" class="table_link">CodeIt</a></td>
-            </tr>
-            <tr>
-                <td><a href="https://multiverseweb.github.io/Encryptify/" class="table_link">Encryptify</a></td>
-            </tr>
-            <tr>
                 <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
             </tr>
             <tr>
@@ -88,10 +69,12 @@
                         class="table_link">Documentation</a></td>
             </tr>
             <tr>
+                <td><a href="website/contributor.html" class="table_link">Contributors</a></td>
+            </tr>
+            <tr>
                 <td>
                     <a href="https://www.figma.com/proto/BBbXARgpxercxacjm0qpgX/Dataverse?type=design&node-id=45-25&t=zMFBUgENaIeqhRYZ-1&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=22%3A310&show-proto-sidebar=1&mode=design"
-                        class="table_link">Figma
-                        Design</a>
+                        class="table_link">Figma Design</a>
                 </td>
             </tr>
             <tr>
@@ -116,8 +99,9 @@
                 <p id="data">Data</p>
                 <p>verse</p>
             </div>
-            <p id="intro_text">An Open-Source Software (OSS) that integrates database management, data visualization
-                and data wrangling.</p>
+            <p id="intro_text">An Open-Source Software (OSS) that allows organizing, analyzing and visualizing data,
+                providing flexible tools for financial tracking and customized chart creation.
+            </p>
             <p id="intro_text">The adjoining map shows people who are using or contributing to Dataverse.</p>
             <button id="download_btn"
                 onclick="showCustomAlert('Dataverse is currently under development. It will be available for installastion soon.\n\nHowever, you can visit the following link to run the project locally on your computer:')">Get
@@ -140,7 +124,7 @@
         <div class="scroll_animation"></div>
     </div>
     </div>
-    <div class="section big_container"></div>
+    <div class="section big_container" style=" margin-top: 100px;"></div>
     <div class="section" id="about">
         <div class="about_left">
             <p class="heading">So, What does this Software do?</p>
@@ -154,14 +138,14 @@
             </p>
         </div>
         <div class="about_right">
-            <img src="website/web_images/about_up.png" class="preview up">
-            <img src="website/web_images/about_down.png" class="preview down">
+            <img src="website/web_images/about_up.webp" class="preview up">
+            <img src="website/web_images/about_down.webp" class="preview down">
         </div>
     </div>
     <div class="section" id="finance">
         <div class="finance_left">
-            <img src="website/web_images/finance_up.png" class="preview up">
-            <img src="website/web_images/finance_down.png" class="preview down">
+            <img src="website/web_images/finance_up.webp" class="preview up">
+            <img src="website/web_images/finance_down.webp" class="preview down">
         </div>
         <div class="finance_right">
             <p class="subheading">Track Finances!</p>
@@ -180,14 +164,14 @@
             <img src="https://i0.wp.com/learnbyinsight.com/wp-content/uploads/2020/09/sub-plot.png?resize=600%2C398&ssl=1"
                 alt="">
             <img src="https://docs.sympy.org/latest/_images/plotting-16.png" alt="">
-            <img src="website/web_images/galaxy.png" alt="">
+            <img src="website/web_images/galaxy.webp" alt="">
             <img src="website/web_images/3d.gif" alt="">
             <img src="website/web_images/volcano.gif" alt="">
             <img src="website/web_images/live.gif" alt="">
             <img src="https://i0.wp.com/learnbyinsight.com/wp-content/uploads/2020/09/sub-plot.png?resize=600%2C398&ssl=1"
                 alt="">
             <img src="https://docs.sympy.org/latest/_images/plotting-16.png" alt="">
-            <img src="website/web_images/galaxy.png" alt="">
+            <img src="website/web_images/galaxy.webp" alt="">
             <img src="website/web_images/3d.gif" alt="">
 
 
@@ -201,8 +185,8 @@
                 alt="">
             <img src="https://miro.medium.com/v2/resize:fit:1188/1*kpksgzDd6qKP2h6GM7OVCA.png" alt="">
             <img src="https://miro.medium.com/v2/resize:fit:1140/1*Lc5VzM9Yo4775Omc-vqddQ.png" alt="">
-            <img src="website/web_images/portal.png" alt="">
-            <img src="website/web_images/stars.png" alt="">
+            <img src="website/web_images/portal.webp" alt="">
+            <img src="website/web_images/stars.webp" alt="">
             <img src="https://matplotlib.org/stable/_images/sphx_glr_polar_scatter_001.png" alt="">
             <img src="website/web_images/wordcloud.png" alt="">
             <img src="https://www.pythoncharts.com/matplotlib/radar-charts/images/radar-chart-step1.png" alt="">
@@ -210,8 +194,8 @@
                 alt="">
             <img src="https://miro.medium.com/v2/resize:fit:1188/1*kpksgzDd6qKP2h6GM7OVCA.png" alt="">
             <img src="https://miro.medium.com/v2/resize:fit:1140/1*Lc5VzM9Yo4775Omc-vqddQ.png" alt="">
-            <img src="website/web_images/portal.png" alt="">
-            <img src="website/web_images/stars.png" alt="">
+            <img src="website/web_images/portal.webp" alt="">
+            <img src="website/web_images/stars.webp" alt="">
         </div>
     </div>
 
@@ -248,13 +232,13 @@
                 </button></a>
         </div>
         <div class="develop_right">
-            <img src="website/web_images/develop_up.png" class="preview up">
-            <img src="website/web_images/develop_down.png" class="preview down">
+            <img src="website/web_images/develop_up.webp" class="preview up">
+            <img src="website/web_images/develop_down.webp" class="preview down">
         </div>
     </div>
     <div class="design_line"></div>
     <footer>
-        <img src="website/web_images/cubes.png" class="cubes">
+        <img src="website/web_images/cubes.webp" class="cubes">
         <div class="contact">
             <div class="name">
                 <img src="website/web_images/2dlogo.svg" alt="" class="end-logo">
@@ -262,7 +246,7 @@
             </div>
         </div>
         <form name="Dataverse Reviews" method="POST" data-netlify="true" onsubmit="return validateForm()">
-            <p>Let Me Know Your Thoughts!</p>
+            <p style="color:white">Let Me Know Your Thoughts!</p>
             <input type="text" name="Name" placeholder="Your Name" required>
             <input type="email" name="Email" placeholder="Your Email ID" required>
             <input name="Message" placeholder="Your Message" required>
@@ -270,31 +254,44 @@
         </form>
     </footer>
     <div class="links">
-        <p>
-        <h3> Designed & Developed by Tejas Gupta</h3>
-        </p>
-        <div class="end_line"></div>
         <div class="small">
             <div class="link_class">
                 <a href="https://github.com/multiverseweb/Dataverse/blob/main/README.md"
-                    class="table_link">Documentation↗</a>
-
-                <a href="https://www.figma.com/proto/BBbXARgpxercxacjm0qpgX/Dataverse?type=design&node-id=45-25&t=zMFBUgENaIeqhRYZ-1&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=22%3A310&show-proto-sidebar=1&mode=design"
-                    class="table_link">Figma Design↗</a>
-                <a href="website/codeOfconduct.html" class="table_link" target="_blank">Code of Conduct↗</a>
-                <a href="website/license.html" class="table_link">License↗</a>
+                    class="table_link">Documentation</a>
+                <a href="./website/contributor.html" class="table_link">Contributors</a>
+                <a href="website/codeOfconduct.html" class="table_link" target="_blank">Code of Conduct</a>
+                <a href="website/license.html" class="table_link">License</a>
             </div>
             <div class="link_class">
-                <a href="https://tejasgupta.netlify.app"><i class="fa fa-user"></i> Portfolio↗</a>
-                <a href="https://github.com/multiverseweb"><i class="fa fa-github"></i> Github Profile↗</a>
-                <a href="https://www.linkedin.com/in/tejascodes/"><i class="fa fa-linkedin-square"></i> Linkeldn ↗</a>
+                <a href="https://www.figma.com/proto/BBbXARgpxercxacjm0qpgX/Dataverse?type=design&node-id=45-25&t=zMFBUgENaIeqhRYZ-1&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=22%3A310&show-proto-sidebar=1&mode=design"
+                    class="table_link">Figma Design</a>
+                <a href="https://tejasgupta.netlify.app">Portfolio</a>
+                <a href="https://github.com/multiverseweb">Github Profile</a>
+                <a href="https://www.linkedin.com/in/tejascodes/"> LinkedIn</a>
             </div>
+            <script>
+                window.embeddedChatbotConfig = {
+                chatbotId: "oXTk6NN3jmcYKvgFB4Q00",
+                domain: "www.chatbase.co"
+                }
+                </script>
+                <script
+                src="https://www.chatbase.co/embed.min.js"
+                chatbotId="oXTk6NN3jmcYKvgFB4Q00"
+                domain="www.chatbase.co"
+                defer>
+                </script>
 
         </div>
         <div class="end_line"></div>
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        <script src="website/script.js"></script>
-        
+        <p class="tejas_credits" style="color:rgb(187, 187, 187); margin-top: 20px;"> Designed & Developed by Tejas Gupta</p>
+        <br>
+        <p style="color:rgb(177, 177, 177);">&copy; <span id="copyright">32949832</span> Tejas Gupta</p>
+    </div>
+    <div class="end_line"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="website/script.js"></script>
+
 
 </body>
 

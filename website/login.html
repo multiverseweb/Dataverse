@@ -1,162 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMt23C3tEN5ZzDh6LzjZzR4Ff1zU0q6Y5NOq1n" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
-        .goBack {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            padding: 10px;
-            background-color: #d0d0d032;
-            backdrop-filter: blur(7px);
-            color: rgb(105, 105, 105);
-            border: none;
-            border-radius: 7px;
-            box-shadow: 0 0 5px black;
-        }
-
-        .login-container {
-            width: 500px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            padding: 20px;
-        }
-
-        .form-label {
-            text-align: left;
-        }
-
-        .btn-primary {
-            background-color: grey;
-            color: black;
-            border-radius: 30px;
-            width: 70%;
-            height: 40px;
-            margin: 20px auto 10px;
-            display: block;
-        }
-
-        .social-login-buttons button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 30px;
-            padding: 10px 20px;
-            font-size: 14px;
-            width: 70%;
-            margin: 10px auto;
-        }
-
-        .btn-google {
-            background-color: #20b837cb;
-            color: white;
-        }
-
-        .btn-microsoft {
-            background-color: #0078D4;
-            color: white;
-        }
-
-        .btn-apple {
+        body{
             background-color: black;
-            color: white;
         }
-
-        button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .image1{
+            width: 43%;
+            height: 90.9%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 70%;
+            left: 75%;
+            top: -10%;
+            rotate: 36deg;
+        }
+        .image2{
+            width: 37%;
+            height: 47%;
+            position: absolute;
+            object-fit: contain;
+            opacity: 90%;
+            top: 32%;
+            right: 84%;
+            rotate: -46deg;
+        }
+        .login-container{
+            width: 500px;
+            height: 500px;
+            position: relative;
+            background-color: rgba(158, 158, 158, 0.807);
+            top: 45px;
+            border-radius: 10px;
         }
     </style>
 </head>
 
-<body>
-    <div class="login-container">
-        <h2 style="text-align: center;">Login</h2>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" style="width: 100%;">
+<body >
+    <img class="image1"  src="./web_images/2dglow.png" alt="login_bg">
+    <img class="image2"  src="./web_images/2dglowhalfbg-removebg-preview.png" alt="login_bg">
+    <img style="
+    margin-left: 10px;
+    position: absolute;
+    width: 80px;
+    height: 80px;" src="./web_images/3d_glow.webp" alt="Dataverse Logo">
+
+    <div style="margin-left: 6%;" class="top_dataverse">
+        <p id="data"> Data</p>
+        <p style="color: white;">verse</p>
+    </div>
+    <center>
+        <div style="text-align: right; margin: 10px;">
+            <a href="../index.html" class="btn btn-secondary" style="width: 200px; position: absolute  ; top: 30px; right: 175px; color: white; font-weight: 500; font-size: 18px;">Back To Home</a>
         </div>
-        <div class="mb-3">
-            <label for="inputPassword5" class="form-label">Password</label>
-            <input type="password" id="passwordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 100%;">
-            <div id="passwordHelpBlock" class="form-text">
-                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
-                special characters, or emoji.
+        <div class="login-container" style="padding-top: 20px;">
+            <h1 style="text-align: center; color: black; font-weight: 400; font-size: 35px">HEY! WELCOME BACK</h1>
+            <h6 style="text-align: center; color: rgb(197 197 197); font-weight: 500; font-size: 18px;">Please Enter your Details</h6>
+            <div style="text-align: left; margin-left: 10%;" class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label" style="color: white;">Email address</label>
+                <input type="email" class="form-control" id="emailInput" placeholder="Enter your Email Address" style="width: 400px; margin-top: -5px">
+            </div>
+            <div style="text-align: left; margin-left: 10%;" class="mb-3">
+                <label for="inputPassword5" class="form-label" style="color: white;">Password</label>
+                <input type="password" id="passwordInput" placeholder="Enter Your Password" class="form-control" aria-describedby="passwordHelpBlock" style="width: 400px; margin-top: -5px">
+                <div id="passwordHelpBlock" class="form-text" style="width: 400px; text-align: left; margin-top: -10px; margin-left: 10px;">
+                    <p style="text-align: left; margin-left: 270px; margin-top: 15px; font-size: medium; margin-bottom: 5px; "><a href="#" style=" text-decoration: none; color: #004ab7;">Forget Password ?</a></p>
+                    <span style="color: rgb(0, 0, 0); font-size: 14px; position: relative;">Your password must be :</span><br>
+                    • 8-20 characters long.<br>
+                    • Should contain letters and numbers.<br>
+                    • Must not contain spaces, special characters, or emojis.
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" id="loginButton" style="width: 400px; font-weight: 400;">LOGIN </button>
+            <div style="text-align: center; margin-top: 10px;">
+                <p>Don't have an account ?  <a href="signup.html" style="text-decoration: underline; color: #004ab7;"> Sign Up</a></p>
             </div>
         </div>
-        <button type="button" class="btn btn-primary" id="loginButton">Login</button>
-        <div style="text-align: center;">
-            <p>Don't have an account? <a href="signup.html" style="text-decoration: none;">Sign Up</a></p>
-            <p><a href="#" style="text-decoration: none;">Forget Password</a></p>
-        </div>
-
-        <div class="social-login-buttons">
-            <!-- Google Login Button -->
-            <button type="button" class="btn btn-google" onclick="window.location.href='https://accounts.google.com'">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
-                    alt="Google Icon" style="width: 20px; height: 20px; margin-right: 10px;"> Login with Google
-            </button>
-
-            <!-- Microsoft Login Button -->
-            <button type="button" class="btn btn-microsoft" onclick="window.location.href='https://login.microsoftonline.com/'">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
-                    alt="Microsoft Logo" style="width: 20px; height: 20px; margin-right: 10px;"> Login with Microsoft
-            </button>
-
-            <!-- Apple Login Button -->
-            <button type="button" class="btn btn-apple" onclick="window.location.href='https://appleid.apple.com/auth/authorize'">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Apple_logo_white.svg/256px-Apple_logo_white.svg.png?20220821122232" 
-                    alt="Apple Logo" style="width: 20px; height: 20px; margin-right: 10px;">
-                Login with Apple
-            </button>
-        </div>
-    </div>
-
+        <!--login form end-->
+    </center>
     <script>
-        document.getElementById('loginButton').addEventListener('click', function () {
+        document.getElementById('loginButton').addEventListener('click', function() {
             const emailInput = document.getElementById('emailInput');
             const passwordInput = document.getElementById('passwordInput');
             const emailValue = emailInput.value.trim();
-            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            if (!emailRegex.test(emailValue)) {
-                alert('Invalid email address');
-                return;
-            }
-
-            // Change the button color to red temporarily
-            const button = document.getElementById('loginButton');
-            button.style.backgroundColor = 'red';
-            
-            // Revert back to original color after a short delay
-            setTimeout(() => {
-                button.style.backgroundColor = ''; // Revert to original color
-            }, 300);
-
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(emailValue)) {
+        alert('Invalid email address');
+        return;
+    }
             emailInput.value = '';
             passwordInput.value = '';
+            // Redirect to index.html
             window.location.href = '/index.html';
             alert('Login successful!');
         });
     </script>
-
-    <a href="../index.html"><button class="goBack">Go To Home</button></a>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
-
 </html>

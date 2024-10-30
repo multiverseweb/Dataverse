@@ -1,23 +1,22 @@
-import tkinter as tk                              #for GUI
-from tkinter import *                             #for GUI                                   +---------------------------+
-from tkinter import messagebox                    #for GUI messages                          |        DATAVERSE          |
-import customtkinter                              #for scrollable GUI frame                  |     version 06.02.24      |
-from PIL import Image, ImageTk                    #for GUI images                            |  Designed & Developed By  |
-from functools import partial                     #for calling button functions              |        TEJAS GUPTA        |
-import mysql.connector as my                      #for connecting database                   +---------------------------+
-import datetime                                   #for getting current date                  |developing version 6550(24)|
-import time                                       #for getting current time                  +---------------------------+                 
-import webbrowser                                 #for opening external link
-import ctypes as ct                               #for styling windows
-import financeTracker as financeTracker           #user defined module - finance
-import matplotlib.pyplot as plt                   #for plotting graphs
-from mpl_toolkits.mplot3d import Axes3D           #for 3d plotting
-import matplotlib                                 #for plotting graphs
-from matplotlib.widgets import Cursor             #for lines on hover in plot
-import numpy as np                                #for x-axis time arange
+import tkinter as tk                                                #for GUI
+from tkinter import *                                               #for GUI
+from tkinter import messagebox                                      #for GUI messages
+from PIL import Image, ImageTk                                      #for GUI images
+from functools import partial                                       #for calling button functions
+import customtkinter                                                #for scrollable GUI frame
+import mysql.connector as my                                        #for connecting database
+import datetime                                                     #for getting current date
+import time                                                         #for getting current time
+import webbrowser                                                   #for opening external link
+import ctypes as ct                                                 #for styling windows
+import financeTracker as financeTracker                             #user defined module - finance
+import matplotlib.pyplot as plt                                     #for plotting graphs
+from mpl_toolkits.mplot3d import Axes3D                             #for 3d plotting
+import matplotlib                                                   #for plotting graphs
+from matplotlib.widgets import Cursor                               #for lines on hover in plot
+import numpy as np                                                  #for x-axis time arange
 #===================================================================================================================plot colors
 colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462","#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato","tan"]
-maxLimit = 16 # maximum limit for colors
 #===================================================================================================================connecting mySQL
 mycon=financeTracker.mycon
 cursor=financeTracker.cursor
@@ -25,132 +24,110 @@ cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id INT PRIMARY KEY, u_name VA
 cursor.execute("CREATE TABLE IF NOT EXISTS money (u_id INT, fiat FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total DOUBLE AS (fiat + gold + stocks + commodity + sales - expenditure), entryDate date);")
 #===================================================================================================================================
 #============================================================================================Dataverse Operations
-#======================================================================password encryption
-def encrypt(pwd):
-    if not isinstance(pwd, str) or len(pwd) == 0:
-        raise ValueError("Password must be a non-empty string.")
-    
-    try:
-        n = len(pwd)
-        e = ""
-        t = pwd[int(n/2):]
-        t += pwd[:int(n/2)]
-        for _ in range(len(t)):
-            e += chr(ord(t[_]) * 2)
-        return e
-    except Exception as e:
-        print(f"An error occurred during encryption: {e}")
 #=============================================================================Login- b1
-def login(b1, b2, b3, b4, preview_image):
-    switch(b1, b2, b3, b4)
+def login(b1,b2,b3,b4,preview_image):
+    switch(b1,b2,b3,b4)
     preview_image.place_forget()
-
     def show_message():
-        message = financeTracker.check_credentials(f"{user.get()}", f"{pwd.get()}")
-        word = message.split(' ')[0]
-        if word == 'Login':
-            messagebox.showinfo(title="", message=message, icon="info")
+        message=financeTracker.check_credentials(f"{user.get()}",f"{pwd.get()}")
+        word=message.split(' ')[0]
+        if word=='Login':
+            messagebox.showinfo(title="", message=message,icon="info")
             global menu
             menu.pack_forget()
             form.pack_forget()
-            user_menu(message.split(' ')[-1], f"{user.get()}")
-        elif word == 'No':
-            messagebox.showinfo(title="", message=message, icon="info")
-        elif word == 'Incorrect':
-            messagebox.showinfo(title="", message=message, icon="error")
+            user_menu(message.split(' ')[-1],f"{user.get()}")
+        elif word=='No':
+            messagebox.showinfo(title="", message=message,icon="info")
+        elif word=='Incorrect':
+            messagebox.showinfo(title="", message=message,icon="error")
         else:
-            messagebox.showinfo(title="", message="Some unknown error occurred.", icon="warning")
-
+            messagebox.showinfo(title="", message="Some unknown error occured.",icon="warning")
     global relation
     relation.pack_forget()
     global text
     text.pack_forget()
     global form
     form.pack_forget()
-    form = Frame(root, bg="#171717", relief=SUNKEN)
-    form.pack(side=TOP, fill=Y, pady=140, padx=(0, 200))
+    form=Frame(root,bg="#171717",relief=SUNKEN)
+    form.pack(side=TOP,fill=Y,pady=140,padx=(0,200))
     global title
     title.pack_forget()
-    title = Label(form, font="poppins 10", fg='#ffffff', bg='#171717', text="PERSONAL FINANCE TRACKER")
-    title.pack(fill=Y, pady=35, padx=0)
-    user = StringVar()
-    pwd = StringVar()
-    user_entry = Entry(form, textvariable=user, width=30)
-    pwd_entry = Entry(form, textvariable=pwd, width=30, show="●")
-    user_entry.insert(0, 'Username')
-    pwd_entry.insert(0, 'Password')
-    user_entry.pack(pady=20, padx=50)
-    pwd_entry.pack(pady=20, padx=50)
-    Button(form, text="Login", width=15, command=show_message, cursor="hand2").pack(pady=20)
+    title=Label(form,font="poppins 10",fg='#ffffff',bg='#171717',text="PERSONAL FINANCE TRACKER")
+    title.pack(fill=Y,pady=35,padx=0)
+    user=StringVar()
+    pwd=StringVar()
+    user_entry=Entry(form,textvariable=user,width=30)
+    pwd_entry=Entry(form,textvariable=pwd,width=30,show="●")
+    user_entry.insert(0,'Username')
+    pwd_entry.insert(0,'Password')
+    user_entry.pack(pady=20,padx=50)
+    pwd_entry.pack(pady=20,padx=50)
+    Button(form,text="Login",width=15,command=show_message,cursor="hand2").pack(pady=20)
     form.mainloop()
 
+#======================================================================password encryption
+def encrypt(pwd):
+    n=len(pwd)
+    e=""
+    t=pwd[int(n/2):]
+    t+=pwd[:int(n/2)]
+    for _ in range(len(t)):
+        e+=chr(ord(t[_])*2)
+    return e 
 #====================================================================== Create account -b2
-def create(b2, b1, b3, b4, preview_image):
-    def show_message(u_name, pwd, country, names):
-        u_name = f"{u_name.get()}"
-        pwd = f"{pwd.get()}"
-        country = f"{country.get()}"
-
-        if not u_name or not pwd:
-            messagebox.showinfo(title="Input Error", message="Username and Password cannot be empty.", icon="error")
-            return
-        
-        if not isinstance(country, str) or len(country) == 0:
-            messagebox.showinfo(title="Input Error", message="Country must be a non-empty string.", icon="error")
-            return
-        
+def create(b2,b1,b3,b4,preview_image):
+    def show_message(u_name,pwd,country,names):
+        u_name=f"{u_name.get()}"
+        pwd=f"{pwd.get()}"
+        pwd=encrypt(pwd)
+        country=f"{country.get()}"
         if u_name in names:
-            messagebox.showinfo(title="Username Not Available", message="That username is already taken. Try another one.", icon="info")
+            messagebox.showinfo(title="Username Not Available", message="That username is already taken. Try another one.",icon="info")
         else:
             u_id = datetime.datetime.now().strftime("%H%M%S")
-            q = "INSERT INTO user VALUES({}, '{}', '{}', '{}')".format(u_id, u_name, encrypt(pwd), country)
-            try:
-                cursor.execute(q)
-                mycon.commit()
-                msg = "Account Created Successfully! ✓\nYour User ID is: {}\n".format(u_id)
-                global text
-                text = Label(font="poppins 10 bold", fg='#ffffff', bg='#000000', text=msg)
-                text.pack(fill=X, pady=35, padx=(0, 200))
-                messagebox.showinfo(title="Important", message="This User ID is required while deleting the account.", icon="warning")
-            except Exception as e:
-                print(f"An error occurred while creating the account: {e}")
-                messagebox.showinfo(title="Error", message="Failed to create account. Please try again.", icon="error")
+            q="insert into user values({},'{}','{}','{}')".format(u_id,u_name,pwd,country)
+            cursor.execute(q)
+            mycon.commit()
+            msg="Account Created Successfully! ✓\nYour User ID is: {}\n".format(u_id)
+            global text
+            text=Label(font="poppins 10 bold",fg='#ffffff',bg='#000000',text=msg)
+            text.pack(fill=X,pady=35,padx=(0,200))
+            messagebox.showinfo(title="Important", message="This User ID is required while deleting the account.",icon="warning")
 
-    switch(b2, b1, b3, b4)
+    switch(b2,b1,b3,b4)
     preview_image.place_forget()
-    names = []
-    q = "SELECT u_name FROM user"
+    names=[]
+    q="select u_name from user"
     cursor.execute(q)
-    data = cursor.fetchall()
+    data=cursor.fetchall()
     for i in data:
         names.append(i[0])
-
     global relation
     relation.pack_forget()
     global text
     text.pack_forget()
     global form
     form.pack_forget()
-    form = Frame(root, bg="#171717", relief=SUNKEN)
-    form.pack(side=TOP, fill=Y, pady=140, padx=(0, 200))
+    form=Frame(root,bg="#171717",relief=SUNKEN)
+    form.pack(side=TOP,fill=Y,pady=140,padx=(0,200))
     global title
     title.pack_forget()
-    title = Label(form, font="poppins 10", fg='#ffffff', bg='#171717', text="Create Dataverse Account")
-    title.pack(fill=Y, pady=35, padx=0)
-
-    u_name = StringVar()
-    pwd = StringVar()
-    country = StringVar()
-    user_entry = Entry(form, textvariable=u_name, width=30)
-    pwd_entry = Entry(form, textvariable=pwd, width=30)
-    country_entry = Entry(form, textvariable=country, width=30)
-    user_entry.insert(0, 'Username')
-    pwd_entry.insert(0, 'Password')
-    country_entry.insert(0, 'India')
-    user_entry.pack(pady=20, padx=50)
-    pwd_entry.pack(pady=20, padx=50)
-    country_entry.pack(pady=20, padx=50)
-    Button(form, text="Create Account", width=15, command=partial(show_message, u_name, pwd, country, names), cursor="hand2").pack(pady=20)
+    title=Label(form,font="poppins 10",fg='#ffffff',bg='#171717',text="Create Dataverse Account")
+    title.pack(fill=Y,pady=35,padx=0)
+    u_name=StringVar()
+    pwd=StringVar()
+    country=StringVar()
+    user_entry=Entry(form,textvariable=u_name,width=30)
+    pwd_entry=Entry(form,textvariable=pwd,width=30)
+    country_entry=Entry(form,textvariable=country,width=30)
+    user_entry.insert(0,'Username')
+    pwd_entry.insert(0,'Password')
+    country_entry.insert(0,'India')
+    user_entry.pack(pady=20,padx=50)
+    pwd_entry.pack(pady=20,padx=50)
+    country_entry.pack(pady=20,padx=50)
+    Button(form,text="Create Account",width=15,command=partial(show_message,u_name,pwd,country,names),cursor="hand2").pack(pady=20)
 
     form.mainloop()
 #=========================================================================GUEST
@@ -172,12 +149,12 @@ def guest(b1,b2,b3,b4,preview_image):
     title=Label(font="poppins 10 bold",fg='#ffffff',bg='#000000',text="DATA VISUALISATION SOFTWARE")
     title.pack(fill=X,pady=35,padx=(0,200))
 
-#====================================================================== adding images to buttons
+    # adding images to button 
     def resize_image(image_path, width=20, height=20):
         image = Image.open(image_path)
         image = image.resize((width, height), Image.Resampling.LANCZOS)
         return ImageTk.PhotoImage(image)
-    
+
     # Resizing all images to 20x20
     line_graph = resize_image("software/images/line_graph.png", 20)
     bar_graph = resize_image("software/images/bar_graph.png", 20)
@@ -250,61 +227,68 @@ def guest(b1,b2,b3,b4,preview_image):
     #b12.pack(pady=5,padx=15)
     b15.pack(pady=30,padx=15)
 #==================================================================================Delete Account- b4
-def delete(b4,b1,b3,b2,preview_image):
-    def show_message(u_name,u_id,pwd,names):
-        u_name=f"{u_name.get()}"
-        u_id=u_id.get()
-        pwd=f"{pwd.get()}"
+def delete(b4, b1, b3, b2, preview_image):
+    def show_message(u_name, u_id, pwd, names):
+        u_name = u_name.get().strip()  
+        u_id = u_id.get()
+        pwd = pwd.get().strip()  
+        # Input validation
+        if not u_name or not u_id or not pwd:
+            messagebox.showwarning(title="Input Error", message="Please fill in all fields. ✖")
+            return
+        
         if u_name in names:
-            q="select u_id,pwd from user where u_name='{}'".format(u_name)
+            q = "SELECT u_id, pwd FROM user WHERE u_name='{}'".format(u_name)
             cursor.execute(q)
-            data=cursor.fetchall()
-            if u_id==data[0][0] and pwd==data[0][1]:
-                cursor.execute("delete from user where u_id={}".format(u_id))
+            data = cursor.fetchall()
+
+            if data and u_id == data[0][0] and pwd == data[0][1]:
+                cursor.execute("DELETE FROM user WHERE u_id={}".format(u_id))
                 mycon.commit()
-                cursor.execute("delete from money where u_id={}".format(u_id))
+                cursor.execute("DELETE FROM money WHERE u_id={}".format(u_id))
                 mycon.commit()
-                messagebox.showinfo(title="", message="Account deleted successfully. ✓",icon="info")
+                messagebox.showinfo(title="", message="Account deleted successfully. ✓", icon="info")
             else:
-                messagebox.showinfo(title="Attempt failed.", message="Invalid credentials. ✖",icon="error")
-
+                messagebox.showinfo(title="Attempt failed.", message="Invalid credentials. ✖", icon="error")
         else:
-            messagebox.showinfo(title="Error", message="Account not found. ✖",icon="error")
+            messagebox.showinfo(title="Error", message="Account not found. ✖", icon="error")
 
-    switch(b4,b1,b3,b2)
+    switch(b4, b1, b3, b2)
     preview_image.place_forget()
-    names=[]
-    q="select u_name from user"
+    names = []
+    q = "SELECT u_name FROM user"
     cursor.execute(q)
-    data=cursor.fetchall()
+    data = cursor.fetchall()
     for i in data:
         names.append(i[0])
+
     global relation
     relation.pack_forget()
     global text
     text.pack_forget()
     global form
     form.pack_forget()
-    form=Frame(root,bg="#171717",relief=SUNKEN)
-    form.pack(side=TOP,fill=Y,pady=140,padx=(0,200))
+    form = Frame(root, bg="#171717", relief=SUNKEN)
+    form.pack(side=TOP, fill=Y, pady=140, padx=(0, 200))
+
     global title
     title.pack_forget()
-    title=Label(form,font="poppins 10",fg='#ffffff',bg='#171717',text="Delete Dataverse Account")
-    title.pack(fill=Y,pady=35,padx=0)
-    u_name=StringVar()
-    u_id=IntVar()
-    pwd=StringVar()
-    user_entry=Entry(form,textvariable=u_name,width=30)
-    user_id=Entry(form,textvariable=u_id,width=30)
-    pwd_entry=Entry(form,textvariable=pwd,width=30)
-    user_entry.insert(0,'Username')
-    user_id.insert(0,'User I')
-    pwd_entry.insert(0,'Password')
-    user_entry.pack(pady=20,padx=50)
-    user_id.pack(pady=20,padx=50)
-    pwd_entry.pack(pady=20,padx=50)
-    Button(form,text="Delete Account",width=15,command=partial(show_message,u_name,u_id,pwd,names),cursor="hand2").pack(pady=20)
+    title = Label(form, font="poppins 10", fg='#ffffff', bg='#171717', text="Delete Dataverse Account")
+    title.pack(fill=Y, pady=35, padx=0)
 
+    u_name = StringVar()
+    u_id = IntVar()
+    pwd = StringVar()
+    user_entry = Entry(form, textvariable=u_name, width=30)
+    user_id = Entry(form, textvariable=u_id, width=30)
+    pwd_entry = Entry(form, textvariable=pwd, width=30, show='*')  # Hide password input
+    user_entry.insert(0, 'Username')
+    user_id.insert(0, 'User ID')
+    pwd_entry.insert(0, 'Password')
+    user_entry.pack(pady=20, padx=50)
+    user_id.pack(pady=20, padx=50)
+    pwd_entry.pack(pady=20, padx=50)
+    Button(form, text="Delete Account", width=15, command=partial(show_message, u_name, u_id, pwd, names), cursor="hand2").pack(pady=20)
     form.mainloop()
 #=============================================================================================USER OPERATIONS
 #===========================================================================Menu after login
@@ -342,7 +326,7 @@ def user_menu(u_id,u_name):
     b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Visualise Data",width=22,font="poppins 10",command=partial(visualize,u_name),cursor="hand2")
     b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Data",width=22,font="poppins 10",command=partial(delete_data,u_id),cursor="hand2")
     b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Save & Logout",width=22,command=main,font="poppins 10",cursor="hand2")
-
+    
     b1.pack(pady=(30,5),padx=15)
     b2.pack(pady=5,padx=15)
     b3.pack(pady=5,padx=15)
@@ -463,32 +447,36 @@ def delete_data(u_id):
     form.mainloop()
 
 #=========================================================================Clearing screen
-def clear(menu,text,profile):
-    menu.pack_forget()
-    text.pack_forget()
-    profile.pack_forget()
-    main()
+def clear(menu, text, profile):
+    try:
+        # Attempt to hide the menu, text, and profile frames
+        menu.pack_forget()
+        text.pack_forget()
+        profile.pack_forget()
+        main()  # Call the main function to refresh the UI
+    except Exception as e:
+        # Handle any exceptions that may occur and inform the user
+        messagebox.showerror(title="Error", message=f"An error occurred: {str(e)}")
 
 #=====================================================================disabling buttons
-def switch(b1,b2,b3,b4):
-    b1["state"] = DISABLED
-    b2["state"] = NORMAL
-    b3["state"] = NORMAL
-    b4["state"] = NORMAL
+def switch(b1, b2, b3, b4):
+    try:
+        b1["state"] = DISABLED
+        b2["state"] = NORMAL
+        b3["state"] = NORMAL
+        b4["state"] = NORMAL
+    except Exception as e:
+        # Handle any exceptions that may occur
+        messagebox.showerror(title="Error", message=f"An error occurred while switching buttons: {str(e)}")
+
 #==================================================================================open link
 def callback(url):
-    webbrowser.open_new(url)
+    try:
+        webbrowser.open_new(url)
+    except Exception as e:
+        messagebox.showerror(title="Error", message=f"Failed to open URL: {str(e)}")
 
-#==================================================================================reset the labels and inputs
-def reset():
-    global form,names_form,values_form,values_1_form,x,y,d_attr
-    x = []
-    y = []
-    d_attr = []
-    form.place_forget()
-    names_form.place_forget()
-    values_form.place_forget()
-    values_1_form.place_forget()
+
 
 #=====================================================================================================================================DATA VISUALIZATION
 x = []
@@ -496,7 +484,6 @@ y = []
 d_attr=[]
 count=0
 def line(c):
-    reset()
     global form
     form.pack_forget()
     form=Frame(root,bg="#171717",relief=SUNKEN)
@@ -593,7 +580,7 @@ def line_values(c,title_var,x_var,y_var):
     x_label=x_var.get()
     y_var=y_var.get()
 
-    if y_var>maxLimit:
+    if y_var>16:
         messagebox.showwarning(message="Too many dependent variables!\nThe maximum limit is 16.")
     elif y_var<=0:
         messagebox.showwarning(message="No. of dependent variables should be greater than 0.")
@@ -699,7 +686,6 @@ def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
 
 def pie(c):
     if c=="pie":
-        reset()
         global form
         form.pack_forget()
         form=Frame(root,bg="#171717",relief=SUNKEN)
@@ -758,7 +744,7 @@ def pie_values(c,title_var,y_var):
 
     y_var=y_var.get()
     heading=title_var.get()
-    if y_var>maxLimit:
+    if y_var>16:
         messagebox.showwarning(message="Too many variables!\nThe maximum limit is 16.")
     elif y_var<=0:
         messagebox.showwarning(message="No. of variables should be greater than 0.")
@@ -815,7 +801,7 @@ def radar_values(c,title_var,x_var,y_var):
     def x_no_values(c,y,x_no_value,names_form,x_label):
         if x_no_value.get()<3:
             messagebox.showwarning(message="No. of values for independent variable should be greater than 2.")
-        elif x_no_value.get()>maxLimit:
+        elif x_no_value.get()>16:
             messagebox.showwarning(message="Too many values for independent variable!\nThe maximum limit is 16.")
         else:
             x_no_value = x_no_value.get()
@@ -895,7 +881,7 @@ def radar_values(c,title_var,x_var,y_var):
     x_label=x_var.get()
     y_var=y_var.get()
     
-    if y_var>maxLimit:
+    if y_var>16:
         messagebox.showwarning(message="Too many dependent variables!\nThe maximum limit is 16.")
     elif y_var<=0:
         messagebox.showwarning(message="No. of dependent variables should be greater than 0.")
@@ -956,123 +942,126 @@ def plot_radar(c,x,y,d_attr,heading,x_label,x_no_value,entry_widgets):
 
 
 def scatter(c):
-    if c=="scatter3d":
-        reset()
+    if c == "scatter3d":
         global form
         form.pack_forget()
-        form=Frame(root,bg="#171717",relief=SUNKEN)
-        form.pack(side=LEFT,pady=20,padx=20,anchor=NW)
+        form = Frame(root, bg="#171717", relief=SUNKEN)
+        form.pack(side=LEFT, pady=20, padx=20, anchor=NW)
+        
         global title
         title.pack_forget()
-        title_var=StringVar()     
-        x_var=StringVar()
-        y_var=StringVar()
-        z_var=StringVar()
-        no_values_var=IntVar() # Number of values variable
-        title_label = Label(form, text = 'Title: ', font=('calibre',10),fg='#ffffff',bg='#171717')
-        title_entry = Entry(form,textvariable = title_var, font=('calibre',10))
-        x_label = Label(form, text = 'Name of Dependent Variable(x): ', font = ('calibre',10),fg='#ffffff',bg='#171717')
-        x_entry=Entry(form, textvariable = x_var, font = ('calibre',10))    
-        y_label = Label(form, text = 'Name of Dependent Variable(y): ', font = ('calibre',10),fg='#ffffff',bg='#171717')
-        y_entry=Entry(form, textvariable = y_var, font = ('calibre',10))
-        z_label = Label(form, text = 'Name of Dependent Variable(z): ', font = ('calibre',10),fg='#ffffff',bg='#171717')
-        z_entry=Entry(form, textvariable = z_var, font = ('calibre',10)) 
-        no_values_label=Label(form, text = 'Number of Values to Plot: ', font = ('calibre',10),fg='#ffffff',bg='#171717')
-        no_values_entry=Entry(form, textvariable = no_values_var, font = ('calibre',10)) 
+        title_var = StringVar()     
+        x_var = StringVar()
+        y_var = StringVar()
+        z_var = StringVar()
+        no_values_var = IntVar() 
 
-        title_entry.insert(0,'Untitled')
-        x_entry.insert(0,'x')
-        y_entry.insert(0,'y')
-        z_entry.insert(0,'z')
+        title_label = Label(form, text='Title: ', font=('calibre', 10), fg='#ffffff', bg='#171717')
+        title_entry = Entry(form, textvariable=title_var, font=('calibre', 10))
+        x_label = Label(form, text='Name of Dependent Variable(x): ', font=('calibre', 10), fg='#ffffff', bg='#171717')
+        x_entry = Entry(form, textvariable=x_var, font=('calibre', 10))    
+        y_label = Label(form, text='Name of Dependent Variable(y): ', font=('calibre', 10), fg='#ffffff', bg='#171717')
+        y_entry = Entry(form, textvariable=y_var, font=('calibre', 10))
+        z_label = Label(form, text='Name of Dependent Variable(z): ', font=('calibre', 10), fg='#ffffff', bg='#171717')
+        z_entry = Entry(form, textvariable=z_var, font=('calibre', 10)) 
+        no_values_label = Label(form, text='Number of Values to Plot: ', font=('calibre', 10), fg='#ffffff', bg='#171717')
+        no_values_entry = Entry(form, textvariable=no_values_var, font=('calibre', 10)) 
 
-        title_label.grid(row=0,column=0,padx=(5,5),pady=(15,5))
-        title_entry.grid(row=0,column=1,padx=(0,10),pady=(15,5))
-        x_label.grid(row=1,column=0,padx=(5,5),pady=5)
-        x_entry.grid(row=1,column=1,padx=(0,10),pady=5)
-        y_label.grid(row=2,column=0,padx=(5,5),pady=5)
-        y_entry.grid(row=2,column=1,padx=(0,10),pady=5)
-        z_label.grid(row=3,column=0,padx=(5,5),pady=5)
-        z_entry.grid(row=3,column=1,padx=(0,10),pady=5)
-        no_values_label.grid(row=4,column=0,padx=(5,5),pady=5)
-        no_values_entry.grid(row=4,column=1,padx=(0,10),pady=5)   
-        sub_btn=Button(form,text="Create",width=10,cursor="hand2")
-        sub_btn.grid(row=5,column=1,padx=(10,15),pady=(15,15))
-        sub_btn.configure(command=partial(scatter_enter_values,c,title_var,x_var,y_var,z_var,no_values_var))
+        title_entry.insert(0, 'Untitled')
+        x_entry.insert(0, 'x')
+        y_entry.insert(0, 'y')
+        z_entry.insert(0, 'z')
+        title_label.grid(row=0, column=0, padx=(5, 5), pady=(15, 5))
+        title_entry.grid(row=0, column=1, padx=(0, 10), pady=(15, 5))
+        x_label.grid(row=1, column=0, padx=(5, 5), pady=5)
+        x_entry.grid(row=1, column=1, padx=(0, 10), pady=5)
+        y_label.grid(row=2, column=0, padx=(5, 5), pady=5)
+        y_entry.grid(row=2, column=1, padx=(0, 10), pady=5)
+        z_label.grid(row=3, column=0, padx=(5, 5), pady=5)
+        z_entry.grid(row=3, column=1, padx=(0, 10), pady=5)
+        no_values_label.grid(row=4, column=0, padx=(5, 5), pady=5)
+        no_values_entry.grid(row=4, column=1, padx=(0, 10), pady=5)   
+        
+        sub_btn = Button(form, text="Create", width=10, cursor="hand2")
+        sub_btn.grid(row=5, column=1, padx=(10, 15), pady=(15, 15))
+        sub_btn.configure(command=partial(scatter_enter_values, c, title_var, x_var, y_var, z_var, no_values_var))
         
         form.mainloop()
 
-def scatter_enter_values(c,title_var,x_var,y_var,z_var,no_values_var):
-    heading=title_var.get()
-    x_label=x_var.get()
-    y_label=y_var.get()
-    z_label=z_var.get()
-    no_values=no_values_var.get()
+def scatter_enter_values(c, title_var, x_var, y_var, z_var, no_values_var):
+    heading = title_var.get()
+    x_label = x_var.get()
+    y_label = y_var.get()
+    z_label = z_var.get()
+    no_values = no_values_var.get()
 
-    if no_values>maxLimit:
+    # Input validation
+    if no_values > 16:
         messagebox.showwarning(message="Too many values to plot!\nThe maximum limit is 16.")
-    elif no_values<=0:
+        return
+    elif no_values <= 0:
         messagebox.showwarning(message="No. of values to plot should be greater than 0.")
-    else:
-        x=[]
-        y=[]
-        z=[]
-        for i in range(no_values):
-            x.append(0)
-            y.append(0)
-            z.append(0)
-            x[i]=IntVar()
-            y[i]=IntVar()
-            z[i]=IntVar()
+        return
 
-        global values_form
-        values_form.place_forget()
-        values_form=customtkinter.CTkScrollableFrame(root,
+    x, y, z = [], [], []
+    for i in range(no_values):
+        x.append(IntVar())
+        y.append(IntVar())
+        z.append(IntVar())
+
+    global values_form
+    values_form.place_forget()
+    values_form = customtkinter.CTkScrollableFrame(root,
                                                   width=800,
                                                   height=665,
                                                   label_text="Variable(s) Values",
                                                   border_width=1,
                                                   fg_color="#171717",
                                                   scrollbar_button_hover_color="#ffffff",
-                                                  border_color="#000000"
-                                                  )
-        values_form.place(relx=1.0, rely=1.0, x=-930, y=-740,anchor=NW)
-        
-        Label(values_form, text = "Variable Values", font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=0,column=0,padx=(12,8),pady=(12,4))
-        for i in range(no_values):
-            Label(values_form, text = "Value {}: ".format(i+1), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=1+i,column=0,padx=(12,8),pady=(8,4))
-            Label(values_form, text = "{} =".format(x_label), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=1+i,column=1,padx=(12,8),pady=(8,4))
-            Entry(values_form,textvariable = x[i], font=('calibre',10)).grid(row=1+i,column=2,padx=(12,8),pady=(8,4))        
-            Label(values_form, text = "{} =".format(y_label), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=1+i,column=3,padx=(12,8),pady=(8,4))
-            Entry(values_form,textvariable = y[i], font=('calibre',10)).grid(row=1+i,column=4,padx=(12,8),pady=(8,4))
-            Label(values_form, text = "{} =".format(z_label), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=1+i,column=5,padx=(12,8),pady=(8,4))
-            Entry(values_form,textvariable = z[i], font=('calibre',10)).grid(row=1+i,column=6,padx=(12,8),pady=(8,4))
-        plot_btn=Button(values_form,text="Plot",width=10,cursor="hand2")
-        plot_btn.grid(row=no_values+1,column=0,padx=(10,15),pady=10)
-        plot_btn.configure(command=partial(plot_scatter,c,x,y,z,x_label,y_label,z_label,heading,no_values))
-
-def plot_scatter(c,x,y,z,x_label,y_label,z_label,heading,no_values):
+                                                  border_color="#000000")
+    values_form.place(relx=1.0, rely=1.0, x=-930, y=-740, anchor=NW)
+    
+    Label(values_form, text="Variable Values", font=('calibre', 10, "bold"), fg='#ffffff', bg='#171717').grid(row=0, column=0, padx=(12, 8), pady=(12, 4))
+    
     for i in range(no_values):
-        x[i]=float(x[i].get())
-        y[i]=float(y[i].get())
-        z[i]=float(z[i].get())
+        Label(values_form, text="Value {}: ".format(i + 1), font=('calibre', 10), fg='#ffffff', bg='#171717').grid(row=1 + i, column=0, padx=(12, 8), pady=(8, 4))
+        Label(values_form, text="{} =".format(x_label), font=('calibre', 10), fg='#ffffff', bg='#171717').grid(row=1 + i, column=1, padx=(12, 8), pady=(8, 4))
+        Entry(values_form, textvariable=x[i], font=('calibre', 10)).grid(row=1 + i, column=2, padx=(12, 8), pady=(8, 4))        
+        Label(values_form, text="{} =".format(y_label), font=('calibre', 10), fg='#ffffff', bg='#171717').grid(row=1 + i, column=3, padx=(12, 8), pady=(8, 4))
+        Entry(values_form, textvariable=y[i], font=('calibre', 10)).grid(row=1 + i, column=4, padx=(12, 8), pady=(8, 4))
+        Label(values_form, text="{} =".format(z_label), font=('calibre', 10), fg='#ffffff', bg='#171717').grid(row=1 + i, column=5, padx=(12, 8), pady=(8, 4))
+        Entry(values_form, textvariable=z[i], font=('calibre', 10)).grid(row=1 + i, column=6, padx=(12, 8), pady=(8, 4))
+    
+    plot_btn = Button(values_form, text="Plot", width=10, cursor="hand2")
+    plot_btn.grid(row=no_values + 1, column=0, padx=(10, 15), pady=10)
+    plot_btn.configure(command=partial(plot_scatter, c, x, y, z, x_label, y_label, z_label, heading, no_values))
+    
+def plot_scatter(c, x, y, z, x_label, y_label, z_label, heading, no_values):
+    try:
+        for i in range(no_values):
+            x[i] = float(x[i].get())
+            y[i] = float(y[i].get())
+            z[i] = float(z[i].get())
+    except ValueError as e:
+        messagebox.showerror(message=f"Invalid input for variable values: {e}")
+        return  # Exit if there is an error
     plt.style.use('dark_background')
-    fig, ax=plt.subplots(figsize=(6.5, 5))
-    plt.subplots_adjust(bottom=0.152,right=0.81)
+    fig, ax = plt.subplots(figsize=(6.5, 5))
+    plt.subplots_adjust(bottom=0.152, right=0.81)
     ax = fig.add_subplot(projection="3d")
-    scatter = ax.scatter(x,y,z,marker='o',c=z,cmap="viridis",alpha=0.5,s=60)  # color map based on z
-    fig.colorbar(scatter, ax=ax, shrink=0.5, aspect=5,location="left")
+    scatter = ax.scatter(x, y, z, marker='o', c=z, cmap="viridis", alpha=0.5, s=60)  # color map based on z
+    fig.colorbar(scatter, ax=ax, shrink=0.5, aspect=5, location="left")
     ax.set_xlabel(x_label)
     ax.set_ylabel(y_label)
     ax.set_zlabel(z_label)
-    # plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
     plt.tight_layout()
     plt.title(heading)
-    financeTracker.move_figure(fig, 865, 125)    
+    if hasattr(financeTracker, 'move_figure'):
+        financeTracker.move_figure(fig, 865, 125)
     plt.show()
-
+    
 def heatmap(c):
     if c=="heatmap":
-        reset()
         global form
         form.pack_forget()
         form=Frame(root,bg="#171717",relief=SUNKEN)
@@ -1115,7 +1104,7 @@ def heatmap_values(c,title_var,x_var,y_var,d_var):
     def x_value(c,names_form,x_values,x_label):
         x_values=x_values.get()
 
-        if x_values>maxLimit:
+        if x_values>16:
             messagebox.showwarning(message="Too many values for independent variable!\nThe maximum limit is 16.")
         elif x_values<=0:
             messagebox.showwarning(message="No. of values for independent variable should be greater than 0.")
@@ -1160,7 +1149,7 @@ def heatmap_values(c,title_var,x_var,y_var,d_var):
     def y_values1(c,values_form,y_values,y_label):
         y_values=y_values.get()
 
-        if y_values>maxLimit:
+        if y_values>16:
             messagebox.showwarning(message="Too many values for independent variable!\nThe maximum limit is 16.")
         elif y_values<=0:
             messagebox.showwarning(message="No. of values for independent variable should be greater than 0.")
@@ -1243,31 +1232,38 @@ def heatmap_values(c,title_var,x_var,y_var,d_var):
     next_btn.grid(row=3,column=1,padx=(10,15),pady=10)
     next_btn.configure(command=partial(x_value,c,names_form,x_values,x_label))           
 
-def plot_heatmap(c,x_values,y_values,x_label,y_label,d_var,d_attr,entry_widgets,heading):
-    d_attr = np.array([np.array([float(entry.get()) for entry in entry_widgets[i]]) for i in range(len(entry_widgets))])
-    for i in range(len(x)):
-        x[i] = x[i].get()
-    for i in range(len(y)):
-        y[i] = y[i].get()
+def plot_heatmap(c, x_values, y_values, x_label, y_label, d_var, d_attr, entry_widgets, heading):
+    try:
+        d_attr = np.array([np.array([float(entry.get()) for entry in entry_widgets[i]]) for i in range(len(entry_widgets))])
+    except ValueError as e:
+        print(f"Error converting entry values to float: {e}")
+        return  # Exit the function if there is an error
+    # Validate and retrieve x and y values
+    try:
+        x = [x_value.get() for x_value in x_values]
+        y = [y_value.get() for y_value in y_values]
+    except Exception as e:
+        print(f"Error retrieving x or y values: {e}")
+        return  # Exit the function if there is an error
     plt.style.use('dark_background')
-    fig, ax=plt.subplots(figsize=(6.5, 5))
-    plt.subplots_adjust(bottom=0.152,right=0.81)
-    im = ax.imshow(d_attr,cmap="viridis")
+    fig, ax = plt.subplots(figsize=(6.5, 5))
+    plt.subplots_adjust(bottom=0.152, right=0.81)
+    im = ax.imshow(d_attr, cmap="viridis")
     cbarlabel = d_var.get()
-    cbar = ax.figure.colorbar(im,ax=ax)
+    cbar = ax.figure.colorbar(im, ax=ax)
     cbar.ax.set_ylabel(cbarlabel, rotation=-90, va="bottom")
     ax.set_xticks(np.arange(len(x)), labels=x)
     ax.set_yticks(np.arange(len(y)), labels=y)
-    # rotating y_labels
-    plt.setp(ax.get_yticklabels(), rotation=45, ha="right",rotation_mode="anchor")
+    plt.setp(ax.get_yticklabels(), rotation=45, ha="right", rotation_mode="anchor")
     for i in range(len(x)):
         for j in range(len(y)):
-            text = ax.text(i,j, d_attr[i, j],ha="center", va="center", color="w")
+            text = ax.text(i, j, d_attr[i, j], ha="center", va="center", color="w")
     plt.tight_layout()
     plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
     plt.title(heading)
-    financeTracker.move_figure(fig, 865, 125)    
-    plt.show()        
+    if hasattr(financeTracker, 'move_figure'):
+        financeTracker.move_figure(fig, 865, 125)
+    plt.show()       
 #===========================================================================================================MAIN
 def main():
     global relation
@@ -1310,37 +1306,20 @@ Managing finances has never been easier! Dataverse’s finance tracking features
     preview_image=Label(bg='#000000',image = preview, borderwidth=1, relief="solid",padx=15,pady=15)
     preview_image.place(relx=1.0, rely=1.0, x=-40, y=-40,anchor="se")
 
-    
-#====================================================================== adding images to buttons
-    def resize_image(image_path, width=20, height=20):
-        image = Image.open(image_path)
-        image = image.resize((width, height), Image.Resampling.LANCZOS)
-        return ImageTk.PhotoImage(image)
-    
-    user = resize_image("software/images/user.png", 20)
-    visualization = resize_image("software/images/visualization.png", 20)
-    finance = resize_image("software/images/finance.png", 20)
-    delete_user = resize_image("software/images/delete-user.png", 20)
 
 
-    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',image=visualization,text="Data Visualisation",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
-    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',image=finance,text="Finance Tracker",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
-    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',image=user,text="Create Account",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
-    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',image=delete_user,text="Delete Account",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
-
-    b1.image = visualization
-    b2.image = finance
-    b3.image = user
-    b4.image = delete_user
-
-    b1.pack(pady=(30,5),padx=15)
+    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Finance Tracker",width=22,font="poppins 10",cursor="hand2")
+    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Data Visualisation",width=22,font="poppins 10",cursor="hand2")
+    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Create Account",width=22,font="poppins 10",cursor="hand2")
+    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Account",width=22,font="poppins 10",cursor="hand2")
+    b3.pack(pady=(30,5),padx=15)
+    b1.pack(pady=5,padx=15)
     b2.pack(pady=5,padx=15)
-    b3.pack(pady=5,padx=15)
     b4.pack(pady=5,padx=15)
-    b1.config(command=partial(guest,b1,b2,b3,b4,preview_image))
-    b2.config(command=partial(login,b2,b1,b3,b4,preview_image))
-    b3.config(command=partial(create,b3,b1,b2,b4,preview_image))
-    b4.config(command=partial(delete,b4,b1,b2,b3,preview_image))
+    b1.config(command=partial(login,b1,b2,b3,b4,preview_image))
+    b3.config(command=partial(guest,b3,b1,b4,b2,preview_image))
+    b2.config(command=partial(create,b2,b1,b3,b4,preview_image))
+    b4.config(command=partial(delete,b4,b1,b3,b2,preview_image))
 
     link1 = Label(menu,fg='#ffffff',bg='#1a1a1a',text="Visit Website",width=22,cursor="hand2",font="poppins 10", relief="sunken")
     link1.pack(pady=280,padx=15)

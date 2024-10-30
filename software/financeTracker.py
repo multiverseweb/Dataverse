@@ -110,7 +110,7 @@ def fetch_data(user_id):
         print(f"Error fetching user data: {e}")
         return None
 #=======================================================================================================Predictive Analytics (Linear Regression)
-
+'''
 def predict_future_expenditure(pool):
     if 'entryDate' not in pool or 'total' not in pool:
         print("Missing required columns in pool.")
@@ -189,14 +189,14 @@ def monthly_comparison(pool):
     plt.xticks(rotation=45)  
     plt.tight_layout()  
     plt.show()
-
+'''
 #=======================================================================================================visualize/plot data
 def plot_data(requireds, username):
     try:
         download_report = messagebox.askyesno(message="Do you want to download today's report?", icon="question")
         if download_report == True:
             plt.savefig("plot.png", dpi=150)
-            report.save(username, total_amount)
+            #report.save(username, total_amount)
             messagebox.showinfo(message="Report downloaded. ✓")
 
         plt.style.use('dark_background')

@@ -1075,8 +1075,26 @@ input {
     text-align: left;
 }
 
+.user-icon {
+    display: none;
+    width: 26px; /* Adjust the size as needed */
+    height: 26px;
+  }
+
 /*===========================RESPONSIVE===================================*/
 @media screen and (max-width: 660px) {
+    .loginSignupbtn{
+        padding: 10px;
+        border-radius: 50%;
+    }
+
+    .button-text {
+        display: none; /* Hide the text for smaller screens */
+      }
+    
+      .user-icon {
+        display: inline-block; /* Show the image for smaller screens */
+      }
     .plane {
         max-width: 600px;
     }

@@ -9,6 +9,7 @@
     <style>
         body{
             background-color: black;
+            overflow-x: hidden;
         }
         .image1{
             width: 43%;
@@ -31,13 +32,33 @@
             rotate: -46deg;
         }
         .login-container{
-            width: 500px;
-            height: 500px;
+            width: 40vw;
+            padding-bottom: 10px;
+            height: min-content;
             position: relative;
-            background-color: rgba(158, 158, 158, 0.807);
+            background-color: rgba(124, 124, 124, 0.412);
             top: 45px;
+            backdrop-filter: blur(10px);
             border-radius: 10px;
         }
+
+        @media screen and (max-width: 660px) {
+            .login-container{
+                width: 90vw;
+            }
+            .image1{
+                height:100px;
+                display: none;
+            }
+            .image2{
+                height: 100px;
+                overflow-x: hidden;
+            }
+            #forget{
+                width: 90%;
+            }
+        }
+        
     </style>
 </head>
 
@@ -45,44 +66,38 @@
     <img class="image1"  src="./web_images/2dglow.png" alt="login_bg">
     <img class="image2"  src="./web_images/2dglowhalfbg-removebg-preview.png" alt="login_bg">
     <img style="
+    top:10px;
     margin-left: 10px;
-    position: absolute;
+    position: fixed;
     width: 80px;
     height: 80px;" src="./web_images/3d_glow.webp" alt="Dataverse Logo">
-
-    <div style="margin-left: 6%;" class="top_dataverse">
-        <p id="data"> Data</p>
-        <p style="color: white;">verse</p>
-    </div>
     <center>
-        <div style="text-align: right; margin: 10px;">
-            <a href="../index.html" class="btn btn-secondary" style="width: 200px; position: absolute  ; top: 30px; right: 175px; color: white; font-weight: 500; font-size: 18px;">Back To Home</a>
-        </div>
-        <div class="login-container" style="padding-top: 20px;">
-            <h1 style="text-align: center; color: black; font-weight: 400; font-size: 35px">HEY! WELCOME BACK</h1>
+        <div class="login-container" style="padding-top: 20px; margin-top: 50px;">
+            <h1 style="text-align: center; color: rgb(255, 255, 255); font-weight: 400; font-size: 35px">HEY! WELCOME BACK</h1>
             <h6 style="text-align: center; color: rgb(197 197 197); font-weight: 500; font-size: 18px;">Please Enter your Details</h6>
             <div style="text-align: left; margin-left: 10%;" class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label" style="color: white;">Email address</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="Enter your Email Address" style="width: 400px; margin-top: -5px">
+                <input type="email" class="form-control" id="emailInput" placeholder="Enter your Email Address" style="width: 90%; margin-top: -5px">
             </div>
             <div style="text-align: left; margin-left: 10%;" class="mb-3">
                 <label for="inputPassword5" class="form-label" style="color: white;">Password</label>
-                <input type="password" id="passwordInput" placeholder="Enter Your Password" class="form-control" aria-describedby="passwordHelpBlock" style="width: 400px; margin-top: -5px">
-                <div id="passwordHelpBlock" class="form-text" style="width: 400px; text-align: left; margin-top: -10px; margin-left: 10px;">
-                    <p style="text-align: left; margin-left: 270px; margin-top: 15px; font-size: medium; margin-bottom: 5px; "><a href="#" style=" text-decoration: none; color: #004ab7;">Forget Password ?</a></p>
-                    <span style="color: rgb(0, 0, 0); font-size: 14px; position: relative;">Your password must be :</span><br>
+                <input type="password" id="passwordInput" placeholder="Enter Your Password" class="form-control" aria-describedby="passwordHelpBlock" style="width: 90%; margin-top: -5px">
+                <div id="passwordHelpBlock" class="form-text" style="color:white; width: 90%; text-align: left; margin-top: -10px; margin-left: 10px;">
+                    <p style="text-align: right; margin-top: 15px; font-size: medium; margin-bottom: 5px;"><a href="#" style=" text-decoration: none; color: #004ab7;" id="forget">Forget Password?</a></p>
+                    <span style="color: rgb(255, 255, 255); font-size: 14px; position: relative;" id="content">Your password must be :</span><br>
                     • 8-20 characters long.<br>
                     • Should contain letters and numbers.<br>
                     • Must not contain spaces, special characters, or emojis.
                 </div>
             </div>
-            <button type="button" class="btn btn-primary" id="loginButton" style="width: 400px; font-weight: 400;">LOGIN </button>
+            <button type="button" class="btn btn-primary" id="loginButton" style="width: 50%; font-weight: 400;">LOGIN</button>
             <div style="text-align: center; margin-top: 10px;">
                 <p>Don't have an account ?  <a href="signup.html" style="text-decoration: underline; color: #004ab7;"> Sign Up</a></p>
             </div>
         </div>
         <!--login form end-->
     </center>
+    <a href="../index.html"><button class="goBack">Go To Home</button></a>
     <script>
         document.getElementById('loginButton').addEventListener('click', function() {
             const emailInput = document.getElementById('emailInput');

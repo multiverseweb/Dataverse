@@ -121,6 +121,7 @@ body {
 .stat-card {
   background-color: #f9f9f9;
   border: 1px solid #e0e0e0;
+  color: #333;
   border-radius: 10px;
   padding: 1.5rem;
   text-align: center;
@@ -161,8 +162,8 @@ body {
 }
 
 .contributor-card {
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
+  background-color: #000000;
+  border: 1px solid #1e1e1e;
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -183,12 +184,13 @@ body {
 }
 
 .contributor-card h3 {
+  color: white;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
 .contributor-card p {
-  color: #494949;
+  color: #dddddd;
   margin-bottom: 1rem;
 }
 
@@ -267,5 +269,15 @@ body {
 
   .hero p {
       font-size: 1.2rem;
+  }
+  .stats-grid{
+    width: 90vw;
+  }
+  .contributors-grid{
+    width: 80vw;
+    margin-left: 10vw;
+  }
+  .contributor-card{
+    width: 85%;
   }
 }

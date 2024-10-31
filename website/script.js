@@ -411,8 +411,6 @@ function validateForm() {
   nameInput.value = '';
   emailInput.value = '';
   messageInput.value = '';
-    
-  alert('Your feedback has been submitted');
 
   return false;
 } 

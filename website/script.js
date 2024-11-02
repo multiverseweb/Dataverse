@@ -265,6 +265,45 @@ function validateForm() {
     return true;
 }
 
+// FORM VALIDATING FUNCTION
+function validateForm() {
+
+  const nameInput = document.querySelector('[name="Name"]');
+  const emailInput = document.querySelector('[name="Email"]');
+  const messageInput = document.querySelector('[name="Message"]');
+
+
+  if (nameInput.value === '') {
+      alert('Please enter your name.');
+      return false;
+  }
+  
+  if (!isValidEmail(emailInput.value)) {
+    alert('Please enter a valid email address.');
+    return false;
+  }
+  
+  if (messageInput.value === '') {
+      alert('Please enter your message.');
+      return false;
+  }
+  
+  
+  const formData = {
+    Name: nameInput.value,
+    Email: emailInput.value,
+    Message: messageInput.value
+  };
+  localStorage.setItem('reviewData', JSON.stringify(formData));
+  
+  nameInput.value = '';
+  emailInput.value = '';
+  messageInput.value = '';
+
+  return false;
+} 
+  
+// EMAIL VALIDATING FUNCTION 
 function isValidEmail(email) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);

@@ -45,8 +45,12 @@
         <img src="website/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
         <img src="website/web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
         <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
-        <a href="website/login.html"><button class="loginSignupbtn">Login
-            </button></a>
+        <a href="website/login.html">
+            <button class="loginSignupbtn">
+              <span class="button-text">Login</span>
+              <img src="website/web_images/user.png" alt="User Icon" class="user-icon">
+            </button>
+          </a>
     </nav>
 
     <button class="burger" id="burger" onclick="show()"></button>
@@ -270,21 +274,26 @@
                 <a href="https://www.linkedin.com/in/tejascodes/"> LinkedIn</a>
             </div>
             <script>
-                window.embeddedChatbotConfig = {
-                chatbotId: "oXTk6NN3jmcYKvgFB4Q00",
-                domain: "www.chatbase.co"
-                }
-                </script>
-                <script
-                src="https://www.chatbase.co/embed.min.js"
-                chatbotId="oXTk6NN3jmcYKvgFB4Q00"
-                domain="www.chatbase.co"
-                defer>
-                </script>
+                // Delay the execution by 3 seconds
+                setTimeout(function () {
+                    window.embeddedChatbotConfig = {
+                        chatbotId: "oKgfHa3hvh7Ic0ypSqDbv",
+                        domain: "www.chatbase.co"
+                    };
+
+                    var script = document.createElement("script");
+                    script.src = "https://www.chatbase.co/embed.min.js";
+                    script.setAttribute("chatbotId", "oKgfHa3hvh7Ic0ypSqDbv");
+                    script.setAttribute("domain", "www.chatbase.co");
+                    script.defer = true;
+                    document.body.appendChild(script);
+                }, 3000);
+            </script>
 
         </div>
         <div class="end_line"></div>
-        <p class="tejas_credits" style="color:rgb(187, 187, 187); margin-top: 20px;"> Designed & Developed by Tejas Gupta</p>
+        <p class="tejas_credits" style="color:rgb(187, 187, 187); margin-top: 20px;"> Designed & Developed by Tejas
+            Gupta</p>
         <br>
         <p style="color:rgb(177, 177, 177);">&copy; <span id="copyright">32949832</span> Tejas Gupta</p>
     </div>

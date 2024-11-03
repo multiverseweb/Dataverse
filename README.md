@@ -61,8 +61,8 @@
 
 ### Table of Contents
 
-| [About Dataverse](#what-does-this-software-do) | [Use Dataverse](#deployment-specifications) | [Preview](#preview) | [Software Representation](#software-representation) | [Make Contributions](#contributions) | [Website](#website) |
-|:--:|:--:|:--:|:--:|:--:|:--:|
+| [About Dataverse](#what-does-this-software-do) | [Versions](#versions) [Use Dataverse](#deployment-specifications) | [Preview](#preview) | [Software Representation](#software-representation) | [Make Contributions](#contributions) | [Website](#website) |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 
 ---
 
@@ -73,6 +73,12 @@
 - It supports data inputs from excel sheets.
 - The data can also be stored for later use.
 - Uses encryption techniques to securely store your passwords.
+
+---
+### Versions
+
+- 6550(24) `Latest`
+- 06.02.24
 
 ---
 
@@ -173,7 +179,7 @@ Want to contribute to this project? Follow these steps:
 [![Contributors](https://contrib.rocks/image?repo=multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/graphs/contributors)
 
 
-## Stargazers ❤️
+### Stargazers ❤️
 
 <div align='left'>
 
@@ -182,13 +188,11 @@ Want to contribute to this project? Follow these steps:
 
 </div>
 
-## Forkers ❤️
+### Forkers ❤️
 
 [![Forkers repo roster for @multiverseweb/Dataverse](https://reporoster.com/forks/dark/multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/network/members)
 
 ---
-
-
  
 ### Website
 

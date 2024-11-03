@@ -19,7 +19,7 @@
 ---
 
 # Dataverse
-<img src="website/web_images/3d_glow.png" height=50px align=right>
+<img src="website/web_images/3d_glow.webp" height=50px align=right>
 
 ###### Data Visualisation Software & Personal Finance Tracker
 

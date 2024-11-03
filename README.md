@@ -23,20 +23,22 @@
 
 ###### Data Visualisation Software & Personal Finance Tracker
 
----
+<!--![Visitors](https://api.visitorbadge.io/api/visitors?path=multiverseweb/Dataverse%20&countColor=%2523263759&style=for-the-badge)-->
 
-![Github](https://img.shields.io/github/license/multiverseweb/Dataverse?style=for-the-badge)
-![Visitors](https://api.visitorbadge.io/api/visitors?path=multiverseweb/Dataverse%20&countColor=%2523263759&style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/multiverseweb/Dataverse?style=for-the-badge)
-![GitHub contributors](https://img.shields.io/github/contributors/multiverseweb/Dataverse?style=for-the-badge)
-![GitHub issues](https://img.shields.io/github/issues/multiverseweb/Dataverse?style=for-the-badge)
-![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/multiverseweb/Dataverse?style=for-the-badge)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/multiverseweb/Dataverse?style=for-the-badge)
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/multiverseweb/Dataverse?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/multiverseweb/Dataverse?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/multiverseweb/Dataverse?style=for-the-badge)
-![GitHub repo size](https://img.shields.io/github/repo-size/multiverseweb/Dataverse?style=for-the-badge)
 
+![Visitors](https://api.visitorbadge.io/api/visitors?path=multiverseweb2%2Dataverse%20&countColor=%23263759&style=flat&initial=5767)
+  ![Github](https://img.shields.io/github/license/multiverseweb/Dataverse)
+  ![GitHub Repo stars](https://img.shields.io/github/stars/multiverseweb/Dataverse)
+  ![GitHub contributors](https://img.shields.io/github/contributors/multiverseweb/Dataverse)
+  ![GitHub issues](https://img.shields.io/github/issues/multiverseweb/Dataverse)
+  ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/multiverseweb/Dataverse)
+  ![GitHub forks](https://img.shields.io/github/forks/multiverseweb/Dataverse)
+  ![GitHub pull requests](https://img.shields.io/github/issues-pr/multiverseweb/Dataverse)
+  ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/multiverseweb/Dataverse)
+  ![GitHub last commit](https://img.shields.io/github/last-commit/multiverseweb/Dataverse)
+  ![GitHub repo size](https://img.shields.io/github/repo-size/multiverseweb/Dataverse)
+  ![GitHub total lines](https://sloc.xyz/github/multiverseweb/Dataverse)
+  
 ### Featured In
 
 <table>

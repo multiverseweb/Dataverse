@@ -61,7 +61,7 @@
 
 ### Table of Contents
 
-| [About Dataverse](#what-does-this-software-do) | [Versions](#versions) [Use Dataverse](#deployment-specifications) | [Preview](#preview) | [Software Representation](#software-representation) | [Make Contributions](#contributions) | [Website](#website) |
+| [About Dataverse](#what-does-this-software-do) | [Versions](#versions) | [Use Dataverse](#deployment-specifications) | [Preview](#preview) | [Software Representation](#software-representation) | [Make Contributions](#contributions) | [Website](#website) |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 
 ---

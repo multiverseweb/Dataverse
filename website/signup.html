@@ -41,8 +41,32 @@
             top: 20px;
             border-radius: 10px;
         }
-        
-
+        #errorContainer{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            width: 90vw;
+            
+            max-width: 650px;
+            transform: translate(-50%, -50%);
+            background-color: rgb(51, 51, 51);
+            backdrop-filter: blur(4px);
+            padding: 0px;
+            border-radius: 4px;
+            text-align: center;
+            color: white;
+        }
+    #closeButton {
+            position: absolute;
+            top: 1px;
+            right: 10px;
+            padding-bottom: 100px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
         @media screen and (max-width: 660px) {
             .login-container{
                 width: 90vw;
@@ -99,10 +123,17 @@
         </div>
         <a href="../index.html"><button class="goBack">Go To Home</button></a>
         <script>
+            function closeError() {
+                document.getElementById('errorContainer').style.display = 'none';
+            }
             document.getElementById('signupButton').addEventListener('click', function() {
                 const emailInput = document.getElementById('emailInput');
                 const passwordInput = document.getElementById('passwordInput');
                 const confirmPasswordInput = document.getElementById('confirmPasswordInput');
+                const password = passwordInput.value;
+                const hasLetter = /[a-zA-Z]/;
+                const hasNumber = /\d/;
+                const hasInvalidChars = /[^a-zA-Z0-9]/;
                 const errorContainer = document.getElementById('errorContainer');
                 const emailValue = emailInput.value.trim();
                 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -112,17 +143,49 @@
                 // Clear previous error messages
                 errorContainer.style.display = 'none';
                 errorContainer.innerHTML = '';
+                
                 // Validate email format and trusted domain
                 if (!emailRegex.test(emailValue) || !trustedDomains.includes(emailDomain)) {
-                    errorContainer.innerHTML = 'Please use a valid email address from trusted providers (e.g., Gmail, Outlook, Yahoo) etc.';
+                    
+                    errorContainer.innerHTML = '<div id="errorContainer"><button id="closeButton" onclick="closeError()">×</button><p>Please use a valid email address from trusted providers (e.g., Gmail, Outlook, Yahoo) etc.</p></div>';
+                   
                     errorContainer.style.display = 'block'; // Show error message
+                    
                     return;
                 }
                 // Check if passwords match
                 if (passwordInput.value !== confirmPasswordInput.value) {
-                    errorContainer.innerHTML = 'Both passwords do not match.';
+                    errorContainer.innerHTML = '<div id="errorContainer"><button id="closeButton" onclick="closeError()">×</button><p>Both passwords do not match.</p></div>';
+                   
                     errorContainer.style.display = 'block'; // Show error message
+                    
                     return;
+                  
+                }
+                if (password.length < 8 || password.length > 20) {
+                    errorContainer.innerHTML = '<div id="errorContainer"><button id="closeButton" onclick="closeError()">×</button><p>Password must be between 8 and 20 characters long.</p></div>';
+                   
+                    errorContainer.style.display = 'block'; // Show error message
+                    
+                    return;
+                    
+                }
+                if (!hasLetter.test(password) || !hasNumber.test(password)) {
+                    errorContainer.innerHTML = '<div id="errorContainer"><button id="closeButton" onclick="closeError()">×</button><p>Password must contain both letters and numbers.</p></div>';
+                   
+                    errorContainer.style.display = 'block'; // Show error message
+                    
+                    return;
+                    
+                }
+                if (hasInvalidChars.test(password)) {
+                    errorContainer.innerHTML = '<div id="errorContainer"><button id="closeButton" onclick="closeError()">×</button><p>Password must not contain spaces, special characters, or emojis.</p></div>';
+                   
+                    errorContainer.style.display = 'block'; // Show error message
+                    
+                    return;
+                    
+                    
                 }
                 // Clear input fields
                 emailInput.value = '';

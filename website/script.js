@@ -352,69 +352,9 @@ function updateAngle() {
 
 setInterval(updateAngle, 10000);
 
-function validateForm() { 
-  const name = document.querySelector('input[name="Name"]').value.trim();
-  const email = document.querySelector('input[name="Email"]').value.trim();
-  const message = document.querySelector('textarea[name="Message"]').value.trim();
-
-  console.log("Name:", name);
-  console.log("Email:", email);
-  console.log("Message:", message);
-
-  if (!name) {
-      alert("Please enter your name.");
-      return false;
-  }
-  if (!email) {
-      alert("Please enter your email.");
-      return false;
-  }
-  if (!message) {
-      alert("Please enter your message.");
-      return false;
-  }
-  
-  return true;
-}
-
-// FORM VALIDATING FUNCTION
-function validateForm() {
-
-  const nameInput = document.querySelector('[name="Name"]');
-  const emailInput = document.querySelector('[name="Email"]');
-  const messageInput = document.querySelector('[name="Message"]');
 
 
-  if (nameInput.value === '') {
-      alert('Please enter your name.');
-      return false;
-  }
-  
-  if (!isValidEmail(emailInput.value)) {
-    alert('Please enter a valid email address.');
-    return false;
-  }
-  
-  if (messageInput.value === '') {
-      alert('Please enter your message.');
-      return false;
-  }
-  
-  
-  const formData = {
-    Name: nameInput.value,
-    Email: emailInput.value,
-    Message: messageInput.value
-  };
-  localStorage.setItem('reviewData', JSON.stringify(formData));
-  
-  nameInput.value = '';
-  emailInput.value = '';
-  messageInput.value = '';
 
-  return false;
-} 
-  
 // EMAIL VALIDATING FUNCTION 
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

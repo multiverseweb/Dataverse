@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
-        body{
+        body {
             background-color: black;
             overflow-x: hidden;
         }
-        .image1{
+        .image1 {
             width: 43%;
             height: 90.9%;
             object-fit: cover;
@@ -22,7 +22,7 @@
             top: -10%;
             rotate: 36deg;
         }
-        .image2{
+        .image2 {
             width: 37%;
             height: 47%;
             position: absolute;
@@ -32,48 +32,66 @@
             right: 84%;
             rotate: -46deg;
         }
-        .login-container{
+        .login-container {
             width: 40vw;
             padding-bottom: 10px;
             height: min-content;
             position: relative;
             background-color: rgba(58, 58, 58, 0.288);
             box-shadow: 0 0 5px black;
-            top:20px;
+            top: 20px;
             backdrop-filter: blur(10px);
             border-radius: 10px;
         }
 
         @media screen and (max-width: 660px) {
-            .login-container{
+            .login-container {
                 width: 90vw;
                 margin-bottom: 100px;
             }
-            .image1{
-                height:100px;
+            .image1 {
+                height: 100px;
                 display: none;
             }
-            .image2{
+            .image2 {
                 height: 100px;
                 overflow-x: hidden;
             }
-            #forget{
+            #forget {
                 width: 90%;
             }
         }
-        
+        .strength-meter {
+            height: 10px; /* Adjust height as needed */
+            width: 90%; /* Match the width of the input */
+            margin-top: 5px; /* Space between input and strength meter */
+            background-color: #e0e0e0; /* Default background */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .strength-weak {
+            background-color: red; /* Weak strength color */
+        }
+
+        .strength-medium {
+            background-color: orange; /* Medium strength color */
+        }
+
+        .strength-strong {
+            background-color: green; /* Strong strength color */
+        }
     </style>
 </head>
 
-<body >
-    <img class="image1"  src="./web_images/2dglow.png" alt="login_bg">
-    <img class="image2"  src="./web_images/2dglowhalfbg-removebg-preview.png" alt="login_bg">
+<body>
+    <img class="image1" src="./web_images/2dglow.png" alt="login_bg">
+    <img class="image2" src="./web_images/2dglowhalfbg-removebg-preview.png" alt="login_bg">
     <img style="
-    top:10px;
-    margin-left: 10px;
-    position: relative;
-    width: 80px;
-    height: 80px;" src="./web_images/3d_glow.webp" alt="Dataverse Logo">
+        top:10px;
+        margin-left: 10px;
+        position: relative;
+        width: 80px;
+        height: 80px;" src="./web_images/3d_glow.webp" alt="Dataverse Logo">
     <center>
         <div class="login-container" style="padding-top: 20px; margin-top: 0px;">
             <h1 style="text-align: center; color: rgb(255, 255, 255); font-weight: 400; font-size: 35px">HEY! WELCOME BACK</h1>
@@ -81,10 +99,15 @@
             <div style="text-align: left; margin-left: 10%;" class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label" style="color: white;">Email address</label>
                 <input type="email" class="form-control" id="emailInput" placeholder="Enter your Email Address" style="width: 90%; margin-top: -5px">
+                <span id="emailError" style="color: red; font-size: 12px; display: none;"></span>
             </div>
             <div style="text-align: left; margin-left: 10%;" class="mb-3">
                 <label for="inputPassword5" class="form-label" style="color: white;">Password</label>
                 <input type="password" id="passwordInput" placeholder="Enter Your Password" class="form-control" aria-describedby="passwordHelpBlock" style="width: 90%; margin-top: -5px">
+                <span id="passwordError" style="color: red; font-size: 12px; display: none;"></span>
+                <div id="passwordStrength" class="strength-meter"></div>
+                <span id="strengthLabel" style="color: white; font-size: 14px; margin-top: 5px; display: none;"></span>
+
                 <div id="passwordHelpBlock" class="form-text" style="color:white; width: 90%; text-align: left; margin-top: -10px; margin-left: 10px;">
                     <p style="text-align: right; margin-top: 15px; font-size: medium; margin-bottom: 5px;"><a href="#" style=" text-decoration: none; color: #004ab7;" id="forget">Forget Password?</a></p>
                     <span style="color: rgb(255, 255, 255); font-size: 14px; position: relative;" id="content">Your password must be :</span><br>
@@ -95,30 +118,137 @@
             </div>
             <button type="button" class="btn btn-primary" id="loginButton" style="width: 50%; font-weight: 400;">LOGIN</button>
             <div style="text-align: center; margin-top: 10px;">
-                <p>Don't have an account ?  <a href="signup.html" style="text-decoration: underline; color: #004ab7;"> Sign Up</a></p>
+                <p>Don't have an account ? <a href="signup.html" style="text-decoration: underline; color: #004ab7;"> Sign Up</a></p>
             </div>
         </div>
         <!--login form end-->
     </center>
-    <a href="../index.html"><button class="goBack">Go To Home</button></a>
+
+    <!-- Modal for verification code -->
+    <div class="modal fade" id="verificationModal" tabindex="-1" aria-labelledby="verificationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="verificationModalLabel">Verify Code</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="verificationCode" placeholder="Enter verification code" required class="form-control">
+                    <div id="statusMessage" style="color: red; margin-top: 10px;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="verifyButton" class="btn btn-primary">Verify</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        let loginAttempts = 0; // Counter for login attempts
+        const maxAttempts = 5; // Set the maximum number of allowed login attempts
+        let expectedCode = ''; // Variable to hold the generated verification code
+
+        function updatePasswordStrength(password) {
+            const strengthMeter = document.getElementById('passwordStrength');
+            const strengthLabel = document.getElementById('strengthLabel'); // Get the strength label
+            let strength = 0;
+
+            // Increase strength based on conditions
+            if (password.length >= 8) strength++; // Length
+            if (/[A-Z]/.test(password)) strength++; // Uppercase
+            if (/[a-z]/.test(password)) strength++; // Lowercase
+            if (/\d/.test(password)) strength++; // Number
+            if (/[!@#$%^&*]/.test(password)) strength++; // Special character
+
+            // Update meter class based on strength
+            strengthMeter.className = 'strength-meter'; // Reset classes
+            if (strength === 1) {
+                strengthMeter.classList.add('strength-weak');
+                strengthLabel.textContent = 'Weak'; // Set strength label text
+                strengthLabel.style.display = 'block'; // Show the label
+            } else if (strength === 2 || strength === 3) {
+                strengthMeter.classList.add('strength-medium');
+                strengthLabel.textContent = 'Moderate'; // Set strength label text
+                strengthLabel.style.display = 'block'; // Show the label
+            } else if (strength === 4 || strength === 5) {
+                strengthMeter.classList.add('strength-strong');
+                strengthLabel.textContent = 'Strong'; // Set strength label text
+                strengthLabel.style.display = 'block'; // Show the label
+            } else {
+                strengthLabel.style.display = 'none'; // Hide the label if not strong
+            }
+        }
+
+        // Listen for input on the password field to update strength
+        document.getElementById('passwordInput').addEventListener('input', function() {
+            updatePasswordStrength(this.value);
+        });
+
+        function generateRandomCode() {
+            return Math.floor(100000 + Math.random() * 900000).toString(); // Generate a random 6-digit number
+        }
+
         document.getElementById('loginButton').addEventListener('click', function() {
             const emailInput = document.getElementById('emailInput');
             const passwordInput = document.getElementById('passwordInput');
-            const emailValue = emailInput.value.trim();
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailRegex.test(emailValue)) {
-        alert('Invalid email address');
-        return;
-    }
+            const emailValue = emailInput.value;
+            const passwordValue = passwordInput.value;
+
+            // Regex for email and password validation
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+            // Reset error messages
+            document.getElementById('emailError').style.display = 'none';
+            document.getElementById('passwordError').style.display = 'none';
+
+            // Check if email and password are valid
+            const isEmailValid = emailRegex.test(emailValue);
+            const isPasswordValid = passwordRegex.test(passwordValue);
+
+            if (!isEmailValid && !isPasswordValid) {
+                alert('Please enter a valid email address and follow the specific password guidelines.');
+                return;
+            } else if (!isEmailValid) {
+                alert('Please enter a valid email address.');
+                return;
+            } else if (!isPasswordValid) {
+                alert('Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, one digit, and one special character.');
+                return;
+            }
+
+            // Increment login attempt counter
+            loginAttempts++;
+            if (loginAttempts > maxAttempts) {
+                alert('Too many login attempts. Please try again later.');
+                return;
+            }
+
+            // Generate a random verification code
+            expectedCode = generateRandomCode();
+            console.log('Generated verification code:', expectedCode); // For debugging purposes
+
+            // Simulate successful login
+            alert('Login successful! A verification code has been sent to your registered email: ' + expectedCode);
+            var verificationModal = new bootstrap.Modal(document.getElementById('verificationModal'));
+            verificationModal.show(); // Show the verification modal
             emailInput.value = '';
             passwordInput.value = '';
-            // Redirect to index.html
-            window.location.href = '/index.html';
-            alert('Login successful!');
+        });
+
+        document.getElementById('verifyButton').addEventListener('click', function() {
+            const verificationCodeInput = document.getElementById('verificationCode').value;
+
+            // Check if the verification code matches the expected code
+            if (verificationCodeInput === expectedCode) {
+                alert('Verification successful! You are now logged in.');
+                // Proceed to next step (redirect, etc.)
+                window.location.href = '/index.html'; // Redirect to home page
+            } else {
+                document.getElementById('statusMessage').textContent = 'Invalid verification code. Please try again.';
+            }
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="website/script.js"></script>
 </body>
 </html>

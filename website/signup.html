@@ -61,9 +61,11 @@
 .strength-meter {
     height: 4px; /* Adjust height as needed */
     width: 80%; /* Match the width of the input */
-    margin-top: 5px; /* Space between input and strength meter */
+    margin-top: 6px; /* Space between input and strength meter */
     background-color: #e0e0e0; /* Default background */
     border-radius: 5px; /* Rounded corners */
+    position: relative; /* Use relative positioning */
+    top: -14px; 
 }
 
 .strength-weak {
@@ -122,10 +124,11 @@
                     <label for="confirmPasswordInput" class="form-label" style="color: white;">Confirm Password</label>
                     <input type="password" placeholder="Confirm your Password" id="confirmPasswordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 90%; margin-top: -5px">
                 </div>
+                <p style="text-align:auto; color:#e0e0e0;margin-top: auto">Password Strength Meter</h1>
                 <div id="passwordStrength" class="strength-meter"></div>
-                <span id="strengthLabel" style="color: white; font-size: 14px; margin-top: 5px; display: none;"></span>
-                <div id="passwordHelpBlock" class="form-text" style="width: 90%; text-align: left; margin-top: -10px; margin-left: 10px; color: white;">
-                    <span style="color: rgb(255, 255, 255); font-size: 14px; position: relative;">Your password must be :</span><br>
+                <span id="strengthLabel" style="color: white; font-size: 14px; margin-bottom: 12px; display: none;"></span>
+                <div id="passwordHelpBlock" class="form-text" style="width: 90%; text-align: left; margin-top: -10px; margin-left: 10px;margin-bottom: 5px; color: white;">
+                    <span style="color: rgb(255, 255, 255); font-size: 14px; margin-bottom:4px;position: relative;">Your password must be :</span><br>
                     • 8-20 characters long.<br>
                     • Should contain letters and numbers<br>
                     • Must not contain spaces, special characters, or emojis.

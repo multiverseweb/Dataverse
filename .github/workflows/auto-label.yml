@@ -1,22 +1,24 @@
-
-name: Auto Label Issue
+name: Auto Label Issue and PR
 
 on:
   issues:
     types: [opened, reopened, edited]
+  pull_request:
+    types: [opened, reopened, edited]
 
 jobs:
-  label_issue:
+  label_issue_or_pr:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+      pull-requests: write
     steps:
-      - name: Label Issue with Custom Color
+      - name: Label Issue or PR with Custom Color
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const issue = context.payload.issue;
+            const issueOrPr = context.payload.issue || context.payload.pull_request;
             
             // Function to create or update a label with the specified color
             const createOrUpdateLabel = async (label, color) => {
@@ -42,7 +44,7 @@ jobs:
                   repo: context.repo.repo,
                   name: label,
                   color: color,
-                  description: `Waiting for the Dataverse's Maintainer to review this issue.`
+                  description: `Waiting for the Dataverse's Maintainer's review.`
                 });
               }
             };
@@ -51,11 +53,11 @@ jobs:
             const label = 'Review Queued';
             const color = 'faff00';  // Custom color hex code
 
-            // Create or update the label and apply it to the issue
+            // Create or update the label and apply it to the issue or PR
             await createOrUpdateLabel(label, color);
             await github.rest.issues.addLabels({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: issue.number,
+              issue_number: issueOrPr.number,
               labels: [label]
             });

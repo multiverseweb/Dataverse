@@ -49,7 +49,7 @@ jobs:
 
             // Define the label name and color
             const label = 'Review Queued';
-            const color = 'ffae00';  // Custom color hex code
+            const color = '0E8A16';  // Custom color hex code
 
             // Create or update the label and apply it to the issue
             await createOrUpdateLabel(label, color);

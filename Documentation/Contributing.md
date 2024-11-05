@@ -1,7 +1,7 @@
 <h1 align="center">✨ Contributors Guide ✨</h1>
 <h3 align="center">Welcome to my DATAVERSE🌍 project! <br> We appreciate your interest in contributing.😊 <br>This guide will help you get started with the project and make your first contribution.</h3>
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 # What you can contribute? 💭
 
@@ -14,44 +14,19 @@ Contributors can enhance the project by implementing new features or improvement
 **📝 Documentation :**
 High-quality documentation is essential for the success of the project. Contributions to the documentation help ensure that users and contributors can understand and use the travel website effectively.
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 # Code of Conduct
 
 Please read and follow our [Code of Conduct](https://github.com/multiverseweb/Dataverse/blob/main/code_of_conduct.md)
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 # Project Structure 📂
 
-```bash
-DATAVERSE/
-├── .github/                  # GitHub-related configurations such as workflows, issue templates, etc
-│   
-├── .vscode/                  # Settings for the file project is included in this
-│   
-├── software/                 # All the python related files are stored here
-│   
-├── website/                  # The scripts and images for the project are stored here
-│     
-├── code_of_conduct.md        # Some rules for the contributors
-│   
-├── Contributing.md           # Instructions for the contribution
-│   
-├── index.html                # Main file of the document that controls the structure of the project
-│   
-├── LICENSE                   # Authority for the project
-│   
-├── login.html                # Login page in the project
-│   
-├── README.md                 # Some basic instructions
-│   
-├── signup.html               # Sign up page in the project
-├──
-├── styles.css                # Stylesheets of the project
-```
+[View Project Structure](Documentation/ProjectScrusture.md)
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 # General Guidelines 🧾
 
@@ -75,7 +50,7 @@ DATAVERSE/
 - **Commit Message Format**:
   Use meaningful and descriptive commit messages.
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 # How to Contribute ? 📈
 
@@ -91,7 +66,7 @@ DATAVERSE/
 
 Thank you for your contribution!!
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 # First Pull Request ✨
 
@@ -141,7 +116,7 @@ git push -u origin <your_branch_name>
 
 10. **Congratulations! 🎉 you've made your contribution**
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 # Alternatively, contribute using GitHub Desktop 🖥️
 
@@ -177,14 +152,14 @@ git push -u origin <your_branch_name>
 9. **Wait for Review:**
 Your pull request will now be available for review by the project maintainers. They may provide feedback or ask for changes before merging your pull request into the main branch of the project repository.
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 # For Help And Support 💬
 
 - Admin :- Tejas Gupta
 - Contact :- [Email](multiverse.letter@gmail.com)
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 # Good Coding Practices 🧑‍💻
 
@@ -218,7 +193,7 @@ Your pull request will now be available for review by the project maintainers. T
    - Conduct code reviews for others and provide meaningful suggestions to improve the code.
    - Always refactor your code based on feedback to meet the project's standards.
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 # Pull Request Process 🚀
 
@@ -230,7 +205,7 @@ When submitting a pull request, please adhere to the following:
 4. Add relevant screenshots to assist in the review process.
 5. Submit your PR using the provided template and hang tight; we'll review it as soon as possible! 🚀
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 # Issue Report Process 📌
 
@@ -241,18 +216,18 @@ To report an issue, follow these steps:
 3. Wait until someone looks into your report.
 4. Begin working on the issue only after you have been assigned to it. 🚀
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 # Contribution Points 
 
 *🏆 Contribution Levels:*
 All the tasks will be assigned various levels based on the complexity of the task and skills required to complete it. Every level will provide you a different amount of Points that is:
 
-- **🥇 Level 1**: 10 Points  
-- **🥈 Level 2**: 25 Points  
-- **🥉 Level 3**: 45 Points  
+- **`🥇 Level 1`**: 10 Points  
+- **`🥈 Level 2`**: 25 Points  
+- **`🥉 Level 3`**: 45 Points  
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 
 <h2 align="center">Need more help? 🤔</h1>
@@ -265,13 +240,13 @@ All the tasks will be assigned various levels based on the complexity of the tas
   <a href="https://docs.github.com/get-started">Getting started with Git and GitHub</a> <br>
 </p>
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 # Thank you for contributing 💗
 
 We truly appreciate your time and effort to help improve our project. Feel free to reach out if you have any questions or need guidance. Happy coding! 🚀
 
-![Line](https://user-images.githubusercontent.com/85225156/171937799-8fc9e255-9889-4642-9c92-6df85fb86e82.gif)
+---
 
 <h2 align="center">Tip from us 😇</h1>
 <p align="center">It always takes time to understand and learn. So, don't worry at all. We know <b>you have got this</b>! 💪</p>

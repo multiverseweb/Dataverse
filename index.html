@@ -47,10 +47,10 @@
         <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
         <a href="website/login.html">
             <button class="loginSignupbtn">
-              <span class="button-text">Login</span>
-              <img src="website/web_images/user.png" alt="User Icon" class="user-icon">
+                <span class="button-text">Login</span>
+                <img src="website/web_images/user.png" alt="User Icon" class="user-icon">
             </button>
-          </a>
+        </a>
     </nav>
 
     <button class="burger" id="burger" onclick="show()"></button>
@@ -250,12 +250,73 @@
             </div>
         </div>
         <form name="Dataverse Reviews" method="POST" data-netlify="true" onsubmit="return validateForm()">
-            <p style="color:white">Let Me Know Your Thoughts!</p>
-            <input type="text" name="Name" placeholder="Your Name" required>
-            <input type="email" name="Email" placeholder="Your Email ID" required>
-            <input name="Message" placeholder="Your Message" required>
-            <input type="submit" value="Send" id="send">
+            <p style="color:white; font-size: 1.2em; font-weight: bold; text-align: center;">Let Me Know Your Thoughts!
+            </p>
+
+            <input type="text" name="Name" placeholder="Your Name" required
+                style="margin: 5px; padding: 10px; border-radius: 5px;">
+            <input type="email" name="Email" placeholder="Your Email ID" required
+                style="margin: 5px; padding: 10px; border-radius: 5px;">
+            <input name="Message" placeholder="Your Message" required
+                style="margin: 5px; padding: 10px; border-radius: 5px;"></textarea>
+
+            <div class="star-rating" style="text-align: center; margin: 10px;">
+                <input type="radio" id="star5" name="rating" value="5" />
+                <label for="star5" title="5 star">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4" />
+                <label for="star4" title="4 stars">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3" />
+                <label for="star3" title="3 stars">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2" />
+                <label for="star2" title="2 stars">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1" />
+                <label for="star1" title="1 stars">&#9733;</label>
+            </div>
+
+            <input type="submit" value="Send" id="send"
+                style="margin-top: 10px; padding: 10px 20px; border-radius: 5px; background-color: #444; color: white;">
         </form>
+        <style>
+            .star-rating {
+                display: flex;
+                justify-content: center;
+                direction: rtl; /* This reverses the order of the stars */
+            }
+
+            .star-rating input {
+                display: none;
+                /* Hide the radio buttons */
+            }
+
+            .star-rating label {
+                font-size: 2em;
+                /* Star size */
+                color: grey;
+                /* Default star color */
+                cursor: pointer;
+            }
+
+            .star-rating input:checked~label {
+                color: gold;
+                /* Gold color for selected stars */
+            }
+
+            .star-rating label:hover,
+            .star-rating label:hover~label {
+                color: gold;
+                /* Change color on hover */
+            }
+        </style>
+        <script>
+            function validateForm() {
+                const rating = document.querySelector('input[name="rating"]:checked');
+                if (!rating) {
+                    alert("Please select a rating.");
+                    return false; // Prevent form submission
+                }
+                return true; // Allow form submission
+            }
+        </script>
     </footer>
     <div class="links">
         <div class="small">

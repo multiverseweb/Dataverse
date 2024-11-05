@@ -1,5 +1,5 @@
 // Array of city names
-var cities = ["Pune", "Moradabad", "Dehradun","Rampur","Delhi","Coimbatore"];
+var cities = ["Pune", "Moradabad", "Dehradun","Rampur","Delhi","Coimbatore","Riyadh"];
 
 // /preloader js styling
 window.addEventListener('DOMContentLoaded', () => {

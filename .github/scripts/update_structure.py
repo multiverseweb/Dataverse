@@ -33,7 +33,7 @@ def get_repo_structure(path='.', prefix=''):
 # Function to update the repo_structure.txt file
 def update_structure_file(structure):
     try:
-        with open('repo_structure.txt', 'w') as f:
+        with open('Documentation/repo_structure.txt', 'w') as f:
             f.write('\n'.join(structure))
         print("repo_structure.txt updated successfully.")
     except IOError as e:
@@ -42,7 +42,7 @@ def update_structure_file(structure):
 # Function to update the README.md with the new structure
 def update_README(structure):
     try:
-        with open('PROJECT_STRUCTURE.md', 'r') as f:
+        with open('Documentation/PROJECT_STRUCTURE.md', 'r') as f:
             content = f.read()
     except FileNotFoundError:
         print("PROJECT_STRUCTURE.md not found.")
@@ -61,7 +61,7 @@ def update_README(structure):
             content[end_index:]
         )
         try:
-            with open('PROJECT_STRUCTURE.md', 'w') as f:
+            with open('Documentation/PROJECT_STRUCTURE.md', 'w') as f:
                 f.write(new_content)
             print("PROJECT_STRUCTURE.md updated with new structure.")
         except IOError as e:
@@ -85,7 +85,7 @@ def main():
 
     try:
         # Fetch the contents of repo_structure.txt from GitHub
-        contents = repo.get_contents("repo_structure.txt")
+        contents = repo.get_contents("Documentation/repo_structure.txt")
         existing_structure = contents.decoded_content.decode().split('\n')
     except github.GithubException:
         existing_structure = None

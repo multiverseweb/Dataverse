@@ -941,7 +941,7 @@ form {
     background-color: #4c4c4c2a;
     backdrop-filter: blur(10px);
     width: 30vw;
-    margin-left: 5vw;
+    margin-left: -5vw;
     padding: 20px;
     text-align: center;
     border-radius: 5px;
@@ -983,6 +983,7 @@ input {
 }
 
 .cubes {
+    overflow-x: hidden;
     height: 60vh;
     position: absolute;
     right: -120px;
@@ -1000,6 +1001,7 @@ input {
 }
 
 .name {
+    margin-left: 100px;
     display: flex;
 }
 
@@ -1035,7 +1037,7 @@ input {
 }
 
 .end_line {
-    width: 80vw;
+    width: 70vw;
     margin-top: 25px;
     margin-left: 50%;
     transform: translate(-50%);
@@ -1063,6 +1065,10 @@ input {
     z-index: 10;
     border-bottom: 0px solid rgba(255, 255, 255, 0);
     transition-duration: 0.3s;
+}
+
+.small a{
+    width: fit-content;
 }
 
 .small a:hover {

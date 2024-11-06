@@ -21,7 +21,7 @@
 ---
 
 # Dataverse
-<img src="../website/web_images/3d_glow.webp" height=50px align=right>
+<img src="website/web_images/3d_glow.webp" height=50px align=right>
 
 ###### Data Visualisation Software & Personal Finance Tracker
 
@@ -65,8 +65,8 @@
 
 ### Table of Contents
 
-| [About Dataverse](#what-does-this-software-do) | [Versions](#versions) | [Use Dataverse](#deployment-specifications) | [Preview](#preview) | [Software Representation](#software-representation) | [Make Contributions](#contributions) | [Website](#website) |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| [About Dataverse](#what-does-this-software-do) | [Versions](#versions) | [Use Dataverse](#deployment-specifications) | [Project Structure](#project-structure) | [Preview](#preview) | [Software Representation](#software-representation) | [Make Contributions](#contributions) | [Website](#website) |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 
 ---
 
@@ -132,7 +132,7 @@ Now the software should run locally with no errors, feel free to use the softwar
 
 ---
 
-## ✨ Project Structure
+### Project Structure
 
 Check the project structure here [Project Structure](/Documentation/PROJECT_STRUCTURE.md) before Contributing to the repository.
 

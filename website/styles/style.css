@@ -52,6 +52,35 @@ body {
     transition-duration: 0.2s;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+.star-rating {
+    display: flex;
+    justify-content: center;
+    direction: rtl; /* This reverses the order of the stars */
+  }
+  
+  .star-rating input {
+    display: none;
+    /* Hide the radio buttons */
+  }
+  
+  .star-rating label {
+    font-size: 2em;
+    /* Star size */
+    color: grey;
+    /* Default star color */
+    cursor: pointer;
+  }
+  
+  .star-rating input:checked~label {
+    color: gold;
+    /* Gold color for selected stars */
+  }
+  
+  .star-rating label:hover,
+  .star-rating label:hover~label {
+    color: gold;
+    /* Change color on hover */
+  }  
 
 input {
     color: white;

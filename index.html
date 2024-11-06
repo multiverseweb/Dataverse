@@ -47,10 +47,10 @@
         <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
         <a href="website/pages/login.html">
             <button class="loginSignupbtn">
-              <span class="button-text">Login</span>
-              <img src="website/web_images/user.png" alt="User Icon" class="user-icon">
+                <span class="button-text">Login</span>
+                <img src="website/web_images/user.png" alt="User Icon" class="user-icon">
             </button>
-          </a>
+        </a>
     </nav>
 
     <button class="burger" id="burger" onclick="show()"></button>
@@ -82,7 +82,8 @@
                 </td>
             </tr>
             <tr>
-                <td><a href="website/pages/codeOfconduct.html" class="table_link" target="_blank">Code of Conduct</a></td>
+                <td><a href="website/pages/codeOfconduct.html" class="table_link" target="_blank">Code of Conduct</a>
+                </td>
             </tr>
             <tr>
                 <td><a href="website/pages/license.html" class="table_link">License</a></td>
@@ -254,6 +255,18 @@
             <input type="text" name="Name" placeholder="Your Name" required>
             <input type="email" name="Email" placeholder="Your Email ID" required>
             <input name="Message" placeholder="Your Message" required>
+            <div class="star-rating" style="text-align: center; margin: 10px;">
+                <input type="radio" id="star5" name="rating" value="5" />
+                <label for="star5" title="5 star">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4" />
+                <label for="star4" title="4 stars">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3" />
+                <label for="star3" title="3 stars">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2" />
+                <label for="star2" title="2 stars">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1" />
+                <label for="star1" title="1 stars">&#9733;</label>
+            </div>
             <input type="submit" value="Send" id="send">
         </form>
     </footer>
@@ -274,6 +287,19 @@
                 <a href="https://www.linkedin.com/in/tejascodes/"> LinkedIn</a>
             </div>
             <script>
+                function validateFeedback() {
+                    var feedback = document.forms["CodeIt Reviews"]["Feedback"];
+                    checkFeedbackLength(feedback);
+                    return feedback.value.length >= 10;
+                }
+                function validateForm() {
+                    const rating = document.querySelector('input[name="rating"]:checked');
+                    if (!rating) {
+                        alert("Please select a rating.");
+                        return false; // Prevent form submission
+                    }
+                    return true; // Allow form submission
+                }
                 // Delay the execution by 3 seconds
                 setTimeout(function () {
                     window.embeddedChatbotConfig = {
@@ -295,7 +321,8 @@
         <p class="tejas_credits" style="color:rgb(187, 187, 187); margin-top: 20px;"> Designed & Developed by Tejas
             Gupta</p>
         <br>
-        <p style="color:rgb(177, 177, 177);">&copy; <span id="copyright">32949832</span> <a href=".github/404.html">Tejas Gupta</a></p>
+        <p style="color:rgb(177, 177, 177);">&copy; <span id="copyright">32949832</span> <a
+                href=".github/404.html">Tejas Gupta</a></p>
     </div>
     <div class="end_line"></div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>

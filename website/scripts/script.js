@@ -142,6 +142,12 @@ function show() {
   plane.style.right = 0;
   body.style.overflowY = "hidden";
   buttons.style.marginLeft = 0;
+  //Position the indicator automatically
+  if(localStorage.getItem("theme") === "dark") {
+    updateIndicator(darkButton);
+  } else {
+    updateIndicator(lightButton);
+  }
 }
 function hide() {
   l2.style.opacity = 1;

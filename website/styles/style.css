@@ -330,7 +330,11 @@ body.light-mode footer h3 {
     /* Distance from the right side */
     top: 10px;
     /* Adjust the vertical positioning as needed */
+    transition: background-color 0.3s ease-in;
+}
 
+.loginSignupbtn:hover {
+    background-color: rgba(162, 162, 162, 0.5);
 }
 
 /* Ensure the button's anchor tag is styled correctly */

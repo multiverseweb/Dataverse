@@ -1118,6 +1118,9 @@ input {
 
 /*===========================RESPONSIVE===================================*/
 @media screen and (max-width: 660px) {
+    .name {
+        margin-left: 10px;
+    }
     .loginSignupbtn{
         padding: 10px;
         border-radius: 50%;
@@ -1257,8 +1260,11 @@ input {
 
     form {
         margin-top: 40px;
-        width: calc(80vw - 30px);
+        width: calc(90vw - 20px);
         margin-left: 0vw;
+    }
+    input{
+        width: 95%;
     }
 
     .heading {

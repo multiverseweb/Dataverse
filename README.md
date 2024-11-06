@@ -142,17 +142,17 @@ Check the project structure here [Project Structure](/Documentation/PROJECT_STRU
 
 Software GUI
 <br>
-<img src="../software/images/preview.png" width="800px">
+<img src="software/images/preview.png" width="800px">
 <br><br>
 <details> 
  <summary align=left><H4>View More</H4></summary><br>
 Visualised Finance Data
 <br>
-<img src="../website/web_images/preview.png" width="800px">
+<img src="website/web_images/preview.png" width="800px">
 <br><br>
 Relational Data
 <br>
-<img src="../website/web_images/data.png" width="800px">
+<img src="website/web_images/data.png" width="800px">
 </details>
 </div>
 
@@ -162,7 +162,7 @@ Relational Data
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 
 ER Diagram for Finance Tracker
-![](../website/web_images/ER_diagram.png)
+![](/website/web_images/ER_diagram.png)
 
 ---
 ### Contributions

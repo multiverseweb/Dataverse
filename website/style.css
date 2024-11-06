@@ -226,8 +226,35 @@ body.light-mode footer h3 {
     transition: box-shadow 0.3s ease-in-out;
     /* Smooth transition */
 }
+.star-rating {
+    display: flex;
+    justify-content: center;
+    direction: rtl; /* This reverses the order of the stars */
+}
 
+.star-rating input {
+    display: none;
+    /* Hide the radio buttons */
+}
 
+.star-rating label {
+    font-size: 2em;
+    /* Star size */
+    color: grey;
+    /* Default star color */
+    cursor: pointer;
+}
+
+.star-rating input:checked~label {
+    color: gold;
+    /* Gold color for selected stars */
+}
+
+.star-rating label:hover,
+.star-rating label:hover~label {
+    color: gold;
+    /* Change color on hover */
+}
 
 .copy {
     height: 20px;

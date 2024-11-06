@@ -1,73 +1,73 @@
 // Array of city names
-var cities = ["Pune", "Moradabad", "Dehradun", "Rampur", "Delhi", "Coimbatore"];
+var cities = ["Pune", "Moradabad", "Dehradun","Rampur","Delhi","Coimbatore", "Riyadh"];
 
 // /preloader js styling
 window.addEventListener('DOMContentLoaded', () => {
   // Hide the loader after 3 seconds
   setTimeout(() => {
-    const loader = document.getElementById('video-loader');
-    loader.style.display = 'none';
+      const loader = document.getElementById('video-loader');
+      loader.style.display = 'none';
 
-    displayCopyright();
+      displayCopyright();
   }, 3000);
 });
 
 function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 }
 function changeCss() {
-  var top = document.getElementById("top");
-  var scroll_icon = document.getElementById("scroll_icon");
-  (this.scrollY > 30) ? top.style.opacity = 1 : top.style.opacity = 0;
-  (this.scrollY > 0) ? scroll_icon.style.opacity = 0 : scroll_icon.style.opacity = 1;
+    var top = document.getElementById("top");
+    var scroll_icon = document.getElementById("scroll_icon");
+    (this.scrollY > 30) ? top.style.opacity = 1 : top.style.opacity = 0;
+    (this.scrollY > 0) ? scroll_icon.style.opacity = 0 : scroll_icon.style.opacity = 1;
 }
 
 window.addEventListener("scroll", changeCss, false);
 
 
 var map = L.map('map', {
-  center: [23.7937, 80.9629],
-  zoom: 5,
-  zoomControl: false
+    center: [23.7937, 80.9629],
+    zoom: 5,
+    zoomControl: false
 });
 
 // Add OpenStreetMap tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
 var redIcon = L.icon({
-  iconUrl: 'https://img1.picmix.com/output/stamp/normal/2/5/4/3/873452_376bb.png',
-  iconSize: [25, 25],
-  iconAnchor: [12, 12],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
+    iconUrl: 'https://img1.picmix.com/output/stamp/normal/2/5/4/3/873452_376bb.png',
+    iconSize: [25, 25],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
 });
 
 // Function to get coordinates for a city and add a marker
 async function addMarker(city) {
-  var url = `https://nominatim.openstreetmap.org/search?format=json&q=${city}`;
-
-  try {
-    const response = await fetch(url, {
-      headers: {
-        'User-Agent': 'YourAppName/1.0' // Replace with your app name
-      }
-    });
-    const data = await response.json();
-
-    if (data.length > 0) {
-      var lat = data[0].lat;
-      var lon = data[0].lon;
-      L.marker([lat, lon], { icon: redIcon }).addTo(map)
-        .bindPopup(city);
-    } else {
-      console.log("No results found for " + city);
+    var url = `https://nominatim.openstreetmap.org/search?format=json&q=${city}`;
+    
+    try {
+        const response = await fetch(url, {
+            headers: {
+                'User-Agent': 'YourAppName/1.0' // Replace with your app name
+            }
+        });
+        const data = await response.json();
+        
+        if (data.length > 0) {
+            var lat = data[0].lat;
+            var lon = data[0].lon;
+            L.marker([lat, lon], { icon: redIcon }).addTo(map)
+              .bindPopup(city);
+        } else {
+            console.log("No results found for " + city);
+        }
+    } catch (error) {
+        console.error("Error fetching coordinates for " + city + ": " + error);
     }
-  } catch (error) {
-    console.error("Error fetching coordinates for " + city + ": " + error);
-  }
 }
 
 // Add markers for each city
@@ -177,11 +177,11 @@ function updateIndicator(button) {
 
   const currentTheme = localStorage.getItem('theme');
   if (currentTheme === 'light') {
-    indicator.style.backgroundImage = "radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))"; // Black glow for light mode
-    // indicator.style.boxShadow = "0 0 5px 3px rgba(0, 0, 0, 0.7)"; // Subtle black glow
+      indicator.style.backgroundImage = "radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))"; // Black glow for light mode
+      // indicator.style.boxShadow = "0 0 5px 3px rgba(0, 0, 0, 0.7)"; // Subtle black glow
   } else {
-    indicator.style.backgroundImage = "radial-gradient(circle, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0))"; // White glow for dark mode
-    // indicator.style.boxShadow = "0 0 5px 3px rgba(255, 255, 255, 0.7)"; // Subtle white glow
+      indicator.style.backgroundImage = "radial-gradient(circle, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0))"; // White glow for dark mode
+      // indicator.style.boxShadow = "0 0 5px 3px rgba(255, 255, 255, 0.7)"; // Subtle white glow
   }
 }
 
@@ -197,8 +197,8 @@ function light(flag) {
   tags.style.backgroundColor = "#171717";
   indicator.style.backgroundImage = "radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
   shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#f9f9f9,#00000000)";
-  contribute.style.filter = "invert(1)";
-  technologies.style.border = "1px solid #00000044";
+  contribute.style.filter="invert(1)";
+  technologies.style.border="1px solid #00000044";
   const lightButton = document.getElementById("lightButton");
   updateIndicator(lightButton); // Update the indicator position and style for the light button
 }
@@ -212,8 +212,8 @@ function dark(flag) {
   shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#000000d4,#00000000)";
   body.classList.remove('light-mode');
   body.classList.add('dark-mode');
-  contribute.style.filter = "invert(0)";
-  technologies.style.border = "1px solid #ffffff044";
+  contribute.style.filter="invert(0)";
+  technologies.style.border="1px solid #ffffff044";
 
   const darkButton = document.getElementById("darkButton");
   updateIndicator(darkButton); // Update the indicator position and style for the dark button
@@ -224,20 +224,20 @@ function systemDefault() {
   const defaultButton = document.getElementById("defaultButton");
 
   if (theme === 'light') {
-    light(true);
-    updateIndicator(document.getElementById("lightButton")); // Ensure the indicator moves to the light button
-  } else if (theme === 'dark') {
-    dark(true);
-    updateIndicator(document.getElementById("darkButton")); // Ensure the indicator moves to the dark button
-  } else {
-    // Fallback based on system preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      dark(true);
-      updateIndicator(document.getElementById("darkButton")); // If system preference is dark
-    } else {
       light(true);
-      updateIndicator(document.getElementById("lightButton")); // If system preference is light
-    }
+      updateIndicator(document.getElementById("lightButton")); // Ensure the indicator moves to the light button
+  } else if (theme === 'dark') {
+      dark(true);
+      updateIndicator(document.getElementById("darkButton")); // Ensure the indicator moves to the dark button
+  } else {
+      // Fallback based on system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          dark(true);
+          updateIndicator(document.getElementById("darkButton")); // If system preference is dark
+      } else {
+          light(true);
+          updateIndicator(document.getElementById("lightButton")); // If system preference is light
+      }
   }
 
   // Move indicator to the default button when explicitly selected
@@ -286,44 +286,44 @@ let scrollTimeout;
 
 // Function to scroll the 'examples' and 'examples2' div automatically
 function autoScrollExamples() {
-  if (autoScroll) {
-    examples.scrollLeft += currentSpeed;
-    examples2.scrollLeft += currentSpeed * 1.2;
+    if (autoScroll) {
+        examples.scrollLeft += currentSpeed;
+        examples2.scrollLeft += currentSpeed * 1.2;
 
-    // Looping the scroll
-    if (examples.scrollLeft + examples.clientWidth >= examples.scrollWidth) {
-      examples.scrollLeft = 0;
+        // Looping the scroll
+        if (examples.scrollLeft + examples.clientWidth >= examples.scrollWidth) {
+            examples.scrollLeft = 0;
+        }
+        if (examples2.scrollLeft + examples2.clientWidth >= examples2.scrollWidth) {
+            examples2.scrollLeft = 0;
+        }
     }
-    if (examples2.scrollLeft + examples2.clientWidth >= examples2.scrollWidth) {
-      examples2.scrollLeft = 0;
-    }
-  }
 }
 
 setInterval(autoScrollExamples, 30);
 
 // Smoothly adjust scroll speed
 const adjustSpeed = (targetSpeed) => {
-  clearInterval(scrollTimeout);
-  scrollTimeout = setInterval(() => {
-    if (currentSpeed !== targetSpeed) {
-      currentSpeed += (targetSpeed > currentSpeed ? 0.1 : -0.3);
-      currentSpeed = Math.abs(currentSpeed - targetSpeed) < 0.1 ? targetSpeed : currentSpeed;
-    } else {
-      clearInterval(scrollTimeout);
-    }
-  }, 30);
+    clearInterval(scrollTimeout);
+    scrollTimeout = setInterval(() => {
+        if (currentSpeed !== targetSpeed) {
+            currentSpeed += (targetSpeed > currentSpeed ? 0.1 : -0.3);
+            currentSpeed = Math.abs(currentSpeed - targetSpeed) < 0.1 ? targetSpeed : currentSpeed;
+        } else {
+            clearInterval(scrollTimeout);
+        }
+    }, 30);
 };
 
 // Hovering behavior with smooth stop/resume
 const stopAutoScroll = () => {
-  autoScroll = false;
-  adjustSpeed(0);
+    autoScroll = false;
+    adjustSpeed(0);
 };
 
 const startAutoScroll = () => {
-  autoScroll = true;
-  adjustSpeed(scrollSpeed);
+    autoScroll = true;
+    adjustSpeed(scrollSpeed);
 };
 
 examples.addEventListener("mouseenter", stopAutoScroll);
@@ -352,7 +352,7 @@ function updateAngle() {
 
 setInterval(updateAngle, 10000);
 
-function validateForm() {
+function validateForm() { 
   const name = document.querySelector('input[name="Name"]').value.trim();
   const email = document.querySelector('input[name="Email"]').value.trim();
   const message = document.querySelector('textarea[name="Message"]').value.trim();
@@ -362,18 +362,18 @@ function validateForm() {
   console.log("Message:", message);
 
   if (!name) {
-    alert("Please enter your name.");
-    return false;
+      alert("Please enter your name.");
+      return false;
   }
   if (!email) {
-    alert("Please enter your email.");
-    return false;
+      alert("Please enter your email.");
+      return false;
   }
   if (!message) {
-    alert("Please enter your message.");
-    return false;
+      alert("Please enter your message.");
+      return false;
   }
-
+  
   return true;
 }
 
@@ -383,41 +383,42 @@ function validateForm() {
   const nameInput = document.querySelector('[name="Name"]');
   const emailInput = document.querySelector('[name="Email"]');
   const messageInput = document.querySelector('[name="Message"]');
-  const rating = document.querySelector('input[name="rating"]:checked');
+
 
   if (nameInput.value === '') {
-    alert('Please enter your name.');
-    return false;
+      alert('Please enter your name.');
+      return false;
   }
-
+  
   if (!isValidEmail(emailInput.value)) {
     alert('Please enter a valid email address.');
     return false;
   }
-
+  
   if (messageInput.value === '') {
-    alert('Please enter your message.');
-    return false;
+      alert('Please enter your message.');
+      return false;
   }
+  
+  
   const formData = {
     Name: nameInput.value,
     Email: emailInput.value,
     Message: messageInput.value
   };
   localStorage.setItem('reviewData', JSON.stringify(formData));
-
+  
   nameInput.value = '';
   emailInput.value = '';
   messageInput.value = '';
-  document.querySelectorAll('input[name="rating"]').forEach(radio => radio.checked = false);
 
   return false;
-}
-
+} 
+  
 // EMAIL VALIDATING FUNCTION 
 function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }
 
 // Display the current year in the copyright section

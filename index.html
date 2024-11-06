@@ -276,37 +276,6 @@
             <input type="submit" value="Send" id="send"
                 style="margin-top: 10px; padding: 10px 20px; border-radius: 5px; background-color: #444; color: white;">
         </form>
-        <style>
-            .star-rating {
-                display: flex;
-                justify-content: center;
-                direction: rtl; /* This reverses the order of the stars */
-            }
-
-            .star-rating input {
-                display: none;
-                /* Hide the radio buttons */
-            }
-
-            .star-rating label {
-                font-size: 2em;
-                /* Star size */
-                color: grey;
-                /* Default star color */
-                cursor: pointer;
-            }
-
-            .star-rating input:checked~label {
-                color: gold;
-                /* Gold color for selected stars */
-            }
-
-            .star-rating label:hover,
-            .star-rating label:hover~label {
-                color: gold;
-                /* Change color on hover */
-            }
-        </style>
         <script>
             function validateForm() {
                 const rating = document.querySelector('input[name="rating"]:checked');

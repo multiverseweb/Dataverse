@@ -2,11 +2,13 @@
 
 <!-- START_STRUCTURE -->
 ```
+├── 404.html
 ├── Documentation/
 │   ├── Contributing.md
 │   ├── PROJECT_STRUCTURE.md
 │   └── repo_structure.txt
 ├── LICENSE
+├── README.md
 ├── index.html
 ├── software/
 │   ├── __pycache__/

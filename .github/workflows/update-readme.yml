@@ -6,9 +6,7 @@ on:
   workflow_dispatch:  # Allow manual triggering
   push:
     branches:
-      # - main
-          # Updates repository when changes pushed into main branch
-      - auto
+      - main    # Updates repository when changes pushed into main branch
 
 jobs:
   detect-and-update-structure:

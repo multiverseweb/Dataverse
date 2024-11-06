@@ -8,7 +8,6 @@
 │   └── repo_structure.txt
 ├── LICENSE
 ├── index.html
-├── repo_structure.txt
 ├── software/
 │   ├── __pycache__/
 │   │   ├── dataVisualization.cpython-311.pyc

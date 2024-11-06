@@ -134,7 +134,7 @@ Now the software should run locally with no errors, feel free to use the softwar
 
 ## ✨ Project Structure
 
-Check the project structure here [Project Structure](/Documentation/PROJECT_STRUCTURE.md)
+Check the project structure here [Project Structure](/Documentation/PROJECT_STRUCTURE.md) before Contributing to the repository.
 
 ### Preview
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>

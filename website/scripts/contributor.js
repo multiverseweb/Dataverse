@@ -17,7 +17,7 @@ async function fetchData() {
 // Render stats
 function renderStats(repoStats, contributors) {
   const statsGrid = document.getElementById('statsGrid');
-  const totalContributions = contributors.reduce((sum,contributor) => sum + contributor.contributions,0);
+  const totalContributions = contributors?.reduce((sum,contributor) => sum + contributor.contributions,0) || 0;
   const stats = [
       { label: 'Contributors', value: contributors.length, icon: 'users' },
       { label: 'Total Contributions', value: totalContributions, icon: 'git-commit' },

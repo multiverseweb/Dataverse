@@ -1,3 +1,4 @@
+
 name: Auto Label Issue
 
 on:
@@ -41,14 +42,14 @@ jobs:
                   repo: context.repo.repo,
                   name: label,
                   color: color,
-                  description: Waiting for the Dataverse's Maintainer to review this issue.
+                  description: `Waiting for the Dataverse's Maintainer to review this issue.`
                 });
               }
             };
 
             // Define the label name and color
             const label = 'Review Queued';
-            const color = 'faff00';  // Custom color hex code
+            const color = 'ffae00';  // Custom color hex code
 
             // Create or update the label and apply it to the issue
             await createOrUpdateLabel(label, color);

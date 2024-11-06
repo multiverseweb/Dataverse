@@ -166,6 +166,14 @@ a {
 
 #defaultButton {
     margin-top: 12px;
+    margin-bottom: -2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#defaultButton img {
+    margin: auto;
 }
 
 /* Apply inversion only to specific elements */
@@ -1098,7 +1106,6 @@ input {
 
 .small a{
     width: fit-content;
-    border-bottom: 1px solid rgba(255, 255, 255, 0);
 }
 
 .small a:hover {

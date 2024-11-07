@@ -179,25 +179,32 @@
         }
         // Adjust password icon and icon overlay on resize
         window.addEventListener("resize", adjustIconPos);
-
-            // password hide/view handling
-            const password_icons = document.getElementsByClassName('password_icon');
-            Array.from(password_icons).forEach((icon) => {
-                icon.addEventListener("click", function (event) {
-                    if(event.target.previousElementSibling.type === 'password') {
-                        event.target.previousElementSibling.type = 'text';
-                        event.target.src = '../web_images/hide_password_icon.png';
-                        event.target.focus(); 
-                        event.target.alt = 'hide password';
-                        event.target.nextElementSibling.style.visibility = 'visible';
-                    } else {
-                        event.target.previousElementSibling.type = 'password';
-                        event.target.src = '../web_images/view_password_icon.png';
-                        event.target.focus(); 
-                        event.target.parentElement.lastChild.style.visiblity = 'hidden';
-                    }
-                })
+        const passwordIcons = document.getElementsByClassName('password_icon');
+        Array.from(passwordIcons).forEach((icon) => {
+            icon.addEventListener("click", function (event) {
+                if(event.target.previousElementSibling.type === 'password') {
+                    event.target.previousElementSibling.type = 'text';
+                    event.target.src = '../web_images/hide_password_icon.png';
+                    event.target.focus(); 
+                    event.target.alt = 'hide password';
+                    event.target.nextElementSibling.style.visibility = 'visible';
+                } else {
+                    event.target.previousElementSibling.type = 'password';
+                    event.target.src = '../web_images/view_password_icon.png';
+                    event.target.focus(); 
+                    event.target.nextElementSibling.style.visiblity = 'hidden';
+                }
             })
+        })
+        // Autoamtically click to remove an unknown figure that appears on load.
+        Array.from(passwordIcons).forEach((icon) => {
+            setTimeout(() => {
+                icon.click();
+            }, 50);
+            setTimeout(() => {
+                icon.click();
+            }, 100);
+        })
 
             // Function to handle signup
             document.getElementById('signupButton').addEventListener('click', function () {

@@ -150,6 +150,28 @@
 
             // Resize password icon and icon overlay on load
             adjustIconPos();
+
+            // Password hide/view handling
+            document.getElementById('password_icon').addEventListener("click", function (event) {
+                if(event.target.previousElementSibling.type === 'password') {
+                    event.target.previousElementSibling.type = 'text';
+                    event.target.src = '../web_images/hide_password_icon.png';
+                    event.target.previousElementSibling.focus();
+                    event.target.alt = 'hide password';
+                    document.getElementById('icon_overlay').style.visibility = 'visible';
+                } else {
+                    event.target.previousElementSibling.type = 'password';
+                    event.target.src = '../web_images/view_password_icon.png';
+                    event.target.previousElementSibling.focus(); 
+                    event.target.alt = 'view password';
+                    document.getElementById('icon_overlay').style.visibility = 'hidden';
+                }
+            })
+            // Autoamtically click to remove an unknown figure that appears on load.
+        document.getElementById('password_icon').click();
+        setTimeout(() => {
+            document.getElementById('password_icon').click();
+        }, 50);
         };
 
         function adjustIconPos() {
@@ -175,23 +197,6 @@
         }
         // Adjust password icon and icon overlay on resize
         window.addEventListener("resize", adjustIconPos);
-
-        // Password hide/view handling
-        document.getElementById('password_icon').addEventListener("click", function (event) {
-            if(event.target.previousElementSibling.type === 'password') {
-                event.target.previousElementSibling.type = 'text';
-                event.target.src = '../web_images/hide_password_icon.png';
-                event.target.previousElementSibling.focus();
-                event.target.alt = 'hide password';
-                document.getElementById('icon_overlay').style.visibility = 'visible';
-            } else {
-                event.target.previousElementSibling.type = 'password';
-                event.target.src = '../web_images/view_password_icon.png';
-                event.target.previousElementSibling.focus(); 
-                event.target.alt = 'view password';
-                document.getElementById('icon_overlay').style.visibility = 'hidden';
-            }
-        })
 
         document.getElementById('loginButton').addEventListener('click', function() {
             const emailInput = document.getElementById('emailInput');

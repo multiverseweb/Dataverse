@@ -22,7 +22,7 @@ maxLimit = 16 # maximum limit for colors
 mycon=financeTracker.mycon
 cursor=financeTracker.cursor
 cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id INT PRIMARY KEY, u_name VARCHAR(255), pwd VARCHAR(255), country varchar(50) default 'India')")
-cursor.execute("CREATE TABLE IF NOT EXISTS money (u_id INT, fiat FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total DOUBLE AS (fiat + gold + stocks + commodity + sales - expenditure), entryDate date);")
+cursor.execute("CREATE TABLE IF NOT EXISTS finance (u_id INT, fiat FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total DOUBLE AS (fiat + gold + stocks + commodity + sales - expenditure), entryDate date);")
 #===================================================================================================================================
 #============================================================================================Dataverse Operations
 #======================================================================password encryption
@@ -240,7 +240,7 @@ def delete(b4,b1,b3,b2,preview_image):
             if u_id==data[0][0] and pwd==data[0][1]:
                 cursor.execute("delete from user where u_id={}".format(u_id))
                 mycon.commit()
-                cursor.execute("delete from money where u_id={}".format(u_id))
+                cursor.execute("delete from finance where u_id={}".format(u_id))
                 mycon.commit()
                 messagebox.showinfo(title="", message="Account deleted successfully. ✓",icon="info")
             else:
@@ -304,7 +304,7 @@ def user_menu(u_id,u_name):
 
     profile=Frame(root,bg="#171717",relief=SUNKEN,width=25,height=100)
     profile.pack(side=RIGHT,fill=Y,anchor=NE)
-    q="select entryDate from money where u_id={}".format(u_id)
+    q="select entryDate from finance where u_id={}".format(u_id)
     cursor.execute(q)
     data=cursor.fetchall()
     since="NA"
@@ -368,7 +368,7 @@ def visualize(u_name):
 def insert(u_id,u_name):
     def show_message():
         ti=str(time.strftime('%y-%m-%d'))
-        q="insert into money (u_id,salary,gold,stocks,commodity,sales,expenditure,entryDate) values({},{},{},{},{},{},{},'{}')".format(u_id,variables[0].get(),variables[1].get(),variables[2].get(),variables[3].get(),variables[4].get(),variables[5].get(),ti)
+        q="insert into finance (u_id,salary,gold,stocks,commodity,sales,expenditure,entryDate) values({},{},{},{},{},{},{},'{}')".format(u_id,variables[0].get(),variables[1].get(),variables[2].get(),variables[3].get(),variables[4].get(),variables[5].get(),ti)
         cursor.execute(q)
         mycon.commit()
         messagebox.showinfo(title="", message="Data added successfully. ✓",icon="info")
@@ -390,7 +390,7 @@ def insert(u_id,u_name):
     title=Label(form,font="poppins 10",fg='#ffffff',bg='#171717',text="Enter Today's Data")
     title.pack(fill=Y,pady=35,padx=0)
 
-    cursor.execute("DESCRIBE money")
+    cursor.execute("DESCRIBE finance")
     schema = cursor.fetchall()
     money=IntVar()
     gold=IntVar()
@@ -412,13 +412,13 @@ def insert(u_id,u_name):
 #==========================================================================================delete data
 def delete_data(u_id):
     def show(u_id,e_date):
-        q="select * from money where u_id={} and entryDate='{}'".format(u_id,e_date.get())
+        q="select * from finance where u_id={} and entryDate='{}'".format(u_id,e_date.get())
         cursor.execute(q)
         data=cursor.fetchall()
         if len(data)==0:
             messagebox.showinfo(title="", message="Data not found. ✖",icon="warning")
         else:
-            q="delete from money where u_id={} and entryDate='{}'".format(u_id,e_date.get())
+            q="delete from finance where u_id={} and entryDate='{}'".format(u_id,e_date.get())
             cursor.execute(q)
             mycon.commit()
             messagebox.showinfo(title="", message="Data deleted successfully. ✓",icon="info")
@@ -1371,3 +1371,4 @@ relation.pack(side=RIGHT)
 menu=Frame(root,bg="#171717",relief=SUNKEN)
 menu.pack(side=LEFT,fill=Y)
 main()
+mycon.close()

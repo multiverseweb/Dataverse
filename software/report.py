@@ -18,7 +18,7 @@ def fetch_data_from_db(username):
 
     try:
         # Fetch user data
-        cursor.execute("SELECT user_id FROM users WHERE username = %s", (username,))
+        cursor.execute("SELECT user_id FROM user WHERE username = %s", (username,))
         user = cursor.fetchone()
 
         if user:

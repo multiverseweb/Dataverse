@@ -18,7 +18,7 @@ jobs:
       run: |
         COMMENT=$(cat <<EOF
         {
-          "body": "Thank you for submitting your pull request! 🙌 We'll review it as soon as possible. In the meantime, If there are any specific instructions or feedback regarding your PR, we'll provide them here. Thanks again for your contribution! 😊"
+          "body": " 🎉 Thank you for your contribution! Your pull request has been submitted successfully. A maintainer from `Dataverse` team will review it as soon as possible. We appreciate your support in making Dataverse better."
         }
         EOF
         )

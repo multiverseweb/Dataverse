@@ -14,11 +14,11 @@ from mysql.connector import Error
 colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462","#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato","tan"]
 #==================================================================================================connecting MySQL
 try:
-    mycon = my.connect(host='localhost', user='root', passwd='tejas123', database='finance')  # Declared as constant
+    mycon = my.connect(host='localhost', user='root', passwd='tejas123', database='dataverse')  # Declared as constant
     cursor = mycon.cursor()  # Declared as constant
 except Error as e:
     print(f"Error connecting to MySQL: {e}")
-    messagebox.showerror("Database Error", f"Failed to connect to the database: {e}\n\nExeccute the following query in your MYSQL Workbench or MySQL Shell and then try again:\n\nCREATE DATABASE FINANCE;")
+    messagebox.showerror("Database Error", f"Failed to connect to the database: {e}\n\nExeccute the following query in your MYSQL Workbench or MySQL Shell and then try again:\n\nCREATE DATABASE DATAVERSE;")
     exit()  # Exit the program if the database connection fails
 
 z = 0  # Declared as constant
@@ -26,7 +26,7 @@ z = 0  # Declared as constant
 #=========================================================================================view data
 def view_data(user_id):
     try:
-        query = "select * from money where u_id={}".format(user_id)
+        query = "select * from finance where u_id={}".format(user_id)
         cursor.execute(query)
         result_set = cursor.fetchall()
         if len(result_set) == 0:
@@ -84,22 +84,22 @@ def check_credentials(username, password):
         print(f"Database error: {e}")
     return message
 
-#============================================================================================================fetch user's money data
+#============================================================================================================fetch user's finance data
 def fetch_data(user_id):
     try:
-        query = "select * from money where u_id={}".format(user_id)
+        query = "select * from finance where u_id={}".format(user_id)
         cursor.execute(query)
         result_set = cursor.fetchall()
         if len(result_set) == 0:
             return None
         else:
-            cursor.execute("DESCRIBE money")
+            cursor.execute("DESCRIBE finance")
             schema = cursor.fetchall()
             column_names = [column[0] for column in schema]
             data_pool = {}
             for column_name in column_names:
                 column_data = []
-                query = "select {} from money where u_id={}".format(column_name, user_id)
+                query = "select {} from finance where u_id={}".format(column_name, user_id)
                 cursor.execute(query)
                 values = cursor.fetchall()
                 for value in values:

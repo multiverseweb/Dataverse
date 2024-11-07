@@ -32,6 +32,27 @@
             right: 84%;
             rotate: -46deg;
         }
+        .password_field_container {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            position: relative;
+        }
+        .password_field_container img {
+            position: absolute;
+            top: 10px;
+            right: 53px;
+            top: -2.5px;
+        }
+        .view_password {
+            width: 23px;
+            height: 23px;
+            opacity: 85%;
+            cursor: pointer;
+        }
+        .password_visible {
+            filter: invert(0.2);
+        }
         .login-container {
             width: 40vw;
             padding-bottom: 10px;
@@ -82,7 +103,10 @@
             </div>
             <div style="text-align: left; margin-left: 10%;" class="mb-3">
                 <label for="inputPassword5" class="form-label" style="color: white;">Password</label>
-                <input type="password" id="passwordInput" placeholder="Enter Your Password" class="form-control" aria-describedby="passwordHelpBlock" style="width: 90%; margin-top: -5px">
+                <div class="password_field_container">
+                    <input type="password" id="passwordInput" placeholder="Enter Your Password" class="form-control" aria-describedby="passwordHelpBlock" style="width: 90%; margin-top: -5px">
+                    <img src="../web_images/view_password.png" alt="view/hide password" id="view_password" class="view_password">
+                </div>
                 <div id="passwordHelpBlock" class="form-text" style="color:white; width: 90%; text-align: left; margin-top: -10px; margin-left: 10px;">
                     <p style="text-align: right; margin-top: 15px; font-size: medium; margin-bottom: 5px;"><a href="#" style=" text-decoration: none; color: #004ab7;" id="forget">Forget Password?</a></p>
                     <span style="color: rgb(255, 255, 255); font-size: 14px; position: relative;" id="content">Your password must be :</span><br>
@@ -114,11 +138,26 @@
             }
         };
 
+        // Password hide/view handling
+        document.getElementById('view_password').addEventListener("click", function (event) {
+            if(event.target.previousElementSibling.type === 'password') {
+                event.target.previousElementSibling.type = 'text';
+                event.target.classList.toggle('password_visible');
+            } else {
+                event.target.previousElementSibling.type = 'password';
+                event.target.classList.toggle('password_visible');
+            }
+        })
+
         document.getElementById('loginButton').addEventListener('click', function() {
             const emailInput = document.getElementById('emailInput');
             const passwordInput = document.getElementById('passwordInput');
             const emailValue = emailInput.value.trim();
             const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                
+            // Make sure to return the password field to the type['password']
+            document.getElementById('veiew_password').previousElementSibling.type = 'password';
+
             if (!emailRegex.test(emailValue)) {
                 alert('Invalid email address');
                 return;

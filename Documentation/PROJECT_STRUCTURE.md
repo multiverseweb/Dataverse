@@ -81,6 +81,7 @@
         ├── finance_down.webp
         ├── finance_up.webp
         ├── galaxy.webp
+        ├── hide_password_icon.png
         ├── live.gif
         ├── loader.gif
         ├── loader.mp4
@@ -90,6 +91,7 @@
         ├── stars.webp
         ├── top.webp
         ├── user.png
+        ├── view_password_icon.png
         ├── volcano.gif
         └── wordcloud.png
 ```

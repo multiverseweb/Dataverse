@@ -31,6 +31,37 @@
             right: 84%;
             rotate: -46deg;
         }
+        .password_field_container {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            position: relative;
+        }
+        /* .password_field_container input {
+            
+        } */
+        .password_icon {
+            position: absolute;
+            top: 10px;
+            right: 60px;
+            top: -2.5px;
+            width: 27px;
+            height: 27px;
+            opacity: 85%;
+            cursor: pointer;
+            background-color: #fff;
+            z-index: 1;
+        }
+        .icon_overlay {
+            visibility: hidden;
+            width: 27px;
+            height: 13px;
+            border-radius: 20px;
+            position: absolute;
+            right: 60px;
+            top: 3.2px;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
         .login-container {
             backdrop-filter: blur(10px);
             margin-bottom: 100px;
@@ -75,12 +106,20 @@
             </div>
             <div style="text-align: left; margin-left: 10%;" class="mb-3">
                 <label for="passwordInput" class="form-label" style="color: white;">Password</label>
-                <input type="password" placeholder="Enter your Password" id="passwordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 90%; margin-top: -5px">
-            </div>
+                <div class="password_field_container">
+                    <input type="password" placeholder="Enter your Password" id="passwordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 90%; margin-top: -5px">
+                    <img src="../web_images/view_password_icon.png" alt="view password" class="password_icon">
+                    <div class="icon_overlay"></div>
+                </div>
+                </div>
             <div style="text-align: left; margin-left: 10%;" class="mb-3">
                 <label for="confirmPasswordInput" class="form-label" style="color: white;">Confirm Password</label>
-                <input type="password" placeholder="Confirm your Password" id="confirmPasswordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 90%; margin-top: -5px">
-            </div>
+                <div class="password_field_container">
+                    <input type="password" placeholder="Confirm your Password" id="confirmPasswordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 90%; margin-top: -5px">
+                    <img src="../web_images/view_password_icon.png" alt="view password" class="password_icon">
+                    <div class="icon_overlay"></div>
+                </div>
+                </div>
             <div id="passwordHelpBlock" class="form-text" style="width: 90%; text-align: left; margin-top: -10px; margin-left: 10px; color: white;">
                 <span style="color: rgb(255, 255, 255); font-size: 14px; position: relative;">Your password must be :</span><br>
                 • 8-20 characters long.<br>
@@ -101,6 +140,76 @@
         </div>
         <a href="../../index.html"><button class="goBack">Go To Home</button></a>
         <script>
+            window.onload = function () {
+                // Adjust password icon and icon overlay on resize
+                adjustIconPos();
+            }
+
+            
+        function adjustIconPos() {
+            const passwordIcons = Array.from(document.getElementsByClassName('password_icon'));
+            const iconOverlays = Array.from(document.getElementsByClassName('icon_overlay'));
+            const mixedArray = [...passwordIcons, ...iconOverlays];
+            console.log(mixedArray);
+            if(window.innerWidth < 700 && window.innerWidth > 630) {
+                mixedArray.forEach((element) => {
+                    element.style.right = '35px';
+                })
+            } else if(window.innerWidth < 600 && window.innerWidth > 500) {
+                mixedArray.forEach((element) => {
+                    element.style.right = '60px';
+                })
+            } else if(window.innerWidth < 500 && window.innerWidth > 400) {
+                mixedArray.forEach((element) => {
+                    element.style.right = '50px';
+                })
+            } else if(window.innerWidth < 400 && window.innerWidth > 300) {
+                mixedArray.forEach((element) => {
+                    element.style.right = '40px';
+                })
+            } else if(window.innerWidth < 300) {
+                mixedArray.forEach((element) => {
+                    element.style.right = '35px';
+                })
+            } else if(window.innerWidth > 900) {
+                mixedArray.forEach((element) => {
+                    element.style.right = '55px';
+                })
+            }
+        }
+        // Adjust password icon and icon overlay on resize
+        window.addEventListener("resize", adjustIconPos);
+        const passwordIcons = document.getElementsByClassName('password_icon');
+        Array.from(passwordIcons).forEach((icon) => {
+            icon.addEventListener("click", function (event) {
+                if(event.target.previousElementSibling.type === 'password') {
+                    event.target.previousElementSibling.type = 'text';
+                    event.target.src = '../web_images/hide_password_icon.png';
+                    event.target.focus(); 
+                    event.target.alt = 'hide password';
+                    event.target.nextElementSibling.style.visibility = 'visible';
+                } else {
+                    event.target.previousElementSibling.type = 'password';
+                    event.target.src = '../web_images/view_password_icon.png';
+                    event.target.focus(); 
+                    event.target.nextElementSibling.style.visibility = 'hidden';
+                }
+            })
+        })
+        // Autoamtically click to remove an unknown figure that appears on load.
+        Array.from(passwordIcons).forEach((icon) => {
+            setTimeout(() => {
+                document.getElementById("passwordInput").value = '';
+                document.getElementById("confirmPasswordInput").value = '';
+                icon.click();
+            }, 50);
+            setTimeout(() => {
+                document.getElementById("passwordInput").value = '';
+                document.getElementById("confirmPasswordInput").value = '';
+                icon.click();
+            }, 100);
+        })
+
             // Function to handle signup
             document.getElementById('signupButton').addEventListener('click', function () {
                 const emailInput = document.getElementById('emailInput');
@@ -126,6 +235,11 @@
                     errorContainer.style.display = 'block'; // Show error message
                     return;
                 }
+
+                // Make sure to return the password fields to the type['password']
+                Array.from(passwordIcons).forEach((icon) => {
+                    icon.previousElementSibling.type = 'password';
+                })
 
                 // Check if passwords match
                 if (passwordInput.value !== confirmPasswordInput.value) {
@@ -161,6 +275,5 @@
             };
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="../scripts/script.js"></script>
     </body>
 </html>

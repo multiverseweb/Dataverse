@@ -145,81 +145,66 @@
                 adjustIconPos();
             }
 
-            
-        function adjustIconPos() {
-            const passwordIcons = Array.from(document.getElementsByClassName('password_icon'));
-            const iconOverlays = Array.from(document.getElementsByClassName('icon_overlay'));
-            const mixedArray = [...passwordIcons, ...iconOverlays];
-            console.log(mixedArray);
-            if(window.innerWidth < 700 && window.innerWidth > 630) {
-                mixedArray.forEach((element) => {
-                    element.style.right = '35px';
-                })
-            } else if(window.innerWidth < 600 && window.innerWidth > 500) {
-                mixedArray.forEach((element) => {
-                    element.style.right = '60px';
-                })
-            } else if(window.innerWidth < 500 && window.innerWidth > 400) {
-                mixedArray.forEach((element) => {
-                    element.style.right = '50px';
-                })
-            } else if(window.innerWidth < 400 && window.innerWidth > 300) {
-                mixedArray.forEach((element) => {
-                    element.style.right = '40px';
-                })
-            } else if(window.innerWidth < 300) {
-                mixedArray.forEach((element) => {
-                    element.style.right = '35px';
-                })
-            } else if(window.innerWidth > 900) {
-                mixedArray.forEach((element) => {
-                    element.style.right = '55px';
-                })
-            }
-        }
-        // Adjust password icon and icon overlay on resize
-        window.addEventListener("resize", adjustIconPos);
-        const passwordIcons = document.getElementsByClassName('password_icon');
-        Array.from(passwordIcons).forEach((icon) => {
-            icon.addEventListener("click", function (event) {
-                if(event.target.previousElementSibling.type === 'password') {
-                    event.target.previousElementSibling.type = 'text';
-                    event.target.src = '../web_images/hide_password_icon.png';
-                    event.target.focus(); 
-                    event.target.alt = 'hide password';
-                    event.target.nextElementSibling.style.visibility = 'visible';
-                } else {
-                    event.target.previousElementSibling.type = 'password';
-                    event.target.src = '../web_images/view_password_icon.png';
-                    event.target.focus(); 
-                    event.target.nextElementSibling.style.visibility = 'hidden';
+            // Function to adjust password visibility icon responsively
+            function adjustIconPos() {
+                const passwordIcons = Array.from(document.getElementsByClassName('password_icon'));
+                const iconOverlays = Array.from(document.getElementsByClassName('icon_overlay'));
+                const mixedArray = [...passwordIcons, ...iconOverlays];
+                console.log(mixedArray);
+                if(window.innerWidth < 700 && window.innerWidth > 630) {
+                    mixedArray.forEach((element) => {
+                        element.style.right = '35px';
+                    })
+                } else if(window.innerWidth < 600 && window.innerWidth > 500) {
+                    mixedArray.forEach((element) => {
+                        element.style.right = '60px';
+                    })
+                } else if(window.innerWidth < 500 && window.innerWidth > 400) {
+                    mixedArray.forEach((element) => {
+                        element.style.right = '50px';
+                    })
+                } else if(window.innerWidth < 400 && window.innerWidth > 300) {
+                    mixedArray.forEach((element) => {
+                        element.style.right = '40px';
+                    })
+                } else if(window.innerWidth < 300) {
+                    mixedArray.forEach((element) => {
+                        element.style.right = '35px';
+                    })
+                } else if(window.innerWidth > 900) {
+                    mixedArray.forEach((element) => {
+                        element.style.right = '55px';
+                    })
                 }
+            }
+            // Adjust password icon and icon overlay on resize
+            window.addEventListener("resize", adjustIconPos);
+
+            const passwordIcons = document.getElementsByClassName('password_icon');
+            Array.from(passwordIcons).forEach((icon) => {
+                icon.addEventListener("click", function (event) {
+                    if(event.target.previousElementSibling.type === 'password') {
+                        event.target.previousElementSibling.type = 'text';
+                        event.target.src = '../web_images/hide_password_icon.png';
+                        event.target.previousElementSibling.focus(); 
+                        event.target.alt = 'hide password';
+                        event.target.nextElementSibling.style.visibility = 'visible';
+                    } else {
+                        event.target.previousElementSibling.type = 'password';
+                        event.target.src = '../web_images/view_password_icon.png';
+                        event.target.previousElementSibling.focus(); 
+                        event.target.nextElementSibling.style.visibility = 'hidden';
+                    }
+                })
             })
-        })
-        // Autoamtically click to remove an unknown figure that appears on load.
-        Array.from(passwordIcons).forEach((icon) => {
-            setTimeout(() => {
-                document.getElementById("passwordInput").value = '';
-                document.getElementById("confirmPasswordInput").value = '';
-                icon.click();
-            }, 50);
-            setTimeout(() => {
-                document.getElementById("passwordInput").value = '';
-                document.getElementById("confirmPasswordInput").value = '';
-                icon.click();
-            }, 100);
-        })
 
             // Function to handle signup
             document.getElementById('signupButton').addEventListener('click', function () {
                 const emailInput = document.getElementById('emailInput');
                 const passwordInput = document.getElementById('passwordInput');
                 const confirmPasswordInput = document.getElementById('confirmPasswordInput');
-                const errorContainer = document.getElementById('errorContainer');
-                const rememberMe = document.getElementById('rememberMe');
-
-                const emailValue = emailInput.value.trim();
                 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                const emailValue = emailInput.value;
 
                 // Trusted email domains
                 const trustedDomains = ["gmail.com", "outlook.com", "yahoo.com", "hotmail.com", "protonmail.com", "icloud.com", "tutanota.com"];

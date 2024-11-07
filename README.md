@@ -21,7 +21,7 @@
 ---
 
 # Dataverse
-<img src="../website/web_images/3d_glow.webp" height=50px align=right>
+<img src="website/web_images/3d_glow.webp" height=50px align=right>
 
 ###### Data Visualisation Software & Personal Finance Tracker
 
@@ -65,8 +65,8 @@
 
 ### Table of Contents
 
-| [About Dataverse](#what-does-this-software-do) | [Versions](#versions) | [Use Dataverse](#deployment-specifications) | [Preview](#preview) | [Software Representation](#software-representation) | [Make Contributions](#contributions) | [Website](#website) |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| [About Dataverse](#what-does-this-software-do) | [Versions](#versions) | [Use Dataverse](#deployment-specifications) | [Project Structure](#project-structure) | [Preview](#preview) | [Software Representation](#software-representation) | [Make Contributions](#contributions) | [Website](#website) |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 
 ---
 
@@ -132,23 +132,27 @@ Now the software should run locally with no errors, feel free to use the softwar
 
 ---
 
+### Project Structure
+
+Check the project structure here [Project Structure](/Documentation/PROJECT_STRUCTURE.md) before Contributing to the repository.
+
 ### Preview
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 <div align=center>
 
 Software GUI
 <br>
-<img src="../software/images/preview.png" width="800px">
+<img src="software/images/preview.png" width="800px">
 <br><br>
 <details> 
  <summary align=left><H4>View More</H4></summary><br>
 Visualised Finance Data
 <br>
-<img src="../website/web_images/preview.png" width="800px">
+<img src="website/web_images/preview.png" width="800px">
 <br><br>
 Relational Data
 <br>
-<img src="../website/web_images/data.png" width="800px">
+<img src="website/web_images/data.png" width="800px">
 </details>
 </div>
 
@@ -158,7 +162,7 @@ Relational Data
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 
 ER Diagram for Finance Tracker
-![](../website/web_images/ER_diagram.png)
+![](/website/web_images/ER_diagram.png)
 
 ---
 ### Contributions

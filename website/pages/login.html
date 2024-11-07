@@ -168,8 +168,10 @@
                 }
             })
             // Autoamtically click to remove an unknown figure that appears on load.
+        document.getElementById('passwordInput').value = '12345678';
         document.getElementById('password_icon').click();
         setTimeout(() => {
+            document.getElementById('passwordInput').value = '';
             document.getElementById('password_icon').click();
         }, 50);
         };

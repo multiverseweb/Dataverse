@@ -192,16 +192,20 @@
                     event.target.previousElementSibling.type = 'password';
                     event.target.src = '../web_images/view_password_icon.png';
                     event.target.focus(); 
-                    event.target.nextElementSibling.style.visiblity = 'hidden';
+                    event.target.nextElementSibling.style.visibility = 'hidden';
                 }
             })
         })
         // Autoamtically click to remove an unknown figure that appears on load.
         Array.from(passwordIcons).forEach((icon) => {
             setTimeout(() => {
+                document.getElementById("passwordInput").value = '';
+                document.getElementById("confirmPasswordInput").value = '';
                 icon.click();
             }, 50);
             setTimeout(() => {
+                document.getElementById("passwordInput").value = '';
+                document.getElementById("confirmPasswordInput").value = '';
                 icon.click();
             }, 100);
         })

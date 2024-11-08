@@ -1307,6 +1307,11 @@ Managing finances has never been easier! Dataverse’s finance tracking features
     b3.config(command=partial(create,b3,b1,b2,b4,preview_image))
     b4.config(command=partial(delete,b4,b1,b2,b3,preview_image))
 
+    # adding version label to the home page
+    version_text = "Version : 6550(24) Latest"
+    version_label = Label(menu, text=version_text, font="poppins 10 bold", fg="#ffffff", bg="#171717")
+    version_label.pack(side=BOTTOM, anchor="w", padx=10, pady=10)    
+
     link1 = Label(menu,fg='#ffffff',bg='#1a1a1a',text="Visit Website",width=22,cursor="hand2",font="poppins 10", relief="sunken")
     link1.pack(pady=280,padx=15)
     link1.bind("<Button-1>", lambda e: callback("https://multiverse-dataverse.netlify.app/"))

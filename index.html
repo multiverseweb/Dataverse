@@ -109,17 +109,17 @@
             </p>
             <p id="intro_text">The adjoining map shows people who are using or contributing to Dataverse.</p>
             <button id="download_btn"
-                onclick="showCustomAlert('Dataverse is currently under development. It will be available for installastion soon.\n\nHowever, you can visit the following link to run the project locally on your computer:')">Get
+                onclick="showModal('Dataverse is currently under development. It will be available for installastion soon.\n\nHowever, you can visit the following link to run the project locally on your computer:', 'download dataverse')">Get
                 Dataverse</button>
 
-            <div id="custom-alert" class="custom-alert">
-                <div class="custom-alert-content">
-                    <span id="alert-message"></span>
-                    <div class="row_buttons">
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span id="modal-message"></span>
+                    <div id="modal-buttons">
                         <a
-                            href="https://github.com/multiverseweb/Dataverse?tab=readme-ov-file#deployment-specifications"><button>Try
+                            href="https://github.com/multiverseweb/Dataverse?tab=readme-ov-file#deployment-specifications"><button id="accept-modal">Try
                                 Dataverse</button></a>
-                        <button onclick="closeCustomAlert()" id="later">Later</button>
+                        <button onclick="closeModal()" id="close-modal">Later</button>
                     </div>
                 </div>
             </div>
@@ -250,11 +250,11 @@
                 <a class="subheading" href="index.html" id="last_link">Dataverse</a>
             </div>
         </div>
-        <form name="Dataverse Reviews" method="POST" data-netlify="true" onsubmit="return validateForm()">
+        <form name="Dataverse Reviews" method="POST"  data-netlify="true" id="feedback-form" onsubmit="return validateForm()">
             <p style="color:white">Let Me Know Your Thoughts!</p>
             <input type="text" name="Name" placeholder="Your Name" required>
             <input type="email" name="Email" placeholder="Your Email ID" required>
-            <input name="Message" placeholder="Your Message" required>
+            <textarea name="Message" placeholder="Your Message" rows="4" cols="38" required></textarea>
             <div class="star-rating" style="text-align: center; margin: 10px;">
                 <input type="radio" id="star5" name="rating" value="5" />
                 <label for="star5" title="5 star">&#9733;</label>
@@ -292,14 +292,7 @@
                     checkFeedbackLength(feedback);
                     return feedback.value.length >= 10;
                 }
-                function validateForm() {
-                    const rating = document.querySelector('input[name="rating"]:checked');
-                    if (!rating) {
-                        alert("Please select a rating.");
-                        return false; // Prevent form submission
-                    }
-                    return true; // Allow form submission
-                }
+
                 // Delay the execution by 3 seconds
                 setTimeout(function () {
                     window.embeddedChatbotConfig = {

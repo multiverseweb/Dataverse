@@ -334,13 +334,25 @@ examples2.addEventListener("mouseleave", startAutoScroll);
 window.addEventListener("scroll", progress);
 
 
-function showCustomAlert(message) {
-  document.getElementById('alert-message').innerText = message;
-  document.getElementById('custom-alert').style.display = 'block';
+function showModal(message, purpose) {
+  document.getElementById('modal').style.display = 'block';
+  document.getElementById('modal-message').innerText = message;
+
+  if(purpose === 'download dataverse') {
+    // Check if the accept and close buttons has been already hidden
+    if(document.getElementById('accept-modal').style.display === 'none') {
+      document.getElementById('accept-modal').style.display = 'block';
+    document.getElementById('modal-buttons').style.gap = '25%';
+    }
+  } else if(purpose === 'submit feedback') {
+    document.getElementById('accept-modal').style.display = 'none';    
+    document.getElementById('close-modal').innerText = 'close';
+    document.getElementById('modal-buttons').style.gap = '0';
+  }
 }
 
-function closeCustomAlert() {
-  document.getElementById('custom-alert').style.display = 'none';
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
 }
 
 /*CHANGING DIRECTION OF AEROPLANE*/
@@ -352,38 +364,13 @@ function updateAngle() {
 
 setInterval(updateAngle, 10000);
 
-function validateForm() { 
-  const name = document.querySelector('input[name="Name"]').value.trim();
-  const email = document.querySelector('input[name="Email"]').value.trim();
-  const message = document.querySelector('textarea[name="Message"]').value.trim();
-
-  console.log("Name:", name);
-  console.log("Email:", email);
-  console.log("Message:", message);
-
-  if (!name) {
-      alert("Please enter your name.");
-      return false;
-  }
-  if (!email) {
-      alert("Please enter your email.");
-      return false;
-  }
-  if (!message) {
-      alert("Please enter your message.");
-      return false;
-  }
-  
-  return true;
-}
-
 // FORM VALIDATING FUNCTION
 function validateForm() {
-
+  const form = document.getElementById('feedback-form');
   const nameInput = document.querySelector('[name="Name"]');
   const emailInput = document.querySelector('[name="Email"]');
-  const messageInput = document.querySelector('[name="Message"]');
-
+  const messageInput = document.querySelector('textarea[name="Message"]');
+  const rating = document.querySelector('[name=rating]:checked');
 
   if (nameInput.value === '') {
       alert('Please enter your name.');
@@ -399,7 +386,10 @@ function validateForm() {
       alert('Please enter your message.');
       return false;
   }
-  
+  if (rating === false || rating === null) {
+    alert("Please select a rating.");
+    return false; 
+  } 
   
   const formData = {
     Name: nameInput.value,
@@ -411,8 +401,11 @@ function validateForm() {
   nameInput.value = '';
   emailInput.value = '';
   messageInput.value = '';
+  rating.checked = false;
 
-  return false;
+  showModal('Thank you for your feedback!', 'submit feedback');
+  
+ return false;
 } 
   
 // EMAIL VALIDATING FUNCTION 

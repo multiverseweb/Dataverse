@@ -931,7 +931,7 @@ footer .contact {
 
 footer input[type="text"],
 footer input[type="email"],
-footer input[name="Message"],
+footer textarea[name="Message"],
 footer input[type="submit"] {
     backdrop-filter: blur(50px);
     box-shadow: 0 0 10px black;
@@ -1323,7 +1323,7 @@ input {
     transition: width 200ms linear;
 }
 
-.custom-alert {
+.modal {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -1334,7 +1334,7 @@ input {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.custom-alert-content {
+.modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1347,22 +1347,25 @@ input {
     border-radius: 4px;
     text-align: center;
     color: white;
+    font-size: 1.2rem;
 }
 
-.row_buttons {
+#modal-buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 25%;
 }
 
-.custom-alert button {
+.modal button {
     margin-top: 20px;
     background-color: #efefefeb;
     border-radius: 3px;
     border: 1px solid white;
     padding: 5px 20px 5px 20px;
+    font-size: 0.9rem;
 }
 
-#later {
+#close-modal {
     color: white;
     background-color: #00000000;
 }

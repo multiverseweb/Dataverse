@@ -1,16 +1,29 @@
 // Fetch data from GitHub API
 async function fetchData() {
+  const contributorsData = [];
+  const repoStatsUrl = 'https://api.github.com/repos/multiverseweb/Dataverse';
+  let page = 1;
+  let isFetching = true;
+
   try {
-      const contributorsResponse = await fetch('https://api.github.com/repos/multiverseweb/Dataverse/contributors');
-      const contributorsData = await contributorsResponse.json();
+    const repoResponse = await fetch(repoStatsUrl);
+    const repoData = await repoResponse.json();
+    while (isFetching) {
+      const contributorsResponse = await fetch(`${repoStatsUrl}/contributors?per_page=100&page=${page}`);
+      const pageData = await contributorsResponse.json();
 
-      const repoResponse = await fetch('https://api.github.com/repos/multiverseweb/Dataverse');
-      const repoData = await repoResponse.json();
+      if (!contributorsResponse.ok || pageData.length === 0) {
+        isFetching = false; 
+      } else {
+        contributorsData.push(...pageData);
+        page++; // Move to the next page
+      }
+    }
 
-      return { contributors: contributorsData, repoStats: repoData };
+    return { contributors: contributorsData, repoStats: repoData };
   } catch (error) {
-      console.error('Error fetching data:', error);
-      return { contributors: [], repoStats: {} };
+    console.error('Error fetching data:', error);
+    return { contributors: [], repoStats: {} };
   }
 }
 

@@ -224,6 +224,15 @@
                 alert('Too many login attempts. Please try again later.');
                 return;
             }
+             // Trusted email domains
+    const trustedDomains = ["gmail.com", "outlook.com", "yahoo.com", "hotmail.com", "protonmail.com", "icloud.com", "tutanota.com"];
+    const emailDomain = emailValue.split('@')[1];
+
+    // Validate email format and trusted domain
+    if (!trustedDomains.includes(emailDomain)) {
+        alert('Please use a valid email address from trusted providers (e.g., Gmail, Outlook, Yahoo, etc.).');
+        return;
+    }
 
             // Generate a random verification code
             expectedCode = generateRandomCode();

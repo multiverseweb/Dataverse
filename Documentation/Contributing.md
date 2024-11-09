@@ -18,7 +18,7 @@ High-quality documentation is essential for the success of the project. Contribu
 
 # Code of Conduct
 
-Please read and follow our [Code of Conduct](https://github.com/multiverseweb/Dataverse/blob/main/code_of_conduct.md)
+Please read and follow our [Code of Conduct](https://github.com/multiverseweb/Dataverse/blob/main/website/pages/code_of_conduct.html)
 
 ---
 

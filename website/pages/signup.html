@@ -1,264 +1,249 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/style.css">
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../web_images/3dlogo.svg" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up to Dataverse</title>
-    <style>
-        body {
-            background-color: black;
-        }
-        .image1 {
-            width: 43%;
-            height: 90.9%;
-            object-fit: cover;
-            position: absolute;
-            opacity: 70%;
-            left: 75%;
-            top: -10%;
-            rotate: 36deg;
-        }
-        .image2 {
-            width: 37%;
-            height: 47%;
-            position: absolute;
-            object-fit: contain;
-            opacity: 90%;
-            top: 32%;
-            right: 84%;
-            rotate: -46deg;
-        }
-        .password_field_container {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            position: relative;
-        }
-        /* .password_field_container input {
-            
-        } */
-        .password_icon {
-            position: absolute;
-            top: 10px;
-            right: 60px;
-            top: -2.5px;
-            width: 27px;
-            height: 27px;
-            opacity: 85%;
-            cursor: pointer;
-            background-color: #fff;
-            z-index: 1;
-        }
-        .icon_overlay {
-            visibility: hidden;
-            width: 27px;
-            height: 13px;
-            border-radius: 20px;
-            position: absolute;
-            right: 60px;
-            top: 3.2px;
-            background-color: rgba(0, 0, 0, 0.6);
-        }
-        .login-container {
-            backdrop-filter: blur(10px);
-            margin-bottom: 100px;
-            width: 40vw;
-            height: 500px;
-            position: relative;
-            background-color: rgba(58, 58, 58, 0.288);
-            top: 20px;
-            border-radius: 10px;
-        }
+	<head>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="../styles/style.css" />
+		<meta charset="UTF-8" />
+		<link rel="shortcut icon" href="../web_images/3dlogo.svg" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sign Up to Dataverse</title>
+		<style>
+			body {
+				background-color: black;
+			}
+			.image1 {
+				width: 43%;
+				height: 90.9%;
+				object-fit: cover;
+				position: absolute;
+				opacity: 70%;
+				left: 75%;
+				top: -10%;
+				rotate: 36deg;
+			}
+			.image2 {
+				width: 37%;
+				height: 47%;
+				position: absolute;
+				object-fit: contain;
+				opacity: 90%;
+				top: 32%;
+				right: 84%;
+				rotate: -46deg;
+			}
+			.password_field_container {
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-start;
+				position: relative;
+			}
+			.password_icon {
+				position: absolute;
+				top: 10px;
+				right: 60px;
+				top: -2.5px;
+				width: 27px;
+				height: 27px;
+				opacity: 85%;
+				cursor: pointer;
+				background-color: #fff;
+				z-index: 1;
+			}
+			.icon_overlay {
+				visibility: hidden;
+				width: 27px;
+				height: 13px;
+				border-radius: 20px;
+				position: absolute;
+				right: 60px;
+				top: 3.2px;
+				background-color: rgba(0, 0, 0, 0.6);
+			}
+			.login-container {
+				backdrop-filter: blur(10px);
+				margin-bottom: 100px;
+				width: 40vw;
+				height: 500px;
+				position: relative;
+				background-color: rgba(58, 58, 58, 0.288);
+				top: 20px;
+				border-radius: 10px;
+			}
 
-        @media screen and (max-width: 660px) {
-            .login-container {
-                width: 90vw;
-            }
-            .image1 {
-                height: 100px;
-                display: none;
-            }
-            .image2 {
-                height: 100px;
-                overflow-x: hidden;
-            }
-            input {
-                width: 90%;
-            }
-        }
-    </style>
-</head>
+			@media screen and (max-width: 660px) {
+				.login-container {
+					width: 90vw;
+				}
+				.image1 {
+					height: 100px;
+					display: none;
+				}
+				.image2 {
+					height: 100px;
+					overflow-x: hidden;
+				}
+				input {
+					width: 90%;
+				}
+			}
+		</style>
+	</head>
 
-<body>
-    <img class="image1" src="../web_images/2dglow.png" alt="sign_bg">
-    <img class="image2" src="../web_images/2dglowhalfbg-removebg-preview.png" alt="sign_bg">
-    <img style="top: 10px; margin-left: 10px; position: relative; width: 80px; height: 80px;" src="../web_images/3d_glow.webp" alt="Dataverse Logo">
-    <center>
-        <div class="login-container" style="padding-top: 20px;">
-            <h1 style="text-align: center; color: rgb(255, 255, 255); font-weight: 400; font: sans-serif;">SIGN UP</h1>
-            <div id="errorContainer" class="error-message"></div>
-            <div style="text-align: left; margin-left: 10%;" class="mb-3">
-                <label for="emailInput" class="form-label" style="color: white;">Email address</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="Enter your Email Address" style="width: 90%; margin-top: -5px">
-            </div>
-            <div style="text-align: left; margin-left: 10%;" class="mb-3">
-                <label for="passwordInput" class="form-label" style="color: white;">Password</label>
-                <div class="password_field_container">
-                    <input type="password" placeholder="Enter your Password" id="passwordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 90%; margin-top: -5px">
-                    <img src="../web_images/view_password_icon.png" alt="view password" class="password_icon">
-                    <div class="icon_overlay"></div>
-                </div>
-                </div>
-            <div style="text-align: left; margin-left: 10%;" class="mb-3">
-                <label for="confirmPasswordInput" class="form-label" style="color: white;">Confirm Password</label>
-                <div class="password_field_container">
-                    <input type="password" placeholder="Confirm your Password" id="confirmPasswordInput" class="form-control" aria-describedby="passwordHelpBlock" style="width: 90%; margin-top: -5px">
-                    <img src="../web_images/view_password_icon.png" alt="view password" class="password_icon">
-                    <div class="icon_overlay"></div>
-                </div>
-                </div>
-            <div id="passwordHelpBlock" class="form-text" style="width: 90%; text-align: left; margin-top: -10px; margin-left: 10px; color: white;">
-                <span style="color: rgb(255, 255, 255); font-size: 14px; position: relative;">Your password must be :</span><br>
-                • 8-20 characters long.<br>
-                • Should contain letters and numbers<br>
-                • Must not contain spaces, special characters, or emojis.
-            </div>
+	<body>
+		<img class="image1" src="../web_images/2dglow.png" alt="sign_bg" />
+		<img class="image2" src="../web_images/2dglowhalfbg-removebg-preview.png" alt="sign_bg" />
+		<img
+			style="top: 10px; margin-left: 10px; position: relative; width: 80px; height: 80px"
+			src="../web_images/3d_glow.webp"
+			alt="Dataverse Logo"
+		/>
+		<center>
+			<div class="login-container" style="padding-top: 20px">
+				<h1
+					style="
+						text-align: center;
+						color: rgb(255, 255, 255);
+						font-weight: 400;
+						font: sans-serif;
+					"
+				>
+					SIGN UP
+				</h1>
+				<div id="errorContainer" class="error-message"></div>
+				<div style="text-align: left; margin-left: 10%" class="mb-3">
+					<label for="emailInput" class="form-label" style="color: white"
+						>Email address</label
+					>
+					<input
+						type="email"
+						class="form-control"
+						id="emailInput"
+						placeholder="Enter your Email Address"
+						style="width: 90%; margin-top: -5px"
+					/>
+				</div>
+				<div style="text-align: left; margin-left: 10%" class="mb-3">
+					<label for="passwordInput" class="form-label" style="color: white"
+						>Password</label
+					>
+					<div class="password_field_container">
+						<input
+							type="password"
+							placeholder="Enter your Password"
+							id="passwordInput"
+							class="form-control"
+							aria-describedby="passwordHelpBlock"
+							style="width: 90%; margin-top: -5px"
+						/>
+						<img
+							src="../web_images/view_password_icon.png"
+							alt="view password"
+							class="password_icon"
+						/>
+						<div class="icon_overlay"></div>
+					</div>
+				</div>
+				<div style="text-align: left; margin-left: 10%" class="mb-3">
+					<label for="confirmPasswordInput" class="form-label" style="color: white"
+						>Confirm Password</label
+					>
+					<div class="password_field_container">
+						<input
+							type="password"
+							placeholder="Confirm your Password"
+							id="confirmPasswordInput"
+							class="form-control"
+							aria-describedby="passwordHelpBlock"
+							style="width: 90%; margin-top: -5px"
+						/>
+						<img
+							src="../web_images/view_password_icon.png"
+							alt="view password"
+							class="password_icon"
+						/>
+						<div class="icon_overlay"></div>
+					</div>
+				</div>
+				<div
+					id="passwordHelpBlock"
+					class="form-text"
+					style="
+						width: 90%;
+						text-align: left;
+						margin-top: -10px;
+						margin-left: 10px;
+						color: white;
+					"
+				>
+					<span style="color: rgb(255, 255, 255); font-size: 14px; position: relative"
+						>Your password must be :</span
+					><br />
+					• 8-20 characters long.<br />
+					• Should contain letters and numbers<br />
+					• Must not contain spaces, special characters, or emojis.
+				</div>
 
-            <!-- Remember Me Checkbox -->
-            <div class="form-check" style="text-align: left; margin-left: 35%; margin-bottom: -5px; margin-top: 5px;">
-                <input type="checkbox" id="rememberMe" class="form-check-input" style="width: 5px;">
-                <label for="rememberMe" class="form-check-label" style="color: white; font-weight: 500;">Remember Me</label>
-            </div>
+				<!-- Remember Me Checkbox -->
+				<div
+					class="form-check"
+					style="text-align: left; margin-left: 35%; margin-bottom: -5px; margin-top: 5px"
+				>
+					<input
+						type="checkbox"
+						id="rememberMe"
+						class="form-check-input"
+						style="width: 5px"
+					/>
+					<label
+						for="rememberMe"
+						class="form-check-label"
+						style="color: white; font-weight: 500"
+						>Remember Me</label
+					>
+				</div>
 
-            <button type="button" class="btn btn-primary" id="signupButton" style="width: 60%; margin-top: 15px; font-weight: 400;">SIGN UP</button>
-            <div style="text-align: center; margin-top: 10px;">
-                <p style="color: white;">Already have an account? <a href="login.html" style="text-decoration: underline; color: #004ab7;">Login</a></p>
-            </div>
-        </div>
-        <a href="../../index.html"><button class="goBack">Go To Home</button></a>
-        <script>
-            window.onload = function () {
-                // Adjust password icon and icon overlay on resize
-                adjustIconPos();
-            }
+				<button
+					type="button"
+					class="btn btn-primary"
+					id="signupButton"
+					style="width: 60%; margin-top: 15px; font-weight: 400"
+				>
+					SIGN UP
+				</button>
+				<div style="text-align: center; margin-top: 10px">
+					<p style="color: white">
+						Already have an account?
+						<a href="login.html" style="text-decoration: underline; color: #004ab7"
+							>Login</a
+						>
+					</p>
+				</div>
+			</div>
+			<a href="../../index.html"><button class="goBack">Go To Home</button></a>
+		</center>
 
-            // Function to adjust password visibility icon responsively
-            function adjustIconPos() {
-                const passwordIcons = Array.from(document.getElementsByClassName('password_icon'));
-                const iconOverlays = Array.from(document.getElementsByClassName('icon_overlay'));
-                const mixedArray = [...passwordIcons, ...iconOverlays];
-                console.log(mixedArray);
-                if(window.innerWidth < 700 && window.innerWidth > 630) {
-                    mixedArray.forEach((element) => {
-                        element.style.right = '35px';
-                    })
-                } else if(window.innerWidth < 600 && window.innerWidth > 500) {
-                    mixedArray.forEach((element) => {
-                        element.style.right = '60px';
-                    })
-                } else if(window.innerWidth < 500 && window.innerWidth > 400) {
-                    mixedArray.forEach((element) => {
-                        element.style.right = '50px';
-                    })
-                } else if(window.innerWidth < 400 && window.innerWidth > 300) {
-                    mixedArray.forEach((element) => {
-                        element.style.right = '40px';
-                    })
-                } else if(window.innerWidth < 300) {
-                    mixedArray.forEach((element) => {
-                        element.style.right = '35px';
-                    })
-                } else if(window.innerWidth > 900) {
-                    mixedArray.forEach((element) => {
-                        element.style.right = '55px';
-                    })
-                }
-            }
-            // Adjust password icon and icon overlay on resize
-            window.addEventListener("resize", adjustIconPos);
+		<script>
+			window.onload = function () {
+				adjustIconPos();
 
-            const passwordIcons = document.getElementsByClassName('password_icon');
-            Array.from(passwordIcons).forEach((icon) => {
-                icon.addEventListener("click", function (event) {
-                    if(event.target.previousElementSibling.type === 'password') {
-                        event.target.previousElementSibling.type = 'text';
-                        event.target.src = '../web_images/hide_password_icon.png';
-                        event.target.previousElementSibling.focus(); 
-                        event.target.alt = 'hide password';
-                        event.target.nextElementSibling.style.visibility = 'visible';
-                    } else {
-                        event.target.previousElementSibling.type = 'password';
-                        event.target.src = '../web_images/view_password_icon.png';
-                        event.target.previousElementSibling.focus(); 
-                        event.target.nextElementSibling.style.visibility = 'hidden';
-                    }
-                })
-            })
+				// Load remembered email on page load
+				const rememberedEmail = localStorage.getItem("rememberedEmail");
+				if (rememberedEmail) {
+					document.getElementById("emailInput").value = rememberedEmail;
+					document.getElementById("rememberMe").checked = true;
+				}
+			};
+		</script>
 
-            // Function to handle signup
-            document.getElementById('signupButton').addEventListener('click', function () {
-                const emailInput = document.getElementById('emailInput');
-                const passwordInput = document.getElementById('passwordInput');
-                const confirmPasswordInput = document.getElementById('confirmPasswordInput');
-                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                const emailValue = emailInput.value;
-
-                // Trusted email domains
-                const trustedDomains = ["gmail.com", "outlook.com", "yahoo.com", "hotmail.com", "protonmail.com", "icloud.com", "tutanota.com"];
-                const emailDomain = emailValue.split('@')[1];
-
-                // Clear previous error messages
-                errorContainer.style.display = 'none';
-                errorContainer.innerHTML = '';
-
-                // Validate email format and trusted domain
-                if (!emailRegex.test(emailValue) || !trustedDomains.includes(emailDomain)) {
-                    errorContainer.innerHTML = 'Please use a valid email address from trusted providers (e.g., Gmail, Outlook, Yahoo) etc.';
-                    errorContainer.style.display = 'block'; // Show error message
-                    return;
-                }
-
-                // Make sure to return the password fields to the type['password']
-                Array.from(passwordIcons).forEach((icon) => {
-                    icon.previousElementSibling.type = 'password';
-                })
-
-                // Check if passwords match
-                if (passwordInput.value !== confirmPasswordInput.value) {
-                    errorContainer.innerHTML = 'Both passwords do not match.';
-                    errorContainer.style.display = 'block'; // Show error message
-                    return;
-                }
-
-                // Save email to local storage if "Remember Me" is checked
-                if (rememberMe.checked) {
-                    localStorage.setItem('rememberedEmail', emailValue);
-                } else {
-                    localStorage.removeItem('rememberedEmail');
-                }
-
-                // Clear input fields
-                emailInput.value = '';
-                passwordInput.value = '';
-                confirmPasswordInput.value = '';
-                
-                // Redirect to login page
-                alert('Your account has been created successfully!');
-                window.location.href = 'login.html';
-            });
-
-            // Load remembered email on page load
-            window.onload = function () {
-                const rememberedEmail = localStorage.getItem('rememberedEmail');
-                if (rememberedEmail) {
-                    document.getElementById('emailInput').value = rememberedEmail;
-                    document.getElementById('rememberMe').checked = true;
-                }
-            };
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    </body>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+			crossorigin="anonymous"
+		></script>
+	</body>
 </html>

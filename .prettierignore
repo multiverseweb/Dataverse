@@ -1,0 +1,20 @@
+# Ignore the software directory
+software/
+
+# Ignore the documentation Directory
+Documentation/
+
+# Ignore .vscode directory
+.vscode/
+
+# Ignore .github directory
+.github/
+
+# Ignore .node_modules directory
+node_modules/
+
+# Ignore all .json files
+*.json
+
+# Ignore all markdown files
+*.md

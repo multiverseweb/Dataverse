@@ -1,229 +1,323 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="shortcut icon" href="../web_images/3dlogo.svg" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login to Dataverse</title>
-    <style>
-        body {
-            background-color: black;
-            overflow-x: hidden;
-        }
-        .image1 {
-            width: 43%;
-            height: 90.9%;
-            object-fit: cover;
-            position: absolute;
-            opacity: 70%;
-            left: 75%;
-            top: -10%;
-            rotate: 36deg;
-        }
-        .image2 {
-            width: 37%;
-            height: 47%;
-            position: absolute;
-            object-fit: contain;
-            opacity: 90%;
-            top: 32%;
-            right: 84%;
-            rotate: -46deg;
-        }
-        .password_field_container {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            position: relative;
-        }
-        /* .password_field_container input {
+	<head>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="../styles/style.css" />
+		<link rel="shortcut icon" href="../web_images/3dlogo.svg" type="image/x-icon" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login to Dataverse</title>
+		<style>
+			body {
+				background-color: black;
+				overflow-x: hidden;
+			}
+			.image1 {
+				width: 43%;
+				height: 90.9%;
+				object-fit: cover;
+				position: absolute;
+				opacity: 70%;
+				left: 75%;
+				top: -10%;
+				rotate: 36deg;
+			}
+			.image2 {
+				width: 37%;
+				height: 47%;
+				position: absolute;
+				object-fit: contain;
+				opacity: 90%;
+				top: 32%;
+				right: 84%;
+				rotate: -46deg;
+			}
+			.password_field_container {
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-start;
+				position: relative;
+			}
+			/* .password_field_container input {
             
         } */
-        .password_icon {
-            position: absolute;
-            top: 10px;
-            right: 60px;
-            top: -2.5px;
-            width: 25px;
-            height: 25px;
-            opacity: 85%;
-            cursor: pointer;
-            background-color: #fff;
-            z-index: 1;
-        }
-        #icon_overlay {
-            visibility: hidden;
-            width: 25px;
-            height: 13px;
-            border-radius: 20px;
-            position: absolute;
-            right: 60px;
-            top: 3.2px;
-            background-color: rgba(0, 0, 0, 0.6);
-        }
-        .login-container {
-            width: 40vw;
-            padding-bottom: 10px;
-            height: min-content;
-            position: relative;
-            background-color: rgba(58, 58, 58, 0.288);
-            box-shadow: 0 0 5px black;
-            top: 20px;
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-        }
-        .form-check-input:checked {
-            background-color: #004ab7; /* Change to your desired color */
-            border-color: #004ab7; /* Change to your desired color */
-}
+			.password_icon {
+				position: absolute;
+				top: 10px;
+				right: 60px;
+				top: -2.5px;
+				width: 25px;
+				height: 25px;
+				opacity: 85%;
+				cursor: pointer;
+				background-color: #fff;
+				z-index: 1;
+			}
+			#icon_overlay {
+				visibility: hidden;
+				width: 25px;
+				height: 13px;
+				border-radius: 20px;
+				position: absolute;
+				right: 60px;
+				top: 3.2px;
+				background-color: rgba(0, 0, 0, 0.6);
+			}
+			.login-container {
+				width: 40vw;
+				padding-bottom: 10px;
+				height: min-content;
+				position: relative;
+				background-color: rgba(58, 58, 58, 0.288);
+				box-shadow: 0 0 5px black;
+				top: 20px;
+				backdrop-filter: blur(10px);
+				border-radius: 10px;
+			}
+			.form-check-input:checked {
+				background-color: #004ab7; /* Change to your desired color */
+				border-color: #004ab7; /* Change to your desired color */
+			}
 
-        @media screen and (max-width: 660px) {
-            .login-container {
-                width: 90vw;
-                margin-bottom: 100px;
-            }
-            .image1 {
-                height: 100px;
-                display: none;
-            }
-            .image2 {
-                height: 100px;
-                overflow-x: hidden;
-            }
-            #forgot {
-                width: 90%;
-            }
-        }
-    </style>
-</head>
+			@media screen and (max-width: 660px) {
+				.login-container {
+					width: 90vw;
+					margin-bottom: 100px;
+				}
+				.image1 {
+					height: 100px;
+					display: none;
+				}
+				.image2 {
+					height: 100px;
+					overflow-x: hidden;
+				}
+				#forgot {
+					width: 90%;
+				}
+			}
+		</style>
+	</head>
 
-<body>
-    <img class="image1" src="../web_images/2dglow.png" alt="login_bg">
-    <img class="image2" src="../web_images/2dglowhalfbg-removebg-preview.png" alt="login_bg">
-    <img style="top:10px; margin-left: 10px; position: relative; width: 80px; height: 80px;" src="../web_images/3d_glow.webp" alt="Dataverse Logo">
-    <center>
-        <div class="login-container" style="padding-top: 20px; margin-top: 0px;">
-            <h1 style="text-align: center; color: rgb(255, 255, 255); font-weight: 400; font-size: 35px">HEY! WELCOME BACK</h1>
-            <h6 style="text-align: center; color: rgb(197 197 197); font-weight: 500; font-size: 18px;">Please Enter your Details</h6>
-            <div style="text-align: left; margin-left: 10%;" class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label" style="color: white;">Email address</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="Enter your Email Address" style="width: 90%; margin-top: -5px">
-            </div>
-            <div style="text-align: left; margin-left: 10%;" class="mb-3">
-                <label for="inputPassword5" class="form-label" style="color: white;">Password</label>
-                <div class="password_field_container">
-                    <input type="password" id="passwordInput" placeholder="Enter Your Password" class="form-control password-field" aria-describedby="passwordHelpBlock" style="width: 90%; margin-top: -5px">
-                    <img src="../web_images/view_password_icon.png" alt="view  password" id="password_icon" class="password_icon">
-                    <div id="icon_overlay"></div>
-                </div>
-                <div id="passwordHelpBlock" class="form-text" style="color:white; width: 90%; text-align: left; margin-top: -10px; margin-left: 10px;">
-                    <p style="text-align: right; margin-top: 15px; font-size: medium; margin-bottom: 5px;"><a href="#" style=" text-decoration: none; color: #004ab7;" id="forgot">Forgot Password?</a></p>
-                    <span style="color: rgb(255, 255, 255); font-size: 14px; position: relative;" id="content">Your password must be :</span><br>
-                    • 8-20 characters long.<br>
-                    • Should contain letters and numbers.<br>
-                    • Must not contain spaces, special characters, or emojis.
-                </div>
-            </div>
-            <!-- Remember Me Checkbox -->
-            <div style="text-align: left; margin-left: 35%;">
-                <input type="checkbox" id="rememberMe" style="margin-top: -5px; width: 15px; height: 15px;">
-                <label for="rememberMe" style="color: white;">Remember Me</label>
-            </div>
-            <button type="button" class="btn btn-primary" id="loginButton" style="width: 50%; font-weight: 400;">LOGIN</button>
-            <div style="text-align: center; margin-top: 10px;">
-                <p style="color: white;">Don't have an account? <a href="signup.html" style="text-decoration: underline; color: #004ab7;"> Sign Up</a></p>
-            </div>
-        </div>
-        <!--login form end-->
-    </center>
-    <a href="../../index.html"><button class="goBack">Go To Home</button></a>
-    <script>
-        // On page load, check local storage for email
-        window.onload = function() {
-            const savedEmail = localStorage.getItem('email');
-            if (savedEmail) {
-                document.getElementById('emailInput').value = savedEmail;
-                document.getElementById('rememberMe').checked = true;
-            }
+	<body>
+		<img class="image1" src="../web_images/2dglow.png" alt="login_bg" />
+		<img class="image2" src="../web_images/2dglowhalfbg-removebg-preview.png" alt="login_bg" />
+		<img
+			style="top: 10px; margin-left: 10px; position: relative; width: 80px; height: 80px"
+			src="../web_images/3d_glow.webp"
+			alt="Dataverse Logo"
+		/>
+		<center>
+			<div class="login-container" style="padding-top: 20px; margin-top: 0px">
+				<h1
+					style="
+						text-align: center;
+						color: rgb(255, 255, 255);
+						font-weight: 400;
+						font-size: 35px;
+					"
+				>
+					HEY! WELCOME BACK
+				</h1>
+				<h6
+					style="
+						text-align: center;
+						color: rgb(197 197 197);
+						font-weight: 500;
+						font-size: 18px;
+					"
+				>
+					Please Enter your Details
+				</h6>
+				<div style="text-align: left; margin-left: 10%" class="mb-3">
+					<label for="exampleFormControlInput1" class="form-label" style="color: white"
+						>Email address</label
+					>
+					<input
+						type="email"
+						class="form-control"
+						id="emailInput"
+						placeholder="Enter your Email Address"
+						style="width: 90%; margin-top: -5px"
+					/>
+				</div>
+				<div style="text-align: left; margin-left: 10%" class="mb-3">
+					<label for="inputPassword5" class="form-label" style="color: white"
+						>Password</label
+					>
+					<div class="password_field_container">
+						<input
+							type="password"
+							id="passwordInput"
+							placeholder="Enter Your Password"
+							class="form-control password-field"
+							aria-describedby="passwordHelpBlock"
+							style="width: 90%; margin-top: -5px"
+						/>
+						<img
+							src="../web_images/view_password_icon.png"
+							alt="view  password"
+							id="password_icon"
+							class="password_icon"
+						/>
+						<div id="icon_overlay"></div>
+					</div>
+					<div
+						id="passwordHelpBlock"
+						class="form-text"
+						style="
+							color: white;
+							width: 90%;
+							text-align: left;
+							margin-top: -10px;
+							margin-left: 10px;
+						"
+					>
+						<p
+							style="
+								text-align: right;
+								margin-top: 15px;
+								font-size: medium;
+								margin-bottom: 5px;
+							"
+						>
+							<a href="#" style="text-decoration: none; color: #004ab7" id="forgot"
+								>Forgot Password?</a
+							>
+						</p>
+						<span
+							style="color: rgb(255, 255, 255); font-size: 14px; position: relative"
+							id="content"
+							>Your password must be :</span
+						><br />
+						• 8-20 characters long.<br />
+						• Should contain letters and numbers.<br />
+						• Must not contain spaces, special characters, or emojis.
+					</div>
+				</div>
+				<!-- Remember Me Checkbox -->
+				<div style="text-align: left; margin-left: 35%">
+					<input
+						type="checkbox"
+						id="rememberMe"
+						style="margin-top: -5px; width: 15px; height: 15px"
+					/>
+					<label for="rememberMe" style="color: white">Remember Me</label>
+				</div>
+				<button
+					type="button"
+					class="btn btn-primary"
+					id="loginButton"
+					style="width: 50%; font-weight: 400"
+				>
+					LOGIN
+				</button>
+				<div style="text-align: center; margin-top: 10px">
+					<p style="color: white">
+						Don't have an account?
+						<a href="signup.html" style="text-decoration: underline; color: #004ab7">
+							Sign Up</a
+						>
+					</p>
+				</div>
+			</div>
+			<!--login form end-->
+		</center>
+		<a href="../../index.html"><button class="goBack">Go To Home</button></a>
+		<script>
+			// On page load, check local storage for email
+			window.onload = function () {
+				const savedEmail = localStorage.getItem("email");
+				if (savedEmail) {
+					document.getElementById("emailInput").value = savedEmail;
+					document.getElementById("rememberMe").checked = true;
+				}
 
-            // Resize password icon and icon overlay on load
-            adjustIconPos();
-        };
+				// Resize password icon and icon overlay on load
+				adjustIconPos();
+			};
 
-        function adjustIconPos() {
-        if(window.innerWidth < 700 && window.innerWidth > 630) {
-            document.getElementById('password_icon').style.right = '35px';
-            document.getElementById('icon_overlay').style.right = '35px';
-        } else if(window.innerWidth < 600 && window.innerWidth > 500) {
-            document.getElementById('password_icon').style.right = '60px';
-            document.getElementById('icon_overlay').style.right = '60px';
-        } else if(window.innerWidth < 500 && window.innerWidth > 400) {
-            document.getElementById('password_icon').style.right = '50px';
-            document.getElementById('icon_overlay').style.right = '50px';
-        } else if(window.innerWidth < 400 && window.innerWidth > 300) {
-            document.getElementById('password_icon').style.right = '40px';
-            document.getElementById('icon_overlay').style.right = '40px';
-        } else if(window.innerWidth < 300) {
-            document.getElementById('password_icon').style.right = '35px';
-             document.getElementById('icon_overlay').style.right = '35px';
-        } else if(window.innerWidth > 900) {
-            document.getElementById('password_icon').style.right = '55px';
-             document.getElementById('icon_overlay').style.right = '55px';
-        }
-        }
-        // Adjust password icon and icon overlay on resize
-        window.addEventListener("resize", adjustIconPos);
+			function adjustIconPos() {
+				if (window.innerWidth < 700 && window.innerWidth > 630) {
+					document.getElementById("password_icon").style.right = "35px";
+					document.getElementById("icon_overlay").style.right = "35px";
+				} else if (window.innerWidth < 600 && window.innerWidth > 500) {
+					document.getElementById("password_icon").style.right = "60px";
+					document.getElementById("icon_overlay").style.right = "60px";
+				} else if (window.innerWidth < 500 && window.innerWidth > 400) {
+					document.getElementById("password_icon").style.right = "50px";
+					document.getElementById("icon_overlay").style.right = "50px";
+				} else if (window.innerWidth < 400 && window.innerWidth > 300) {
+					document.getElementById("password_icon").style.right = "40px";
+					document.getElementById("icon_overlay").style.right = "40px";
+				} else if (window.innerWidth < 300) {
+					document.getElementById("password_icon").style.right = "35px";
+					document.getElementById("icon_overlay").style.right = "35px";
+				} else if (window.innerWidth > 900) {
+					document.getElementById("password_icon").style.right = "55px";
+					document.getElementById("icon_overlay").style.right = "55px";
+				}
+			}
+			// Adjust password icon and icon overlay on resize
+			window.addEventListener("resize", adjustIconPos);
 
-        // Password hide/view handling
-        document.getElementById('password_icon').addEventListener("click", function (event) {
-            if(event.target.previousElementSibling.type === 'password') {
-                event.target.previousElementSibling.type = 'text';
-                event.target.src = '../web_images/hide_password_icon.png';
-                event.target.previousElementSibling.focus();
-                event.target.alt = 'hide password';
-                document.getElementById('icon_overlay').style.visibility = 'visible';
-            } else {
-                event.target.previousElementSibling.type = 'password';
-                event.target.src = '../web_images/view_password_icon.png';
-                event.target.previousElementSibling.focus(); 
-                event.target.alt = 'view password';
-                document.getElementById('icon_overlay').style.visibility = 'hidden';
-            }
-        })
+			// Password hide/view handling
+			document.getElementById("password_icon").addEventListener("click", function (event) {
+				if (event.target.previousElementSibling.type === "password") {
+					event.target.previousElementSibling.type = "text";
+					event.target.src = "../web_images/hide_password_icon.png";
+					event.target.previousElementSibling.focus();
+					event.target.alt = "hide password";
+					document.getElementById("icon_overlay").style.visibility = "visible";
+				} else {
+					event.target.previousElementSibling.type = "password";
+					event.target.src = "../web_images/view_password_icon.png";
+					event.target.previousElementSibling.focus();
+					event.target.alt = "view password";
+					document.getElementById("icon_overlay").style.visibility = "hidden";
+				}
+			});
 
-        document.getElementById('loginButton').addEventListener('click', function() {
-            const emailInput = document.getElementById('emailInput');
-            const passwordInput = document.getElementById('passwordInput');
-            const emailValue = emailInput.value.trim();
-            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                
-            // Make sure to return the password field to the type['password']
-            document.querySelector('.password-field').type = 'password';
+			document.getElementById("loginButton").addEventListener("click", function () {
+				const emailInput = document.getElementById("emailInput");
+				const passwordInput = document.getElementById("passwordInput");
+				const emailValue = emailInput.value.trim();
+				const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-            if (!emailRegex.test(emailValue)) {
-                alert('Invalid email address');
-                return;
-            }
+				// Make sure to return the password field to the type['password']
+				document.querySelector(".password-field").type = "password";
 
-            // Check if "Remember Me" is checked
-            const rememberMe = document.getElementById('rememberMe').checked;
-            if (rememberMe) {
-                localStorage.setItem('email', emailValue);
-            } else {
-                localStorage.removeItem('email');
-            }
+				if (!emailRegex.test(emailValue)) {
+					alert("Invalid email address");
+					return;
+				}
 
-            // Clear the input fields
-            emailInput.value = '';
-            passwordInput.value = '';
-            // Redirect to index.html
-            alert('Login successful!');
-            window.location.href = '../../index.html';
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="../scripts/script.js"></script>
-</body>
+				// Check if "Remember Me" is checked
+				const rememberMe = document.getElementById("rememberMe").checked;
+				if (rememberMe) {
+					localStorage.setItem("email", emailValue);
+				} else {
+					localStorage.removeItem("email");
+				}
+
+				// Clear the input fields
+				emailInput.value = "";
+				passwordInput.value = "";
+				// Redirect to index.html
+				alert("Login successful!");
+				window.location.href = "../../index.html";
+			});
+		</script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+			crossorigin="anonymous"
+		></script>
+		<script src="../scripts/script.js"></script>
+	</body>
 </html>

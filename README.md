@@ -65,7 +65,7 @@
 
 ### Table of Contents
 
-| [About Dataverse](#what-does-this-software-do) | [Versions](#versions) | [Use Dataverse](#deployment-specifications) | [Project Structure](#project-structure) | [Preview](#preview) | [Software Representation](#software-representation) | [Make Contributions](#contributions) | [Website](#website) |
+| [About Dataverse](#what-does-this-software-do) | [Versions](#versions) | [Use Dataverse](#deployment-specifications) | [Repository Structure](#repository-structure) | [Preview](#preview) | [Software Representation](#software-representation) | [Make Contributions](#contributions) | [Website](#website) |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 
 ---
@@ -132,9 +132,9 @@ Now the software should run locally with no errors, feel free to use the softwar
 
 ---
 
-### Project Structure
+### Repository Structure
 
-Check the project structure here [Project Structure](/Documentation/PROJECT_STRUCTURE.md) before Contributing to the repository.
+📂 [Repository Structure](/Documentation/PROJECT_STRUCTURE.md)
 
 ### Preview
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
@@ -203,10 +203,12 @@ Want to contribute to this project? Follow these steps:
 ---
  
 ### Website
-<a href="https://multiverse-dataverse.netlify.app/"><img src="Documentation/images/netlify.svg"></a>
-
-[Visit Dataverse's Website](https://multiverse-dataverse.netlify.app/).
+|<a href="https://multiverse-dataverse.netlify.app/"><img src="Documentation/images/netlify.svg"></a>|[Visit Dataverse's Website](https://multiverse-dataverse.netlify.app/)|
+|-|-|
 
 
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 
+```
+
+```

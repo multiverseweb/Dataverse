@@ -206,9 +206,9 @@ Want to contribute to this project? Follow these steps:
 
 Deployed on
 
-<img height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Netlify_logo_%282%29.svg/1200px-Netlify_logo_%282%29.svg.png">
+<img src="Documentation/images/netlify.svg">
 
-You can visit the live site for Dataverse and related tools [here](https://multiverse-dataverse.netlify.app/).
+[Visit Dataverse's Website](https://multiverse-dataverse.netlify.app/).
 
 
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>

@@ -30,6 +30,7 @@
 
 ![Visitors](https://api.visitorbadge.io/api/visitors?path=multiverseweb2%2Dataverse%20&countColor=%23263759&style=flat&initial=5767)
   ![Github](https://img.shields.io/github/license/multiverseweb/Dataverse)
+  ![Languages](https://img.shields.io/github/languages/count/multiverseweb/Dataverse?color=20B2AA)
   ![GitHub Repo stars](https://img.shields.io/github/stars/multiverseweb/Dataverse)
   ![GitHub contributors](https://img.shields.io/github/contributors/multiverseweb/Dataverse)
   ![GitHub issues](https://img.shields.io/github/issues/multiverseweb/Dataverse)
@@ -165,6 +166,29 @@ ER Diagram for Finance Tracker
 ![](/website/web_images/ER_diagram.png)
 
 ---
+
+# Star History
+
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=multiverseweb/Dataverse&type=Date&theme=dark
+    "
+  />
+  
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=multiverseweb/Dataverse&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=multiverseweb/Dataverse&type=Date&theme=dark"
+  />
+</picture>
+
 ### Contributions
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 

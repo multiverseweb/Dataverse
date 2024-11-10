@@ -167,7 +167,7 @@ ER Diagram for Finance Tracker
 
 ---
 
-# Star History
+### Star History
 
 <picture>
   <source

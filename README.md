@@ -203,10 +203,7 @@ Want to contribute to this project? Follow these steps:
 ---
  
 ### Website
-
-Deployed on
-
-<img src="Documentation/images/netlify.svg">
+<a href="https://multiverse-dataverse.netlify.app/"><img src="Documentation/images/netlify.svg"></a>
 
 [Visit Dataverse's Website](https://multiverse-dataverse.netlify.app/).
 

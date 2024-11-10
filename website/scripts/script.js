@@ -1,5 +1,61 @@
 // Array of city names
-var cities = ["Pune", "Moradabad", "Dehradun","Rampur","Delhi","Coimbatore", "Riyadh"];
+var cities = ["Pune", "Moradabad", "Dehradun", "Rampur", "Delhi", "Coimbatore", "Riyadh", "Ahmedabad", "Kolkata", "Mumbai", "Jorhat", "Arrah", "Bhopal", "Bengalore", "Secunderabad", "Ludhiana", "Nagpur", "Lucknow", "Gorakhpur", "Bhilai", "Kanpur", "Panaji"];
+
+var map = L.map('map', {
+    center: [22.7937, 77.9629],
+    zoom: 4,
+    zoomControl: false
+});
+
+// Add OpenStreetMap tile layer
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+var redIcon = L.icon({
+    iconUrl: 'https://img1.picmix.com/output/stamp/normal/2/5/4/3/873452_376bb.png',
+    iconSize: [25, 25],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
+// Function to get coordinates for a city and add a marker
+async function addMarker(city) {
+    var url = `https://nominatim.openstreetmap.org/search?format=json&q=${city}`;
+    
+    try {
+        const response = await fetch(url, {
+            headers: {
+                'User-Agent': 'MyMapApp/1.0 (contact@example.com)', // Replace with your app name and contact info
+                'Accept-Language': 'en'  // Ensures response in English
+            }
+        });
+        const data = await response.json();
+        
+        if (data.length > 0) {
+            var lat = data[0].lat;
+            var lon = data[0].lon;
+            L.marker([lat, lon], { icon: redIcon }).addTo(map)
+              .bindPopup(city);
+        } else {
+            console.log("No results found for " + city);
+        }
+    } catch (error) {
+        console.error("Error fetching coordinates for " + city + ": " + error);
+    }
+}
+
+// Function to add markers with a delay between requests
+async function addMarkersWithDelay(cities) {
+    for (let i = 0; i < cities.length; i++) {
+        await addMarker(cities[i]);
+        await new Promise(resolve => setTimeout(resolve, 500)); // 500 ms delay to avoid rate limiting
+    }
+}
+
+// Call the function to add markers
+addMarkersWithDelay(cities);
 
 // /preloader js styling
 window.addEventListener('DOMContentLoaded', () => {
@@ -24,54 +80,6 @@ function changeCss() {
 }
 
 window.addEventListener("scroll", changeCss, false);
-
-
-var map = L.map('map', {
-    center: [23.7937, 80.9629],
-    zoom: 5,
-    zoomControl: false
-});
-
-// Add OpenStreetMap tile layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-
-var redIcon = L.icon({
-    iconUrl: 'https://img1.picmix.com/output/stamp/normal/2/5/4/3/873452_376bb.png',
-    iconSize: [25, 25],
-    iconAnchor: [12, 12],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41]
-});
-
-// Function to get coordinates for a city and add a marker
-async function addMarker(city) {
-    var url = `https://nominatim.openstreetmap.org/search?format=json&q=${city}`;
-    
-    try {
-        const response = await fetch(url, {
-            headers: {
-                'User-Agent': 'YourAppName/1.0' // Replace with your app name
-            }
-        });
-        const data = await response.json();
-        
-        if (data.length > 0) {
-            var lat = data[0].lat;
-            var lon = data[0].lon;
-            L.marker([lat, lon], { icon: redIcon }).addTo(map)
-              .bindPopup(city);
-        } else {
-            console.log("No results found for " + city);
-        }
-    } catch (error) {
-        console.error("Error fetching coordinates for " + city + ": " + error);
-    }
-}
-
-// Add markers for each city
-cities.forEach(city => addMarker(city));
 
 
 console.log("Tejas' Codes :)");

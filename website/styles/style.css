@@ -936,11 +936,9 @@ footer input[type="submit"] {
     backdrop-filter: blur(50px);
     box-shadow: 0 0 10px black;
     margin: 10px 0;
-    /* Margin between inputs */
     padding: 10px;
-    /* Padding for better usability */
+    width: 95%;
     border-radius: 5px;
-    /* Rounded corners */
     border: 1px solid rgba(126, 126, 126, 0.382);
     /* Silver border */
     background-color: rgba(255, 255, 255, 0.1);
@@ -949,6 +947,10 @@ footer input[type="submit"] {
     /* Silver text for inputs */
     transition: background-color 0.3s, color 0.3s;
     /* Smooth transition for inputs */
+}
+textarea{
+    resize: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 footer input[type="submit"] {

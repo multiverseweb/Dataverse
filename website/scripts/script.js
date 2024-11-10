@@ -20,22 +20,23 @@ var redIcon = L.icon({
     shadowSize: [41, 41]
 });
 
-// Function to get coordinates for a city and add a marker
+// Your OpenCage API Key here
+const OPENCAGE_API_KEY = '3f55c6e93c2c4b19ae45f1fd5db12cfc';
+
+// Function to get coordinates for a city and add a marker using OpenCage API
 async function addMarker(city) {
-    var url = `https://nominatim.openstreetmap.org/search?format=json&q=${city}`;
-    
+    var url = `https://api.opencagedata.com/geocode/v1/json?q=${city}&key=${OPENCAGE_API_KEY}`;
+
     try {
-        const response = await fetch(url, {
-            headers: {
-                'User-Agent': 'MyMapApp/1.0 (contact@example.com)', // Replace with your app name and contact info
-                'Accept-Language': 'en'  // Ensures response in English
-            }
-        });
+        const response = await fetch(url);
+        
+        if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
+        
         const data = await response.json();
         
-        if (data.length > 0) {
-            var lat = data[0].lat;
-            var lon = data[0].lon;
+        if (data.results.length > 0) {
+            const lat = data.results[0].geometry.lat;
+            const lon = data.results[0].geometry.lng;
             L.marker([lat, lon], { icon: redIcon }).addTo(map)
               .bindPopup(city);
         } else {
@@ -46,16 +47,17 @@ async function addMarker(city) {
     }
 }
 
-// Function to add markers with a delay between requests
+// Function to add markers with a delay to respect API limits
 async function addMarkersWithDelay(cities) {
     for (let i = 0; i < cities.length; i++) {
         await addMarker(cities[i]);
-        await new Promise(resolve => setTimeout(resolve, 500)); // 500 ms delay to avoid rate limiting
+        await new Promise(resolve => setTimeout(resolve, 1000)); // 1-second delay between requests
     }
 }
 
 // Call the function to add markers
 addMarkersWithDelay(cities);
+
 
 // /preloader js styling
 window.addEventListener('DOMContentLoaded', () => {

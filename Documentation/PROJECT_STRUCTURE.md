@@ -6,10 +6,13 @@
 ├── Documentation/
 │   ├── Contributing.md
 │   ├── PROJECT_STRUCTURE.md
+│   ├── images/
+│   │   └── netlify.svg
 │   └── repo_structure.txt
 ├── LICENSE
 ├── README.md
 ├── index.html
+├── plot.png
 ├── software/
 │   ├── __pycache__/
 │   │   ├── dataVisualization.cpython-311.pyc
@@ -46,7 +49,8 @@
 │   │   ├── user.png
 │   │   └── visualization.png
 │   ├── main.py
-│   └── report.py
+│   ├── report.py
+│   └── tempCodeRunnerFile.py
 └── website/
     ├── pages/
     │   ├── codeOfconduct.html

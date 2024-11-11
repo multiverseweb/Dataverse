@@ -1,25 +1,3 @@
-# GSSoc'24  <a href="https://codeittool.netlify.app">Extended<img src="https://user-images.githubusercontent.com/63473496/153487849-4f094c16-d21c-463e-9971-98a8af7ba372.png" height=40px align=right></a>
-
-## Tech Stack
-
-![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
-![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white) 
-![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
-![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-%2311557c.svg?style=for-the-badge&logo=python&logoColor=white)
-![Tkinter](https://img.shields.io/badge/Tkinter-blue?style=for-the-badge&logo=python&logoColor=white) 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) 
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) 
-![Microsoft Excel](https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
-
-#### Read the description below and [start contributing](#contributions) now! If you like the project, show some love ❤️ and star the repo! ⭐
-
-> [!IMPORTANT]
-> Look for issues labeled with <img src="https://github.com/user-attachments/assets/a7217478-f5f8-4174-a521-99df72095e28" height="20px"> and ask for assignment if you can solve them.
-
----
-
 # Dataverse
 <img src="website/web_images/3d_glow.webp" height=50px align=right>
 
@@ -30,6 +8,7 @@
 
 ![Visitors](https://api.visitorbadge.io/api/visitors?path=multiverseweb2%2Dataverse%20&countColor=%23263759&style=flat&initial=5767)
   ![Github](https://img.shields.io/github/license/multiverseweb/Dataverse)
+  ![Languages](https://img.shields.io/github/languages/count/multiverseweb/Dataverse?color=20B2AA)
   ![GitHub Repo stars](https://img.shields.io/github/stars/multiverseweb/Dataverse)
   ![GitHub contributors](https://img.shields.io/github/contributors/multiverseweb/Dataverse)
   ![GitHub issues](https://img.shields.io/github/issues/multiverseweb/Dataverse)
@@ -47,17 +26,14 @@
 <tr>
       <th>Event Logo</th>
       <th>Event Name</th>
-      <th>Event Description</th>
     </tr>
     <tr>
         <td><img src="https://user-images.githubusercontent.com/63473496/213306279-338f7ce9-9a9f-4427-8c2a-3e344874498f.png#gh-dark-mode-only" width="200" height="auto" loading="lazy" alt="GSSoC Ext 24"/></td>
-        <td>GirlScript Summer of Code Ext 2024</td>
-        <td><a href="https://gssoc.girlscript.tech/">GSSOC Ext</a> is a one-month-long open-source program by the GirlScript Foundation that's running from October 1 to November 10, 2024 and encourages participants to contribute to various open source projects.</td> 
+        <td><a href="https://gssoc.girlscript.tech/">GirlScript Summer of Code Ext (GSSoC'24) </a>2024</td>
     </tr>
    <tr>
         <td><img src="https://cdn.prod.website-files.com/63bc83b29094ec80844b6dd5/66fc35d92c74c4e4103f3673_Flyte-at-Hacktoberfest-2024.png" width="200" height="auto" loading="lazy" alt="Hacktoberfest 24"/></td>
-        <td>Hacktoberfest 2024</td>
-        <td><a href="https://hacktoberfest.com/">Hacktober Fest</a> is an annual celebration of open-source software development. It's a month-long event encouraging developers to contribute to open-source projects.</td> 
+        <td><a href="https://hacktoberfest.com/">Hacktober Fest</a> 2024</td>
     </tr>
 </table>
 
@@ -165,6 +141,29 @@ ER Diagram for Finance Tracker
 ![](/website/web_images/ER_diagram.png)
 
 ---
+
+### Star History
+
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=multiverseweb/Dataverse&type=Date&theme=dark
+    "
+  />
+  
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=multiverseweb/Dataverse&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=multiverseweb/Dataverse&type=Date&theme=dark"
+  />
+</picture>
+
 ### Contributions
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 

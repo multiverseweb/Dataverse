@@ -108,7 +108,7 @@ Now the software should run locally with no errors, feel free to use the softwar
 
 <highlight>For Website</highlight>
 - You must have Node.js installed in your computer, if it is not, install it from [here](https://nodejs.org/en).
-- After you have installed it, open the terminal, and type in this command to install the required dependencies:
+- After you have installed it, open the terminal, and run this command to install the required dependencies:
   ```
   npm install
   ```

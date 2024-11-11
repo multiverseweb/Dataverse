@@ -14,7 +14,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 var redIcon = L.icon({
     iconUrl: 'https://img1.picmix.com/output/stamp/normal/2/5/4/3/873452_376bb.png',
-    iconSize: [25, 25],
+    iconSize: [20, 20],
     iconAnchor: [12, 12],
     popupAnchor: [1, -34],
     shadowSize: [41, 41]

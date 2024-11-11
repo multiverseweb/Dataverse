@@ -206,6 +206,13 @@
                 alert('Invalid email address');
                 return;
             }
+            if (passwordInput.value.length === 0) {
+                alert('Please enter your password');
+                return;
+            } else if (passwordInput.value.length < 8) {
+                alert('Password must be at least 8 characters');
+                return;
+            }
 
             // Check if "Remember Me" is checked
             const rememberMe = document.getElementById('rememberMe').checked;

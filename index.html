@@ -254,7 +254,8 @@
             <p style="color:white">Let Me Know Your Thoughts!</p>
             <input type="text" name="Name" placeholder="Your Name" required>
             <input type="email" name="Email" placeholder="Your Email ID" required>
-            <textarea name="Message" placeholder="Your Message" rows="4" required></textarea>
+            <textarea name="Message" placeholder="Your Message" rows="4" required oninput="checkFeedbackLength(this)"></textarea>
+            <p id="feedbackError" style="color:#fd4346; opacity: 0%; font-size: 1.25rem; white-space: normal; transition: opacity 0.4s ease ">Feedback must be at least 10 characters long.</p>
             <div class="star-rating" style="text-align: center; margin: 10px;">
                 <input type="radio" id="star5" name="rating" value="5" />
                 <label for="star5" title="5 star">&#9733;</label>

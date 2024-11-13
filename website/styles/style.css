@@ -623,7 +623,7 @@ tr:hover {
     font-size: large;
     transition-duration: 0.3s;
     padding: 10px 20px 10px 20px;
-    z-index: 20;
+    z-index: 40;
     border-radius: 5px;
 }
 

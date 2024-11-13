@@ -132,6 +132,18 @@ window.addEventListener('scroll', () => {
   lastScrollTop = scrollTop;
 });
 
+window.onload = function() {
+  const feedbackField = document.forms['feedback-form']['Message'];
+
+  feedbackField.addEventListener('focus', () => {
+    checkFeedbackLength(feedbackField);
+  })
+
+  feedbackField.addEventListener('blur', () => {
+    document.getElementById('feedbackError').style.opacity = '0%';
+  })
+}
+
 let lastScroll = 0;
 function progress() {
   var scroll = this.scrollY;
@@ -400,6 +412,10 @@ function validateForm() {
     alert("Please select a rating.");
     return false; 
   } 
+
+  if(!checkFeedbackLength(messageInput)) {
+    return false;
+  }
   
   const formData = {
     Name: nameInput.value,
@@ -417,6 +433,16 @@ function validateForm() {
   
  return false;
 } 
+
+function checkFeedbackLength(input) {
+  if(input.value.length < 10) {
+      document.getElementById('feedbackError').style.opacity = '100%';
+      return false;
+  } else {
+      document.getElementById('feedbackError').style.opacity = '0%';
+      return true;
+  }
+}
   
 // EMAIL VALIDATING FUNCTION 
 function isValidEmail(email) {

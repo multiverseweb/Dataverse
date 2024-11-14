@@ -99,7 +99,7 @@
     <center>
         <div class="login-container" style="padding-top: 20px;">
             <h1 style="text-align: center; color: rgb(255, 255, 255); font-weight: 400; font: sans-serif;">SIGN UP</h1>
-            <div id="errorContainer" class="error-message"></div>
+            <div id="errorContainer" class="error-message" style="color: white"></div>
             <div style="text-align: left; margin-left: 10%;" class="mb-3">
                 <label for="emailInput" class="form-label" style="color: white;">Email address</label>
                 <input type="email" class="form-control" id="emailInput" placeholder="Enter your Email Address" style="width: 90%; margin-top: -5px">
@@ -199,7 +199,12 @@
             })
 
             // Function to handle signup
-            document.getElementById('signupButton').addEventListener('click', function () {
+            function signup(event) {
+                if(event.type !== "click") {
+                    if(event.key !== 'Enter') {
+                        return;
+                    }
+                }
                 const emailInput = document.getElementById('emailInput');
                 const passwordInput = document.getElementById('passwordInput');
                 const confirmPasswordInput = document.getElementById('confirmPasswordInput');
@@ -248,7 +253,9 @@
                 // Redirect to login page
                 alert('Your account has been created successfully!');
                 window.location.href = 'login.html';
-            });
+            }
+            document.getElementById('signupButton').addEventListener('click', signup);
+            document.addEventListener('keyup', signup);
 
             // Load remembered email on page load
             window.onload = function () {

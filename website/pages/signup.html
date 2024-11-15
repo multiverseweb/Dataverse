@@ -215,11 +215,18 @@
                 const passwordInput = document.getElementById('passwordInput');
                 const confirmPasswordInput = document.getElementById('confirmPasswordInput');
                 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                const emailValue = emailInput.value;
+                const emailValue = emailInput.value
 
                 // Trusted email domains
                 const trustedDomains = ["gmail.com", "outlook.com", "yahoo.com", "hotmail.com", "protonmail.com", "icloud.com", "tutanota.com"];
                 const emailDomain = emailValue.split('@')[1];
+
+                // Check if the user has input an email
+                if(emailValue.trim() === '') {
+                    showModal('Please enter an email.', 'login/signup error');
+                    emailInput.value = ''; // Delete any extra spaces
+                    return; 
+                }
 
                 // Validate email format and trusted domain
                 if (!emailRegex.test(emailValue) || !trustedDomains.includes(emailDomain)) {
@@ -232,8 +239,28 @@
                     icon.previousElementSibling.type = 'password';
                 })
 
+                // Check if the use didn't input a password
+                if(passwordInput.value.trim() === '') {
+                    showModal('Please enter your password.', 'login/signup error');
+                    passwordInput.value = ''; // Delete any extra spaces
+                    return;
+                }
+
+                // Check for the length of the password
+                if(passwordInput.value.trim().length < 8) {
+                    showModal('Your password must be at least 8 characters.', 'login/signup error');
+                    return;
+                }
+
+                 // Check if the use didn't input 
+                 if(confirmPasswordInput.value.trim() === '') {
+                    showModal('Please confirm your password.', 'login/signup error');
+                    confirmPasswordInput.value = ''; // Delete any extra spaces
+                    return;
+                }
+
                 // Check if passwords match
-                if (passwordInput.value !== confirmPasswordInput.value) {
+                if (passwordInput.value.trim() !== confirmPasswordInput.value.trim()) {
                     showModal('Both passwords do not match.', 'login/signup error');
                     return;
                 }

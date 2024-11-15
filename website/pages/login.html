@@ -215,6 +215,10 @@
             // Make sure to return the password field to the type['password']
             document.querySelector('.password-field').type = 'password';
 
+            if(emailValue.length === 0) {
+                showModal('Please enter your email', 'login/signup error');
+                return;
+            }
             if (!emailRegex.test(emailValue)) {
                 showModal('Please use a valid email address from trusted providers (e.g., Gmail, Outlook, Yahoo) etc.', 'login/signup error');
                 return;

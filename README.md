@@ -102,7 +102,7 @@ Now the software should run locally with no errors, feel free to use the softwar
 - Go to `line no. 15` under `connecting MySQL` section of `financeTracker.py` and change the values of `host, user and passwd` according to your MySQL account.
 - Also, run the command
   ```
-  CREATE DATABASE FINANCE;
+  CREATE DATABASE DATAVERSE;
   ```
   on your MySQL workbench or commandline client.
 

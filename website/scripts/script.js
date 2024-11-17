@@ -1,3 +1,5 @@
+import { showModal, closeModal } from "./sharedUtilities.js";
+
 // Array of city names
 var cities = ["Pune", "Moradabad", "Dehradun", "Rampur", "Delhi", "Coimbatore", "Riyadh", "Ahmedabad", "Kolkata", "Mumbai", "Jorhat", "Arrah", "Bhopal", "Bengalore", "Secunderabad", "Ludhiana", "Nagpur", "Lucknow", "Gorakhpur", "Bhilai", "Kanpur", "Panaji"];
 
@@ -354,28 +356,6 @@ examples2.addEventListener("mouseenter", stopAutoScroll);
 examples2.addEventListener("mouseleave", startAutoScroll);
 
 window.addEventListener("scroll", progress);
-
-
-function showModal(message, purpose) {
-  document.getElementById('modal').style.display = 'block';
-  document.getElementById('modal-message').innerText = message;
-
-  if(purpose === 'download dataverse') {
-    // Check if the accept and close buttons has been already hidden
-    if(document.getElementById('accept-modal').style.display === 'none') {
-      document.getElementById('accept-modal').style.display = 'block';
-    document.getElementById('modal-buttons').style.gap = '25%';
-    }
-  } else if(purpose === 'submit feedback') {
-    document.getElementById('accept-modal').style.display = 'none';    
-    document.getElementById('close-modal').innerText = 'close';
-    document.getElementById('modal-buttons').style.gap = '0';
-  }
-}
-
-function closeModal() {
-  document.getElementById('modal').style.display = 'none';
-}
 
 /*CHANGING DIRECTION OF AEROPLANE*/
 

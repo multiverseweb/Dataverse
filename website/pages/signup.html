@@ -100,6 +100,7 @@
         <div class="login-container" style="padding-top: 20px;">
             <h1 style="text-align: center; color: rgb(255, 255, 255); font-weight: 400; font: sans-serif;">SIGN UP</h1>
             <div id="errorContainer" class="error-message" style="color: white"></div>
+
             <div style="text-align: left; margin-left: 10%;" class="mb-3">
                 <label for="emailInput" class="form-label" style="color: white;">Email address</label>
                 <input type="email" class="form-control" id="emailInput" placeholder="Enter your Email Address" style="width: 90%; margin-top: -5px">
@@ -138,8 +139,20 @@
                 <p style="color: white;">Already have an account? <a href="login.html" style="text-decoration: underline; color: #004ab7;">Login</a></p>
             </div>
         </div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span id="modal-message"></span>
+                <div id="modal-buttons">
+                    <a
+                        href="https://github.com/multiverseweb/Dataverse?tab=readme-ov-file#deployment-specifications"><button id="accept-modal" onclick="showModal()">Try
+                            Dataverse</button></a>
+                    <button onclick="closeModal()" id="close-modal">Later</button>
+                </div>
+            </div>
+        </div>
         <a href="../../index.html"><button class="goBack">Go To Home</button></a>
-        <script>
+        <script type="module">
+            import {showModal, closeModal} from '../scripts/sharedUtilities.js';
             window.onload = function () {
                 // Adjust password icon and icon overlay on resize
                 adjustIconPos();
@@ -209,20 +222,22 @@
                 const passwordInput = document.getElementById('passwordInput');
                 const confirmPasswordInput = document.getElementById('confirmPasswordInput');
                 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                const emailValue = emailInput.value;
+                const emailValue = emailInput.value
 
                 // Trusted email domains
                 const trustedDomains = ["gmail.com", "outlook.com", "yahoo.com", "hotmail.com", "protonmail.com", "icloud.com", "tutanota.com"];
                 const emailDomain = emailValue.split('@')[1];
 
-                // Clear previous error messages
-                errorContainer.style.display = 'none';
-                errorContainer.innerHTML = '';
+                // Check if the user has input an email
+                if(emailValue.trim() === '') {
+                    showModal('Please enter an email.', 'login/signup error');
+                    emailInput.value = ''; // Delete any extra spaces
+                    return; 
+                }
 
                 // Validate email format and trusted domain
                 if (!emailRegex.test(emailValue) || !trustedDomains.includes(emailDomain)) {
-                    errorContainer.innerHTML = 'Please use a valid email address from trusted providers (e.g., Gmail, Outlook, Yahoo) etc.';
-                    errorContainer.style.display = 'block'; // Show error message
+                    showModal('Please use a valid email address from trusted providers (e.g., Gmail, Outlook, Yahoo) etc.', 'login/signup error');
                     return;
                 }
 
@@ -231,10 +246,29 @@
                     icon.previousElementSibling.type = 'password';
                 })
 
+                // Check if the use didn't input a password
+                if(passwordInput.value.trim() === '') {
+                    showModal('Please enter your password.', 'login/signup error');
+                    passwordInput.value = ''; // Delete any extra spaces
+                    return;
+                }
+
+                // Check for the length of the password
+                if(passwordInput.value.trim().length < 8) {
+                    showModal('Your password must be at least 8 characters.', 'login/signup error');
+                    return;
+                }
+
+                 // Check if the use didn't input 
+                 if(confirmPasswordInput.value.trim() === '') {
+                    showModal('Please confirm your password.', 'login/signup error');
+                    confirmPasswordInput.value = ''; // Delete any extra spaces
+                    return;
+                }
+
                 // Check if passwords match
-                if (passwordInput.value !== confirmPasswordInput.value) {
-                    errorContainer.innerHTML = 'Both passwords do not match.';
-                    errorContainer.style.display = 'block'; // Show error message
+                if (passwordInput.value.trim() !== confirmPasswordInput.value.trim()) {
+                    showModal('Both passwords do not match.', 'login/signup error');
                     return;
                 }
 
@@ -250,12 +284,12 @@
                 passwordInput.value = '';
                 confirmPasswordInput.value = '';
                 
-                // Redirect to login page
-                alert('Your account has been created successfully!');
-                window.location.href = 'login.html';
-            }
-            document.getElementById('signupButton').addEventListener('click', signup);
-            document.addEventListener('keyup', signup);
+                showModal('Account created successfully!', 'no reply');
+                // Redirect to login page after a short time seconds of showing the modal
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1500);
+            });
 
             // Load remembered email on page load
             window.onload = function () {

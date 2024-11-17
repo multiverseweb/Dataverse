@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login to Dataverse</title>
+    <link rel="stylesheet" href="../styles/style.css">
     <style>
         body {
             background-color: black;
@@ -138,8 +139,20 @@
         </div>
         <!--login form end-->
     </center>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="modal-message"></span>
+            <div id="modal-buttons">
+                <a
+                    href="https://github.com/multiverseweb/Dataverse?tab=readme-ov-file#deployment-specifications"><button id="accept-modal" onclick="showModal()">Try
+                        Dataverse</button></a>
+                <button onclick="closeModal()" id="close-modal">Later</button>
+            </div>
+        </div>
+    </div>
     <a href="../../index.html"><button class="goBack">Go To Home</button></a>
-    <script>
+    <script type="module">
+        import {showModal, closeModal} from '../scripts/sharedUtilities.js';
         // On page load, check local storage for email
         window.onload = function() {
             const savedEmail = localStorage.getItem('email');
@@ -213,8 +226,12 @@
             // Make sure to return the password field to the type['password']
             document.querySelector('.password-field').type = 'password';
 
+            if(emailValue.length === 0) {
+                showModal('Please enter your email', 'login/signup error');
+                return;
+            }
             if (!emailRegex.test(emailValue)) {
-                alert('Invalid email address');
+                showModal('Please use a valid email address from trusted providers (e.g., Gmail, Outlook, Yahoo) etc.', 'login/signup error');
                 return;
             }
             if(!trustedDomains.includes(emailDomain)) {
@@ -222,10 +239,10 @@
                 return;
             }
             if (passwordInput.value.length === 0) {
-                alert('Please enter your password');
+                showModal('Please enter your password', 'login/signup error');
                 return;
             } else if (passwordInput.value.length < 8) {
-                alert('Password must be at least 8 characters');
+                showModal('Password must be at least 8 characters', 'login/signup error');
                 return;
             }
 
@@ -240,15 +257,13 @@
             // Clear the input fields
             emailInput.value = '';
             passwordInput.value = '';
-            // Redirect to index.html
-            alert('Login successful!');
-            window.location.href = '../../index.html';
-        }
-
-        document.getElementById('loginButton').addEventListener('click', login);
-        document.addEventListener("keyup", login);
+            showModal('Login successful!', 'no reply');
+            // Redirect to index.html after a short time seconds of showing the modal
+            setTimeout(() => {
+                window.location.href = '../../index.html';  
+            }, 1500);
+        });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="../scripts/script.js"></script>
 </body>
 </html>

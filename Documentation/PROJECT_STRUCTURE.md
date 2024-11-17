@@ -62,7 +62,8 @@
     │   ├── codeOfconduct.js
     │   ├── contributor.js
     │   ├── license.js
-    │   └── script.js
+    │   ├── script.js
+    │   └── sharedUtilities.js
     ├── styles/
     │   ├── 404.css
     │   ├── contributor.css

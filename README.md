@@ -121,9 +121,9 @@ Now the software should run locally with no errors, feel free to use the softwar
   ```
 - Then, install the Prettier extension (`Prettier - Code Formatter`) in order to format the code consistently accross all devices.
 
-  <!-- <img src="./Documentation/images/prettier.PNG" width="600px"> -->
+  <img src="./Documentation/images/prettier.svg" width="900px">
 
-  ![Prettier extension image preview](documentation/images/prettier.png)
+  <!-- ![Prettier extension image preview](documentation/images/prettier.png) -->
 
 - After you have installed Prettier, press `Ctrl + Shift + p` to open the Command Palette and type `Reload window` and select the first option to reload, then prettier will be automatically applied.
 

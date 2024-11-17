@@ -206,11 +206,22 @@
             }
         })
 
-        document.getElementById('loginButton').addEventListener('click', function() {
+        function login(event) {
+            // Check the identity of the key that was pressed.
+            if(event.type !== 'click') {
+                if(event.key !== 'Enter') {
+                    return;
+                }
+            }
+            
             const emailInput = document.getElementById('emailInput');
             const passwordInput = document.getElementById('passwordInput');
             const emailValue = emailInput.value.trim();
             const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            // Trusted email domains
+            const trustedDomains = ["gmail.com", "outlook.com", "yahoo.com", "hotmail.com", "protonmail.com", "icloud.com", "tutanota.com"];
+            const emailDomain = emailValue.split('@')[1];
                 
             // Make sure to return the password field to the type['password']
             document.querySelector('.password-field').type = 'password';
@@ -221,6 +232,10 @@
             }
             if (!emailRegex.test(emailValue)) {
                 showModal('Please use a valid email address from trusted providers (e.g., Gmail, Outlook, Yahoo) etc.', 'login/signup error');
+                return;
+            }
+            if(!trustedDomains.includes(emailDomain)) {
+                alert('Please use a valid email address from trusted providers (e.g., Gmail, Outlook, Yahoo) etc.');
                 return;
             }
             if (passwordInput.value.length === 0) {

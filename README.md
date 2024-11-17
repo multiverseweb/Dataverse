@@ -119,7 +119,7 @@ Now the software should run locally with no errors, feel free to use the softwar
   ```
   npm install
   ```
-- Then, install the Prettier extension in order to format the code consistently accross all devices.
+- Then, install the Prettier extension (`Prettier - Code Formatter`) in order to format the code consistently accross all devices.
 
   <img src="./Documentation/images/prettier.PNG" width="600px">
 

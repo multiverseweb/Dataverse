@@ -194,6 +194,15 @@ body {
   margin-bottom: 1rem;
 }
 
+.contributor-card a {
+  color: #1e1e1e;
+  transition: color 0.15s ease-in;
+}
+
+.contributor-card a:hover {
+  color: #000000;
+}
+
 .contributor-card .contributions {
   background-color: #dddddd;
   padding: 0.5rem 1rem;

@@ -38,24 +38,6 @@ function hide() {
     buttons.style.marginLeft = "-60px";
 }
 
-// function updateIndicator(button) {
-//     if (!button || !indicator) return;
-
-//     // Adjust the indicator position to align with the selected button
-//     const adjustment = (button.offsetHeight - indicator.offsetHeight) / 2;
-//     indicator.style.top = `${button.offsetTop + adjustment}px`;
-
-//     // Update the indicator's color based on the theme
-//     const currentTheme = localStorage.getItem('theme');
-//     if (currentTheme === 'light') {
-//         indicator.style.backgroundImage = "radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70%)"; // Black glow in light mode
-//     } else {
-//         indicator.style.backgroundImage = "radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%)"; // White glow in dark mode
-//     }
-
-//     console.log(`Indicator updated: ${currentTheme} mode, positioned at ${button.id}`);
-// }
-
 function updateIndicator(button) {
     // Calculate the vertical adjustment for perfect centering of the indicator over the button
     const adjustment = (button.offsetHeight - indicator.offsetHeight) / 2;
@@ -137,15 +119,12 @@ document.addEventListener("DOMContentLoaded", systemDefault);
 
 // Add event listeners to ensure the glow moves when buttons are clicked
 document.getElementById("lightButton").addEventListener("click", () => {
-    console.log("Light button clicked");
     light(false);
 });
 document.getElementById("darkButton").addEventListener("click", () => {
-    console.log("Dark button clicked");
     dark(false);
 });
 document.getElementById("defaultButton").addEventListener("click", () => {
-    console.log("Default button clicked");
     systemDefault();
     updateIndicator(document.getElementById("defaultButton"));
 });

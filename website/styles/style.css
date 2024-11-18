@@ -659,6 +659,7 @@ tr:hover {
 }
 
 #about {
+    z-index: -10;
     padding-top: 200px;
     display: flex;
     padding-bottom: 0;

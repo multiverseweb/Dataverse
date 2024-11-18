@@ -1,4 +1,6 @@
-import { showModal, closeModal } from "./sharedUtilities.js";
+import { showModal, closeModal, attachToWindow } from "./sharedUtilities.js";
+// Array that holds all functions need to be accessible for HTML
+var windowFunctions = [];
 
 // Array of city names
 var cities = ["Pune", "Moradabad", "Dehradun", "Rampur", "Delhi", "Coimbatore", "Riyadh", "Ahmedabad", "Kolkata", "Mumbai", "Jorhat", "Arrah", "Bhopal", "Bengalore", "Secunderabad", "Ludhiana", "Nagpur", "Lucknow", "Gorakhpur", "Bhilai", "Kanpur", "Panaji"];
@@ -61,7 +63,7 @@ async function addMarkersWithDelay(cities) {
 addMarkersWithDelay(cities);
 
 
-// /preloader js styling
+// /preloader js styling and other stuff needed for preload
 window.addEventListener('DOMContentLoaded', () => {
   // Hide the loader after 3 seconds
   setTimeout(() => {
@@ -70,8 +72,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
       displayCopyright();
   }, 3000);
-});
 
+  attachToWindow(windowFunctions);
+});
+windowFunctions.push(topFunction);
 function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
@@ -156,7 +160,7 @@ function progress() {
 
 window.addEventListener("scroll", progress);
 
-
+windowFunctions.push(show);
 function show() {
   l2.style.opacity = 0;
   l1.style.transform = "rotate(-45deg)";
@@ -167,6 +171,7 @@ function show() {
   body.style.overflowY = "hidden";
   buttons.style.marginLeft = 0;
 }
+windowFunctions.push(hide);
 function hide() {
   l2.style.opacity = 1;
   l1.style.transform = "rotate(0deg)";
@@ -210,7 +215,7 @@ function updateIndicator(button) {
 }
 
 
-
+windowFunctions.push(light);
 function light(flag) {
   localStorage.setItem('theme', 'light');
   body.classList.remove('dark-mode');
@@ -226,7 +231,7 @@ function light(flag) {
   const lightButton = document.getElementById("lightButton");
   updateIndicator(lightButton); // Update the indicator position and style for the light button
 }
-
+windowFunctions.push(dark);
 function dark(flag) {
   localStorage.setItem('theme', 'dark');
   document.getElementById("map").style.filter = "invert(1) hue-rotate(180deg) brightness(1.5)";
@@ -242,7 +247,7 @@ function dark(flag) {
   const darkButton = document.getElementById("darkButton");
   updateIndicator(darkButton); // Update the indicator position and style for the dark button
 }
-
+windowFunctions.push(systemDefault);
 function systemDefault() {
   const theme = localStorage.getItem('theme');
   const defaultButton = document.getElementById("defaultButton");
@@ -413,7 +418,7 @@ function validateForm() {
   
  return false;
 } 
-
+windowFunctions.push(checkFeedbackLength);
 function checkFeedbackLength(input) {
   if(input.value.length < 10) {
       document.getElementById('feedbackError').style.opacity = '100%';

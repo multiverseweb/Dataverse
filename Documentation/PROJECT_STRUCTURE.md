@@ -11,6 +11,7 @@
 │   └── repo_structure.txt
 ├── LICENSE
 ├── README.md
+├── SECURITY.md
 ├── index.html
 ├── plot.png
 ├── software/

@@ -270,6 +270,27 @@
             </div>
             <input type="submit" value="Send" id="send">
         </form>
+        <form action="#" id="bug-report-form">
+            <p>Encountered an Issue? Let Us Know!</p>
+            <label for="issue-title-field">What's your issue about?
+                <input type="text" id="issue-title-field" required name="issue-title" placeholder="Briefly describe your issue">
+            </label>
+            <label for="issue-select" >Issue type
+                <select name="issue-select" id="issue-select" required>
+                    <option value="Bug">Bug</option>
+                    <option value="UI/UX issue">UI/UX issue</option>
+                    <option value="Performence issue">Performence issue</option>
+                    <option value="Security issue">Security issue</option>
+                </select>
+            </label>
+            <label for="issue-description-field">
+                <textarea name="issude-description" id="issue-description-field" placeholder="Describe your issue in detail" required></textarea>
+            </label>
+            <label for="email">
+                <input type="email" id="email" name="email" placeholder="Please provide your email" required>
+            </label>
+            <button type="submit">Send</button>
+        </form>
     </footer>
     <div class="links">
         <div class="small">

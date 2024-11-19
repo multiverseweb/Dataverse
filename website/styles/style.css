@@ -1129,6 +1129,95 @@ input {
     height: 26px;
   }
 
+#bug-report-form {
+    width: 75vw;; /* For phone compatability */
+    max-width: 600px; /* For desktop compatability */
+    z-index: 9999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-46%, -55%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.4vh;
+}
+
+#bug-report-form p {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+}
+
+#bug-report-form label {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    text-align: left;
+    /* border: 1px solid pink;   */
+}
+
+#bug-report-form label input,
+#issue-select,
+#issue-description-field {
+    background-color: #76767639;
+    color: #eee;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    height: 40px;
+    box-shadow: none;
+    border: 2px solid rgba(255, 255, 255, 0.19)
+}
+
+#issue-select {
+    border-radius: 5px;
+}
+
+#issue-select option {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#issue-description-field {
+    padding: 3px 4px;
+    height: 80px;
+    border-radius: 5px;
+}
+
+#bug-report-form .button-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#bug-report-form button {
+    background-color: rgba(0, 123, 121, 0.364);
+    color: rgb(224, 224, 224);
+    border: none;
+    border-radius: 3px;
+    width: 70px;
+    height: 37px;
+    transition: all 0.2s ease-out;
+}
+
+#bug-report-form button:hover {
+    color: black;
+    background-color:rgba(0, 240, 236, 0.867);
+    box-shadow: 0px 0px 15px rgba(0, 240, 236, 0.867);
+}
+
+body.popup-active {
+    overflow: hidden;
+}
+
+#container.popup-active{
+    user-select: none;
+    pointer-events: none;
+    filter: blur(10px);
+    overflow: hidden;
+  }
+
 /*===========================RESPONSIVE===================================*/
 @media screen and (max-width: 660px) {
     .name {

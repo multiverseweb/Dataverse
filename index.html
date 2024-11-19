@@ -18,6 +18,7 @@
 </head>
 
 <body id="body">
+  <div id="container">
     <!-- preloader -->
     <div id="video-loader">
         <video src="website/web_images/loader.mp4" alt="Dataverse" autoplay muted>Your browser does not support the
@@ -125,7 +126,6 @@
             </div>
 
 
-        </div>
         <div class="scroll_animation"></div>
     </div>
     </div>
@@ -270,27 +270,6 @@
             </div>
             <input type="submit" value="Send" id="send">
         </form>
-        <form action="#" id="bug-report-form">
-            <p>Encountered an Issue? Let Us Know!</p>
-            <label for="issue-title-field">What's your issue about?
-                <input type="text" id="issue-title-field" required name="issue-title" placeholder="Briefly describe your issue">
-            </label>
-            <label for="issue-select" >Issue type
-                <select name="issue-select" id="issue-select" required>
-                    <option value="Bug">Bug</option>
-                    <option value="UI/UX issue">UI/UX issue</option>
-                    <option value="Performence issue">Performence issue</option>
-                    <option value="Security issue">Security issue</option>
-                </select>
-            </label>
-            <label for="issue-description-field">
-                <textarea name="issude-description" id="issue-description-field" placeholder="Describe your issue in detail" required></textarea>
-            </label>
-            <label for="email">
-                <input type="email" id="email" name="email" placeholder="Please provide your email" required>
-            </label>
-            <button type="submit">Send</button>
-        </form>
     </footer>
     <div class="links">
         <div class="small">
@@ -339,7 +318,31 @@
         <p style="color:rgb(177, 177, 177);">&copy; <span id="copyright">32949832</span> <a
                 href="404.html">Tejas Gupta</a></p>
     </div>
+    </div>
     <div class="end_line"></div>
+</div> <!--End of div.container --> 
+    <form action="#" id="bug-report-form">
+        <p>Encountered an Issue? Let Us Know!</p>
+        <label for="issue-select" >Issue type
+            <select name="issue-select" id="issue-select" required>
+                <option value="Bug">Bug</option>
+                <option value="UI/UX issue">UI/UX issue</option>
+                <option value="Performence issue">Performence issue</option>
+                <option value="Security issue">Security issue</option>
+                <option value="Other">Other</option>
+            </select>
+        </label>
+        <label for="issue-title-field">What's your issue about?
+            <input type="text" id="issue-title-field" required name="issue-title" placeholder="Briefly describe your issue">
+        </label>
+        <label for="email">Email
+            <input type="email" id="email" name="email" placeholder="Please provide your email" required>
+        </label>
+        <label for="issue-description-field">Issue description
+            <textarea name="issude-description" id="issue-description-field" placeholder="Describe your issue in detail" required></textarea>
+        </label>
+        <div class="button-div"><button type="submit">Send</button></div>
+    </form>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="website/scripts/script.js" type="module"></script>
 

@@ -183,7 +183,19 @@ function hide() {
   buttons.style.marginLeft = "-60px";
 }
 
+// Function to show the issue report form
+function showReportForm() {
+  document.getElementById("container").classList.add("popup-active");
+  document.getElementById("bug-report-form").classList.add("active");
+}
+windowFunctions.push(showReportForm);
 
+// Function to close the issue report form
+function closeReportForm() {
+  document.getElementById("container").classList.remove("popup-active");
+  document.getElementById("bug-report-form").classList.remove("active");
+}
+windowFunctions.push(closeReportForm);
 // function updateIndicator(button) {
 //   // Set the position of the indicator to align with the selected button
 //   const adjustment = (button.offsetHeight - indicator.offsetHeight) / 2;

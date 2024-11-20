@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dataverse</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="shortcut icon" href="website/web_images/3dlogo.svg" type="image/x-icon">
     <link rel="stylesheet" href="website/styles/style.css">
@@ -46,8 +47,9 @@
         <img src="website/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
         <img src="website/web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
         <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
+        <button class="navbarButton" id="bug-report-button" onclick="showReportForm()">Report Issue</button>
         <a href="website/pages/login.html">
-            <button class="loginSignupbtn">
+            <button class="navbarButton">
                 <span class="button-text">Login</span>
                 <img src="website/web_images/user.png" alt="User Icon" class="user-icon">
             </button>
@@ -320,9 +322,12 @@
     </div>
     </div>
     <div class="end_line"></div>
-</div> <!--End of div.container --> 
+ </div> <!--End of div.container --> 
     <form action="#" id="bug-report-form">
-        <p>Encountered an Issue? Let Us Know!</p>
+        <div id="popup-header" style="display: inline;width: 100%;">
+            <p style="display: inline;">Encountered an Issue? Let Us Know!</p>
+            <button id="close-report-popup" type="button" onclick="closeReportForm()"><span class="material-symbols-outlined">close</span></button>
+        </div>
         <label for="issue-select" >Issue type
             <select name="issue-select" id="issue-select" required>
                 <option value="Bug">Bug</option>

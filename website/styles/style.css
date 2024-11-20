@@ -1172,7 +1172,6 @@ input {
     flex-direction: column;
     justify-content: flex-start; 
     text-align: left;
-    /* border: 1px solid pink;   */
 }
 
 #bug-report-form label input,

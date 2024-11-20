@@ -323,7 +323,7 @@
     </div>
     <div class="end_line"></div>
  </div> <!--End of div.container --> 
-    <form action="#" id="bug-report-form">
+    <form method="POST" data-netlify="true" name="Bug Report Form" id="bug-report-form" onsubmit="return validateReport()">
         <div id="popup-header" style="display: inline;width: 100%;">
             <p style="display: inline;">Encountered an Issue? Let Us Know!</p>
             <button id="close-report-popup" type="button" onclick="closeReportForm()"><span class="material-symbols-outlined">close</span></button>

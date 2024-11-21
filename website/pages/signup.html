@@ -134,7 +134,7 @@
                 <label for="rememberMe" class="form-check-label" style="color: white; font-weight: 500;">Remember Me</label>
             </div>
 
-            <button type="button" class="btn btn-primary" id="signupButton" style="width: 60%; margin-top: 15px; font-weight: 400;">SIGN UP</button>
+            <button type="button" class="btn btn-primary" id="signupButton" style="width: 60%; margin-top: 15px; font-weight: 400;" onclick="signup(event)">SIGN UP</button>
             <div style="text-align: center; margin-top: 10px;">
                 <p style="color: white;">Already have an account? <a href="login.html" style="text-decoration: underline; color: #004ab7;">Login</a></p>
             </div>
@@ -152,18 +152,14 @@
         </div>
         <a href="../../index.html"><button class="goBack">Go To Home</button></a>
         <script type="module">
-            import {showModal, closeModal} from '../scripts/sharedUtilities.js';
-            window.onload = function () {
-                // Adjust password icon and icon overlay on resize
-                adjustIconPos();
-            }
-
+            import {showModal, closeModal,  attachToWindow} from '../scripts/sharedUtilities.js';
+            var windowFunctions = [];
             // Function to adjust password visibility icon responsively
             function adjustIconPos() {
                 const passwordIcons = Array.from(document.getElementsByClassName('password_icon'));
                 const iconOverlays = Array.from(document.getElementsByClassName('icon_overlay'));
                 const mixedArray = [...passwordIcons, ...iconOverlays];
-                console.log(mixedArray);
+
                 if(window.innerWidth < 700 && window.innerWidth > 630) {
                     mixedArray.forEach((element) => {
                         element.style.right = '35px';
@@ -192,6 +188,7 @@
             }
             // Adjust password icon and icon overlay on resize
             window.addEventListener("resize", adjustIconPos);
+            windowFunctions.push(adjustIconPos);
 
             const passwordIcons = document.getElementsByClassName('password_icon');
             Array.from(passwordIcons).forEach((icon) => {
@@ -289,7 +286,8 @@
                 setTimeout(() => {
                     window.location.href = 'login.html';
                 }, 1500);
-            });
+            };
+            windowFunctions.push(signup);
 
             // Load remembered email on page load
             window.onload = function () {
@@ -298,6 +296,10 @@
                     document.getElementById('emailInput').value = rememberedEmail;
                     document.getElementById('rememberMe').checked = true;
                 }
+                // Reset password icon position
+                adjustIconPos();
+                // Attach required functions to the DOM window
+                attachToWindow(windowFunctions);
             };
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

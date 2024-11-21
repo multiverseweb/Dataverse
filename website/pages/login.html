@@ -132,7 +132,7 @@
                 <input type="checkbox" id="rememberMe" style="margin-top: -5px; width: 15px; height: 15px;">
                 <label for="rememberMe" style="color: white;">Remember Me</label>
             </div>
-            <button type="button" class="btn btn-primary" id="loginButton" style="width: 50%; font-weight: 400;">LOGIN</button>
+            <button type="button" class="btn btn-primary" id="loginButton" style="width: 50%; font-weight: 400;" onclick="login(event)">LOGIN</button>
             <div style="text-align: center; margin-top: 10px;">
                 <p style="color: white;">Don't have an account? <a href="signup.html" style="text-decoration: underline; color: #004ab7;"> Sign Up</a></p>
             </div>
@@ -152,7 +152,8 @@
     </div>
     <a href="../../index.html"><button class="goBack">Go To Home</button></a>
     <script type="module">
-        import {showModal, closeModal} from '../scripts/sharedUtilities.js';
+        import {showModal, closeModal, attachToWindow} from '../scripts/sharedUtilities.js';
+        var windowFunctions = [];
         // On page load, check local storage for email
         window.onload = function() {
             const savedEmail = localStorage.getItem('email');
@@ -162,7 +163,7 @@
             }
 
             // Resize password icon and icon overlay on load
-            adjustIconPos();
+            adjustIconPos();         
         };
 
         function adjustIconPos() {
@@ -188,6 +189,7 @@
         }
         // Adjust password icon and icon overlay on resize
         window.addEventListener("resize", adjustIconPos);
+        windowFunctions.push(adjustIconPos);
 
         // Password hide/view handling
         document.getElementById('password_icon').addEventListener("click", function (event) {
@@ -213,7 +215,7 @@
                     return;
                 }
             }
-            
+
             const emailInput = document.getElementById('emailInput');
             const passwordInput = document.getElementById('passwordInput');
             const emailValue = emailInput.value.trim();
@@ -262,7 +264,12 @@
             setTimeout(() => {
                 window.location.href = '../../index.html';  
             }, 1500);
-        });
+        };
+        windowFunctions.push(login);
+        window.login = login;
+
+        // Attach required functions to the DOM window
+        attachToWindow(windowFunctions);   
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

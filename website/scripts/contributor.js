@@ -54,7 +54,7 @@ function renderContributors(contributors) {
           <img src="${contributor.avatar_url}" alt="${contributor.login}">
           <h3>${contributor.login}</h3>
           <p>${contributor.type}</p>
-          <div class="contributions">${contributor.contributions} contributions</div>
+          <a href="https://github.com/multiverseweb/dataverse/commits?author=${contributor.login}" target="_blank"><div class="contributions">${contributor.contributions} contributions</div></a>
           <div class="footer">
               <a href="${contributor.html_url}" target="_blank" rel="noopener noreferrer">
                   ${getIcon("external-link")}

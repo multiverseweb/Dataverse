@@ -1,3 +1,5 @@
+var windowFunctions = [];
+
 function checkPurpose(purpose) {
   // All possible custom modal purposes/types
   const modalPurposes = ['download dataverse', 'submit feedback', 'login/signup error', 'no reply'];
@@ -42,12 +44,26 @@ export function showModal(message, purpose) {
     }
   }
 }
+windowFunctions.push(showModal);
 
 export function closeModal() {
   document.getElementById('modal').style.display = 'none';
 }
+windowFunctions.push(closeModal);
 
+// Since this script is a module type, functions won't be accessible to the DOM by default, this function attaches all
+//  the functions that are needed for the DOM.
+export function attachToWindow(arr) {
+  arr.forEach((func) => {
+    const funcName = func.name
+    window[`${funcName}`] = func; // Attach function to the window
+  })
+}
 
 // Attach the functions to the Global scope of the HTML, so it can be used on the 'onclick' attributes
 window.showModal = showModal;
 window.closeModal = closeModal;
+
+window.onload = function() {
+  attachToWindow(windowFunctions);
+}

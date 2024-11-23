@@ -1,0 +1,3 @@
+# Handle Automatically line endings depending on the OS
+* text=auto
+* text eol=lf

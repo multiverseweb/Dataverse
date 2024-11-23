@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dataverse</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="shortcut icon" href="website/web_images/3dlogo.svg" type="image/x-icon">
     <link rel="stylesheet" href="website/styles/style.css">
@@ -47,7 +46,6 @@
         <img src="website/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
         <img src="website/web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
         <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
-        <button class="navbarButton" id="bug-report-button" onclick="showReportForm()">Report Issue</button>
         <a href="website/pages/login.html">
             <button class="navbarButton">
                 <span class="button-text">Login</span>
@@ -66,7 +64,7 @@
     <div class="plane" id="plane">
         <table>
             <tr>
-                <td><a href="index.html" class="table_link">Home</a></td>
+                <td><a href="./website/pages/support.html" class="table_link">Help Center</a></td>
             </tr>
             <tr>
                 <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
@@ -85,11 +83,11 @@
                 </td>
             </tr>
             <tr>
-                <td><a href="website/pages/codeOfconduct.html" class="table_link" target="_blank">Code of Conduct</a>
+                <td><a href="../pages/codeOfconduct.html" class="table_link" target="_blank">Code of Conduct</a>
                 </td>
             </tr>
             <tr>
-                <td><a href="website/pages/license.html" class="table_link">License</a></td>
+                <td><a href="../pages/license.html" class="table_link">License</a></td>
             </tr>
         </table>
     </div>
@@ -323,31 +321,7 @@
     </div>
     <div class="end_line"></div>
  </div> <!--End of div.container --> 
-    <form method="POST" data-netlify="true" name="Bug Report Form" id="bug-report-form" onsubmit="return validateReport()">
-        <div id="popup-header" style="display: inline;width: 100%;">
-            <p style="display: inline;">Encountered an Issue? Let Us Know!</p>
-            <button id="close-report-popup" type="button" onclick="closeReportForm()"><span class="material-symbols-outlined">close</span></button>
-        </div>
-        <label for="issue-select" >Issue type
-            <select name="issue-select" id="issue-select" required>
-                <option value="Bug">Bug</option>
-                <option value="UI/UX issue">UI/UX issue</option>
-                <option value="Performence issue">Performence issue</option>
-                <option value="Security issue">Security issue</option>
-                <option value="Other">Other</option>
-            </select>
-        </label>
-        <label for="issue-title-field">What's your issue about?
-            <input type="text" id="issue-title-field" required name="issue-title" placeholder="Briefly describe your issue">
-        </label>
-        <label for="email">Email
-            <input type="email" id="email" name="email" placeholder="Please provide your email" required>
-        </label>
-        <label for="issue-description-field">Issue description
-            <textarea name="issude-description" id="issue-description-field" placeholder="Describe your issue in detail" required></textarea>
-        </label>
-        <div class="button-div"><button type="submit">Send</button></div>
-    </form>
+    
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="website/scripts/script.js" type="module"></script>
 

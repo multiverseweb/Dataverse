@@ -5,24 +5,28 @@ var windowFunctions = [];
 // Array of city names
 var cities = ["Pune", "Moradabad", "Dehradun", "Rampur", "Delhi", "Coimbatore", "Riyadh", "Ahmedabad", "Kolkata", "Mumbai", "Jorhat", "Arrah", "Bhopal", "Bengalore", "Secunderabad", "Ludhiana", "Nagpur", "Lucknow", "Gorakhpur", "Bhilai", "Kanpur", "Panaji"];
 
-var map = L.map('map', {
+try {
+  var map = L.map('map', {
     center: [22.7937, 77.9629],
     zoom: 4,
     zoomControl: false
-});
+  }); 
 
-// Add OpenStreetMap tile layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Add OpenStreetMap tile layer
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+  }).addTo(map);
 
-var redIcon = L.icon({
+  var redIcon = L.icon({
     iconUrl: 'https://img1.picmix.com/output/stamp/normal/2/5/4/3/873452_376bb.png',
     iconSize: [20, 20],
     iconAnchor: [12, 12],
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
-});
+  });
+} catch(e) {
+  console.error(e);
+}
 
 // Your OpenCage API Key here
 const OPENCAGE_API_KEY = '3f55c6e93c2c4b19ae45f1fd5db12cfc';
@@ -68,23 +72,27 @@ window.addEventListener('DOMContentLoaded', () => {
   // Hide the loader after 3 seconds
   setTimeout(() => {
       const loader = document.getElementById('video-loader');
-      loader.style.display = 'none';
+      if(loader) {
+        loader.style.display = 'none';
+      }
 
       displayCopyright();
   }, 3000);
 
   attachToWindow(windowFunctions);
 });
-windowFunctions.push(topFunction);
 function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+windowFunctions.push(topFunction);
 function changeCss() {
     var top = document.getElementById("top");
     var scroll_icon = document.getElementById("scroll_icon");
-    (this.scrollY > 30) ? top.style.opacity = 1 : top.style.opacity = 0;
-    (this.scrollY > 0) ? scroll_icon.style.opacity = 0 : scroll_icon.style.opacity = 1;
+    if(scroll_icon) {
+      (this.scrollY > 30) ? top.style.opacity = 1 : top.style.opacity = 0;
+      (this.scrollY > 0) ? scroll_icon.style.opacity = 0 : scroll_icon.style.opacity = 1;
+    }
 }
 
 window.addEventListener("scroll", changeCss, false);
@@ -139,8 +147,10 @@ window.addEventListener('scroll', () => {
 });
 
 window.onload = function() {
-  const feedbackField = document.forms['feedback-form']['Message'];
-
+  let feedbackField;
+  if(document.forms['feedback-form']) {
+    feedbackField = document.forms['feedback-form']['Message'];
+      
   feedbackField.addEventListener('focus', () => {
     checkFeedbackLength(feedbackField);
   })
@@ -148,6 +158,8 @@ window.onload = function() {
   feedbackField.addEventListener('blur', () => {
     document.getElementById('feedbackError').style.opacity = '0%';
   })
+  }
+
 }
 
 let lastScroll = 0;
@@ -160,7 +172,6 @@ function progress() {
 
 window.addEventListener("scroll", progress);
 
-windowFunctions.push(show);
 function show() {
   l2.style.opacity = 0;
   l1.style.transform = "rotate(-45deg)";
@@ -168,10 +179,11 @@ function show() {
   burger.style.display = "none";
   cross.style.display = "block";
   plane.style.right = 0;
-  body.style.overflowY = "hidden";
+  document.body.style.overflowY = "hidden";
   buttons.style.marginLeft = 0;
 }
-windowFunctions.push(hide);
+windowFunctions.push(show);
+
 function hide() {
   l2.style.opacity = 1;
   l1.style.transform = "rotate(0deg)";
@@ -179,10 +191,10 @@ function hide() {
   burger.style.display = "block";
   cross.style.display = "none";
   plane.style.right = "-100vw";
-  body.style.overflowY = "scroll";
+  document.body.style.overflowY = "scroll";
   buttons.style.marginLeft = "-60px";
 }
-
+windowFunctions.push(hide);
 
 // function updateIndicator(button) {
 //   // Set the position of the indicator to align with the selected button
@@ -213,41 +225,47 @@ function updateIndicator(button) {
       // indicator.style.boxShadow = "0 0 5px 3px rgba(255, 255, 255, 0.7)"; // Subtle white glow
   }
 }
+windowFunctions.push(updateIndicator);
 
-
-windowFunctions.push(light);
 function light(flag) {
   localStorage.setItem('theme', 'light');
-  body.classList.remove('dark-mode');
-  body.classList.add('light-mode');
-  document.getElementById("map").style.filter = "none";
-  document.getElementById("map").style.zIndex = 0;
-  tags.style.borderColor = "black";
-  tags.style.backgroundColor = "#171717";
+  document.body.classList.remove('dark-mode');
+  document.body.classList.add('light-mode');
+  if(document.getElementById("map") && tags && contribute && shadow && technologies) {
+    document.getElementById("map").style.filter = "none";
+    document.getElementById("map").style.zIndex = 0;
+    tags.style.borderColor = "black";
+    tags.style.backgroundColor = "#171717";
+    contribute.style.filter="invert(1)";
+    shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#f9f9f9,#00000000)";
+    technologies.style.border="1px solid #00000044";
+  }
   indicator.style.backgroundImage = "radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
-  shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#f9f9f9,#00000000)";
-  contribute.style.filter="invert(1)";
-  technologies.style.border="1px solid #00000044";
   const lightButton = document.getElementById("lightButton");
   updateIndicator(lightButton); // Update the indicator position and style for the light button
 }
-windowFunctions.push(dark);
+windowFunctions.push(light);
+
 function dark(flag) {
+  if(document.getElementById("map") && tags && contribute && shadow && technologies) {
+    document.getElementById("map").style.filter = "invert(1) hue-rotate(180deg) brightness(1.5)";
+    tags.style.borderColor = "rgba(255, 255, 255, 0.323)";
+    tags.style.backgroundColor = "#00000000";
+    shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#000000d4,#00000000)";
+    contribute.style.filter="invert(0)";
+    technologies.style.border="1px solid #ffffff044";
+  }
   localStorage.setItem('theme', 'dark');
-  document.getElementById("map").style.filter = "invert(1) hue-rotate(180deg) brightness(1.5)";
-  tags.style.borderColor = "rgba(255, 255, 255, 0.323)";
-  tags.style.backgroundColor = "#00000000";
   indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";
-  shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#000000d4,#00000000)";
-  body.classList.remove('light-mode');
-  body.classList.add('dark-mode');
-  contribute.style.filter="invert(0)";
-  technologies.style.border="1px solid #ffffff044";
+  document.body.classList.remove('light-mode');
+  document.body.classList.add('dark-mode');
 
   const darkButton = document.getElementById("darkButton");
   updateIndicator(darkButton); // Update the indicator position and style for the dark button
+
 }
-windowFunctions.push(systemDefault);
+windowFunctions.push(dark);
+
 function systemDefault() {
   const theme = localStorage.getItem('theme');
   const defaultButton = document.getElementById("defaultButton");
@@ -272,7 +290,7 @@ function systemDefault() {
   // Move indicator to the default button when explicitly selected
   updateIndicator(defaultButton);
 }
-
+windowFunctions.push(systemDefault);
 // Initialize the theme and indicator position on page load
 systemDefault();
 document.getElementById("lightButton").addEventListener("click", () => {
@@ -315,19 +333,22 @@ let scrollTimeout;
 
 // Function to scroll the 'examples' and 'examples2' div automatically
 function autoScrollExamples() {
+  if(examples, examples2) {
     if (autoScroll) {
-        examples.scrollLeft += currentSpeed;
-        examples2.scrollLeft += currentSpeed * 1.2;
-
-        // Looping the scroll
-        if (examples.scrollLeft + examples.clientWidth >= examples.scrollWidth) {
-            examples.scrollLeft = 0;
-        }
-        if (examples2.scrollLeft + examples2.clientWidth >= examples2.scrollWidth) {
-            examples2.scrollLeft = 0;
-        }
+      examples.scrollLeft += currentSpeed;
+      examples2.scrollLeft += currentSpeed * 1.2;
+  
+      // Looping the scroll
+      if (examples.scrollLeft + examples.clientWidth >= examples.scrollWidth) {
+          examples.scrollLeft = 0;
+      }
+      if (examples2.scrollLeft + examples2.clientWidth >= examples2.scrollWidth) {
+          examples2.scrollLeft = 0;
+      }
     }
+  }
 }
+
 
 setInterval(autoScrollExamples, 30);
 
@@ -355,10 +376,12 @@ const startAutoScroll = () => {
     adjustSpeed(scrollSpeed);
 };
 
-examples.addEventListener("mouseenter", stopAutoScroll);
-examples.addEventListener("mouseleave", startAutoScroll);
-examples2.addEventListener("mouseenter", stopAutoScroll);
-examples2.addEventListener("mouseleave", startAutoScroll);
+if(examples, examples2) {
+  examples.addEventListener("mouseenter", stopAutoScroll);
+  examples.addEventListener("mouseleave", startAutoScroll);
+  examples2.addEventListener("mouseenter", stopAutoScroll);
+  examples2.addEventListener("mouseleave", startAutoScroll);
+}
 
 window.addEventListener("scroll", progress);
 
@@ -418,7 +441,7 @@ function validateForm() {
   
  return false;
 } 
-windowFunctions.push(checkFeedbackLength);
+
 function checkFeedbackLength(input) {
   if(input.value.length < 10) {
       document.getElementById('feedbackError').style.opacity = '100%';
@@ -428,6 +451,7 @@ function checkFeedbackLength(input) {
       return true;
   }
 }
+windowFunctions.push(checkFeedbackLength);
   
 // EMAIL VALIDATING FUNCTION 
 function isValidEmail(email) {
@@ -438,5 +462,9 @@ function isValidEmail(email) {
 // Display the current year in the copyright section
 function displayCopyright() {
   const year = new Date().getFullYear();
-  document.getElementById("copyright").innerText = year;
+  if( document.getElementById("copyright").innerText = year) {
+    document.getElementById("copyright").innerText = year;
+  }
 }
+
+export {windowFunctions};

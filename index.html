@@ -18,6 +18,7 @@
 </head>
 
 <body id="body">
+  <div id="container">
     <!-- preloader -->
     <div id="video-loader">
         <video src="website/web_images/loader.mp4" alt="Dataverse" autoplay muted>Your browser does not support the
@@ -46,7 +47,7 @@
         <img src="website/web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
         <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
         <a href="website/pages/login.html">
-            <button class="loginSignupbtn">
+            <button class="navbarButton">
                 <span class="button-text">Login</span>
                 <img src="website/web_images/user.png" alt="User Icon" class="user-icon">
             </button>
@@ -63,7 +64,7 @@
     <div class="plane" id="plane">
         <table>
             <tr>
-                <td><a href="index.html" class="table_link">Home</a></td>
+                <td><a href="./website/pages/support.html" class="table_link">Help Center</a></td>
             </tr>
             <tr>
                 <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
@@ -82,11 +83,11 @@
                 </td>
             </tr>
             <tr>
-                <td><a href="website/pages/codeOfconduct.html" class="table_link" target="_blank">Code of Conduct</a>
+                <td><a href="../pages/codeOfconduct.html" class="table_link" target="_blank">Code of Conduct</a>
                 </td>
             </tr>
             <tr>
-                <td><a href="website/pages/license.html" class="table_link">License</a></td>
+                <td><a href="../pages/license.html" class="table_link">License</a></td>
             </tr>
         </table>
     </div>
@@ -125,7 +126,6 @@
             </div>
 
 
-        </div>
         <div class="scroll_animation"></div>
     </div>
     </div>
@@ -318,7 +318,10 @@
         <p style="color:rgb(177, 177, 177);">&copy; <span id="copyright">32949832</span> <a
                 href="404.html">Tejas Gupta</a></p>
     </div>
+    </div>
     <div class="end_line"></div>
+ </div> <!--End of div.container --> 
+    
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="website/scripts/script.js" type="module"></script>
 

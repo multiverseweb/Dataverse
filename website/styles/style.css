@@ -318,7 +318,7 @@ body.light-mode footer h3 {
 }
 
 /* Center the button in the navbar */
-.loginSignupbtn {
+.navbarButton {
     background-color: rgba(162, 162, 162, 0.203);
     height: 40px;
     width: min-content;
@@ -341,8 +341,18 @@ body.light-mode footer h3 {
 
 }
 
+#bug-report-button {
+    height: 40px;
+    width: min-content;
+    border-radius: 7px !important;
+    position: absolute;
+    top: 10px;
+    right: 200px;
+    font-size: 0.8rem;
+}
+
 /* Ensure the button's anchor tag is styled correctly */
-.loginSignupbtn a {
+.navbarButton a {
     color: white;
     text-decoration: none;
 }
@@ -353,7 +363,7 @@ body.light-mode footer h3 {
     /* Center all items in the navbar */
 }
 
-.loginSignupbtn a {
+.navbarButton a {
     color: white;
     text-decoration: none;
 }
@@ -1134,7 +1144,7 @@ input {
     .name {
         margin-left: 10px;
     }
-    .loginSignupbtn{
+    .navbarButton{
         padding: 10px;
         border-radius: 50%;
     }

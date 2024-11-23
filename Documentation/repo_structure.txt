@@ -54,17 +54,20 @@
     │   ├── contributor.html
     │   ├── license.html
     │   ├── login.html
-    │   └── signup.html
+    │   ├── signup.html
+    │   └── support.html
     ├── scripts/
     │   ├── codeOfconduct.js
     │   ├── contributor.js
     │   ├── license.js
     │   ├── script.js
-    │   └── sharedUtilities.js
+    │   ├── sharedUtilities.js
+    │   └── support.js
     ├── styles/
     │   ├── 404.css
     │   ├── contributor.css
-    │   └── style.css
+    │   ├── style.css
+    │   └── support.css
     └── web_images/
         ├── 2dglow.png
         ├── 2dglowhalfbg-removebg-preview.png

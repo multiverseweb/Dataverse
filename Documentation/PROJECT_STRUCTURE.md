@@ -57,14 +57,12 @@
 │   └── tempCodeRunnerFile.py
 └── website/
     ├── pages/
-    │   ├── codeOfconduct.html
     │   ├── contributor.html
     │   ├── license.html
     │   ├── login.html
     │   ├── signup.html
     │   └── support.html
     ├── scripts/
-    │   ├── codeOfconduct.js
     │   ├── contributor.js
     │   ├── license.js
     │   ├── script.js
@@ -93,6 +91,7 @@
         ├── finance_down.webp
         ├── finance_up.webp
         ├── galaxy.webp
+        ├── github.png
         ├── hide_password_icon.png
         ├── live.gif
         ├── loader.gif

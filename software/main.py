@@ -1,11 +1,11 @@
 import tkinter as tk                              #for GUI
 from tkinter import *                             #for GUI                                   +---------------------------+
 from tkinter import messagebox                    #for GUI messages                          |        DATAVERSE          |
-import customtkinter                              #for scrollable GUI frame                  |     version 06.02.24      |
+import customtkinter                              #for scrollable GUI frame                  |     version 6550(24)      |
 from PIL import Image, ImageTk                    #for GUI images                            |  Designed & Developed By  |
 from functools import partial                     #for calling button functions              |        TEJAS GUPTA        |
 import mysql.connector as my                      #for connecting database                   +---------------------------+
-import datetime                                   #for getting current date                  |developing version 6550(24)|
+import datetime                                   #for getting current date                  |developing version XM45'24 |
 import time                                       #for getting current time                  +---------------------------+                 
 import webbrowser                                 #for opening external link
 import ctypes as ct                               #for styling windows
@@ -395,14 +395,14 @@ def insert(u_id,u_name):
     global text
     text.pack_forget()
     form=customtkinter.CTkScrollableFrame(root,
-                                                  width=900,
+                                                  width=1100,
                                                   height=500,
                                                   label_text="{}'s Data".format(u_name.title()),
                                                   border_width=1,
                                                   fg_color="#171717",
                                                   scrollbar_button_hover_color="#ffffff"
                                                   )
-    form.pack(side=TOP,fill=Y,pady=40,padx=(0,125))
+    form.pack(side=TOP,fill=Y,pady=40,padx=(125,125))
     title=Label(form,font="poppins 10",fg='#ffffff',bg='#171717',text="Enter Today's Data")
     title.pack(fill=Y,pady=35,padx=0)
 
@@ -445,7 +445,7 @@ def delete_data(u_id):
     global text
     text.pack_forget()
     form=Frame(root,bg="#171717",relief=SUNKEN)
-    form.pack(side=TOP,fill=Y,pady=140,padx=(0,200))
+    form.pack(side=TOP,fill=Y,pady=140,padx=(200,200))
     title=Label(form,font="poppins 10",fg='#ffffff',bg='#171717',text="Delete Data")
     title.pack(fill=Y,pady=35,padx=0)
     e_date=StringVar()

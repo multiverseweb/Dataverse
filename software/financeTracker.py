@@ -200,7 +200,7 @@ def plot_data(requireds, username):
             messagebox.showinfo(message="Report downloaded. ✓")
 
         plt.style.use('dark_background')
-        fig, ax = plt.subplots(2, 2, figsize=(10.7, 6))
+        fig, ax = plt.subplots(2, 2, figsize=(10.7, 6.6))
         plt.subplots_adjust(left=0.08, bottom=0.043, right=0.805, top=0.895, wspace=0.148, hspace=0.374)
         gs = GridSpec(2, 2, width_ratios=[2, 2], height_ratios=[1.5, 1])
 
@@ -283,7 +283,7 @@ def plot_data(requireds, username):
         ax[1, 1].spines['left'].set_color('black')
 
         # Positioning the graph window
-        move_figure(fig, 220, 170)
+        move_figure(fig, 230, 120)
         plt.show()
         plt.tight_layout()
 

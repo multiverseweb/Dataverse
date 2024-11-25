@@ -13,7 +13,6 @@
 ├── README.md
 ├── SECURITY.md
 ├── index.html
-├── plot.png
 ├── software/
 │   ├── __pycache__/
 │   │   ├── dataVisualization.cpython-311.pyc

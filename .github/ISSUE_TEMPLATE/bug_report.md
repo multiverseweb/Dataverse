@@ -6,7 +6,7 @@ labels: ["🐛 bug"]
 assignees: ""
 ---
 
-Found a bug? Please fill out the sections below. 👍
+<!--Found a bug? Please fill out the sections below. 👍-->
 
 ### Current Behaviour
 

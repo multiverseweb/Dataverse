@@ -1,4 +1,4 @@
-## Project Structure ✨
+## Project Structure 📂
 
 <!-- START_STRUCTURE -->
 ```

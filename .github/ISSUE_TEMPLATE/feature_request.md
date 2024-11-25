@@ -6,7 +6,7 @@ labels: ["✨ feature", "🚨 needs approval"]
 assignees: ""
 ---
 
-Have an idea for a new feature? Please fill out the sections below. 😊
+<!--Have an idea for a new feature? Please fill out the sections below. 😊-->
 
 ### Current Behaviour
 

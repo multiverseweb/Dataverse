@@ -299,8 +299,6 @@ def user_menu(u_id,u_name):
     menu.pack(side=LEFT,fill=Y)
     global title
     title.pack_forget()
-    #text=Label(font="poppins 10 bold",fg='#ffffff',bg='#000000',text="PERSONAL FINANCE TRACKER")
-    #text.pack(fill=X,pady=35,padx=(0,200))
 
     profile=Frame(root,bg="#171717",relief=SUNKEN,width=25,height=100)
     profile.pack(side=RIGHT,fill=Y,anchor=NE)
@@ -315,11 +313,29 @@ def user_menu(u_id,u_name):
     name=Label(profile,font="poppins 10 bold",fg='#ffffff',bg='#171717',text="{}\n\n\nMember since: {}\n\nLast active on: {}".format(u_name.title(),since,last))
     name.pack(fill=X,padx=30,pady=10)
 
-    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Add Data",width=22,font="poppins 10",command=partial(insert,u_id,u_name),cursor="hand2")
-    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="View Data",width=22,command=partial(view,u_id,u_name),font="poppins 10",cursor="hand2")
-    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Visualise Data",width=22,font="poppins 10",command=partial(visualize,u_name),cursor="hand2")
-    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Data",width=22,font="poppins 10",command=partial(delete_data,u_id),cursor="hand2")
-    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Save & Logout",width=22,command=main,font="poppins 10",cursor="hand2")
+    def resize_image(image_path, width=20, height=20):
+        image = Image.open(image_path)
+        image = image.resize((width, height), Image.Resampling.LANCZOS)
+        return ImageTk.PhotoImage(image)
+    
+    # Resizing all images to 20x20
+    addData = resize_image("software/images/add.png", 20)
+    viewData = resize_image("software/images/view.png", 20)
+    plotData = resize_image("software/images/pie_chart.png", 20)
+    deleteData = resize_image("software/images/delete.png", 20)
+    logout = resize_image("software/images/logout.png", 20)
+
+    b1=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Add Data",image=addData,compound='left',width=170,anchor='w',padx=10,font="poppins 10",command=partial(insert,u_id,u_name),cursor="hand2")
+    b2=Button(menu,fg='#ffffff',bg='#1a1a1a',text="View Data",image=viewData,compound='left',width=170,anchor='w',padx=10,command=partial(view,u_id,u_name),font="poppins 10",cursor="hand2")
+    b3=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Visualise Data",image=plotData,compound='left',width=170,anchor='w',padx=10,font="poppins 10",command=partial(visualize,u_name),cursor="hand2")
+    b5=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Delete Data",image=deleteData,compound='left',width=170,anchor='w',padx=10,font="poppins 10",command=partial(delete_data,u_id),cursor="hand2")
+    b4=Button(menu,fg='#ffffff',bg='#1a1a1a',text="Save & Logout",image=logout,compound='left',width=170,anchor='w',padx=10,command=main,font="poppins 10",cursor="hand2")
+
+    b1.image = addData
+    b2.image = viewData
+    b3.image = plotData
+    b4.image = deleteData
+    b5.image = logout
 
     b1.pack(pady=(30,5),padx=15)
     b2.pack(pady=5,padx=15)
@@ -1307,15 +1323,32 @@ Managing finances has never been easier! Dataverse’s finance tracking features
     b3.config(command=partial(create,b3,b1,b2,b4,preview_image))
     b4.config(command=partial(delete,b4,b1,b2,b3,preview_image))
 
-    # adding version label to the home page
-    version_text = "Version : 6550(24) Latest"
-    version_label = Label(menu, text=version_text, font="poppins 10 bold", fg="#ffffff", bg="#171717")
-    version_label.pack(side=BOTTOM, anchor="w", padx=10, pady=10)    
-
     link1 = Label(menu,fg='#ffffff',bg='#1a1a1a',text="Visit Website",width=22,cursor="hand2",font="poppins 10", relief="sunken")
-    link1.pack(pady=280,padx=15)
+    link1.pack(pady=(280,0),padx=15)
     link1.bind("<Button-1>", lambda e: callback("https://multiverse-dataverse.netlify.app/"))
 
+        
+    # adding version label to the home page
+    version_text="v.6550(24)"
+    version_label = Label(menu, text=version_text, font="poppins 8 bold", fg="#bfbfbf", bg="#171717")
+    version_label.pack(side=LEFT, anchor="s", padx=(10,0), pady=0)
+
+    # Create a Canvas for the rounded label
+    canvas = Canvas(menu, width=50, height=20, bg="#171717", highlightthickness=0)
+    canvas.pack(side=LEFT, anchor="s", padx=(5, 0), pady=0)
+
+    # Draw a rounded rectangle
+    x0, y0, x1, y1 = 0, 0, 50, 20
+    radius = 10
+    canvas.create_arc(x0, y0, x0 + radius * 2, y0 + radius * 2, start=90, extent=90, fill="#212121", outline="#212121")
+    canvas.create_arc(x1 - radius * 2, y0, x1, y0 + radius * 2, start=0, extent=90, fill="#212121", outline="#212121")
+    canvas.create_arc(x0, y1 - radius * 2, x0 + radius * 2, y1, start=180, extent=90, fill="#212121", outline="#212121")
+    canvas.create_arc(x1 - radius * 2, y1 - radius * 2, x1, y1, start=270, extent=90, fill="#212121", outline="#212121")
+    canvas.create_rectangle(x0 + radius, y0, x1 - radius, y1, fill="#212121", outline="#212121")
+    canvas.create_rectangle(x0, y0 + radius, x1, y1 - radius, fill="#212121", outline="#212121")
+
+    # Add the text
+    canvas.create_text((x1 - x0) / 2, (y1 - y0) / 2, text="Latest", fill="#bfbfbf", font="poppins 8 bold")
     root.mainloop()
 
 def dark(window):

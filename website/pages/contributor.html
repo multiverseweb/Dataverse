@@ -1,46 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dataverse's Contributors</title>
+    <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/contributor.css">
     <link rel="shortcut icon" href="../web_images/3dlogo.svg" type="image/x-icon">
 </head>
+
 <body>
-        <div class="containerr">
+    <button class="top" id="top" onclick="topFunction()"><img src="website/web_images/top.webp" alt=""></button>
+    <nav id="navbar">
+        <img src="../web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
+        <img src="../web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
+        <a href="../pages/login.html">
+            <button class="navbarButton">
+                <span class="button-text">Login</span>
+                <img src="../web_images/user.png" alt="User Icon" class="user-icon">
+            </button>
+        </a>
+    </nav>
 
-            <!-- Stats Section -->
-            <section class="stats">
-                <h2>Dataverse's Contributors Statistics</h2>
-                <div class="stats-grid" id="statsGrid">
-                    <!-- Stats will be dynamically inserted here -->
-                </div>
-            </section>
+    <button class="burger" id="burger" onclick="show()"></button>
+    <button id="cross" class="burger" onclick="hide()"></button>
+    <div class="burger" id="lines">
+        <div class="line" id="l1"></div>
+        <div class="line" id="l2"></div>
+        <div class="line" id="l3"></div>
+    </div>
+    <div class="plane" id="plane">
+        <table>
+            <tr>
+                <td><a href="../../index.html"
+                        class="table_link">Home</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://github.com/multiverseweb/Dataverse/blob/main/README.md"
+                        class="table_link">Documentation</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
+            </tr>
+            <tr>
+                <td><a href="support.html" class="table_link">Support</a></td>
+            </tr>
+            <tr>
+                <td><a href="license.html" class="table_link">License</a></td>
+            </tr>
+            <tr>
+                <td><a href="contributor.html" class="table_link">Contributors</a></td>
+            </tr>
+        </table>
+    </div>
 
-            <!-- Contributors Grid -->
-            <section class="contributors">
-                <h2>Meet Our Contributors</h2>
-                <div class="contributors-grid" id="contributorsGrid">
-                    <!-- Contributors will be dynamically inserted here -->
-                </div>
-                <div id="loading" class="loading">
-                    <div class="spinner"></div>
-                </div>
-            </section>
+    <div class="slow-scroll"></div>
+    <div class="containerr">
 
-            <!-- Call to Action -->
-            <section id="contribute" class="cta">
-                <h2>Ready to Make an Impact?</h2>
-                <p>Join our community and help shape the future of Dataverse.</p>
-                <form id="subscribeForm" onsubmit="event.preventDefault(); window.location.href='https://github.com/multiverseweb/Dataverse';">
-                    <button type="submit" class="btn btn-secondary">Join Community</button>
-                </form>
-                <div id="notification" class="notification hidden"></div>
-            </section>
-        </div>
-        <a href="../../index.html"><button class="goBack">Go To Home</button></a>
+        <!-- Stats Section -->
+        <section class="stats">
+            <h2>Dataverse's Contributors Statistics</h2>
+            <div class="stats-grid" id="statsGrid">
+                <!-- Stats will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Contributors Grid -->
+        <section class="contributors">
+            <h2>Meet Our Contributors</h2>
+            <div class="contributors-grid" id="contributorsGrid">
+                <!-- Contributors will be dynamically inserted here -->
+            </div>
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+            </div>
+        </section>
+    </div>
+    <a href="../../index.html"><button class="goBack">Go To Home</button></a>
 
     <script src="../scripts/contributor.js"></script>
+
 </body>
+
 </html>

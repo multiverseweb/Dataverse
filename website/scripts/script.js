@@ -196,21 +196,6 @@ function hide() {
 }
 windowFunctions.push(hide);
 
-// function updateIndicator(button) {
-//   // Set the position of the indicator to align with the selected button
-//   const adjustment = (button.offsetHeight - indicator.offsetHeight) / 2;
-//   indicator.style.top = `${button.offsetTop + adjustment}px`;
-
-//   // Set the glow effect based on the theme
-//   const currentTheme = localStorage.getItem('theme');
-//   if (currentTheme === 'light') {
-//       indicator.style.backgroundImage = "radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70%)"; // Black glow in light mode
-//       // indicator.style.boxShadow = "0 0 5px 3px rgba(0, 0, 0, 0.7)"; // Adjust the box-shadow radius and spread here
-//   } else {
-//       indicator.style.backgroundImage = "radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%)"; // White glow in dark mode
-//       // indicator.style.boxShadow = "0 0 5px 3px rgba(255, 255, 255, 0.7)"; // Adjust the box-shadow radius and spread here
-//   }
-// }
 
 function updateIndicator(button) {
   const adjustment = (button.offsetHeight - indicator.offsetHeight) / 2;
@@ -248,7 +233,7 @@ windowFunctions.push(light);
 
 function dark(flag) {
   if(document.getElementById("map") && tags && contribute && shadow && technologies) {
-    document.getElementById("map").style.filter = "invert(1) hue-rotate(180deg) brightness(1.5)";
+    document.getElementById("map").style.filter = "invert(1) hue-rotate(180deg) brightness(1.7)";
     tags.style.borderColor = "rgba(255, 255, 255, 0.323)";
     tags.style.backgroundColor = "#00000000";
     shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#000000d4,#00000000)";

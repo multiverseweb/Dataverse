@@ -9,7 +9,20 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   color: #333;
-  background-color: #1e1e1e;
+  background-color: #00000000;
+  overflow-x: hidden;
+}
+
+.slow-scroll {
+  position: fixed;
+  z-index: 50;
+  height: 120vh;
+  width: 100vw;
+  background-image: url('../../software/images/background.png');
+  background-size: cover;
+  background-repeat:repeat;
+  background-attachment: scroll; /* Enable scroll */
+  background-position: center 0;
 }
 
 .goBack{
@@ -23,10 +36,14 @@ body {
   border:none;
   border-radius: 7px;
   box-shadow: 0 0 5px black;
+  z-index: 100;
 }
 
 .containerr {
-  margin: 0 auto;
+  position: absolute;
+  margin-left: 50vw;
+  transform: translate(-50%);
+  z-index: 100;
 }
 
 /* Hero Section */
@@ -49,7 +66,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.644);
 }
 
 .hero-content {
@@ -99,7 +116,8 @@ body {
 
 /* Stats Section */
 .stats {
-  background-color: #000000;
+  width: 100vw;
+  background-color: #000000ab;
   padding: 4rem 0;
   text-align: center;
 }
@@ -107,6 +125,7 @@ body {
 .stats h2 {
   color: white;
   font-size: 2rem;
+  margin-top: 1rem;
   margin-bottom: 2rem;
 }
 
@@ -119,11 +138,11 @@ body {
 }
 
 .stat-card {
-  background-color: #f9f9f9;
-  border: 1px solid #e0e0e0;
-  color: #333;
-  border-radius: 10px;
-  padding: 1.5rem;
+  background-color: #000000;
+  border: 1px solid #b2b2b2;
+  color: #dfdfdf;
+  border-radius: 2px;
+  padding: 5px;
   text-align: center;
 }
 
@@ -138,7 +157,7 @@ body {
 }
 
 .stat-card p {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 /* Contributors Section */
@@ -162,7 +181,7 @@ body {
 }
 
 .contributor-card {
-  background-color: #000000;
+  background-color: #000000ca;
   border: 1px solid #1e1e1e;
   border-radius: 10px;
   overflow: hidden;
@@ -254,7 +273,8 @@ body {
 
 /* Call to Action Section */
 .cta {
-  background-color: #000000;
+  width: 100vw;
+  background-color: #000000da;
   color: #fff;
   padding: 4rem 0;
   text-align: center;
@@ -284,9 +304,8 @@ body {
   }
   .contributors-grid{
     width: 80vw;
-    margin-left: 10vw;
   }
   .contributor-card{
-    width: 85%;
+    width: 80vw;
   }
 }

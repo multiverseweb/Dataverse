@@ -304,14 +304,14 @@ body.light-mode footer h3 {
     height: 60px;
     position: fixed;
     top: 0;
-    z-index: 100;
+    z-index: 104;
     display: flex;
     align-items: center;
     justify-content: space-between;
     /* Space between logo and button */
     border-bottom: 1px solid rgba(255, 255, 255, 0.077);
+    background-color: #0f0f0fba;
     backdrop-filter: blur(7px);
-    background-color: #0000004b;
     transition-duration: 0.3s;
     padding: 0 20px;
     /* Padding for left and right spacing */
@@ -333,12 +333,9 @@ body.light-mode footer h3 {
     justify-content: center;
     text-align: center;
     position: absolute;
-    /* Make the button positionable */
     right: 65px;
-    /* Distance from the right side */
     top: 10px;
-    /* Adjust the vertical positioning as needed */
-
+    z-index: 104;
 }
 
 #bug-report-button {
@@ -396,7 +393,7 @@ body.light-mode footer h3 {
 }
 
 table {
-    margin-top: 60px;
+    margin-top: 0px;
     width: 100%;
 }
 
@@ -485,14 +482,14 @@ tr:hover {
 }
 
 .plane {
-    height: 110vh;
+    height: calc(110vh - 60px);
     width: calc(100vw - 60px);
     background-color: #0f0f0fba;
     backdrop-filter: blur(7px);
     position: fixed;
     z-index: 103;
     right: -100vw;
-    top: 0px;
+    top: 60px;
     transition-duration: 0.2s;
     overflow-y: scroll;
     max-width: 400px;
@@ -633,7 +630,7 @@ tr:hover {
     font-size: large;
     transition-duration: 0.3s;
     padding: 10px 20px 10px 20px;
-    z-index: 200;
+    z-index: 100;
     border-radius: 5px;
 }
 
@@ -884,6 +881,7 @@ tr:hover {
     margin-left: 50%;
     transform: translate(-50%);
     display: flex;
+    cursor: pointer;
     background-color: #00000000;
     border: 1px solid white;
     color: white;

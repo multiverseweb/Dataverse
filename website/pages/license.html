@@ -28,8 +28,12 @@
     <nav id="navbar">
         <img src="../web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
         <img src="../web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
-        <a href="../../login.html"><button class="loginSignupbtn">Login
-        </button></a>
+        <a href="website/pages/login.html">
+            <button class="navbarButton">
+                <span class="button-text">Login</span>
+                <img src="../web_images/user.png" alt="User Icon" class="user-icon">
+            </button>
+        </a>
     </nav>
     
     <button class="burger" id="burger" onclick="show()"></button>
@@ -45,27 +49,21 @@
                 <td><a href="../../index.html" class="table_link">Home</a></td>
             </tr>
             <tr>
-                <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
-            </tr>
-            <tr>
                 <td><a href="https://github.com/multiverseweb/Dataverse/blob/main/README.md"
                         class="table_link">Documentation</a></td>
             </tr>
             <tr>
-                <td><a href="contributor.html"
-                        class="table_link">Contributors</a></td>
+                <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
             </tr>
             <tr>
-                <td>
-                    <a href="https://www.figma.com/proto/BBbXARgpxercxacjm0qpgX/Dataverse?type=design&node-id=45-25&t=zMFBUgENaIeqhRYZ-1&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=22%3A310&show-proto-sidebar=1&mode=design"
-                        class="table_link">Figma Design</a>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="codeOfconduct.html" class="table_link" target="_blank">Code of Conduct</a></td>
+                <td><a href="../pages/support.html" class="table_link">Support</a></td>
             </tr>
             <tr>
                 <td><a href="license.html" class="table_link">License</a></td>
+            </tr>
+            <tr>
+                <td><a href="contributor.html"
+                        class="table_link">Contributors</a></td>
             </tr>
         </table>
     </div>
@@ -78,7 +76,7 @@
                 margin:0;
             }
             .tejas{
-                background: linear-gradient(180deg,silver,rgb(194, 187, 187));
+                background: linear-gradient(45deg,rgb(0, 0, 0),rgb(33, 33, 33));
                 padding: 10px;
                 color: whitesmoke;
                 display: flex;

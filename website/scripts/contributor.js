@@ -96,21 +96,6 @@ async function init() {
   contributorsGrid.style.display = 'grid';
 }
 
-// Handle form submission
-document.getElementById('subscribeForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const email = document.getElementById('emailInput').value;
-  const notification = document.getElementById('notification');
-  
-  notification.textContent = `Thank you for subscribing with ${email}. We'll keep you updated!`;
-  notification.classList.remove('hidden');
-  
-  document.getElementById('emailInput').value = '';
-  
-  setTimeout(() => {
-      notification.classList.add('hidden');
-  }, 5000);
-});
 
 // Scroll to contribute section
 function scrollToContribute() {
@@ -119,3 +104,32 @@ function scrollToContribute() {
 
 // Initialize the page when the DOM is loaded
 document.addEventListener('DOMContentLoaded', init);
+
+window.addEventListener("scroll", function () {
+  const scrollable = document.querySelector(".slow-scroll");
+  const scrollOffset = window.scrollY;
+  scrollable.style.backgroundPosition = `center ${scrollOffset * -0.3}px`;
+});
+
+
+function show() {
+  l2.style.opacity = 0;
+  l1.style.transform = "rotate(-45deg)";
+  l3.style.transform = "rotate(45deg)";
+  burger.style.display = "none";
+  cross.style.display = "block";
+  plane.style.right = 0;
+  document.body.style.overflowY = "hidden";
+}
+windowFunctions.push(show);
+
+function hide() {
+  l2.style.opacity = 1;
+  l1.style.transform = "rotate(0deg)";
+  l3.style.transform = "rotate(0deg)";
+  burger.style.display = "block";
+  cross.style.display = "none";
+  plane.style.right = "-100vw";
+  document.body.style.overflowY = "scroll";
+}
+windowFunctions.push(hide);

@@ -57,6 +57,7 @@
 ---
 ### Versions
 
+- XM45'24 `Under Development`
 - 6550(24) `Latest`
 - 06.02.24
 

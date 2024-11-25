@@ -84,7 +84,7 @@ However, you can follow these steps to run the project locally on your computer:
       cd Dataverse/software
       ```
 
-   - Go to `mainGUI.py` and run it.
+   - Go to `main.py` and run it.
 
 Now the software should run locally with no errors, feel free to use the software and don't forget to give feedback on the [website](https://multiverse-dataverse.netlify.app/)!
 

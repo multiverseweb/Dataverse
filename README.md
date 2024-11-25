@@ -41,8 +41,18 @@
 
 ### Table of Contents
 
-| [About Dataverse](#what-does-this-software-do) | [Versions](#versions) | [Use Dataverse](#deployment-specifications) | [Repository Structure](#repository-structure) | [Preview](#preview) | [Software Representation](#software-representation) | [Make Contributions](#contributions) | [Website](#website) |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+<table>
+  <tr>
+    <th><a href="#what-does-this-software-do">About Dataverse</a></th>
+    <th><a href="#versions">Versions</a></th>
+    <th><a href="#deployment-specifications">Use Dataverse</a></th>
+    <th><a href="#repository-structure">Repository Structure</a></th>
+    <th><a href="#preview">Preview</a></th>
+    <th><a href="#software-representation">Software Representation</a></th>
+    <th><a href="#contributions">Make Contributions</a></th>
+    <th><a href="#website">Website</a></th>
+  </tr>
+</table>
 
 ---
 

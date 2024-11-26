@@ -944,13 +944,10 @@ footer input[type="submit"] {
     width: 95%;
     border-radius: 5px;
     border: 1px solid rgba(126, 126, 126, 0.382);
-    /* Silver border */
     background-color: rgba(255, 255, 255, 0.1);
-    /* Light background for inputs in dark mode */
     color: rgb(255, 255, 255);
-    /* Silver text for inputs */
     transition: background-color 0.3s, color 0.3s;
-    /* Smooth transition for inputs */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 textarea{
     resize: none;

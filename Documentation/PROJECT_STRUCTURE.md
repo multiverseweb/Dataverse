@@ -9,12 +9,14 @@
 │   ├── images/
 │   │   └── netlify.svg
 │   ├── repo_structure.txt
-│   └── sitemap.md
+│   └── styles/
+│       └── sitemap.xsl
 ├── LICENSE
 ├── README.md
 ├── SECURITY.md
 ├── documentation.html
 ├── index.html
+├── sitemap.xml
 ├── software/
 │   ├── __pycache__/
 │   │   ├── dataVisualization.cpython-311.pyc

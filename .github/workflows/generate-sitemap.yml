@@ -34,6 +34,6 @@ jobs:
 
       - name: Commit and Push Sitemap
         run: |
-          git add sitemap.md
+          git add .
           git commit -m "Update Sitemap [skip ci]" || echo "No changes to commit"
           git push

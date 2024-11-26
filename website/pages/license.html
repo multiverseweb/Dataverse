@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dataverse | MIT License</title>
+    <title>Dataverse | License</title>
     <link rel="shortcut icon" href="../web_images/3dlogo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.1/marked.min.js"></script>
 </head>
 
 <body id="body">
@@ -17,12 +19,13 @@
                 <img src="https://static.thenounproject.com/png/4066359-200.png" class="copy" id="moon">
             </button>
             <button id="lightButton" onclick="light(false)">
-                <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy" id="sun">
+                <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy"
+                    id="sun">
             </button>
             <button id="defaultButton" onclick="systemDefault()">
                 <img src="../web_images/settings.webp" class="copy" id="default">
             </button>
-            
+
         </div>
     </div>
     <nav id="navbar">
@@ -35,7 +38,7 @@
             </button>
         </a>
     </nav>
-    
+
     <button class="burger" id="burger" onclick="show()"></button>
     <button id="cross" class="burger" onclick="hide()"></button>
     <div class="burger" id="lines">
@@ -49,8 +52,7 @@
                 <td><a href="../../index.html" class="table_link">Home</a></td>
             </tr>
             <tr>
-                <td><a href="../../documentation.html"
-                        class="table_link">Documentation</a></td>
+                <td><a href="../../documentation.html" class="table_link">Documentation</a></td>
             </tr>
             <tr>
                 <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
@@ -62,53 +64,73 @@
                 <td><a href="license.html" class="table_link">License</a></td>
             </tr>
             <tr>
-                <td><a href="contributor.html"
-                        class="table_link">Contributors</a></td>
+                <td><a href="contributor.html" class="table_link">Contributors</a></td>
             </tr>
         </table>
     </div>
 
     <div class="license-content">
-        <h2>MIT License</h2>
-        <br>
-        <style>
-            body{
-                margin:0;
-            }
-            .tejas{
-                background: linear-gradient(45deg,rgb(0, 0, 0),rgb(33, 33, 33));
-                padding: 10px;
-                color: whitesmoke;
-                display: flex;
-                justify-content: center;
-            }
-        </style>
-
-        
-        <div class="tejas">
-        <h3>Copyright &copy; <span id="copyright">32949832</span> Tejas Gupta</h3>
+        <div class="mainInfo">
+            <h2>CC BY-NC-ND 4.0 License</h2>
+            <br>
+            <div class="tejas">
+                <h3>Copyright &copy; <span id="copyright">32949832</span> Tejas Gupta</h3>
+            </div>
         </div>
-        <br>
-        Permission is hereby granted, free of charge, to any person obtaining a copy
-        of this software and associated documentation files (the "Software"), to deal
-        in the Software without restriction, including without limitation the rights
-        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-        copies of the Software, and to permit persons to whom the Software is
-        furnished to do so, subject to the following conditions:
-        <br><br>
-        The above copyright notice and this permission notice shall be included in all
-        copies or substantial portions of the Software.
-        <br><br>
-        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-        SOFTWARE.
-    </div>
-    <a href="../../index.html"><button class="goBack">Go To Home</button></a>
 
+        <div id="markdown-content"></div>
+    </div>
+    <script>
+        fetch('../../LICENSE.md')
+            .then(response => response.text())
+            .then(markdownText => {
+                let html = marked(markdownText);
+                document.getElementById('markdown-content').innerHTML = html;
+            });
+    </script>
+
+    <a href="../../index.html"><button class="goBack">Go To Home</button></a>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .mainInfo {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tejas {
+            background-color: rgb(231, 173, 0);
+            color: #000000;
+            width: fit-content;
+            padding: 3px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .licenseHighlight a {
+            color: #000000;
+        }
+
+        .license-content {
+            font-family: "Montserrat Alternates", sans-serif;
+            font-style: normal;
+            line-height: 1.3;
+            margin-top: 50px;
+            padding: 20px 20px;
+            font-size: 16px;
+            width: auto;
+            max-width: auto;
+            padding-bottom: 80px;
+        }
+        #markdown-content{
+            padding: 10px;
+        }
+    </style>
     <script src="../scripts/license.js"></script>
 </body>
+
 </html>

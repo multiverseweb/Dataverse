@@ -1377,25 +1377,6 @@ input {
     background-color: #00000000;
 }
 
-.license-content {
-    font-family: "Montserrat Alternates", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    letter-spacing: 0.05em;
-    font-size: 1.1em;
-    /* Slight increase */
-    line-height: 1.3;
-    /* For multi-line text */
-    margin-top: 50px;
-    padding: 50px 50px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 16px;
-    width: auto;
-    max-width: auto;
-}
-
 #codeOfconduct {
     font-family: 'Times New Roman', Times, serif;
     padding: 20px;

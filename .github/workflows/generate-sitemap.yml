@@ -1,4 +1,4 @@
-name: Generate Dynamic Sitemap
+name: Generate Sitemap
 
 on:
   push:
@@ -16,27 +16,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          node-version: '16'
+          python-version: 3.x
 
       - name: Install Dependencies
-        run: npm install sitemap-generator-cli
+        run: pip install beautifulsoup4 requests
 
       - name: Generate Sitemap
-        run: npx sitemap-generator-cli https://multiverse-dataverse.netlify.app/ -o Documentation/sitemap.md
-
-      - name: List Files
-        run: ls -la
+        run: python generate_sitemap.py
 
       - name: Configure Git
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Pull Latest Changes
-        run: git pull origin main --rebase
 
       - name: Commit and Push Sitemap
         run: |

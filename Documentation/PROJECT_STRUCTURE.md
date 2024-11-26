@@ -83,6 +83,8 @@
         ├── 3d_glow.webp
         ├── 3dlogo.svg
         ├── ER_diagram.png
+        ├── Infinity-2.png
+        ├── Infinity.png
         ├── about_down.webp
         ├── about_up.webp
         ├── coffee.png

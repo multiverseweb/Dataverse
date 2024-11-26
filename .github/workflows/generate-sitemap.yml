@@ -25,7 +25,7 @@ jobs:
         run: pip install beautifulsoup4 requests
 
       - name: Generate Sitemap
-        run: python generate_sitemap.py
+        run: python .github/scripts/generate_sitemap.py
 
       - name: Configure Git
         run: |

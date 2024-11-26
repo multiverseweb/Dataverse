@@ -282,26 +282,27 @@
             </div>
             <script>
                 function validateFeedback() {
-                    var feedback = document.forms["CodeIt Reviews"]["Feedback"];
+                    var feedback = document.forms["Dataverse Reviews"]["Feedback"];
                     checkFeedbackLength(feedback);
                     return feedback.value.length >= 10;
                 }
 
-                // Delay the execution by 3 seconds
-                setTimeout(function () {
-                    window.embeddedChatbotConfig = {
-                        chatbotId: "oKgfHa3hvh7Ic0ypSqDbv",
-                        domain: "www.chatbase.co"
-                    };
-
-                    var script = document.createElement("script");
-                    script.src = "https://www.chatbase.co/embed.min.js";
-                    script.setAttribute("chatbotId", "oKgfHa3hvh7Ic0ypSqDbv");
-                    script.setAttribute("domain", "www.chatbase.co");
-                    script.defer = true;
-                    document.body.appendChild(script);
-                }, 3000);
-            </script>
+                window.addEventListener('load', function() {
+                    setTimeout(function() {
+                        window.embeddedChatbotConfig = {
+                            chatbotId: "oKgfHa3hvh7Ic0ypSqDbv",
+                            domain: "www.chatbase.co"
+                        };
+            
+                        var script = document.createElement('script');
+                        script.src = "https://www.chatbase.co/embed.min.js";
+                        script.chatbotId = "oKgfHa3hvh7Ic0ypSqDbv";
+                        script.domain = "www.chatbase.co";
+                        script.defer = true;
+                        document.body.appendChild(script);
+                    }, 3000); // Delay of 3 seconds (3000 ms)
+                });
+            </script> 
 
         </div>
         <div class="end_line"></div>

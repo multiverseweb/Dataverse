@@ -84,6 +84,7 @@
         ├── ER_diagram.png
         ├── about_down.webp
         ├── about_up.webp
+        ├── coffee.png
         ├── copy.png
         ├── cubes.webp
         ├── data.png
@@ -100,6 +101,7 @@
         ├── portal.webp
         ├── preview.png
         ├── settings.webp
+        ├── sponsor.png
         ├── stars.webp
         ├── top.webp
         ├── user.png

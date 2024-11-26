@@ -46,6 +46,47 @@ details[open] {
     max-height: 500px; /* Expands to show content */
     padding-bottom: 10px; /* Adds padding to make expanded state look better */
 }
+#infinity {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--background-color); /* Fallback */
+    color: white; /* Adjust text color if needed */
+    z-index: 0; /* Set lower z-index for the container itself */
+}
+
+#infinity::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, var(--background-color), var(--background-color), cyan);
+    transition: opacity 0.3s ease-in-out;
+    z-index: -1; /* Place the gradient behind the content */
+}
+
+#infinity:hover::before {
+    opacity: 0; /* Fade out the gradient smoothly */
+}
+
+#infinity .content {
+    position: relative; /* Make sure content is above the gradient */
+    z-index: 1; /* Ensure it appears above the ::before pseudo-element */
+}
+
+
+.infinityImage {
+    position: absolute; /* Position the image relative to the parent (#infinity) */
+    bottom: -50px;
+    right: 10px;
+    width: 40%;
+    opacity: 0;
+    transition-duration: 0.6s;
+}
+#infinity:hover .infinityImage{
+    opacity: 1;
+}
 summary {
     cursor: pointer;
     font-weight: bold;
@@ -92,9 +133,6 @@ ul{
     padding: 20px;
     background-color: var(--background-color);
     box-shadow: var(--boxShadow);
-}
-#infinity{
-    background-image: linear-gradient(to right, var(--background-color), var(--background-color),cyan);
 }
 .design_btn {
     padding: 10px 20px 10px 20px;
@@ -318,5 +356,8 @@ body.popup-active {
     }
     .fund_links div{
         padding: 0;
+    }
+    .infinityImage{
+        bottom: 0px;
     }
 }

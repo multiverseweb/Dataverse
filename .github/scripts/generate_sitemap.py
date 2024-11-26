@@ -1,5 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
+from urllib.parse import urljoin, urlparse
+
+def is_internal_link(base_url, link):
+    """Check if a link is internal to the base URL."""
+    parsed_base = urlparse(base_url)
+    parsed_link = urlparse(link)
+    return parsed_link.netloc == parsed_base.netloc or parsed_link.netloc == ''
 
 def generate_sitemap(base_url, output_file="Documentation/sitemap.md"):
     visited = set()
@@ -9,23 +16,24 @@ def generate_sitemap(base_url, output_file="Documentation/sitemap.md"):
         f.write(f"# Sitemap for {base_url}\n\n")
 
         while to_visit:
-            url = to_visit.pop(0)
-            if url in visited:
+            current_url = to_visit.pop(0)
+            if current_url in visited:
                 continue
 
-            visited.add(url)
-            f.write(f"- [{url}]({url})\n")
+            visited.add(current_url)
+            f.write(f"- [{current_url}]({current_url})\n")
 
             try:
-                response = requests.get(url)
+                response = requests.get(current_url, timeout=10)
                 response.raise_for_status()
                 soup = BeautifulSoup(response.text, "html.parser")
+                
                 for link in soup.find_all("a", href=True):
-                    href = link["href"]
-                    if href.startswith(base_url) and href not in visited:
+                    href = urljoin(base_url, link["href"])
+                    if is_internal_link(base_url, href) and href not in visited and href not in to_visit:
                         to_visit.append(href)
             except Exception as e:
-                print(f"Error visiting {url}: {e}")
+                print(f"Error visiting {current_url}: {e}")
 
 if __name__ == "__main__":
     generate_sitemap("https://multiverse-dataverse.netlify.app/")

@@ -1,92 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 body.light-mode {
-    --heading-color: rgb(43, 43, 43);
-    --card-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.7);
-    --card-background-color: rgb(188, 196, 196);
-    --card-font-color: rgba(36, 36, 36, 0.95);
-    --card-p-color: rgb(41, 40, 40);
+    --color: rgb(19, 19, 19);
+    --boxShadow: 0px 0px 70px rgb(255, 255, 255), 0px 0px 70px rgb(255, 255, 255), 0px 0px 70px rgb(255, 255, 255);
+    --background-color: rgb(255, 255, 255);
+    --border-color: rgb(0, 0, 0);
     --form-field-input-color: #0f0f0f;
 }
 
 body.dark-mode {
-    --heading-color: rgb(170, 170, 170);
-    --card-box-shadow: 0px 0px 7px rgba(255, 255, 255, 0.7);
-    --card-background-color: rgb(126, 126, 126);
-    --card-font-color: rgba(0, 0, 0, 0.95);
-    --card-p-color: rgb(22, 22, 22);
+    --color: rgb(255, 255, 255);
+    --boxShadow: 0px 0px 70px rgb(0, 0, 0), 0px 0px 70px rgb(0, 0, 0), 0px 0px 70px rgb(0, 0, 0);
+    --background-color: rgb(0, 0, 0);
+    --border-color: rgb(255, 255, 255);
     --form-field-input-color: #eee;
 }
 
+body {
+    background-size: 80px 80px;
+    background-image:
+        linear-gradient(to right, rgb(54, 54, 54) 1px, transparent 1px),
+        linear-gradient(to bottom, rgb(54, 54, 54) 1px, transparent 1px);
+        background-attachment: fixed;
+}
+
 main {
-    /* border: 2px solid rgba(0, 0, 0, 0.3); */
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    top: 100px;
-    padding: 5px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 15vh;
+    width: 90vw;
+    max-width: 1000px;
+    margin: 20px;
+    margin-top: 90px;
+    margin-left: 50vw;
+    transform: translate(-50%);
 }
-
-#heading {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.45rem;
-    color: var(--heading-color);
+details {
+    margin-bottom: 15px;
+    border: 1px solid #454545;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: max-height 0.6s ease-in-out, padding 0.6s ease-in-out;
+    max-height: 40px; /* Matches the height of the summary */
 }
-
-section#help-categories {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5vh;
+details[open] {
+    max-height: 500px; /* Expands to show content */
+    padding-bottom: 10px; /* Adds padding to make expanded state look better */
 }
-
-.category-row {
-    display: flex;
-    gap: 10vw;
-}
-
-.category-row div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 300px;
-    height: 200px;
-    padding: 15px 10px;
-    background-color: var(--card-background-color);
-    border-radius: 7.5px;
-    box-shadow: var(--card-box-shadow);
-    transition: all 0.3s ease;
-    will-change: transform;
+summary {
     cursor: pointer;
-    color: var(--card-font-color);
-    /* border: 2px solid black; */
+    font-weight: bold;
+    position: relative;
+    padding-left: 35px;
+    height: 40px; /* Fixed height for the summary */
+    line-height: 40px; /* Vertically aligns text */
+    list-style: none;
+    appearance: none;
+    min-height: max-content;
+}
+summary::marker {
+    content: ""; /* Hides default marker */
+}
+summary::before {
+    content: "+";
+    position: absolute;
+    top:10px;
+    left: 10px;
+    color: #ffd000;
+    font-size: 22px;
+    line-height: 1;
+    transition: transform 0.3s ease-in-out;
+}
+details[open] summary::before {
+    transform: rotate(45deg);
+}
+details p {
+    margin: 10px 10px 0 20px;
+}
+ul{
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+.heading {
+    margin-left: 0px;
+    font-size: xx-large;
 }
 
-.category-row div:hover {
-    transform: translateY(-8px);
+.category {
+    margin-top: 40px;
+    border: 1px solid rgb(40, 40, 40);
+    border-radius: 10px;
+    padding: 20px;
+    background-color: var(--background-color);
+    box-shadow: var(--boxShadow);
+}
+#infinity{
+    background-image: linear-gradient(to right, var(--background-color), var(--background-color),cyan);
+}
+.design_btn {
+    padding: 10px 20px 10px 20px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--color);
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: medium;
+    transition-duration: 0.3s;
 }
 
-.category-row div h2 {
-    font-size: 1.95rem;
-    font-weight: 500;
-    
+.design_btn:hover {
+    filter: invert(1);
 }
-
-.category-row div p {
-    width: 100%;
-    text-align: center;
-    font-size: 1.5rem;
-    color: var(--card-p-color);
+.funds{
+    display: block;
+    margin-top: -20px;
+    position: absolute;
+    right: 20px;
 }
-
+.funds button img{
+    height: 15px;
+    filter: invert(1);
+    margin-right: 10px;
+}
+.fund_links{
+    display: flex;
+    flex-direction: column;
+}
+.fund_links div{
+    display: flex;
+    padding: 15px;
+}
+.fund_links div p{
+    min-width: max-content;
+}
 #bug-report-form {
-    width: 75vw;; /* For phone compatability */
-    max-width: 600px; /* For desktop compatability */
+    width: 75vw;
+    ;
+    /* For phone compatability */
+    max-width: 600px;
+    /* For desktop compatability */
     z-index: -999;
     position: fixed;
     top: 30%;
@@ -115,7 +167,7 @@ section#help-categories {
     font-size: 1.2rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     text-align: left;
 }
 
@@ -165,7 +217,7 @@ section#help-categories {
 
 #bug-report-form button[type="submit"]:hover {
     color: black;
-    background-color:rgba(0, 240, 236, 0.867);
+    background-color: rgba(0, 240, 236, 0.867);
     box-shadow: 0px 0px 15px rgba(0, 240, 236, 0.867);
 }
 
@@ -189,12 +241,12 @@ body.popup-active {
     overflow: hidden;
 }
 
-#container.popup-active{
+#container.popup-active {
     user-select: none;
     pointer-events: none;
     filter: blur(8px);
     overflow: hidden;
-  }
+}
 
 /*==============================RESPONSIVE===================================*/
 @media screen and (max-width: 1150px) {
@@ -250,5 +302,21 @@ body.popup-active {
 @media screen and (max-width: 340px) {
     #popup-header p {
         font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .fund_links div{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .funds{
+        position: relative;
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+    .fund_links div{
+        padding: 0;
     }
 }

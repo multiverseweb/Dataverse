@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,132 +16,153 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" />
 </head>
+
 <body>
     <div id="container">
         <header>
-        <div class="buttons" id="buttons">
-            <div id="indicator"></div>
-            <div class="group">
-                <button id="darkButton" onclick="dark(false)">
-                    <img src="https://static.thenounproject.com/png/4066359-200.png" class="copy" id="moon">
-                </button>
-                <button id="lightButton" onclick="light(false)">
-                    <!-- <div id="theme2"> -->
-                    <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy"
-                        id="sun">
-                    <!-- </div> -->
+            <div class="buttons" id="buttons">
+                <div id="indicator"></div>
+                <div class="group">
+                    <button id="darkButton" onclick="dark(false)">
+                        <img src="https://static.thenounproject.com/png/4066359-200.png" class="copy" id="moon">
+                    </button>
+                    <button id="lightButton" onclick="light(false)">
+                        <!-- <div id="theme2"> -->
+                        <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt=""
+                            class="copy" id="sun">
+                        <!-- </div> -->
+                    </button>
+                </div>
+                <button id="defaultButton" onclick="systemDefault()">
+                    <img src="../web_images/settings.webp" class="copy" id="default">
                 </button>
             </div>
-            <button id="defaultButton" onclick="systemDefault()">
-                <img src="../web_images/settings.webp" class="copy" id="default">
-            </button>
-        </div>
-        <button class="top" id="top" onclick="topFunction()"><img src="../web_images/top.webp" alt=""></button>
-        <nav id="navbar">
-            <img src="../web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
-            <img src="../web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
-            <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
-            <!-- <button class="navbarButton" id="bug-report-button" onclick="showReportForm()">Report Issue</button> -->
-            <a href="../pages/login.html">
-                <button class="navbarButton">
-                    <span class="button-text">Login</span>
-                    <img src="../web_images/user.png" alt="User Icon" class="user-icon">
-                </button>
-            </a>
-        </nav>
-    
-        <button class="burger" id="burger" onclick="show()"></button>
-        <button id="cross" class="burger" onclick="hide()"></button>
-        <div class="burger" id="lines">
-            <div class="line" id="l1"></div>
-            <div class="line" id="l2"></div>
-            <div class="line" id="l3"></div>
-        </div>
-        <div class="plane" id="plane">
-            <table>
-                <tr>
-                    <td><a href="../../index.html" class="table_link">Home</a></td>
-                </tr>
-                <tr>
-                    <td><a href="../../documentation.html"
-                            class="table_link">Documentation</a></td>
-                </tr>
-                <tr>
-                    <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
-                </tr>
-                <tr>
-                    <td><a href="support.html" class="table_link">Support</a></td>
-                </tr>
-                <tr>
-                    <td><a href="../pages/license.html" class="table_link">License</a></td>
-                </tr>
-                <tr>
-                    <td><a href="../pages/contributor.html" class="table_link">Contributors</a></td>
-                </tr>
-            </table>
-        </div>
-      </header>
-      
-      <main>
-        <div id="heading">
-            <h1>How can we help you?</h1>
-        </div>
-        <section id="help-categories">
-            <div id="category-row-1" class="category-row">
-                <a>
-                    <div>
-                        <h2>Email Us</h2>
-                        <p>We will respond as soon as we can</p>
-                    </div>
-                </a>
-                
-                <a>
-                    <div>
-                        <h2>FAQs</h2>
-                        <p>Everything you need to know about Dataverse</p>
-                    </div>
-                </a>
-                
-                <a onclick="showReportForm()">
-                    <div>
-                        <h2>Have an issue?</h2>
-                        <p>You can report your issue. We would love to help!</p>
-                    </div>
-                </a>
-            </div>
-            <div id="category-row-2" class="category-row">
-                <a href="../pages/signup.html">
-                    <div>
-                        <h2>Create a new account</h2>
-                        <p>Signup as a new memeber</p>
-                    </div>
-                </a>
-
+            <button class="top" id="top" onclick="topFunction()"><img src="../web_images/top.webp" alt=""></button>
+            <nav id="navbar">
+                <img src="../web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
+                <img src="../web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
+                <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
+                <!-- <button class="navbarButton" id="bug-report-button" onclick="showReportForm()">Report Issue</button> -->
                 <a href="../pages/login.html">
-                    <div>
-                        <h2>Have an account?</h2>
-                        <p>Login with existing account</p>
-                    </div>
+                    <button class="navbarButton">
+                        <span class="button-text">Login</span>
+                        <img src="../web_images/user.png" alt="User Icon" class="user-icon">
+                    </button>
                 </a>
+            </nav>
 
-                <a href="../pages/codeOfconduct.html">
-                    <div>
-                        <h2>Code of Conduct</h2>
-                        <p>Read more about our Code of Conduct</p>
-                    </div>
-                </a>
+            <button class="burger" id="burger" onclick="show()"></button>
+            <button id="cross" class="burger" onclick="hide()"></button>
+            <div class="burger" id="lines">
+                <div class="line" id="l1"></div>
+                <div class="line" id="l2"></div>
+                <div class="line" id="l3"></div>
             </div>
-        </section>
-      </main>
+            <div class="plane" id="plane">
+                <table>
+                    <tr>
+                        <td><a href="../../index.html" class="table_link">Home</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="../../documentation.html" class="table_link">Documentation</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github
+                                Repository</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="support.html" class="table_link">Support</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="../pages/license.html" class="table_link">License</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="../pages/contributor.html" class="table_link">Contributors</a></td>
+                    </tr>
+                </table>
+            </div>
+        </header>
+
+        <main>
+            <div class="category" id="infinity">
+                <p class="heading">Need Help?</p>
+                Try asking Infinity
+            </div>
+            <div class="category" id="faq">
+                <p class="heading">Frequently Asked Questions</p>
+                <details>
+                    <summary>What is Dataverse?</summary>
+                    <p>Dataverse is an open-source software platform designed for tracking finances, visualizing data,
+                        and integrating database management. It provides powerful tools for data visualization and
+                        storage.</p>
+                </details>
+                <details>
+                    <summary>What features does Dataverse offer?</summary>
+                    <p>Dataverse offers features such as data visualization, financial tracking, chart generation, and
+                        secure storage. It also allows users to download generated charts and manage data for future
+                        use.</p>
+                </details>
+                <details>
+                    <summary>Is Dataverse free to use?</summary>
+                    <p>Yes, Dataverse is open-source and free to use. You can contribute to its development on GitHub.
+                    </p>
+                </details>
+                <details>
+                    <summary>How can I contribute to Dataverse?</summary>
+                    <p>You can contribute by visiting the official Dataverse repository on GitHub and following the
+                        contribution guidelines. We welcome developers, testers, and documentation writers.</p>
+                </details>
+                <details>
+                    <summary>Where can I get support for using Dataverse?</summary>
+                    <p>Support is available through our GitHub discussions page, community forums, and documentation.
+                        Feel free to reach out for help!</p>
+                </details>
+            </div>
+            <div class="category" id="issue">
+                <p class="heading">Encountered an Issue?</p>
+                <button class="design_btn" onclick="showReportForm()">Report Issue</button>
+            </div>
+            <div class="category" id="issue">
+                <p class="heading">Still have Doubts?</p>
+                <a href="mailto:multiverse.letter@gmail.com"><button class="design_btn">Email Us</button></a>
+            </div>
+            <div class="category" id="issue">
+                <p class="heading">Support the Development of Dataverse</p>
+                As an open-source initiative, we depend on community support to sustain and enhance the project. Your
+                contributions will help us:
+                <ul>
+                    <li>Develop New Features</li>
+                    <li>Improve User Experience</li>
+                    <li>Maintain the Platform</li>
+                    <li>Foster Community Growth</li>
+                    <li>Develop More Such Software</li>
+                </ul>
+                <div class="fund_links">
+                        <p class="heading">How You Can Support</p>
+                        <div>- Donate: Every contribution, big or small, helps keep Dataverse growing.
+                        <a href="https://buymeacoffee.com/tejasgupta" class="funds"><button class="design_btn"><img src="../web_images/coffee.png" alt="">Donate</button></a><br>
+                    </div>
+                    <div>- Sponsor Us: Become a long-term partner and help fund critical project milestones.
+                        <a href="https://github.com/sponsors/multiverseweb" class="funds"><button class="design_btn"><img src="../web_images/sponsor.png" alt="">Sponsor</button></a><br>
+                    </div>
+                    <div>- Contribute Code: If you're a developer, join us on GitHub to improve the platform.
+                        <a href="https://github.com/multiverseweb/Dataverse" class="funds"><button class="design_btn"><img src="../web_images/github.png" alt="">Contribute</button></a><br>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div> <!-- End of div#container -->
-    <form method="POST" data-netlify="true" name="Bug Report Form" id="bug-report-form" onsubmit="return validateReport()">
+    <form method="POST" data-netlify="true" name="Bug Report Form" id="bug-report-form"
+        onsubmit="return validateReport()">
         <div id="popup-header" style="display: inline;width: 100%;">
             <p style="display: inline;">Encountered an Issue? Let Us Know!</p>
-            <button id="close-report-popup" type="button" onclick="closeReportForm()"><span class="material-symbols-outlined">close</span></button>
+            <button id="close-report-popup" type="button" onclick="closeReportForm()"><span
+                    class="material-symbols-outlined">close</span></button>
         </div>
-        <label for="issue-select" >Issue type
+        <label for="issue-select">Issue type
             <select name="issue-select" id="issue-select" required>
                 <option value="Bug">Bug</option>
                 <option value="UI/UX issue">UI/UX issue</option>
@@ -150,17 +172,20 @@
             </select>
         </label>
         <label for="issue-title-field">What's your issue about?
-            <input type="text" id="issue-title-field" required name="issue-title" placeholder="Briefly describe your issue">
+            <input type="text" id="issue-title-field" required name="issue-title"
+                placeholder="Briefly describe your issue">
         </label>
         <label for="email">Email
             <input type="email" id="email" name="email" placeholder="Please provide your email" required>
         </label>
         <label for="issue-description-field">Issue description
-            <textarea name="issude-description" id="issue-description-field" placeholder="Describe your issue in detail" required></textarea>
+            <textarea name="issude-description" id="issue-description-field" placeholder="Describe your issue in detail"
+                required></textarea>
         </label>
         <div class="button-div"><button type="submit">Send</button></div>
     </form>
     <script src="../scripts/script.js" type="module" defer></script>
     <script src="../scripts/support.js" type="module" defer></script>
 </body>
+
 </html>

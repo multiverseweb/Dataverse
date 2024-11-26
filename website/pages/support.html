@@ -87,12 +87,17 @@
         </header>
 
         <main>
+            <button id="infinityBtn" onclick="showChat()">
             <div class="category" id="infinity">
                 <p class="heading">Need Help?</p>
                 <p id="infinityText">Try asking Infinity</p>
-                <img src="../web_images/Infinity-2.png" alt="" class="infinityImage">
-            </div>
-            <div class="category" id="faq">
+                <img src="../web_images/Infinity-2.png" alt="" class="infinityImage" id="infinityImg">
+                </div>
+            </button>
+            <iframe src="https://www.chatbase.co/chatbot-iframe/oKgfHa3hvh7Ic0ypSqDbv" width="100%"
+                style="height: 100%; min-height: 500px; display:none; margin-top: 20px; border-radius: 20px;" id="infinityChat" frameborder="0"></iframe>
+                <div class="category" id="faq">
+            
                 <p class="heading">Frequently Asked Questions</p>
                 <details>
                     <summary>What is Dataverse?</summary>
@@ -142,15 +147,19 @@
                     <li>Develop More Such Software</li>
                 </ul>
                 <div class="fund_links">
-                        <p class="heading">How You Can Support</p>
-                        <div>- Donate: Every contribution, big or small, helps keep Dataverse growing.
-                        <a href="https://buymeacoffee.com/tejasgupta" class="funds"><button class="design_btn"><img src="../web_images/coffee.png" alt="">Donate</button></a><br>
+                    <p class="heading">How You Can Support</p>
+                    <div>- Donate: Every contribution, big or small, helps keep Dataverse growing.
+                        <a href="https://buymeacoffee.com/tejasgupta" class="funds"><button class="design_btn"><img
+                                    src="../web_images/coffee.png" alt="">Donate</button></a><br>
                     </div>
                     <div>- Sponsor Us: Become a long-term partner and help fund critical project milestones.
-                        <a href="https://github.com/sponsors/multiverseweb" class="funds"><button class="design_btn"><img src="../web_images/sponsor.png" alt="">Sponsor</button></a><br>
+                        <a href="https://github.com/sponsors/multiverseweb" class="funds"><button
+                                class="design_btn"><img src="../web_images/sponsor.png" alt="">Sponsor</button></a><br>
                     </div>
                     <div>- Contribute Code: If you're a developer, join us on GitHub to improve the platform.
-                        <a href="https://github.com/multiverseweb/Dataverse" class="funds"><button class="design_btn"><img src="../web_images/github.png" alt="">Contribute</button></a><br>
+                        <a href="https://github.com/multiverseweb/Dataverse" class="funds"><button
+                                class="design_btn"><img src="../web_images/github.png"
+                                    alt="">Contribute</button></a><br>
                     </div>
                 </div>
             </div>

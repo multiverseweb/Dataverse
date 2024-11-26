@@ -47,6 +47,7 @@ details[open] {
     padding-bottom: 10px; /* Adds padding to make expanded state look better */
 }
 #infinity {
+    margin-top: 0;
     position: relative;
     overflow: hidden;
     background-color: var(--background-color); /* Fallback */
@@ -74,7 +75,13 @@ details[open] {
     position: relative; /* Make sure content is above the gradient */
     z-index: 1; /* Ensure it appears above the ::before pseudo-element */
 }
-
+#infinityBtn{
+    background-color: #0f0f0f00;
+    border: none;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+}
 
 .infinityImage {
     position: absolute; /* Position the image relative to the parent (#infinity) */

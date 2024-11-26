@@ -43,3 +43,15 @@ document.addEventListener("keyup", (event) => {
 
 // Attach functions required by the DOM to the window
 attachToWindow(windowFunctions);
+
+function showChat(){
+  document.getElementById("infinityChat").style.display="flex";
+  document.getElementById("infinityBtn").onclick=hideChat;
+}
+
+function hideChat(){
+  document.getElementById("infinityChat").style.display="none";
+  document.getElementById("infinityBtn").onclick=showChat;
+}
+windowFunctions.push(showChat);
+windowFunctions.push(hideChat);

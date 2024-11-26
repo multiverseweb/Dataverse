@@ -7,7 +7,7 @@
 
 
 ![Visitors](https://api.visitorbadge.io/api/visitors?path=multiverseweb2%2Dataverse%20&countColor=%23263759&style=flat&initial=5767)
-  ![Github](https://img.shields.io/github/license/multiverseweb/Dataverse)
+  ![License](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-4e3eb5)
   ![Languages](https://img.shields.io/github/languages/count/multiverseweb/Dataverse?color=20B2AA)
   ![GitHub Repo stars](https://img.shields.io/github/stars/multiverseweb/Dataverse)
   ![GitHub contributors](https://img.shields.io/github/contributors/multiverseweb/Dataverse)

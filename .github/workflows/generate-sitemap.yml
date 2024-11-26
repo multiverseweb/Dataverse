@@ -6,35 +6,40 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   generate-sitemap:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Step 2: Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
-      # Step 3: Install dependencies
       - name: Install Dependencies
-        run: |
-          npm install sitemap-generator-cli
+        run: npm install sitemap-generator-cli
 
-      # Step 4: Generate sitemap
       - name: Generate Sitemap
-        run: |
-          npx sitemap-generator-cli https://multiverse-dataverse.netlify.app -o sitemap.md
+        run: npx sitemap-generator-cli https://multiverse-dataverse.netlify.app/ -o Documentation/sitemap.md
 
-      # Step 5: Commit and push the sitemap
-      - name: Commit and Push Sitemap
+      - name: List Files
+        run: ls -la
+
+      - name: Configure Git
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Pull Latest Changes
+        run: git pull origin main --rebase
+
+      - name: Commit and Push Sitemap
+        run: |
           git add sitemap.md
           git commit -m "Update Sitemap [skip ci]" || echo "No changes to commit"
           git push

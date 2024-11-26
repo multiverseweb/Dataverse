@@ -1,3 +1,3 @@
-# Dataverse Sitemap
+# Sitemap for https://multiverse-dataverse.netlify.app/
 
-This sitemap contains the structure of the Dataverse website. It is dynamically generated and kept up-to-date with the latest changes.
+- [https://multiverse-dataverse.netlify.app/](https://multiverse-dataverse.netlify.app/)

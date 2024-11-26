@@ -4,7 +4,28 @@
 <!--START-->
 
             <url>
-                <loc>https://multiverse-dataverse.netlify.app/documentation</loc>
+                <loc>https://multiverse-dataverse.netlify.app/website/pages/contributor</loc>
+                <lastmod>2024-11-26</lastmod>
+                <changefreq>daily</changefreq>
+                <priority>0.8</priority>
+            </url>
+            
+            <url>
+                <loc>https://multiverse-dataverse.netlify.app/website/pages/support</loc>
+                <lastmod>2024-11-26</lastmod>
+                <changefreq>daily</changefreq>
+                <priority>0.8</priority>
+            </url>
+            
+            <url>
+                <loc>https://multiverse-dataverse.netlify.app/</loc>
+                <lastmod>2024-11-26</lastmod>
+                <changefreq>daily</changefreq>
+                <priority>0.8</priority>
+            </url>
+            
+            <url>
+                <loc>https://multiverse-dataverse.netlify.app/404</loc>
                 <lastmod>2024-11-26</lastmod>
                 <changefreq>daily</changefreq>
                 <priority>0.8</priority>
@@ -25,20 +46,6 @@
             </url>
             
             <url>
-                <loc>https://multiverse-dataverse.netlify.app/website/pages/signup</loc>
-                <lastmod>2024-11-26</lastmod>
-                <changefreq>daily</changefreq>
-                <priority>0.8</priority>
-            </url>
-            
-            <url>
-                <loc>https://multiverse-dataverse.netlify.app/</loc>
-                <lastmod>2024-11-26</lastmod>
-                <changefreq>daily</changefreq>
-                <priority>0.8</priority>
-            </url>
-            
-            <url>
                 <loc>https://multiverse-dataverse.netlify.app/website/pages/login</loc>
                 <lastmod>2024-11-26</lastmod>
                 <changefreq>daily</changefreq>
@@ -53,21 +60,14 @@
             </url>
             
             <url>
-                <loc>https://multiverse-dataverse.netlify.app/website/pages/support</loc>
+                <loc>https://multiverse-dataverse.netlify.app/documentation</loc>
                 <lastmod>2024-11-26</lastmod>
                 <changefreq>daily</changefreq>
                 <priority>0.8</priority>
             </url>
             
             <url>
-                <loc>https://multiverse-dataverse.netlify.app/404</loc>
-                <lastmod>2024-11-26</lastmod>
-                <changefreq>daily</changefreq>
-                <priority>0.8</priority>
-            </url>
-            
-            <url>
-                <loc>https://multiverse-dataverse.netlify.app/website/pages/contributor</loc>
+                <loc>https://multiverse-dataverse.netlify.app/website/pages/signup</loc>
                 <lastmod>2024-11-26</lastmod>
                 <changefreq>daily</changefreq>
                 <priority>0.8</priority>

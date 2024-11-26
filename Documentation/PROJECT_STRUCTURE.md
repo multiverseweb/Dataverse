@@ -11,7 +11,7 @@
 │   ├── repo_structure.txt
 │   └── styles/
 │       └── sitemap.xsl
-├── LICENSE
+├── LICENSE-CC-BY-NC-ND-4.0.md
 ├── README.md
 ├── SECURITY.md
 ├── documentation.html

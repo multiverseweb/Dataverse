@@ -8,7 +8,8 @@
 │   ├── PROJECT_STRUCTURE.md
 │   ├── images/
 │   │   └── netlify.svg
-│   └── repo_structure.txt
+│   ├── repo_structure.txt
+│   └── sitemap.md
 ├── LICENSE
 ├── README.md
 ├── SECURITY.md

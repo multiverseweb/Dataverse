@@ -25,7 +25,7 @@ jobs:
         run: pip install beautifulsoup4 requests
 
       - name: Generate Sitemap
-        run: python .github/scripts/generate_sitemap.py
+        run: python .github/scripts/update_sitemap.py
 
       - name: Configure Git
         run: |
@@ -35,5 +35,5 @@ jobs:
       - name: Commit and Push Sitemap
         run: |
           git add .
-          git commit -m "Update Sitemap [skip ci]" || echo "No changes to commit"
+          git commit -m "Auto Update Sitemap" || echo "No changes to commit"
           git push

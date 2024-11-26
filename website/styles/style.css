@@ -906,7 +906,7 @@ tr:hover {
 
 footer {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     padding-left: 10vw;
     padding-right: 10vw;
     background-color: rgb(0, 0, 0);
@@ -1069,7 +1069,9 @@ input {
     height: auto;
     margin-top: -5px;
     text-align: center;
-    padding-top: 20px;
+    width: 80vw;
+    margin-left: 50vw;
+    transform: translate(-50%);
 }
 
 .links a {
@@ -1085,7 +1087,7 @@ input {
 }
 
 .end_line {
-    width: 70vw;
+    width: 80vw;
     margin-top: 25px;
     margin-left: 50%;
     transform: translate(-50%);
@@ -1200,8 +1202,6 @@ input {
     }
 
 
-
-
     #about {
         padding-top: 90px;
         margin-top: 0;
@@ -1277,6 +1277,10 @@ input {
         margin-top: 50px;
         flex-direction: column;
     }
+    .contact{
+        margin-left: -10vw;
+        margin-top: 20px;
+    }
 
     form {
         margin-top: 40px;
@@ -1319,6 +1323,9 @@ input {
     .end-logo {
         height: 30px;
         margin-left: 20px;
+    }
+    .small{
+        flex-direction: column;
     }
 }
 

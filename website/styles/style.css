@@ -933,11 +933,6 @@ footer a:hover {
     /* Change link color on hover */
 }
 
-footer .contact {
-    margin-right: auto;
-    /* Aligns the contact section to the left */
-}
-
 footer input[type="text"],
 footer input[type="email"],
 footer textarea[name="Message"],
@@ -1030,14 +1025,6 @@ input {
     box-shadow: 0px 0px 10px cyan;
 }
 
-.cubes {
-    overflow-x: hidden;
-    height: 60vh;
-    position: absolute;
-    right: -120px;
-    margin-top: 50px;
-}
-
 .contact {
     width: 40vw;
 }
@@ -1049,7 +1036,7 @@ input {
 }
 
 .name {
-    margin-left: 100px;
+    margin-left: 40px;
     display: flex;
 }
 
@@ -1059,7 +1046,7 @@ input {
     margin-left: calc(50vw + 15px);
     transform: translate(-50%);
     margin-bottom: 20px;
-    margin-top: 50px;
+    margin-top: 30px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(255, 255, 255), rgba(0, 0, 0, 0));
 }
 
@@ -1098,18 +1085,28 @@ input {
 .small {
     margin-top: 20px;
     display: flex;
-    font-size: medium;
+    font-size: large;
     justify-content: space-around;
 }
 
 .link_class a {
-    margin-top: 20px;
+    margin-left: 7px;
+    line-height: 2.5rem;
+    vertical-align: bottom;
+    padding-bottom: 0;
+    margin-top: -2px;
     z-index: 10;
     border-bottom: 0px solid rgba(255, 255, 255, 0);
     transition-duration: 0.3s;
+    border-left: 1px solid rgb(74, 74, 74);
+    padding-left: 15px;
     color: rgb(192, 192, 192);
 }
 
+.link_class p{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
 .small i {
     margin-top: 20px;
     z-index: 10;
@@ -1140,9 +1137,6 @@ input {
 
 /*===========================RESPONSIVE===================================*/
 @media screen and (max-width: 660px) {
-    .name {
-        margin-left: 10px;
-    }
     .navbarButton{
         padding: 10px;
         border-radius: 50%;
@@ -1265,16 +1259,7 @@ input {
         width: 100%;
     }
 
-    .cubes {
-        width: 70vw;
-        height: 70vw;
-        left: -60px;
-        z-index: 0;
-        margin-top: 70px;
-    }
-
     footer {
-        margin-top: 50px;
         flex-direction: column;
     }
     .contact{
@@ -1326,6 +1311,13 @@ input {
     }
     .small{
         flex-direction: column;
+        font-size: medium;
+    }
+    .left_links{
+        width: 80vw;
+    }
+    .name{
+        margin-left: calc(10vw - 20px);
     }
 }
 

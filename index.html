@@ -232,9 +232,7 @@
             <img src="website/web_images/develop_down.webp" class="preview down">
         </div>
     </div>
-    <div class="design_line"></div>
-    <footer>
-        <img src="website/web_images/cubes.webp" class="cubes">
+    <footer id="footer">
         <form name="Dataverse Reviews" method="POST" data-netlify="true" id="feedback-form"
             onsubmit="return validateForm()">
             <p style="color:white">Let Me Know Your Thoughts!</p>
@@ -243,7 +241,7 @@
             <textarea name="Message" placeholder="Your Message" rows="4" required
                 oninput="checkFeedbackLength(this)"></textarea>
             <p id="feedbackError"
-                style="color:#fd4346; opacity: 0%; font-size: 1.2rem; white-space: normal; transition: opacity 0.4s ease ">
+                style="color:#fd4346; opacity: 0%; font-size: 15px; white-space: normal; transition: opacity 0.4s ease ">
                 Feedback must be at least 10 characters long.</p>
             <div class="star-rating" style="text-align: center; margin: 10px;">
                 <input type="radio" id="star5" name="rating" value="5" />
@@ -259,55 +257,37 @@
             </div>
             <input type="submit" value="Send" id="send">
         </form>
-        <div class="contact">
-            <div class="name">
-                <img src="website/web_images/2dlogo.svg" alt="" class="end-logo">
-                <a class="subheading" href="index.html" id="last_link">Dataverse</a>
+        <div class="left_links">
+            <div class="contact">
+                <div class="name">
+                    <img src="website/web_images/2dlogo.svg" alt="" class="end-logo" id="end-logo">
+                    <a class="subheading" href="index.html" id="last_link">Dataverse</a>
+                </div>
             </div>
-        </div>
-    </footer>
-    <div class="links">
         <div class="small">
             <div class="link_class">
-                <a href="website/pages/support.html" class="table_link" target="_blank">Support</a>
-                <a href="https://github.com/multiverseweb/Dataverse/blob/main/README.md" class="table_link">Documentation</a>
+                <p class="link-category">Software</p>
+                <a href="website/pages/license.html" class="table_link">License</a>
+                <a href="https://github.com/multiverseweb/Dataverse/blob/main/README.md"
+                    class="table_link">Documentation</a>
                 <a href="https://github.com/multiverseweb/Dataverse" class="table_link">GitHub Repository</a>
             </div>
             <div class="link_class">
+                <p class="link-category">Navigate</p>
+                <a href="website/pages/support.html" class="table_link" target="_blank">Support</a>
                 <a href="sitemap.xml" class="table_link" target="_blank">Sitemap</a>
-                <a href="website/pages/license.html" class="table_link">License</a>
                 <a href="./website/pages/contributor.html" class="table_link">Contributors</a>
             </div>
             <div class="link_class">
+                <p class="link-category">More to Explore</p>
                 <a href="https://tejasgupta.netlify.app">Owner's Portfolio</a>
                 <a href="https://www.linkedin.com/in/tejascodes/">Owner's LinkedIn</a>
                 <a href="https://github.com/multiverseweb">Owner's GitHub Profile</a>
             </div>
-            <script>
-                function validateFeedback() {
-                    var feedback = document.forms["Dataverse Reviews"]["Feedback"];
-                    checkFeedbackLength(feedback);
-                    return feedback.value.length >= 10;
-                }
-
-                window.addEventListener('load', function () {
-                    setTimeout(function () {
-                        window.embeddedChatbotConfig = {
-                            chatbotId: "oKgfHa3hvh7Ic0ypSqDbv",
-                            domain: "www.chatbase.co"
-                        };
-
-                        var script = document.createElement('script');
-                        script.src = "https://www.chatbase.co/embed.min.js";
-                        script.chatbotId = "oKgfHa3hvh7Ic0ypSqDbv";
-                        script.domain = "www.chatbase.co";
-                        script.defer = true;
-                        document.body.appendChild(script);
-                    }, 3000); // Delay of 3 seconds (3000 ms)
-                });
-            </script>
-
         </div>
+    </div>
+    </footer>
+    <div class="links" id="linksTejas">
         <div class="end_line"></div>
         <p class="tejas_credits" style="color:rgb(187, 187, 187); margin-top: 20px;"> Designed & Developed by <a
                 href="404.html">Tejas
@@ -319,6 +299,29 @@
     </div>
     <div class="end_line"></div>
 
+    <script>
+        function validateFeedback() {
+            var feedback = document.forms["Dataverse Reviews"]["Feedback"];
+            checkFeedbackLength(feedback);
+            return feedback.value.length >= 10;
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                window.embeddedChatbotConfig = {
+                    chatbotId: "oKgfHa3hvh7Ic0ypSqDbv",
+                    domain: "www.chatbase.co"
+                };
+
+                var script = document.createElement('script');
+                script.src = "https://www.chatbase.co/embed.min.js";
+                script.chatbotId = "oKgfHa3hvh7Ic0ypSqDbv";
+                script.domain = "www.chatbase.co";
+                script.defer = true;
+                document.body.appendChild(script);
+            }, 3000); // Delay of 3 seconds (3000 ms)
+        });
+    </script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="website/scripts/script.js" type="module"></script>
 

@@ -121,6 +121,9 @@ var download = document.getElementById("download_btn");
 const lightButton = document.getElementById("lightButton");
 const darkButton = document.getElementById("darkButton");
 const technologies = document.getElementById("technologies");
+var footer=document.getElementById("footer");
+var links=document.getElementById("linksTejas");
+var endLogo=document.getElementById("end-logo");
 
 
 let lastScrollTop = 0;
@@ -220,10 +223,17 @@ function light(flag) {
     document.getElementById("map").style.filter = "none";
     document.getElementById("map").style.zIndex = 0;
     tags.style.borderColor = "black";
-    tags.style.backgroundColor = "#171717";
+    tags.style.backgroundColor = "#00000000";
     contribute.style.filter="invert(1)";
     shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#f9f9f9,#00000000)";
-    technologies.style.border="1px solid #00000044";
+    technologies.style.border="1px solid #000000";
+    /*footer.style.backgroundColor="#ffffff";
+    footer.style.color="#000000";
+    links.style.backgroundColor="#ffffff";
+    links.style.color="#000000";*/
+    footer.style.filter="invert(1)";
+    links.style.filter="invert(1)";
+    endLogo.style.filter="invert(1)";
   }
   indicator.style.backgroundImage = "radial-gradient(rgba(0,0,0, 0.608),#00000000,#00000000)";
   const lightButton = document.getElementById("lightButton");
@@ -238,7 +248,14 @@ function dark(flag) {
     tags.style.backgroundColor = "#00000000";
     shadow.style.backgroundImage = "linear-gradient(115deg, #00000000,#000000d4,#00000000)";
     contribute.style.filter="invert(0)";
-    technologies.style.border="1px solid #ffffff044";
+    technologies.style.border="1px solid #ffffff44";
+    /*footer.style.backgroundColor="#000000";
+    footer.style.color="#ffffff";
+    links.style.backgroundColor="#000000";
+    links.style.color="#ffffff";*/
+    footer.style.filter="invert(0)";
+    links.style.filter="invert(0)";
+    endLogo.style.filter="invert(0)";
   }
   localStorage.setItem('theme', 'dark');
   indicator.style.backgroundImage = "radial-gradient(rgba(255,255,255, 0.608),#00000000,#00000000)";

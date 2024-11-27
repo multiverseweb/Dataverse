@@ -766,8 +766,8 @@ tr:hover {
 }
 
 .circle {
-    height: 10px;
-    width: 10px;
+    height: 8px;
+    width: 8px;
     border-radius: 50%;
     background-color: #31c356;
     margin-top: 7px;
@@ -775,11 +775,11 @@ tr:hover {
 }
 
 #red {
-    background-color: rgb(244, 82, 82);
+    background-color: rgb(246, 62, 62);
 }
 
 #yellow {
-    background-color: rgb(230, 230, 102);
+    background-color: rgb(230, 194, 102);
 }
 
 #technologies {
@@ -810,7 +810,7 @@ tr:hover {
 }
 
 .tags p {
-    margin: 10px;
+    margin:5px;
     font-family: "Inconsolata", monospace;
     font-weight: 400;
 }
@@ -869,7 +869,11 @@ tr:hover {
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
+#netlifytag {
+    background: linear-gradient(to right, teal,cyan,teal);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 #github {
     height: 25px;
     filter: invert(1);

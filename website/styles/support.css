@@ -8,6 +8,7 @@ body.light-mode {
     --background-color: rgb(255, 255, 255);
     --border-color: rgb(0, 0, 0);
     --form-field-input-color: #0f0f0f;
+    --filter:invert(0);
 }
 
 body.dark-mode {
@@ -16,6 +17,7 @@ body.dark-mode {
     --background-color: rgb(0, 0, 0);
     --border-color: rgb(255, 255, 255);
     --form-field-input-color: #eee;
+    --filter:invert(1);
 }
 
 body {
@@ -51,7 +53,7 @@ details[open] {
     position: relative;
     overflow: hidden;
     background-color: var(--background-color); /* Fallback */
-    color: white; /* Adjust text color if needed */
+    color: var(--color); /* Adjust text color if needed */
     z-index: 0; /* Set lower z-index for the container itself */
 }
 
@@ -94,6 +96,23 @@ details[open] {
 #infinity:hover .infinityImage{
     opacity: 1;
 }
+.issueImage{
+    float: right;
+    margin-bottom: -40px;
+    margin-top: 0px;
+    right: 10px;
+    width: 35%;
+    -webkit-filter: drop-shadow(0px 0px 10px rgb(255, 187, 0));
+    filter: drop-shadow(0px 0px 10px rgb(255, 187, 0));
+}
+#doubt{
+    -webkit-filter: drop-shadow(0px 0px 10px rgb(255, 89, 0));
+    filter: drop-shadow(0px 0px 10px rgb(255, 89, 0));
+}
+#infinityImg{
+    -webkit-filter: drop-shadow(7px 7px 10px rgb(0, 255, 213));
+    filter: drop-shadow(7px 7px 10px rgb(0, 255, 213));
+}
 summary {
     cursor: pointer;
     font-weight: bold;
@@ -134,6 +153,8 @@ ul{
 }
 
 .category {
+    height: min-content;
+    overflow: hidden;
     margin-top: 40px;
     border: 1px solid rgb(40, 40, 40);
     border-radius: 10px;
@@ -156,6 +177,13 @@ ul{
 .design_btn:hover {
     filter: invert(1);
 }
+.in-line{
+    display: flex;
+    justify-content: space-between;
+}
+.in-line div{
+    width: 47%;
+}
 .funds{
     display: block;
     margin-top: -20px;
@@ -164,7 +192,7 @@ ul{
 }
 .funds button img{
     height: 15px;
-    filter: invert(1);
+    filter: var(--filter);
     margin-right: 10px;
 }
 .fund_links{
@@ -349,7 +377,16 @@ body.popup-active {
         font-size: 1.3rem;
     }
 }
-
+@media  screen and (max-width:600px) {
+    .in-line{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .in-line div{
+        width: 100%;
+    } 
+}
 @media screen and (max-width: 900px){
     .fund_links div{
         display: flex;

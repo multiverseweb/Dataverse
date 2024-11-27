@@ -60,17 +60,24 @@
     │   ├── contributor.html
     │   ├── license.html
     │   ├── login.html
+    │   ├── reviews.html
     │   ├── signup.html
     │   └── support.html
     ├── scripts/
+    │   ├── beautifyReviews.js
     │   ├── contributor.js
+    │   ├── fetchReviews.js
     │   ├── license.js
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── reviews.json
     │   ├── script.js
     │   ├── sharedUtilities.js
     │   └── support.js
     ├── styles/
     │   ├── 404.css
     │   ├── contributor.css
+    │   ├── reviews.css
     │   ├── style.css
     │   └── support.css
     └── web_images/

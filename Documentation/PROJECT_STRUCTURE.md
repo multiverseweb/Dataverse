@@ -86,7 +86,6 @@
         ├── 3dlogo.svg
         ├── ER_diagram.png
         ├── Infinity-2.png
-        ├── Infinity.png
         ├── about_down.webp
         ├── about_up.webp
         ├── coffee.png
@@ -95,11 +94,14 @@
         ├── data.png
         ├── develop_down.webp
         ├── develop_up.webp
+        ├── doubt.png
         ├── finance_down.webp
         ├── finance_up.webp
         ├── galaxy.webp
         ├── github.png
         ├── hide_password_icon.png
+        ├── issue.png
+        ├── issue.webp
         ├── live.gif
         ├── loader.gif
         ├── loader.mp4

@@ -67,9 +67,9 @@
 ---
 ### Versions
 
-- XM45'24 `Under Development`
-- 6550(24) `Latest`
-- 06.02.24
+- v.XM45'24 `Under Development`
+- v.6550(24) `Latest`
+- v.06.02.24
 
 ---
 

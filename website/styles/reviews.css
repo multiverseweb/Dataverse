@@ -23,6 +23,40 @@ body {
     margin-bottom: 20px;
 }
 
+#average-rating {
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+    width: 90vw;
+    margin-left: 5vw;
+    border: 2px solid #dddddd35;
+    border-radius: 10px;
+}
+
+.average-rating-text {
+    font-size: 22px;
+}
+
+.average-star-rating {
+    color: gold;
+}
+
+.filled {
+    color: gold;
+    text-shadow: 0 0 10px gold;
+}
+
+.half {
+    background: linear-gradient(to right, gold,gold, black,black,black);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: -3px 0 10px gold;
+}
+.empty{
+    margin-left: -25px;
+}
+
 /* Review Container */
 .reviews-container {
     display: grid;

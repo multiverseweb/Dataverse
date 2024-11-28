@@ -55,16 +55,16 @@
     },
     {
         "number": 9,
-        "title": "pooja gupta",
-        "email": "poojanimish1998@gmail.com",
-        "name": "pooja gupta",
-        "first_name": "pooja",
-        "last_name": "gupta",
+        "title": "Pooja Gupta",
+        "email": "PoojanGmish1998@gmail.com",
+        "name": "Pooja Gupta",
+        "first_name": "Pooja",
+        "last_name": "Gupta",
         "company": null,
-        "summary": "<strong>pooja gupta</strong> nice! awesome!",
+        "summary": "<strong>Pooja Gupta</strong> nice! awesome!",
         "body": "nice! awesome!",
         "data": {
-            "Name": "pooja gupta",
+            "Name": "Pooja Gupta",
             "Email": "poojanimish1998@gmail.com",
             "Message": "nice! awesome!",
             "ip": "2405:201:6805:d1bb:6512:1643:5863:66de",
@@ -73,7 +73,7 @@
         },
         "created_at": "2024-06-11T04:34:47.589Z",
         "human_fields": {
-            "Name": "pooja gupta",
+            "Name": "Pooja Gupta",
             "Email": "poojanimish1998@gmail.com",
             "Message": "nice! awesome!",
             "★": "5"
@@ -82,7 +82,7 @@
             {
                 "title": "Name",
                 "name": "Name",
-                "value": "pooja gupta"
+                "value": "Pooja Gupta"
             },
             {
                 "title": "Email",

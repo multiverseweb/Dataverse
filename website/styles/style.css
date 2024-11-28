@@ -382,6 +382,7 @@ body.light-mode footer h3 {
     border: none;
     border-radius: 7px;
     box-shadow: 0 0 5px black;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -391,6 +392,9 @@ body.light-mode footer h3 {
     }
 }
 
+#current{
+    background-color: rgba(125, 125, 125, 0.192);
+}
 table {
     margin-top: 0px;
     width: 100%;
@@ -537,6 +541,7 @@ tr:hover {
     -webkit-text-fill-color: transparent;
     animation-name: hue;
     animation-duration: 1.5s;
+    animation-delay: 3s;
     animation-timing-function: linear;
 }
 

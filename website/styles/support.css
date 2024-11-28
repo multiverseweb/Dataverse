@@ -190,6 +190,10 @@ ul{
     position: absolute;
     right: 20px;
 }
+.fundInfo{
+    max-width: 75%;
+    word-wrap: break-word;
+}
 .funds button img{
     height: 15px;
     filter: var(--filter);
@@ -202,9 +206,6 @@ ul{
 .fund_links div{
     display: flex;
     padding: 15px;
-}
-.fund_links div p{
-    min-width: max-content;
 }
 #bug-report-form {
     width: 75vw;
@@ -403,5 +404,8 @@ body.popup-active {
     }
     .infinityImage{
         bottom: 0px;
+    }
+    .fundInfo{
+        max-width: 100%;
     }
 }

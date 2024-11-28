@@ -50,10 +50,10 @@ function displayAverageRating(average) {
         starRating.appendChild(halfStar);
     }
 
-    
+
     const empty = document.createElement('empty');
     empty.classList.add('empty');
-    const emptyStars = 5 - Math.ceil(average) +1;  // Remaining empty stars
+    const emptyStars = 5 - Math.ceil(average) + 1;  // Remaining empty stars
     for (let i = 0; i < emptyStars; i++) {
         const star = document.createElement('stars');
         star.textContent = '✰';  // Empty star symbol
@@ -89,6 +89,17 @@ function displayReviews(reviews) {
         reviewContent.innerHTML = review.body; // Display the message in HTML
         reviewDiv.appendChild(reviewContent);
 
+        const rawDate = new Date(review.created_at);
+        const formattedDate = rawDate.toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+        });
+
+        const date = document.createElement('p');
+      date.classList.add('review-date');
+      date.textContent = formattedDate;
+
         // Review Footer (Rating)
         const reviewFooter = document.createElement('div');
         reviewFooter.classList.add('review-footer');
@@ -105,6 +116,7 @@ function displayReviews(reviews) {
             star.textContent = '★';  // Filled star symbol
             starRating.appendChild(star);
         }
+        reviewFooter.appendChild(date);
 
         reviewFooter.appendChild(starRating);
 

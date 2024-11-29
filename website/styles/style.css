@@ -1060,15 +1060,18 @@ input {
     font-weight: 100;
     background-color: #000000;
     height: auto;
-    margin-top: -5px;
+    line-height: 22px;
+    font-size: 13px;
     text-align: center;
     width: 80vw;
     margin-left: 50vw;
     transform: translate(-50%);
+    color: rgb(160, 160, 160);
+    padding-bottom: 20px;
 }
 
 .links a {
-    color: white;
+    color: rgb(238, 238, 238);
 }
 
 .links h3 {
@@ -1081,7 +1084,7 @@ input {
 
 .end_line {
     width: 80vw;
-    margin-top: 25px;
+    margin-bottom: 10px;
     margin-left: 50%;
     transform: translate(-50%);
     height: 0.1px;
@@ -1326,7 +1329,11 @@ input {
         margin-left: calc(10vw - 20px);
     }
 }
-
+@media screen and (max-width: 370px) {
+    .links{
+        text-align: left;
+    }
+}
 .scrollBar {
     position: fixed;
     z-index: 90;

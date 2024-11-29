@@ -13,8 +13,32 @@ body{
     color:white;
 }
 img{
-    margin-top: 20px;
-    height: 30vh;
+    margin: 20px;
+    margin-top: 60px;
+    height: 20vh;
+    animation-name: flicker;
+    animation-duration: 2s;
+}
+
+@keyframes flicker{
+    0%{
+        opacity: 1;
+    }
+    20%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 1;
+    }
+    30%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 div{
     left: 50%;
@@ -64,7 +88,8 @@ div{
     }
     img{
         margin: 10px;
-        height: 35vw;
+        margin-top: 30px;
+        height: 22vw;
     }
     .info{
         top:30vh;

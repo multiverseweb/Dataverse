@@ -16,6 +16,8 @@
 ├── SECURITY.md
 ├── documentation.html
 ├── index.html
+├── installation/
+│   └── requirements.txt
 ├── sitemap.xml
 ├── software/
 │   ├── __pycache__/

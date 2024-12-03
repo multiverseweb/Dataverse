@@ -3,7 +3,7 @@ import github
 from github import Github
 
 # Helper function to recursively build the structured HTML representation of the repo
-def get_html_repo_structure(path='.', prefix='', is_last=False):
+def get_html_repo_structure(path='.', prefix=''):
     html_structure = []
 
     try:
@@ -16,15 +16,15 @@ def get_html_repo_structure(path='.', prefix='', is_last=False):
         if item.startswith('.'):
             continue  # Skip hidden files and directories
         item_path = os.path.join(path, item)
-        is_current_last = i == len(items) - 1
+        is_last = i == len(items) - 1
 
         # Add branch markers for the tree structure
-        branch_marker = '└── ' if is_current_last else '├── '
-        new_prefix = prefix + ('    ' if is_current_last else '│   ')
+        branch_marker = '└── ' if is_last else '├── '
+        new_prefix = prefix + ('    ' if is_last else '│   ')
 
         if os.path.isdir(item_path):
             # Directory: Use expandable HTML with branch markers
-            html_structure.append(f"{prefix}{branch_marker}<details><summary><b>{item}/</b></summary>")
+            html_structure.append(f"{prefix}{branch_marker}<details><summary>{item}/</summary>")
             html_structure.extend(get_html_repo_structure(item_path, new_prefix))
             html_structure.append(f"{prefix}</details>")
         else:

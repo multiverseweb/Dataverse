@@ -3,14 +3,14 @@
 <!-- START_STRUCTURE -->
 <pre>
 ├── 404.html
-├── <details><summary><b>Documentation/</b></summary>
+├── <details><summary>Documentation/</summary>
 │   ├── Contributing.md
 │   ├── PROJECT_STRUCTURE.md
-│   ├── <details><summary><b>images/</b></summary>
+│   ├── <details><summary>images/</summary>
 │   │   └── netlify.svg
 │   </details>
 │   ├── repo_structure.txt
-│   └── <details><summary><b>styles/</b></summary>
+│   └── <details><summary>styles/</summary>
 │       └── sitemap.xsl
 │   </details>
 </details>
@@ -19,12 +19,12 @@
 ├── SECURITY.md
 ├── documentation.html
 ├── index.html
-├── <details><summary><b>installation/</b></summary>
+├── <details><summary>installation/</summary>
 │   └── requirements.txt
 </details>
 ├── sitemap.xml
-├── <details><summary><b>software/</b></summary>
-│   ├── <details><summary><b>__pycache__/</b></summary>
+├── <details><summary>software/</summary>
+│   ├── <details><summary>__pycache__/</summary>
 │   │   ├── dataVisualization.cpython-311.pyc
 │   │   ├── financeTracker.cpython-311.pyc
 │   │   ├── functions.cpython-311.pyc
@@ -36,7 +36,7 @@
 │   ├── database.sql
 │   ├── financeTracker.py
 │   ├── finance_tracker.ipynb
-│   ├── <details><summary><b>images/</b></summary>
+│   ├── <details><summary>images/</summary>
 │   │   ├── 2dlogo.png
 │   │   ├── 3dScatter.png
 │   │   ├── 3dlogo.png
@@ -68,8 +68,8 @@
 │   ├── report.py
 │   └── tempCodeRunnerFile.py
 </details>
-└── <details><summary><b>website/</b></summary>
-    ├── <details><summary><b>pages/</b></summary>
+└── <details><summary>website/</summary>
+    ├── <details><summary>pages/</summary>
     │   ├── contributor.html
     │   ├── license.html
     │   ├── login.html
@@ -77,7 +77,7 @@
     │   ├── signup.html
     │   └── support.html
     </details>
-    ├── <details><summary><b>scripts/</b></summary>
+    ├── <details><summary>scripts/</summary>
     │   ├── beautifyReviews.js
     │   ├── contributor.js
     │   ├── fetchReviews.js
@@ -89,14 +89,14 @@
     │   ├── sharedUtilities.js
     │   └── support.js
     </details>
-    ├── <details><summary><b>styles/</b></summary>
+    ├── <details><summary>styles/</summary>
     │   ├── 404.css
     │   ├── contributor.css
     │   ├── reviews.css
     │   ├── style.css
     │   └── support.css
     </details>
-    └── <details><summary><b>web_images/</b></summary>
+    └── <details><summary>web_images/</summary>
         ├── 2dglow.png
         ├── 2dglowhalfbg-removebg-preview.png
         ├── 2dlogo.svg

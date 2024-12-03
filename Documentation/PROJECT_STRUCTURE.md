@@ -1,38 +1,38 @@
 ## Project Structure 📂
 
 <!-- START_STRUCTURE -->
-<pre>
+```
 ├── 404.html
-├── <details style='margin:0; padding:0;'><summary style='margin:0; padding:0;'>Documentation/</summary>
+├── Documentation/
 │   ├── Contributing.md
 │   ├── PROJECT_STRUCTURE.md
-│   ├── <details style='margin:0; padding:0;'><summary style='margin:0; padding:0;'>images/</summary>
-│   │   └── netlify.svg</details>
+│   ├── images/
+│   │   └── netlify.svg
 │   ├── repo_structure.html
 │   ├── repo_structure.txt
-│   └── <details style='margin:0; padding:0;'><summary style='margin:0; padding:0;'>styles/</summary>
-│       └── sitemap.xsl</details></details>
+│   └── styles/
+│       └── sitemap.xsl
 ├── LICENSE.md
 ├── README.md
 ├── SECURITY.md
 ├── documentation.html
 ├── index.html
-├── <details style='margin:0; padding:0;'><summary style='margin:0; padding:0;'>installation/</summary>
-│   └── requirements.txt</details>
+├── installation/
+│   └── requirements.txt
 ├── sitemap.xml
-├── <details style='margin:0; padding:0;'><summary style='margin:0; padding:0;'>software/</summary>
-│   ├── <details style='margin:0; padding:0;'><summary style='margin:0; padding:0;'>__pycache__/</summary>
+├── software/
+│   ├── __pycache__/
 │   │   ├── dataVisualization.cpython-311.pyc
 │   │   ├── financeTracker.cpython-311.pyc
 │   │   ├── functions.cpython-311.pyc
 │   │   ├── main.cpython-311.pyc
 │   │   ├── mainGUI.cpython-311.pyc
 │   │   ├── plot.cpython-311.pyc
-│   │   └── report.cpython-311.pyc</details>
+│   │   └── report.cpython-311.pyc
 │   ├── database.sql
 │   ├── financeTracker.py
 │   ├── finance_tracker.ipynb
-│   ├── <details style='margin:0; padding:0;'><summary style='margin:0; padding:0;'>images/</summary>
+│   ├── images/
 │   │   ├── 2dlogo.png
 │   │   ├── 3dScatter.png
 │   │   ├── 3dlogo.png
@@ -58,19 +58,19 @@
 │   │   ├── surface.png
 │   │   ├── user.png
 │   │   ├── view.png
-│   │   └── visualization.png</details>
+│   │   └── visualization.png
 │   ├── main.py
 │   ├── report.py
-│   └── tempCodeRunnerFile.py</details>
-└── <details style='margin:0; padding:0;'><summary style='margin:0; padding:0;'>website/</summary>
-    ├── <details style='margin:0; padding:0;'><summary style='margin:0; padding:0;'>pages/</summary>
+│   └── tempCodeRunnerFile.py
+└── website/
+    ├── pages/
     │   ├── contributor.html
     │   ├── license.html
     │   ├── login.html
     │   ├── reviews.html
     │   ├── signup.html
-    │   └── support.html</details>
-    ├── <details style='margin:0; padding:0;'><summary style='margin:0; padding:0;'>scripts/</summary>
+    │   └── support.html
+    ├── scripts/
     │   ├── beautifyReviews.js
     │   ├── contributor.js
     │   ├── fetchReviews.js
@@ -80,14 +80,14 @@
     │   ├── reviews.json
     │   ├── script.js
     │   ├── sharedUtilities.js
-    │   └── support.js</details>
-    ├── <details style='margin:0; padding:0;'><summary style='margin:0; padding:0;'>styles/</summary>
+    │   └── support.js
+    ├── styles/
     │   ├── 404.css
     │   ├── contributor.css
     │   ├── reviews.css
     │   ├── style.css
-    │   └── support.css</details>
-    └── <details style='margin:0; padding:0;'><summary style='margin:0; padding:0;'>web_images/</summary>
+    │   └── support.css
+    └── web_images/
         ├── 2dglow.png
         ├── 2dglowhalfbg-removebg-preview.png
         ├── 2dlogo.svg
@@ -124,6 +124,6 @@
         ├── user.png
         ├── view_password_icon.png
         ├── volcano.gif
-        └── wordcloud.png</details></details>
-</pre>
+        └── wordcloud.png
+```
 <!-- END_STRUCTURE -->

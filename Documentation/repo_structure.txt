@@ -4,6 +4,7 @@
 │   ├── PROJECT_STRUCTURE.md
 │   ├── images/
 │   │   └── netlify.svg
+│   ├── repo_structure.html
 │   ├── repo_structure.txt
 │   └── styles/
 │       └── sitemap.xsl

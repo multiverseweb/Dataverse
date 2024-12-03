@@ -1354,17 +1354,18 @@ input {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.41);
+    backdrop-filter: blur(5px);
 }
 
 .modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 70vw;
-    max-width: 400px;
+    width: 85vw;
+    max-width: 300px;
     transform: translate(-50%, -50%);
-    background-color: rgb(51, 51, 51);
+    background-color: rgb(0, 0, 0);
     backdrop-filter: blur(4px);
     padding: 20px;
     border-radius: 4px;
@@ -1373,14 +1374,18 @@ input {
     font-size: 1.2rem;
 }
 
+#modal-message{
+    width: 400px;
+    word-wrap: break-word;
+}
+
 #modal-buttons {
     display: flex;
     justify-content: center;
-    gap: 25%;
 }
 
 .modal button {
-    margin-top: 20px;
+    margin: 20px;
     background-color: #efefefeb;
     border-radius: 3px;
     border: 1px solid white;

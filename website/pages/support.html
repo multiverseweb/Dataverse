@@ -173,8 +173,9 @@
             <button id="close-report-popup" type="button" onclick="closeReportForm()"><span
                     class="material-symbols-outlined">close</span></button>
         </div>
-        <label for="issue-select">Issue type
-            <select name="issue-select" id="issue-select" required>
+        <label for="issue-select">
+            <select name="issue-select" id="issue-select">
+                <option value="" disabled selected>Issue Type</option>
                 <option value="Bug">Bug</option>
                 <option value="UI/UX issue">UI/UX issue</option>
                 <option value="Performence issue">Performence issue</option>
@@ -182,15 +183,15 @@
                 <option value="Other">Other</option>
             </select>
         </label>
-        <label for="issue-title-field">What's your issue about?
+        <label for="issue-title-field">
             <input type="text" id="issue-title-field" required name="issue-title"
-                placeholder="Briefly describe your issue">
+                placeholder="Issue Title">
         </label>
-        <label for="email">Email
-            <input type="email" id="email" name="email" placeholder="Please provide your email" required>
+        <label for="email">
+            <input type="email" id="email" name="email" placeholder="Your Email ID" required>
         </label>
-        <label for="issue-description-field">Issue description
-            <textarea name="issude-description" id="issue-description-field" placeholder="Describe your issue in detail"
+        <label for="issue-description-field">
+            <textarea name="issude-description" id="issue-description-field" placeholder="Issue description"
                 required></textarea>
         </label>
         <div class="button-div"><button type="submit">Send</button></div>

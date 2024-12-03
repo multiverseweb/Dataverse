@@ -208,11 +208,8 @@ ul{
     padding: 15px;
 }
 #bug-report-form {
-    width: 75vw;
-    ;
-    /* For phone compatability */
+    width: 90vw;
     max-width: 600px;
-    /* For desktop compatability */
     z-index: -999;
     position: fixed;
     top: 30%;

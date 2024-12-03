@@ -9,6 +9,7 @@
 │   ├── <details><summary>images/</summary>
 │   │   └── netlify.svg
 │   </details>
+│   ├── repo_structure.html
 │   ├── repo_structure.txt
 │   └── <details><summary>styles/</summary>
 │       └── sitemap.xsl

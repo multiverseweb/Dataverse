@@ -24,9 +24,11 @@ def get_html_repo_structure(path='.', prefix=''):
 
         if os.path.isdir(item_path):
             # Directory: Use expandable HTML with branch markers
-            html_structure.append(f"{prefix}{branch_marker}<details><summary>{item}/</summary>")
+            html_structure.append(
+                f"{prefix}{branch_marker}<details style='margin:0; padding:0;'><summary style='margin:0; padding:0;'>{item}/</summary>"
+            )
             html_structure.extend(get_html_repo_structure(item_path, new_prefix))
-            html_structure.append(f"{prefix}</details>")
+            html_structure[-1] += "</details>"  # Close the last subfolder properly
         else:
             # File: Show file name with branch marker
             html_structure.append(f"{prefix}{branch_marker}{item}")

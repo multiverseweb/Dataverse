@@ -2,44 +2,47 @@ import os
 import github
 from github import Github
 
-# Helper function to recursively build the repo structure and include file extensions
-def get_repo_structure(path='.', prefix=''):
-    structure = []
+# Helper function to recursively build the structured HTML representation of the repo
+def get_html_repo_structure(path='.', prefix='', is_last=False):
+    html_structure = []
+
     try:
         items = sorted(os.listdir(path))
     except FileNotFoundError:
         print(f"Path not found: {path}")
-        return structure
+        return html_structure
 
     for i, item in enumerate(items):
         if item.startswith('.'):
             continue  # Skip hidden files and directories
         item_path = os.path.join(path, item)
-        is_last = i == len(items) - 1
-        current_prefix = '└── ' if is_last else '├── '
+        is_current_last = i == len(items) - 1
+
+        # Add branch markers for the tree structure
+        branch_marker = '└── ' if is_current_last else '├── '
+        new_prefix = prefix + ('    ' if is_current_last else '│   ')
 
         if os.path.isdir(item_path):
-            # Directory case
-            structure.append(f"{prefix}{current_prefix}{item}/")
-            next_prefix = prefix + ('    ' if is_last else '│   ')
-            structure.extend(get_repo_structure(item_path, next_prefix))
+            # Directory: Use expandable HTML with branch markers
+            html_structure.append(f"{prefix}{branch_marker}<details><summary><b>{item}/</b></summary>")
+            html_structure.extend(get_html_repo_structure(item_path, new_prefix))
+            html_structure.append(f"{prefix}</details>")
         else:
-            # File case with extension
-            file_name, file_extension = os.path.splitext(item)
-            structure.append(f"{prefix}{current_prefix}{file_name}{file_extension}")
+            # File: Show file name with branch marker
+            html_structure.append(f"{prefix}{branch_marker}{item}")
 
-    return structure
+    return html_structure
 
-# Function to update the repo_structure.txt file
+# Function to update the repo_structure.html file
 def update_structure_file(structure):
     try:
-        with open('Documentation/repo_structure.txt', 'w') as f:
+        with open('Documentation/repo_structure.html', 'w') as f:
             f.write('\n'.join(structure))
-        print("repo_structure.txt updated successfully.")
+        print("repo_structure.html updated successfully.")
     except IOError as e:
-        print(f"Error writing to repo_structure.txt: {e}")
+        print(f"Error writing to repo_structure.html: {e}")
 
-# Function to update the README.md with the new structure
+# Function to update the README.md with the new HTML structure
 def update_README(structure):
     try:
         with open('Documentation/PROJECT_STRUCTURE.md', 'r') as f:
@@ -57,7 +60,7 @@ def update_README(structure):
     if start_index != -1 and end_index != -1:
         new_content = (
             content[:start_index + len(start_marker)] +
-            '\n```\n' + '\n'.join(structure) + '\n```\n' +
+            '\n<pre>\n' + '\n'.join(structure) + '\n</pre>\n' +
             content[end_index:]
         )
         try:
@@ -81,11 +84,11 @@ def main():
     g = Github(gh_token)
     repo = g.get_repo(gh_repo)
 
-    current_structure = get_repo_structure()
+    current_structure = get_html_repo_structure()
 
     try:
-        # Fetch the contents of repo_structure.txt from GitHub
-        contents = repo.get_contents("Documentation/repo_structure.txt")
+        # Fetch the contents of repo_structure.html from GitHub
+        contents = repo.get_contents("Documentation/repo_structure.html")
         existing_structure = contents.decoded_content.decode().split('\n')
     except github.GithubException:
         existing_structure = None

@@ -182,7 +182,7 @@ def monthly_comparison(pool):
 
     # Plotting
     plt.figure(figsize=(10, 6))
-    monthly_data.plot(kind='bar', color='skyblue')
+    monthly_data.plot(kind='scatter', color='skyblue')
     plt.title("Monthly Expenditure Comparison")
     plt.xlabel("Month")
     plt.ylabel("Total Expenditure")
@@ -207,7 +207,7 @@ def plot_data(requireds, username):
         # Create the subplots
         ax[0, 0] = plt.subplot(gs[0, :])  # Line chart
         ax[1, 0] = plt.subplot(gs[1, 0])  # Pie chart
-        ax[1, 1] = plt.subplot(gs[1, 1])  # Bar chart
+        ax[1, 1] = plt.subplot(gs[1, 1])  # scatter chart
 
         for subplot in fig.get_axes():
             subplot.tick_params(bottom=False, labelbottom=False, left=False, right=False, labelleft=False)
@@ -263,20 +263,20 @@ def plot_data(requireds, username):
         ax[1, 0].spines['right'].set_color('black')
         ax[1, 0].spines['left'].set_color('black')
 
-        # ================================ Bar Graph (Expenditure) ======================
+        # ================================ scatter Graph (Expenditure) ======================
         expenditure_data = line_data[-3]
         max_expenditure = max(expenditure_data)
         max_index = expenditure_data.index(max_expenditure)
 
-        ax[1, 1].bar(line_data[-1], expenditure_data, color=colors[2], label=columns[-3].title())
-        ax[1, 1].bar(line_data[-1][max_index], expenditure_data[max_index], color="red", label="Max Expenditure")
+        ax[1, 1].scatter(line_data[-1], expenditure_data, color=colors[2], label=columns[-3].title())
+        ax[1, 1].scatter(line_data[-1][max_index], expenditure_data[max_index], color="red", label="Max Expenditure")
         ax[1, 1].set_title("Expenditure Till Now")
         ax[1, 1].legend(bbox_to_anchor=(1.1, 1), loc='upper left', borderaxespad=0)
         ax[1, 1].set_xlabel("Time")
         ax[1, 1].set_ylabel("Expenditure")
         ax[1, 1].grid(linestyle="dashed", linewidth=1, alpha=0.25)
 
-        # Spines customization for the bar chart
+        # Spines customization for the scatter chart
         ax[1, 1].spines['bottom'].set_color('black')
         ax[1, 1].spines['top'].set_color('black') 
         ax[1, 1].spines['right'].set_color('black')
@@ -296,10 +296,13 @@ def plot_data(requireds, username):
 
 #=========================================================setting position of graph window
 def move_figure(fig, x, y):
-    backend = matplotlib.get_backend()
-    if backend == 'TkAgg':
-        fig.canvas.manager.window.wm_geometry("+%d+%d" % (x, y))
-    elif backend == 'WXAgg':
+    backend = matplotlib.get_backend().lower()
+    
+    if 'tkagg' in backend:
+        fig.canvas.manager.window.wm_geometry(f"+{x}+{y}")
+    elif 'wxagg' in backend:
         fig.canvas.manager.window.SetPosition((x, y))
-    else:
+    elif 'qt5agg' in backend or 'qtagg' in backend:
         fig.canvas.manager.window.move(x, y)
+    else:
+        raise NotImplementedError(f"Backend '{backend}' is not fully supported for moving the figure.")

@@ -24,6 +24,7 @@
 │   ├── __pycache__/
 │   │   ├── dataVisualization.cpython-311.pyc
 │   │   ├── financeTracker.cpython-311.pyc
+│   │   ├── financeTracker.cpython-312.pyc
 │   │   ├── functions.cpython-311.pyc
 │   │   ├── main.cpython-311.pyc
 │   │   ├── mainGUI.cpython-311.pyc

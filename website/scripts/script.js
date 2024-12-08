@@ -165,6 +165,14 @@ window.onload = function() {
 
 }
 
+ScrollReveal().reveal('.reveal', {
+  distance: '300px',
+  duration: 500,
+  easing: 'ease-in-out',
+  origin: 'bottom',
+  interval: 300, // Delay between revealing multiple elements
+});
+
 let lastScroll = 0;
 function progress() {
   var scroll = this.scrollY;

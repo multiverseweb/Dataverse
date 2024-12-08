@@ -165,14 +165,6 @@ window.onload = function() {
 
 }
 
-ScrollReveal().reveal('.reveal', {
-  distance: '300px',
-  duration: 500,
-  easing: 'ease-in-out',
-  origin: 'bottom',
-  interval: 300, // Delay between revealing multiple elements
-});
-
 let lastScroll = 0;
 function progress() {
   var scroll = this.scrollY;
@@ -317,25 +309,6 @@ document.getElementById("defaultButton").addEventListener("click", () => {
 });
 
 
-function animate() {
-  var reveal = document.querySelectorAll(".section");
-
-  for (var i = 1; i < reveal.length; i++) {
-    var windowHeight = window.innerHeight;
-    var elementTop = reveal[i].getBoundingClientRect().top;
-    var e = 90;
-
-    if (elementTop < windowHeight - e) {
-      reveal[i].classList.add("big_container");
-    }
-    else {
-      reveal[i].classList.remove("big_container");
-    }
-  }
-}
-
-window.addEventListener("scroll", animate);
-
 let scrollSpeed = 2;
 let currentSpeed = scrollSpeed;
 let autoScroll = true;
@@ -476,5 +449,15 @@ function displayCopyright() {
     document.getElementById("copyright").innerText = year;
   }
 }
+
+ScrollReveal().reveal('.reveal', {
+  distance: '150px',
+  duration: 600,
+  easing: 'ease-in-out',
+  origin: 'bottom',
+  interval: 100, // Delay between revealing multiple elements
+});
+windowFunctions.push(ScrollReveal);
+
 
 export {windowFunctions};

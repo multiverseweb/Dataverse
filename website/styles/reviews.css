@@ -48,12 +48,13 @@ body {
 }
 
 .half {
-    background: linear-gradient(to right, gold,gold, black,black,black);
+    background: linear-gradient(to right, gold, gold, black, black, black);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: -3px 0 10px gold;
 }
-.empty{
+
+.empty {
     margin-left: -25px;
 }
 
@@ -72,16 +73,12 @@ body {
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    background-color: #67676747;
+    background-color: #50505032;
     border: 1px solid rgba(202, 202, 202, 0.178);
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition-duration: 0.3s;
-}
-
-.review:hover {
-    background-color: #50505032;
 }
 
 .review-header {
@@ -115,14 +112,18 @@ body {
     font-size: 12px;
     color: #888;
     font-style: italic;
-  }
+}
 
 .review-footer {
-    position: relative; /* Keep it within the parent review div */
-  height: 30px; /* Adjust as needed */
-  display: flex;
-  align-items: flex-end; /* Push the date to the bottom */
-  justify-content: space-between; /* Align the date to the left */
+    position: relative;
+    /* Keep it within the parent review div */
+    height: 30px;
+    /* Adjust as needed */
+    display: flex;
+    align-items: flex-end;
+    /* Push the date to the bottom */
+    justify-content: space-between;
+    /* Align the date to the left */
     text-align: right;
 }
 
@@ -150,4 +151,38 @@ body {
     border: none;
     border-radius: 7px;
     box-shadow: 0 0 5px black;
+}
+
+
+.review:hover::before {
+    opacity: 1;
+}
+
+.review::before,
+.review::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 500ms;
+}
+
+.review::before {
+    background: radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.09), transparent 40%);
+    z-index: 3;
+}
+
+.review::after {
+    background: radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.3), transparent 40%);
+    z-index: 1;
+}
+
+
+#reviews-container:hover>.card:after {
+    opacity: 1;
 }

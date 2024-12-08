@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="shortcut icon" href="website/web_images/3dlogo.svg" type="image/x-icon">
     <link rel="stylesheet" href="website/styles/style.css">
-    <script src="https://unpkg.com/scrollreveal"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,16 +69,25 @@
                 <td><a href="documentation.html" class="table_link">Documentation</a></td>
             </tr>
             <tr>
-                <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
+                <td><a href="404.html" class="table_link">Versions</a></td>
             </tr>
             <tr>
                 <td><a href="./website/pages/support.html" class="table_link">Support</a></td>
             </tr>
             <tr>
+                <td><a href="./website/pages/contributor.html" class="table_link">Contributors</a></td>
+            </tr>
+            <tr>
+                <td><a href="./website/pages/reviews.html" class="table_link">Reviews</a></td>
+            </tr>
+            <tr>
                 <td><a href="./website/pages/license.html" class="table_link">License</a></td>
             </tr>
             <tr>
-                <td><a href="./website/pages/contributor.html" class="table_link">Contributors</a></td>
+                <td><a href="404.html" class="table_link">Stunning Visuals</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
             </tr>
         </table>
     </div>
@@ -122,12 +130,11 @@
             <div class="scroll_animation"></div>
         </div>
     </div>
-    <div class="section reveal big_container" style=" margin-top: 100px;"></div>
-    <div class="section reveal" id="about">
+    <div class="section" id="about">
         <div class="about_left">
-            <p class="heading">So, What does this Software do?</p>
-            <p class="subheading">Visualise Data!</p>
-            <p class="text">Easily transform raw data into visually appealing charts such as bar graphs, pie charts,
+            <p class="heading reveal">So, What does this Software do?</p>
+            <p class="subheading reveal">Visualise Data!</p>
+            <p class="text reveal">Easily transform raw data into visually appealing charts such as bar graphs, pie charts,
                 and
                 line graphs. It also supports advanced data visualisation techniques like heatmaps, Radar charts, 3D
                 Surface Plots, etc.
@@ -135,27 +142,27 @@
                 You can also download the generated plots or save the data for later use.
             </p>
         </div>
-        <div class="about_right">
+        <div class="about_right reveal">
             <img src="website/web_images/about_up.webp" class="preview up">
             <img src="website/web_images/about_down.webp" class="preview down">
         </div>
     </div>
-    <div class="section reveal" id="finance">
-        <div class="finance_left">
+    <div class="section" id="finance">
+        <div class="finance_left reveal">
             <img src="website/web_images/finance_up.webp" class="preview up">
             <img src="website/web_images/finance_down.webp" class="preview down">
         </div>
         <div class="finance_right">
-            <p class="subheading">Track Finances!</p>
-            <p class="text">Manage your finances by providing data such as income, expense, investment, etc. and get
+            <p class="subheading reveal">Track Finances!</p>
+            <p class="text reveal">Manage your finances by providing data such as income, expense, investment, etc. and get
                 useful results such as visualization of data, extrapolated data, max expenditure, etc. Also, the
                 software automatically stores data with a timestamp.</p>
         </div>
     </div>
 
-    <div class="section reveal" id="charts">
-        <p class="heading">Here are some examples of what you can do with Dataverse</p>
-        <div class="examples" id="examples">
+    <div class="section" id="charts">
+        <p class="heading reveal">Here are some examples of what you can do with Dataverse</p>
+        <div class="examples reveal" id="examples">
 
             <img src="website/web_images/volcano.gif" alt="">
             <img src="website/web_images/live.gif" alt="">
@@ -174,7 +181,7 @@
 
 
         </div>
-        <div class="examples" id="examples2">
+        <div class="examples reveal" id="examples2">
 
             <img src="https://matplotlib.org/stable/_images/sphx_glr_polar_scatter_001.png" alt="">
             <img src="website/web_images/wordcloud.png" alt="">
@@ -198,9 +205,10 @@
     </div>
 
 
-    <div class="section reveal" id="develop">
+    <div class="section" id="develop">
         <div class="develop_left">
-            <p class="heading">Want to contribute to this Project?</p>
+            <p class="heading reveal">Want to contribute to this Project?</p>
+            <div class="reveal">
             <div class="subheading" id="technologies">
                 <div class="circle" id="red"></div>
                 <div class="circle" id="yellow"></div>
@@ -221,16 +229,17 @@
                 <p id="netlifytag">Netlify</p>
                 <p id="htmltag">Postman</p>
             </div>
+        </div>
             <p class="text">As this is an open-source project, contributions are always welcome. Whether you're
                 interested in adding new features, fixing bugs, or improving documentation, your contributions are
                 valuable. You can contribute to the project by visiting the link to the GitHub repository provided
                 below. Join me in making Dataverse even better for everyone!</p>
             <a href="https://github.com/multiverseweb/Dataverse?tab=readme-ov-file#contributions"
-                target="_blank"><button id="contribute">
+                target="_blank" class="reveal"><button id="contribute">
                     <p>Contribute</p><img src="website/web_images/github.png" id="github">
                 </button></a>
         </div>
-        <div class="develop_right">
+        <div class="develop_right reveal">
             <img src="website/web_images/develop_up.webp" class="preview up">
             <img src="website/web_images/develop_down.webp" class="preview down">
         </div>
@@ -325,6 +334,7 @@
         });
     </script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="website/scripts/script.js" type="module"></script>
 
 

@@ -111,13 +111,11 @@
         ├── galaxy.webp
         ├── github.png
         ├── hide_password_icon.png
-        ├── issue.png
         ├── issue.webp
         ├── live.gif
         ├── loader.gif
         ├── loader.mp4
         ├── portal.webp
-        ├── preview.png
         ├── settings.webp
         ├── sponsor.png
         ├── stars.webp

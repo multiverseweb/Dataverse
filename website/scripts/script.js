@@ -3,7 +3,7 @@ import { showModal, closeModal, attachToWindow } from "./sharedUtilities.js";
 var windowFunctions = [];
 
 // Array of city names
-var cities = ["Pune", "Moradabad", "Dehradun", "Rampur", "Delhi", "Coimbatore", "Riyadh", "Ahmedabad", "Kolkata", "Mumbai", "Jorhat", "Arrah", "Bhopal", "Bengalore", "Secunderabad", "Ludhiana", "Nagpur", "Lucknow", "Gorakhpur", "Bhilai", "Kanpur", "Panaji"];
+var cities = ["Pune", "Moradabad", "Dehradun", "Rampur", "Delhi", "Coimbatore", "Riyadh", "Ahmedabad", "Kolkata", "Mumbai", "Jorhat", "Arrah", "Bhopal", "Bengalore", "Secunderabad", "Ludhiana", "Nagpur", "Lucknow", "Gorakhpur", "Bhilai", "Kanpur", "Panaji","Dhamtari","Vijaywada","Ujjain","Sydney"];
 
 try {
   var map = L.map('map', {

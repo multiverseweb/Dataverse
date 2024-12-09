@@ -1017,7 +1017,7 @@ def scatter_enter_values(c,title_var,x_var,y_var,z_var,no_values_var):
                                                   scrollbar_button_hover_color="#ffffff",
                                                   border_color="#000000"
                                                   )
-        values_form.place(relx=1.0, rely=1.0, x=-930, y=-740,anchor=NW)
+        values_form.place(relx=1.0, rely=1.0, x=-900, y=-740,anchor=NW)
         
         Label(values_form, text = "Variable Values", font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=0,column=0,padx=(12,8),pady=(12,4))
         for i in range(no_values):
@@ -1041,11 +1041,14 @@ def plot_scatter(c,x,y,z,x_label,y_label,z_label,heading,no_values):
     fig, ax=plt.subplots(figsize=(6.5, 5))
     plt.subplots_adjust(bottom=0.152,right=0.81)
     ax = fig.add_subplot(projection="3d")
-    scatter = ax.scatter(x,y,z,marker='o',c=z,cmap="viridis",alpha=0.5,s=60)  # color map based on z
-    fig.colorbar(scatter, ax=ax, shrink=0.5, aspect=5,location="left")
+    scatter = ax.scatter(x,y,z,marker='o',c=z,cmap="plasma",alpha=0.8,s=60)  # color map based on z
+    fig.colorbar(scatter, ax=ax, shrink=0.5, aspect=5,location="right")
     ax.set_xlabel(x_label)
     ax.set_ylabel(y_label)
     ax.set_zlabel(z_label)
+    ax.xaxis.pane.fill = False
+    ax.yaxis.pane.fill = False
+    ax.zaxis.pane.fill = False
     # plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
     plt.tight_layout()
     plt.title(heading)

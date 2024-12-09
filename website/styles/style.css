@@ -517,6 +517,11 @@ tr:hover {
     transform: translateY(-40%) translateX(-10%);
 }
 
+.light-mode .develop_theme{
+    filter:invert(1) hue-rotate(180deg);
+    box-shadow: 5px -3px 10px rgb(255, 255, 255);
+}
+
 .heading {
     font-size: xxx-large;
     margin: 20px;

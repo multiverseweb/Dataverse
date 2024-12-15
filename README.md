@@ -19,6 +19,9 @@
   ![GitHub last commit](https://img.shields.io/github/last-commit/multiverseweb/Dataverse)
   ![GitHub repo size](https://img.shields.io/github/repo-size/multiverseweb/Dataverse)
   ![GitHub total lines](https://sloc.xyz/github/multiverseweb/Dataverse)
+  <a href="https://multiverse-dataverse.netlify.app/"><img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fmultiverse-dataverse.netlify.app%2F&up_message=awake&up_color=%2300d18f&down_message=asleep&down_color=red&style=flat">
+</a>
+
   
 ### Featured In
 

@@ -71,7 +71,8 @@
     │   ├── login.html
     │   ├── reviews.html
     │   ├── signup.html
-    │   └── support.html
+    │   ├── support.html
+    │   └── versions.html
     ├── scripts/
     │   ├── beautifyReviews.js
     │   ├── contributor.js

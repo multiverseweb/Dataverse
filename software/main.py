@@ -21,8 +21,8 @@ maxLimit = 16 # maximum limit for colors
 #===================================================================================================================connecting mySQL
 mycon=financeTracker.mycon
 cursor=financeTracker.cursor
-cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id INT PRIMARY KEY, u_name VARCHAR(255), pwd VARCHAR(255), country varchar(50) default 'India')")
-cursor.execute("CREATE TABLE IF NOT EXISTS finance (u_id INT, fiat FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total DOUBLE AS (fiat + gold + stocks + commodity + sales - expenditure), entryDate date);")
+cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id BIGINT PRIMARY KEY, u_name VARCHAR(255), pwd VARCHAR(255), country varchar(50) default 'India')")
+cursor.execute("CREATE TABLE IF NOT EXISTS finance (u_id BIGINT, salary FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total FLOAT AS (salary + gold + stocks + commodity + sales - expenditure), entryDate date);")
 #===================================================================================================================================
 #============================================================================================Dataverse Operations
 #======================================================================password encryption
@@ -86,7 +86,7 @@ def create(b2,b1,b3,b4,preview_image):
         if u_name in names:
             messagebox.showinfo(title="Username Not Available", message="That username is already taken. Try another one.",icon="info")
         else:
-            u_id = datetime.datetime.now().strftime("%H%M%S")
+            u_id = datetime.datetime.now().strftime("%y%m%d%H%M%S")
             q="insert into user values({},'{}','{}','{}')".format(u_id,u_name,pwd,country)
             cursor.execute(q)
             mycon.commit()
@@ -561,7 +561,6 @@ def line_values(c,title_var,x_var,y_var):
             Label(values_form, text = "For {}".format(d_attr[i].get().title()), font=('calibre',10,"bold"),fg='#ffffff',bg='#171717').grid(row=row,column=0,padx=(15,10),pady=(15,5))
             for j in range(len(y[0])):
                 Label(values_form, text = "{}({}={}): ".format(d_attr[i].get(),x_label,x[j]), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=row+j+1,column=0,padx=(15,10),pady=(10,5))
-                #entry=Entry(values_form,textvariable = y[i][j], font=('calibre',10),width=15).grid(row=row+j+1,column=1,padx=(15,10),pady=(10,5))
                 entry = Entry(values_form, font=('calibre',10),width=15)
                 entry.grid(row=row+j+1,column=1,padx=(15,10),pady=(10,5))
                 entry.insert(0,0)
@@ -626,12 +625,8 @@ def line_values(c,title_var,x_var,y_var):
 def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
     start=start.get()
     end=end.get()
-    #for i in range(start,end+1,width):
-        #x.append(i)
-        #count+=1
 
     for i in range(len(entry_widgets)):
-        #for j in range(len(y[0])):
         y[i]=[float(entry.get()) for entry in entry_widgets[i]]
 
     plt.style.use('dark_background')
@@ -676,7 +671,6 @@ def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
         plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
         plt.title(heading)
         plt.xlabel(x_label)
-    #plt.savefig("example.png", dpi=1000)
     financeTracker.move_figure(fig, 865, 125)
     cursor = Cursor(ax, color='red', linewidth=0.5)
     plt.show()
@@ -709,9 +703,6 @@ def pie(c):
         form.mainloop()
 def pie_values(c,title_var,y_var):
     def enter_pie_values(c,y):
-        '''for i in range(y_var):
-            y.append(0)
-            y[i]=IntVar()'''
         global values_form
         values_form.place_forget()
         values_form=customtkinter.CTkScrollableFrame(root,
@@ -728,10 +719,8 @@ def pie_values(c,title_var,y_var):
         entries=[]
         for i in range(y_var):
             Label(values_form, text = "{}: ".format(d_attr[i].get()), font=('calibre',10),fg='#ffffff',bg='#171717').grid(row=row+1,column=0,padx=(15,10),pady=(10,5))
-            #entry=Entry(values_form,textvariable = y[i][j], font=('calibre',10),width=15).grid(row=row+j+1,column=1,padx=(15,10),pady=(10,5))
             entry = Entry(values_form, font=('calibre',10),width=15)
             entry.grid(row=row+1,column=1,padx=(15,10),pady=(10,5))
-            #entry.insert(0,0)
             entries.append(entry)
             row = row+1
         row+=1
@@ -789,7 +778,6 @@ def plot_pie(c,y,d_attr,heading,entries):
     else:
         messagebox.showerror(message="Some error occured.")
         return
-    #plt.savefig("example.png", dpi=1000)
     financeTracker.move_figure(fig, 865, 125)
     plt.show()
 
@@ -917,10 +905,8 @@ def plot_radar(c,x,y,d_attr,heading,x_label,x_no_value,entry_widgets):
         d_attr[i]=d_attr[i].get()
     plt.style.use('dark_background')
     fig, ax=plt.subplots(figsize=(6.5, 5))
-    plt.subplots_adjust(bottom=0.152,right=0.81)                 
-    # obtaining angles
+    plt.subplots_adjust(bottom=0.152,right=0.81)
     angles = np.linspace(0,2*np.pi,len(x),endpoint=False)
-    # concatenate & append to complete circle
     angles = np.concatenate((angles,[angles[0]]))
     x_chart_labels = x[:]
     x.append(x[0])
@@ -1041,7 +1027,7 @@ def plot_scatter(c,x,y,z,x_label,y_label,z_label,heading,no_values):
     fig, ax=plt.subplots(figsize=(6.5, 5))
     plt.subplots_adjust(bottom=0.152,right=0.81)
     ax = fig.add_subplot(projection="3d")
-    scatter = ax.scatter(x,y,z,marker='o',c=z,cmap="plasma",alpha=0.8,s=60)  # color map based on z
+    scatter = ax.scatter(x,y,z,marker='o',c=z,cmap="plasma",alpha=0.8,s=60)
     fig.colorbar(scatter, ax=ax, shrink=0.5, aspect=5,location="right")
     ax.set_xlabel(x_label)
     ax.set_ylabel(y_label)
@@ -1049,7 +1035,6 @@ def plot_scatter(c,x,y,z,x_label,y_label,z_label,heading,no_values):
     ax.xaxis.pane.fill = False
     ax.yaxis.pane.fill = False
     ax.zaxis.pane.fill = False
-    # plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
     plt.tight_layout()
     plt.title(heading)
     financeTracker.move_figure(fig, 865, 125)    
@@ -1277,16 +1262,12 @@ def main():
 # Insert some text into the Text widget
     text.insert("end", '''Welcome to Dataverse!\n
 We’re excited to have you onboard! Dataverse is your go-to platform for seamless data visualization and efficient financial tracking, built to simplify your workflow and make data handling effortless.\n\nData Visualization
-Easily transform raw data into visually appealing charts such as bar graphs, pie charts, and line graphs. It also supports advanced data visualisation techniques like heatmaps, Radar charts, 3D Surface Plots, etc.
+Easily transform raw data into visually appealing charts such as bar graphs, pie charts, and line graphs. It also supports advanced data visualisation techniques like heatmaps, radar charts, 3D surface plots, etc. .
 
 You can also download the generated plots for later use.\n\n
 Finance Tracking
 Managing finances has never been easier! Dataverse’s finance tracking features allow you to monitor expenses, manage income and generate insightful reports. With detailed financial data at your fingertips, you can download and review reports whenever you need, keeping your finances organized and accessible.\n\n\n\n\n\n\n<--- You can visit our website to know more :)''')
     text.pack(pady=20,padx=40,side=TOP,anchor=W,fill=BOTH)
-
-    #version = tk.Text(root, wrap="word",fg="#e8e8e8",bg="#000000",padx=15,pady=15,font="consolas 8",relief="flat")
-    #version.insert("end","Current Version: 05.10.2024\nDesigned by Tejas 2023")
-    #version.pack(pady=80,padx=40,side=TOP,anchor=W,fill=Y)
 
     image = Image.open("software/images/preview.png")
     resize_image = image.resize((650, 370))
@@ -1305,6 +1286,7 @@ Managing finances has never been easier! Dataverse’s finance tracking features
     visualization = resize_image("software/images/visualization.png", 20)
     finance = resize_image("software/images/finance.png", 20)
     delete_user = resize_image("software/images/delete-user.png", 20)
+    globe = resize_image("software/images/globe.png", 20)
 
 
     b1=Button(menu,fg='#ffffff',bg='#1a1a1a',image=visualization,text="Data Visualisation",compound='left',width=170,anchor='w',font="poppins 10",cursor="hand2",padx=10)
@@ -1326,7 +1308,7 @@ Managing finances has never been easier! Dataverse’s finance tracking features
     b3.config(command=partial(create,b3,b1,b2,b4,preview_image))
     b4.config(command=partial(delete,b4,b1,b2,b3,preview_image))
 
-    link1 = Label(menu,fg='#ffffff',bg='#1a1a1a',text="Visit Website",width=22,cursor="hand2",font="poppins 10", relief="sunken")
+    link1 = Label(menu,fg='#ffffff',bg='#1a1a1a',image=globe,text="Visit Website",compound='left',width=170, relief="sunken",anchor='w',font="poppins 10",cursor="hand2",padx=10)
     link1.pack(pady=(280,0),padx=15)
     link1.bind("<Button-1>", lambda e: callback("https://multiverse-dataverse.netlify.app/"))
 
@@ -1336,11 +1318,9 @@ Managing finances has never been easier! Dataverse’s finance tracking features
     version_label = Label(menu, text=version_text, font="poppins 8 bold", fg="#bfbfbf", bg="#171717")
     version_label.pack(side=LEFT, anchor="s", padx=(10,0), pady=0)
 
-    # Create a Canvas for the rounded label
     canvas = Canvas(menu, width=50, height=20, bg="#171717", highlightthickness=0)
     canvas.pack(side=LEFT, anchor="s", padx=(5, 0), pady=0)
 
-    # Draw a rounded rectangle
     x0, y0, x1, y1 = 0, 0, 50, 20
     radius = 10
     canvas.create_arc(x0, y0, x0 + radius * 2, y0 + radius * 2, start=90, extent=90, fill="#212121", outline="#212121")
@@ -1350,7 +1330,6 @@ Managing finances has never been easier! Dataverse’s finance tracking features
     canvas.create_rectangle(x0 + radius, y0, x1 - radius, y1, fill="#212121", outline="#212121")
     canvas.create_rectangle(x0, y0 + radius, x1, y1 - radius, fill="#212121", outline="#212121")
 
-    # Add the text
     canvas.create_text((x1 - x0) / 2, (y1 - y0) / 2, text="Latest", fill="#bfbfbf", font="poppins 8 bold")
     root.mainloop()
 
@@ -1373,12 +1352,9 @@ root.minsize(600,300)
 
 bg=Image.open('software/images/background.png')
 
-# Resize the image in the given (width, height)
 img=bg.resize((1400,860))
 
-# Conver the image in TkImage
 my_img=ImageTk.PhotoImage(img)
-# Show image using label 
 label1 = Label( root, image = my_img) 
 label1.place(x = 200, y = 0) 
 

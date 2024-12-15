@@ -135,7 +135,7 @@ Software GUI
  <summary align=left><H4>View More</H4></summary><br>
 Visualised Finance Data
 <br>
-<img src="website/web_images/preview.png" width="800px">
+<img src="website/web_images/finance_down.webp" width="800px">
 <br><br>
 Relational Data
 <br>

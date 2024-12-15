@@ -18,7 +18,7 @@ try:
     cursor = mycon.cursor()  # Declared as constant
 except Error as e:
     print(f"Error connecting to MySQL: {e}")
-    messagebox.showerror("Database Error", f"Failed to connect to the database: {e}\n\nExeccute the following query in your MYSQL Workbench or MySQL Shell and then try again:\n\nCREATE DATABASE DATAVERSE;")
+    messagebox.showerror("Database Error", f"Failed to connect to the database: {e}\n\nExecute the following query in your MYSQL Workbench or MySQL Shell and then try again:\n\nCREATE DATABASE DATAVERSE;")
     exit()  # Exit the program if the database connection fails
 
 z = 0  # Declared as constant

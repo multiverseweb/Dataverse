@@ -3,7 +3,8 @@
 │   ├── Contributing.md
 │   ├── PROJECT_STRUCTURE.md
 │   ├── images/
-│   │   └── netlify.svg
+│   │   ├── netlify.svg
+│   │   └── report.png
 │   ├── repo_structure.html
 │   ├── repo_structure.txt
 │   └── styles/

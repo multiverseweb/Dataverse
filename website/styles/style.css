@@ -1160,6 +1160,21 @@ input {
     height: 26px;
 }
 
+
+#versions{
+    width: 50vw;
+    margin-top: 70px;
+    border: 1px solid rgba(128, 128, 128, 0.352);
+    margin-left: 20px;
+}
+#versions td{
+    padding: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.352);
+}
+#versions th{
+    padding: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.352);
+}
 /*===========================RESPONSIVE===================================*/
 @media screen and (max-width: 660px) {
     .navbarButton {

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../web_images/3dlogo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>Dataverse | Versions</title>
+</head>
+
+<body>
+    <button class="top" id="top" onclick="topFunction()"><img src="../web_images/top.webp" alt=""></button>
+    <nav id="navbar">
+        <img src="../web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
+        <img src="../web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
+        <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
+        <a href="../pages/login.html">
+            <button class="navbarButton">
+                <span class="button-text">Login</span>
+                <img src="../web_images/user.png" alt="User Icon" class="user-icon">
+            </button>
+        </a>
+    </nav>
+
+    <button class="burger" id="burger" onclick="show()"></button>
+    <button id="cross" class="burger" onclick="hide()"></button>
+    <div class="burger" id="lines">
+        <div class="line" id="l1"></div>
+        <div class="line" id="l2"></div>
+        <div class="line" id="l3"></div>
+    </div>
+    <div class="buttons" id="buttons">
+        <div id="indicator"></div>
+        <div class="group">
+            <button id="darkButton" onclick="dark(false)">
+                <img src="https://static.thenounproject.com/png/4066359-200.png" class="copy" id="moon">
+            </button>
+            <button id="lightButton" onclick="light(false)">
+                <!-- <div id="theme2"> -->
+                <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy"
+                    id="sun">
+                <!-- </div> -->
+            </button>
+        </div>
+        <button id="defaultButton" onclick="systemDefault()">
+            <img src="../web_images/settings.webp" class="copy" id="default">
+        </button>
+    </div>
+    <div class="plane" id="plane">
+        <table>
+            <tr>
+                <td id="current"><a href="index.html" class="table_link">Home</a></td>
+            </tr>
+            <tr>
+                <td><a href="documentation.html" class="table_link">Documentation</a></td>
+            </tr>
+            <tr>
+                <td><a href="versions.html" class="table_link">Versions</a></td>
+            </tr>
+            <tr>
+                <td><a href="./../pages/support.html" class="table_link">Support</a></td>
+            </tr>
+            <tr>
+                <td><a href="./../pages/contributor.html" class="table_link">Contributors</a></td>
+            </tr>
+            <tr>
+                <td><a href="./../pages/reviews.html" class="table_link">Reviews</a></td>
+            </tr>
+            <tr>
+                <td><a href="./../pages/license.html" class="table_link">License</a></td>
+            </tr>
+            <tr>
+                <td><a href="404.html" class="table_link">Stunning Visuals</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
+            </tr>
+        </table>
+    </div>
+    <table id="versions">
+        <th>
+            Versions
+        </th>
+        <tr>
+            <td>v.XM45'24</td>
+        </tr>
+        <tr>
+            <td>v.6550(24)</td>
+        </tr>
+        <tr>
+            <td>v.06.02.24</td>
+        </tr>
+    </table>
+
+    <script src="../scripts/script.js" type="module"></script>
+</body>
+
+</html>

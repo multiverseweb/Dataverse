@@ -41,17 +41,18 @@ document.addEventListener("keyup", (event) => {
   }
 })
 
-// Attach functions required by the DOM to the window
-attachToWindow(windowFunctions);
 
 function showChat() {
   document.getElementById("infinityChat").style.display = "flex";
   document.getElementById("infinityBtn").onclick = hideChat;
 }
+windowFunctions.push(showChat);
 
 function hideChat() {
   document.getElementById("infinityChat").style.display = "none";
   document.getElementById("infinityBtn").onclick = showChat;
 }
-windowFunctions.push(showChat);
 windowFunctions.push(hideChat);
+
+// Attach functions required by the DOM to the window
+attachToWindow(windowFunctions);

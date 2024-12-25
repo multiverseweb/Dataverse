@@ -30,6 +30,10 @@
       <th>Event Logo</th>
       <th>Event Name</th>
     </tr>
+<tr>
+        <td><img src="https://images.app.goo.gl/fSSCVrHaEGohCaQL9" width="200" height="auto" loading="lazy" alt="SWOC"/></td>
+        <td><a href="https://gssoc.girlscript.tech/">Social Winter of Code Season-5 (SWOC'24) </a>2024-2025</td>
+    </tr>
     <tr>
         <td><img src="https://user-images.githubusercontent.com/63473496/213306279-338f7ce9-9a9f-4427-8c2a-3e344874498f.png#gh-dark-mode-only" width="200" height="auto" loading="lazy" alt="GSSoC Ext 24"/></td>
         <td><a href="https://gssoc.girlscript.tech/">GirlScript Summer of Code Ext (GSSoC'24) </a>2024</td>

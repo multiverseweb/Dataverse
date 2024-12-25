@@ -7,6 +7,7 @@
 │   ├── Contributing.md
 │   ├── PROJECT_STRUCTURE.md
 │   ├── images/
+│   │   ├── SWOC.png
 │   │   ├── netlify.svg
 │   │   └── report.png
 │   ├── repo_structure.html

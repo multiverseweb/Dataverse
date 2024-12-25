@@ -7,6 +7,7 @@
 │   ├── Contributing.md
 │   ├── PROJECT_STRUCTURE.md
 │   ├── images/
+│   │   ├── SWOC.jpg
 │   │   ├── SWOC.png
 │   │   ├── netlify.svg
 │   │   └── report.png

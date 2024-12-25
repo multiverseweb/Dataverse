@@ -806,6 +806,7 @@ tr:hover {
     margin-bottom: 0px;
     padding: 5px;
     border: 1px solid rgba(255, 255, 255, 0.323);
+    border-bottom:none;
 }
 
 #technologies p {

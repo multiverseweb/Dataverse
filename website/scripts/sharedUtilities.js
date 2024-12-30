@@ -1,7 +1,6 @@
 var windowFunctions = [];
 
 function checkPurpose(purpose) {
-  // All possible custom modal purposes/types
   const modalPurposes = ['download dataverse', 'submit feedback', 'login/signup error', 'no reply'];
   return modalPurposes.includes(purpose); // Returns a boolean 
 }

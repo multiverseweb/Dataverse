@@ -911,6 +911,7 @@ tr:hover {
     transition-duration: 0.3s;
     padding: 10px 20px 10px 20px;
     border-radius: 5px;
+    z-index: 100;
 }
 
 #contribute:hover {

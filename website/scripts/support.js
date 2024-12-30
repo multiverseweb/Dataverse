@@ -1,7 +1,3 @@
-import { attachToWindow } from "./sharedUtilities.js";
-import { windowFunctions } from "./script.js";
-
-// Function to show the issue report form
 function showReportForm() {
   document.getElementById("container").classList.add("popup-active");
   document.body.classList.add("popup-active");
@@ -9,7 +5,6 @@ function showReportForm() {
 }
 windowFunctions.push(showReportForm);
 
-// Function to close the issue report form
 function closeReportForm() {
   document.getElementById("container").classList.remove("popup-active");
   document.body.classList.remove("popup-active");
@@ -23,7 +18,7 @@ function validateReport() {
   const emailValue = form["email"].value.trim();
   const trustedDomains = ["gmail.com", "outlook.com", "yahoo.com", "hotmail.com", "protonmail.com", "icloud.com", "tutanota.com"];
   const emailDomain = emailValue.split('@')[1].toLowerCase();
-  emailInput.addEventListener("input", function () { // Reset the validity message after change in input
+  emailInput.addEventListener("input", function () {
     emailInput.setCustomValidity("");
   })
 
@@ -41,18 +36,12 @@ document.addEventListener("keyup", (event) => {
   }
 })
 
-
 function showChat() {
   document.getElementById("infinityChat").style.display = "flex";
   document.getElementById("infinityBtn").onclick = hideChat;
 }
-windowFunctions.push(showChat);
 
 function hideChat() {
   document.getElementById("infinityChat").style.display = "none";
   document.getElementById("infinityBtn").onclick = showChat;
 }
-windowFunctions.push(hideChat);
-
-// Attach functions required by the DOM to the window
-attachToWindow(windowFunctions);

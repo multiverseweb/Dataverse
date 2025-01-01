@@ -64,12 +64,15 @@
 ---
 
 ### What does this software do?
-- This software can be used to visualise data in many basic as well as advanced forms.
-- It allows the user to download the generated charts.
-- It can be used as a finance tracker, providing various useful outputs.
-- It supports data inputs from excel sheets.
-- The data can also be stored for later use.
+- Supports all data visualisation techniques, basic as well as advanced.
+- Generates interactive, customizable and exportable graphs.
+- Provides data storage for later use.
+- Supports data inputs from excel sheets.
+- Simplifies expense tracking and financial management.
+- Allows user to download financial reports.
 - Uses encryption techniques to securely store your passwords.
+- View and manage data via a mobile-friendly website.
+- Provides predictive analytics and trend analysis using ML techniques.
 
 ---
 ### Versions

@@ -1,7 +1,7 @@
 # Dataverse
 <img src="website/web_images/3d_glow.webp" height=50px align=right>
 
-###### Data Visualisation Software & Personal Finance Tracker
+###### Data Visualisation Software & Finance Tracker
 
 <!--![Visitors](https://api.visitorbadge.io/api/visitors?path=multiverseweb/Dataverse%20&countColor=%2523263759&style=for-the-badge)-->
 
@@ -132,10 +132,12 @@ Now the software should run locally with no errors, feel free to use the softwar
 
 ### Repository Structure
 
-📂 [View Repository Structure](/Documentation/PROJECT_STRUCTURE.md)
+| [**📂 View _Repository Structure_**](/Documentation/PROJECT_STRUCTURE.md) |
+|-|
+
+---
 
 ### Preview
-<sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 <div align=center>
 
 Software GUI
@@ -179,7 +181,6 @@ Relational Data
 </picture>
 
 ### Contributions
-<sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 
 Want to contribute to this project? Follow these steps:
 

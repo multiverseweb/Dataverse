@@ -31,8 +31,8 @@
     <th><a href="#what-does-this-software-do">About Dataverse</a></th>
 <th><a href="#preview">Application Preview</a></th>
     <th><a href="#versions">Versions</a></th>
-    <th><a href="#deployment-specifications">Use Dataverse</a></th>
     <th><a href="#repository-structure">Repository Structure</a></th>
+    <th><a href="#deployment-specifications">Use Dataverse</a></th>
     <th><a href="#contributions">Make Contributions</a></th>
     <th><a href="#website">Website</a></th>
   </tr>
@@ -103,6 +103,12 @@ Relational Data
 | v.6550.24 `Latest` | Current stable version that supports most of the data visualisation techniques and finance tracking. Major development done during GSSoC'24. |
 | v.06.02.24 | Initial version developed on 6th February, 2024. Only supports finance tracking. |
 
+---
+
+### Repository Structure
+
+| [**📂 View _Repository Structure_**](/Documentation/PROJECT_STRUCTURE.md) |
+|-|
 
 ---
 
@@ -152,13 +158,6 @@ Now the software should run locally with no errors, feel free to use the softwar
 
 ---
 
-### Repository Structure
-
-| [**📂 View _Repository Structure_**](/Documentation/PROJECT_STRUCTURE.md) |
-|-|
-
----
-
 ### Star History
 
 <picture>
@@ -192,22 +191,17 @@ Want to contribute to this project? Follow these steps:
 - Go to [`line no. 1` in script.js](https://github.com/multiverseweb/Dataverse/blob/main/website/scripts/script.js#L5-L7) and append the name of your city to the `cities` array. (optional)
 - Make your contributions and commit them (`git commit -m 'Add feature'`).
 - Push to the branch (`git push origin feature-branch`).
-- Create a Pull Request, so I can review and merge it.
-
-
-
+- Create a Pull Request, so we can review and merge it.
 
 ### Our Valuable Contributors ❤️✨
 
 [![Contributors](https://contrib.rocks/image?repo=multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/graphs/contributors)
-
 
 ### Stargazers ❤️
 
 <div align='left'>
 
 [![Stargazers repo roster for @multiverseweb/Dataverse](https://reporoster.com/stars/dark/multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/stargazers)
-
 
 </div>
 
@@ -220,7 +214,6 @@ Want to contribute to this project? Follow these steps:
 ### Website
 |<a href="https://multiverse-dataverse.netlify.app/"><img src="Documentation/images/netlify.svg"></a>|[Visit Dataverse's Website](https://multiverse-dataverse.netlify.app/)|
 |-|-|
-
 
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 

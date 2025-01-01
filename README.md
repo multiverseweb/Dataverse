@@ -77,8 +77,8 @@
 
 | Version | Description |
 |-------------|-----------------|
-| v.XM45'24 `Under Development` | High scale installable vesrion currently being developed, has improved UI based on glassmorphism. Makes the project mobile-friendly and provides more analytical features. Seeks major contributions through SWOC-S5. |
-| v.6550(24) `Latest` | Current stable version that supports most of the data visualisation techniques and finance tracking. Major development done during GSSoC'24. |
+| v.XM45.24 `Under Development` | High scale installable vesrion currently being developed, has improved UI based on glassmorphism. Makes the project mobile-friendly and provides more analytical features. Seeks major contributions through SWOC-S5. |
+| v.6550.24 `Latest` | Current stable version that supports most of the data visualisation techniques and finance tracking. Major development done during GSSoC'24. |
 | v.06.02.24 | Initial version developed on 6th February, 2024. Only supports finance tracking. |
 
 

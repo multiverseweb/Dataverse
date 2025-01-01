@@ -55,7 +55,6 @@
     <th><a href="#deployment-specifications">Use Dataverse</a></th>
     <th><a href="#repository-structure">Repository Structure</a></th>
     <th><a href="#preview">Preview</a></th>
-    <th><a href="#software-representation">Software Representation</a></th>
     <th><a href="#contributions">Make Contributions</a></th>
     <th><a href="#website">Website</a></th>
   </tr>
@@ -152,14 +151,6 @@ Relational Data
 <img src="website/web_images/data.png" width="800px">
 </details>
 </div>
-
----
-
-### Software Representation
-<sup><a href="#table-of-contents" align="right">Back to top</a></sup>
-
-ER Diagram for Finance Tracker
-![](/website/web_images/ER_diagram.png)
 
 ---
 

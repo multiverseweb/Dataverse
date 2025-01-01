@@ -22,7 +22,24 @@
   <a href="https://multiverse-dataverse.netlify.app/"><img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fmultiverse-dataverse.netlify.app%2F&up_message=awake&up_color=%2300d18f&down_message=asleep&down_color=red&style=flat">
 </a>
 
-  
+---
+
+### Table of Contents
+
+<table>
+  <tr>
+    <th><a href="#what-does-this-software-do">About Dataverse</a></th>
+    <th><a href="#versions">Versions</a></th>
+    <th><a href="#deployment-specifications">Use Dataverse</a></th>
+    <th><a href="#repository-structure">Repository Structure</a></th>
+    <th><a href="#preview">Application Preview</a></th>
+    <th><a href="#contributions">Make Contributions</a></th>
+    <th><a href="#website">Website</a></th>
+  </tr>
+</table>
+
+---
+
 ### Featured In
 
 <table>
@@ -44,24 +61,6 @@
     </tr>
 </table>
 
----
-
-### Table of Contents
-
-<table>
-  <tr>
-    <th><a href="#what-does-this-software-do">About Dataverse</a></th>
-    <th><a href="#versions">Versions</a></th>
-    <th><a href="#deployment-specifications">Use Dataverse</a></th>
-    <th><a href="#repository-structure">Repository Structure</a></th>
-    <th><a href="#preview">Preview</a></th>
-    <th><a href="#contributions">Make Contributions</a></th>
-    <th><a href="#website">Website</a></th>
-  </tr>
-</table>
-
----
-
 ### What does this software do?
 - Supports all data visualisation techniques, basic as well as advanced.
 - Generates interactive, customizable and exportable graphs.
@@ -76,9 +75,12 @@
 ---
 ### Versions
 
-- v.XM45'24 `Under Development`
-- v.6550(24) `Latest`
-- v.06.02.24
+| Version | Description |
+|-------------|-----------------|
+| v.XM45'24 `Under Development` | High scale installable vesrion currently being developed, has improved UI based on glassmorphism. Makes the project mobile-friendly and provides more analytical features. Seeks major contributions through SWOC-S5. |
+| v.6550(24) `Latest` | Current stable version that supports most of the data visualisation techniques and finance tracking. Major development done during GSSoC'24. |
+| v.06.02.24 | Initial version developed on 6th February, 2024. Only supports finance tracking. |
+
 
 ---
 
@@ -130,7 +132,7 @@ Now the software should run locally with no errors, feel free to use the softwar
 
 ### Repository Structure
 
-📂 [Repository Structure](/Documentation/PROJECT_STRUCTURE.md)
+📂 [View Repository Structure](/Documentation/PROJECT_STRUCTURE.md)
 
 ### Preview
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>

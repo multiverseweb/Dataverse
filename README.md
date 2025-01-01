@@ -29,10 +29,10 @@
 <table>
   <tr>
     <th><a href="#what-does-this-software-do">About Dataverse</a></th>
+<th><a href="#preview">Application Preview</a></th>
     <th><a href="#versions">Versions</a></th>
     <th><a href="#deployment-specifications">Use Dataverse</a></th>
     <th><a href="#repository-structure">Repository Structure</a></th>
-    <th><a href="#preview">Application Preview</a></th>
     <th><a href="#contributions">Make Contributions</a></th>
     <th><a href="#website">Website</a></th>
   </tr>
@@ -73,6 +73,28 @@
 - Provides predictive analytics and trend analysis using ML techniques.
 
 ---
+
+### Preview
+<div align=center>
+
+Software GUI
+<br>
+<img src="software/images/preview.png" width="800px">
+<br><br>
+<details> 
+ <summary align=left><H4>View More</H4></summary><br>
+Visualised Finance Data
+<br>
+<img src="website/web_images/finance_down.webp" width="800px">
+<br><br>
+Relational Data
+<br>
+<img src="website/web_images/data.png" width="800px">
+</details>
+</div>
+
+---
+
 ### Versions
 
 | Version | Description |
@@ -134,27 +156,6 @@ Now the software should run locally with no errors, feel free to use the softwar
 
 | [**📂 View _Repository Structure_**](/Documentation/PROJECT_STRUCTURE.md) |
 |-|
-
----
-
-### Preview
-<div align=center>
-
-Software GUI
-<br>
-<img src="software/images/preview.png" width="800px">
-<br><br>
-<details> 
- <summary align=left><H4>View More</H4></summary><br>
-Visualised Finance Data
-<br>
-<img src="website/web_images/finance_down.webp" width="800px">
-<br><br>
-Relational Data
-<br>
-<img src="website/web_images/data.png" width="800px">
-</details>
-</div>
 
 ---
 

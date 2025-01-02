@@ -29,7 +29,6 @@
 │   │   ├── dataVisualization.cpython-311.pyc
 │   │   ├── db_config.cpython-312.pyc
 │   │   ├── financeTracker.cpython-311.pyc
-│   │   ├── financeTracker.cpython-312.pyc
 │   │   ├── functions.cpython-311.pyc
 │   │   ├── main.cpython-311.pyc
 │   │   ├── mainGUI.cpython-311.pyc
@@ -66,7 +65,6 @@
 │   │   ├── view.png
 │   │   └── visualization.png
 │   ├── main.py
-│   ├── manage_data.py
 │   ├── report.py
 │   └── tempCodeRunnerFile.py
 └── website/

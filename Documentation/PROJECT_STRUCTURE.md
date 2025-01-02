@@ -26,6 +26,7 @@
 ├── software/
 │   ├── __pycache__/
 │   │   ├── dataVisualization.cpython-311.pyc
+│   │   ├── db_config.cpython-312.pyc
 │   │   ├── financeTracker.cpython-311.pyc
 │   │   ├── financeTracker.cpython-312.pyc
 │   │   ├── functions.cpython-311.pyc
@@ -34,6 +35,7 @@
 │   │   ├── plot.cpython-311.pyc
 │   │   └── report.cpython-311.pyc
 │   ├── database.sql
+│   ├── db_config.py
 │   ├── financeTracker.py
 │   ├── images/
 │   │   ├── 2dlogo.png

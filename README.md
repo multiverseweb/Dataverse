@@ -164,20 +164,22 @@ Now, the software should run smoothly with no errors, feel free to use the softw
   />
 </picture>
 
+---
+
 ### Contributions
 
-Want to make contributions to this project? 
+Want to make contributions to this project? ✨
 
-| **Read [contribution guidelines!](Documentation/contributing.md)** |
+| **Read _[contribution guidelines!](Documentation/contributing.md)_** |
 |-|
 
 ---
 
-### Our Valuable Contributors ❤️✨
+### Our Valuable Contributors ❤️
 
 [![Contributors](https://contrib.rocks/image?repo=multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/graphs/contributors)
 
-### Stargazers ❤️
+### Stargazers ⭐
 
 <div align='left'>
 
@@ -185,7 +187,7 @@ Want to make contributions to this project?
 
 </div>
 
-### Forkers ❤️
+### Forkers 🍴
 
 [![Forkers repo roster for @multiverseweb/Dataverse](https://reporoster.com/forks/dark/multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/network/members)
 

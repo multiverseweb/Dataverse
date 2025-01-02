@@ -9,7 +9,7 @@ import datetime                                   #for getting current date     
 import time                                       #for getting current time                  +---------------------------+                 
 import webbrowser                                 #for opening external link
 import ctypes as ct                               #for styling windows
-import financeTracker as financeTracker           #user defined module - finance
+import manage_data as manage_data           #user defined module - finance
 import matplotlib.pyplot as plt                   #for plotting graphs
 from mpl_toolkits.mplot3d import Axes3D           #for 3d plotting
 import matplotlib                                 #for plotting graphs
@@ -19,8 +19,8 @@ import numpy as np                                #for x-axis time arange
 colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462","#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato","tan"]
 maxLimit = 16 # maximum limit for colors
 #===================================================================================================================connecting mySQL
-mycon=financeTracker.mycon
-cursor=financeTracker.cursor
+mycon=manage_data.mycon
+cursor=manage_data.cursor
 cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id INT PRIMARY KEY, u_name VARCHAR(255), pwd VARCHAR(255), country varchar(50) default 'India')")
 cursor.execute("CREATE TABLE IF NOT EXISTS finance (u_id INT, fiat FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total DOUBLE AS (fiat + gold + stocks + commodity + sales - expenditure), entryDate date);")
 #===================================================================================================================================
@@ -39,7 +39,7 @@ def login(b1,b2,b3,b4,preview_image):
     switch(b1,b2,b3,b4)
     preview_image.place_forget()
     def show_message():
-        message=financeTracker.check_credentials(f"{user.get()}",f"{pwd.get()}")
+        message=manage_data.check_credentials(f"{user.get()}",f"{pwd.get()}")
         word=message.split(' ')[0]
         if word=='Login':
             messagebox.showinfo(title="", message=message,icon="info")
@@ -329,7 +329,7 @@ def user_menu(u_id,u_name):
     b4.config(command=partial(clear,menu,text,profile))
 
 def view(u_id,u_name):
-    result=financeTracker.view_data(u_id)
+    result=manage_data.view_data(u_id)
     global form
     form.pack_forget()
     global relation
@@ -356,11 +356,11 @@ def visualize(u_name):
     q="select u_id from user where u_name='{}'".format(u_name)
     cursor.execute(q)
     u_id=cursor.fetchall()[0][0]
-    requireds=financeTracker.fetch_data(u_id)                             #in progress
+    requireds=manage_data.fetch_data(u_id)                             #in progress
     if requireds==None:
             messagebox.showinfo(title="", message="Not enough data to visualize. ✖",icon="warning")
     else:
-        values=financeTracker.plot_data(requireds,u_name)
+        values=manage_data.plot_data(requireds,u_name)
         report="Total Amount= {}\nMax Till Now= {}".format(values[0],values[1])
         text=Label(font="poppins 10 bold",fg='#ffffff',bg='#000000',text=report)
         text.pack(fill=X,pady=35,padx=(0,200))
@@ -661,7 +661,7 @@ def plot_line(c,x,y,d_attr,heading,x_label,start,end,width,entry_widgets):
         plt.title(heading)
         plt.xlabel(x_label)
     #plt.savefig("example.png", dpi=1000)
-    financeTracker.move_figure(fig, 865, 125)
+    manage_data.move_figure(fig, 865, 125)
     cursor = Cursor(ax, color='red', linewidth=0.5)
     plt.show()
 
@@ -774,7 +774,7 @@ def plot_pie(c,y,d_attr,heading,entries):
         messagebox.showerror(message="Some error occured.")
         return
     #plt.savefig("example.png", dpi=1000)
-    financeTracker.move_figure(fig, 865, 125)
+    manage_data.move_figure(fig, 865, 125)
     plt.show()
 
 
@@ -918,7 +918,7 @@ def plot_radar(c,x,y,d_attr,heading,x_label,x_no_value,entry_widgets):
     plt.tight_layout()
     plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
     plt.title(heading)
-    financeTracker.move_figure(fig, 865, 125)    
+    manage_data.move_figure(fig, 865, 125)    
     plt.show()
 
 
@@ -1033,7 +1033,7 @@ def plot_scatter(c,x,y,z,x_label,y_label,z_label,heading,no_values):
     # plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
     plt.tight_layout()
     plt.title(heading)
-    financeTracker.move_figure(fig, 865, 125)    
+    manage_data.move_figure(fig, 865, 125)    
     plt.show()
 
 def heatmap(c):
@@ -1231,7 +1231,7 @@ def plot_heatmap(c,x_values,y_values,x_label,y_label,d_var,d_attr,entry_widgets,
     plt.tight_layout()
     plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
     plt.title(heading)
-    financeTracker.move_figure(fig, 865, 125)    
+    manage_data.move_figure(fig, 865, 125)    
     plt.show()        
 #===========================================================================================================MAIN
 def main():

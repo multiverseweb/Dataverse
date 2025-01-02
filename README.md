@@ -166,37 +166,12 @@ Now, the software should run smoothly with no errors, feel free to use the softw
 
 ### Contributions
 
-Want to contribute to this project? Follow these steps:
+Want to make contributions to this project? 
 
-- Go to [issues](https://github.com/multiverseweb/Dataverse/issues), and find one that you can solve or create a new issue.
-- Fork the repository.
+| **Read [contribution guidelines!](Documentation/contributing.md)** |
+|-|
 
-> [!IMPORTANT]
-> Read [deployment specifications](#deployment-specifications) to set up the project.
-
-- Create a new branch:
-
-```
-git checkout -b <new-branch-name>
-```
-
-- Make your contributions to solve the issue.
-
-- Append the name of your city to `cities` list at [`line no. 6` in website/scripts/script.js](https://github.com/multiverseweb/Dataverse/blob/main/website/scripts/script.js#L5-L7) (optional)
-
-- Commit the changes: 
-
-```
-git commit -m <commit message>
-```
-
-- Push to the branch:
-```
-git push origin <new-branch-name>
-```
-
-- Create a Pull Request, so we can review and merge it.
-- If you find this repo helpful, a star ⭐ would mean a lot. Thank you!
+---
 
 ### Our Valuable Contributors ❤️✨
 

@@ -11,7 +11,7 @@ Follow these steps:
 - Fork the repository.
 
 > [!IMPORTANT]
-> Read [deployment specifications](https://github.com/multiverseweb/Dataverse/README.md#deployment-specifications) to set up the project.
+> Read [deployment specifications](https://github.com/multiverseweb/Dataverse?tab=readme-ov-file#deployment-specifications) to set up the project.
 
 - Create a new branch:
 

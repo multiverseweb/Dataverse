@@ -35,7 +35,6 @@
 │   │   └── report.cpython-311.pyc
 │   ├── database.sql
 │   ├── financeTracker.py
-│   ├── finance_tracker.ipynb
 │   ├── images/
 │   │   ├── 2dlogo.png
 │   │   ├── 3dScatter.png

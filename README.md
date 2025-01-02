@@ -113,49 +113,36 @@ Relational Data
 ---
 
 ### Deployment Specifications
+I. Navigate to the directory where you want to deploy the dataverse application and open terminal or command prompt there.
 
-Dataverse is currently under development. It will be available for installastion soon.
+II. Run the following commands in terminal:
 
-However, you can follow these steps to run the project locally on your computer:
+> ```
+> git clone https://github.com/multiverseweb/Dataverse.git
+> cd Dataverse
+> pip install -r installation/requirements.txt  
+> ```
+
 > [!IMPORTANT]
-> Don't forget to read the [prerequisites](#prerequisites).
+> Don't forget to read the [project setup guidelines](#project-setup-guidelines) before running the application.
 
+III. Run the application:
 
-   - Clone the project
-   
-      ```
-     git clone https://github.com/multiverseweb/Dataverse.git
-      ```
+> ```
+> python software/main.py
+> ```
 
-   -  Open `software` folder in VSCode.
-
-      ```
-      cd Dataverse/software
-      ```
-
-   - Go to `main.py` and run it.
-
-Now the software should run locally with no errors, feel free to use the software and don't forget to give feedback on the [website](https://multiverse-dataverse.netlify.app/)!
+Now, the software should run smoothly with no errors, feel free to use the software and don't forget to give feedback on [Dataverse's website](https://multiverse-dataverse.netlify.app/)!
 
 ---
 
-### Prerequisites
-<highlight>For Data Visualization</highlight>
-- You must have a python interpreter installed on your computer.
-- You must have python packages such as `numpy, pandas, matplotlib, tkinter`.
-
+### Project Setup Guidelines
+- For storing data, you must have `MySQL` installed on your computer. If you don't have it you can download it from [here](https://dev.mysql.com/downloads/installer/).
+- Go to `line no. 17` under `connecting MySQL` section of `financeTracker.py` and change the values of `host, user and passwd` according to your MySQL account.
+- Finally, run the following command on your MySQL workbench or commandline client:
   ```
-  pip install package_name
+  CREATE DATABASE IF NOT EXISTS DATAVERSE;
   ```
-<highlight>For Finance Tracker</highlight>
-- For using the Finance Tracker, you must have `MySQL` installed on your computer. If you don't have it you can download it from [here](https://dev.mysql.com/downloads/installer/).
-- Go to `line no. 15` under `connecting MySQL` section of `financeTracker.py` and change the values of `host, user and passwd` according to your MySQL account.
-- Also, run the command
-  ```
-  CREATE DATABASE DATAVERSE;
-  ```
-  on your MySQL workbench or commandline client.
-
 ---
 
 ### Star History

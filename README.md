@@ -119,14 +119,20 @@ II. Run the following commands in terminal:
 
 > ```
 > git clone https://github.com/multiverseweb/Dataverse.git
+> ```
+> ```
 > cd Dataverse
+> ```
+> ```
 > pip install -r installation/requirements.txt  
 > ```
 
-> [!IMPORTANT]
-> Don't forget to read the [project setup guidelines](#project-setup-guidelines) before running the application.
+III. Install MySQL if you don't have it already from [here](https://dev.mysql.com/downloads/installer/).
 
-III. Run the application:
+> [!IMPORTANT]
+> Change the values of `DB_HOST`, `DB_USER` and `DB_PASSWORD` in [software/db_config.py](software/db_config.py) file according to your MySQL account.
+
+IV. Run the application:
 
 > ```
 > python software/main.py
@@ -134,15 +140,6 @@ III. Run the application:
 
 Now, the software should run smoothly with no errors, feel free to use the software and don't forget to give feedback on [Dataverse's website](https://multiverse-dataverse.netlify.app/)!
 
----
-
-### Project Setup Guidelines
-- For storing data, you must have `MySQL` installed on your computer. If you don't have it you can download it from [here](https://dev.mysql.com/downloads/installer/).
-- Go to `line no. 17` under `connecting MySQL` section of `financeTracker.py` and change the values of `host, user and passwd` according to your MySQL account.
-- Finally, run the following command on your MySQL workbench or commandline client:
-  ```
-  CREATE DATABASE IF NOT EXISTS DATAVERSE;
-  ```
 ---
 
 ### Star History

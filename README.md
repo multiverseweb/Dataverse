@@ -1,7 +1,7 @@
 # Dataverse
 <img src="website/web_images/3d_glow.webp" height=50px align=right>
 
-###### Data Visualisation Software & Finance Tracker
+###### Data Visualisation Software & Personal Finance Tracker
 
 <!--![Visitors](https://api.visitorbadge.io/api/visitors?path=multiverseweb/Dataverse%20&countColor=%2523263759&style=for-the-badge)-->
 
@@ -22,24 +22,7 @@
   <a href="https://multiverse-dataverse.netlify.app/"><img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fmultiverse-dataverse.netlify.app%2F&up_message=awake&up_color=%2300d18f&down_message=asleep&down_color=red&style=flat">
 </a>
 
----
-
-### Table of Contents
-
-<table>
-  <tr>
-    <th><a href="#what-does-this-software-do">About Dataverse</a></th>
-<th><a href="#preview">Application Preview</a></th>
-    <th><a href="#versions">Versions</a></th>
-    <th><a href="#repository-structure">Repository Structure</a></th>
-    <th><a href="#deployment-specifications">Use Dataverse</a></th>
-    <th><a href="#contributions">Make Contributions</a></th>
-    <th><a href="#website">Website</a></th>
-  </tr>
-</table>
-
----
-
+  
 ### Featured In
 
 <table>
@@ -61,20 +44,124 @@
     </tr>
 </table>
 
-### What does this software do?
-- Supports all data visualisation techniques, basic as well as advanced.
-- Generates interactive, customizable and exportable graphs.
-- Provides data storage for later use.
-- Supports data inputs from excel sheets.
-- Simplifies expense tracking and financial management.
-- Allows user to download financial reports.
-- Uses encryption techniques to securely store your passwords.
-- View and manage data via a mobile-friendly website.
-- Provides predictive analytics and trend analysis using ML techniques.
+---
+
+### Table of Contents
+
+<table>
+  <tr>
+    <th><a href="#what-does-this-software-do">About Dataverse</a></th>
+    <th><a href="#versions">Versions</a></th>
+    <th><a href="#deployment-specifications">Use Dataverse</a></th>
+    <th><a href="#repository-structure">Repository Structure</a></th>
+    <th><a href="#preview">Preview</a></th>
+    <th><a href="#software-representation">Software Representation</a></th>
+    <th><a href="#contributions">Make Contributions</a></th>
+    <th><a href="#website">Website</a></th>
+  </tr>
+</table>
 
 ---
 
+### What does this software do?
+- This software can be used to visualise data in many basic as well as advanced forms.
+- It allows the user to download the generated charts.
+- It can be used as a finance tracker, providing various useful outputs.
+- It supports data inputs from excel sheets.
+- The data can also be stored for later use.
+- Uses encryption techniques to securely store your passwords.
+
+---
+### Versions
+
+- v.XM45'24 Under Development
+- v.6550(24) Latest
+- v.06.02.24
+
+---
+
+### Prerequisites
+<highlight>For Data Visualization</highlight>
+- Ensure that a Python interpreter is installed on your computer. If not, download it from [ Python's official website](https://www.python.org/downloads/).
+
+<highlight>For Finance Tracker</highlight>
+- Install MySQL on your computer. If you don't have it, you can download it from [here](https://dev.mysql.com/downloads/installer/).
+
+---
+
+### Development Specifications
+
+1. **Clone the Project**  
+    ``` 
+    git clone https://github.com/multiverseweb/Dataverse.git
+    ```
+
+2. **Create a Virtual Environment (optional but recommended)**
+  - On Windows:
+
+    ```
+    python -m venv venv
+    venv\Scripts\activate
+    ```
+
+  - On macOS/Linux:
+
+    ```
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+
+3. **Navigate to the Project's software Directory**  
+   
+    ```
+    cd Dataverse/software
+    ```
+
+4. **Install Dependencies**
+
+  -  Install all the required Python packages using `requirements.txt`:
+
+      ```
+      pip install -r ../installation/requirements.txt
+      ```
+
+5. **Finance Tracker Setup**
+
+- Open `financeTracker.py` (located in Dataverse/software/) and update `line no. 17` under the `connecting MySQL` section with your MySQL credentials (`host, user, and passwd`).
+- Also, run the command
+  ```
+  CREATE DATABASE DATAVERSE;
+  ```
+  on your MySQL workbench or commandline client.
+
+6. **Run the Project**
+
+  - Run main.py using the command:
+
+    ```
+    python main.py
+    ```  
+
+  - Alternatively, open `main.py` in VSCode and run it.
+
+7. **Deactivate the Virtual Environment**
+
+- After you’re done working with the project, you can deactivate the virtual environment:
+
+  ```
+  deactivate
+  ```
+
+Now the software should run locally with no errors, feel free to use the software and don't forget to give feedback on the [website](https://multiverse-dataverse.netlify.app/)!
+
+---
+
+### Repository Structure
+
+📂 [Repository Structure](/Documentation/PROJECT_STRUCTURE.md)
+
 ### Preview
+<sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 <div align=center>
 
 Software GUI
@@ -83,66 +170,23 @@ Software GUI
 <br><br>
 <details> 
  <summary align=left><H4>View More</H4></summary><br>
-Software Home Page
-<br>
-<img src="Documentation/images/home_UI.png" width="800px">
-<br><br>
-Visualised Data
+Visualised Finance Data
 <br>
 <img src="website/web_images/finance_down.webp" width="800px">
 <br><br>
-Stored Data
+Relational Data
 <br>
-<img src="website/web_images/finance_up.webp" width="800px">
+<img src="website/web_images/data.png" width="800px">
 </details>
 </div>
 
 ---
 
-### Versions
+### Software Representation
+<sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 
-| Version | Description |
-|-------------|-----------------|
-| v.XM45.24 `Under Development` | High scale installable vesrion currently being developed, has improved UI based on glassmorphism. Makes the project mobile-friendly and provides more analytical features. Seeks major contributions through SWOC-S5. |
-| v.6550.24 `Latest` | Current stable version that supports most of the data visualisation techniques and finance tracking. Major development done during GSSoC'24. |
-| v.06.02.24 | Initial version developed on 6th February, 2024. Only supports finance tracking. |
-
----
-
-### Repository Structure
-
-| [**📂 View _Repository Structure_**](/Documentation/PROJECT_STRUCTURE.md) |
-|-|
-
----
-
-### Deployment Specifications
-I. Navigate to the directory where you want to deploy the dataverse application and open terminal or command prompt there.
-
-II. Run the following commands in terminal:
-
-> ```
-> git clone https://github.com/multiverseweb/Dataverse.git
-> ```
-> ```
-> cd Dataverse
-> ```
-> ```
-> pip install -r installation/requirements.txt  
-> ```
-
-III. Install MySQL if you don't have it already from [here](https://dev.mysql.com/downloads/installer/).
-
-> [!IMPORTANT]
-> Change the values of `DB_HOST`, `DB_USER` and `DB_PASSWORD` in [software/db_config.py](software/db_config.py) file according to your MySQL account.
-
-IV. Run the application:
-
-> ```
-> python software/main.py
-> ```
-
-Now, the software should run smoothly with no errors, feel free to use the software and don't forget to give feedback on [Dataverse's website](https://multiverse-dataverse.netlify.app/)!
+ER Diagram for Finance Tracker
+![](/website/web_images/ER_diagram.png)
 
 ---
 
@@ -168,30 +212,38 @@ Now, the software should run smoothly with no errors, feel free to use the softw
   />
 </picture>
 
----
-
 ### Contributions
+<sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 
-Want to make contributions to this project? ✨
+Want to contribute to this project? Follow these steps:
 
-| **Read _[contribution guidelines!](Documentation/contributing.md)_** |
-|-|
+- Star the Repository.
+- Go to [issues](https://github.com/multiverseweb/Dataverse/issues), find an issue that you can solve or create a new issue.
+- Fork the repository.
+- Create a new branch (git checkout -b feature-branch).
+- Go to [line no. 1 in script.js](https://github.com/multiverseweb/Dataverse/blob/main/website/scripts/script.js#L5-L7) and append the name of your city to the cities array. (optional)
+- Make your contributions and commit them (git commit -m 'Add feature').
+- Push to the branch (git push origin feature-branch).
+- Create a Pull Request, so I can review and merge it.
 
----
 
-### Our Valuable Contributors ❤️
+
+
+### Our Valuable Contributors ❤✨
 
 [![Contributors](https://contrib.rocks/image?repo=multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/graphs/contributors)
 
-### Stargazers ⭐
+
+### Stargazers ❤
 
 <div align='left'>
 
 [![Stargazers repo roster for @multiverseweb/Dataverse](https://reporoster.com/stars/dark/multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/stargazers)
 
+
 </div>
 
-### Forkers 🍴
+### Forkers ❤
 
 [![Forkers repo roster for @multiverseweb/Dataverse](https://reporoster.com/forks/dark/multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/network/members)
 
@@ -201,8 +253,5 @@ Want to make contributions to this project? ✨
 |<a href="https://multiverse-dataverse.netlify.app/"><img src="Documentation/images/netlify.svg"></a>|[Visit Dataverse's Website](https://multiverse-dataverse.netlify.app/)|
 |-|-|
 
+
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
-
-```
-
-```

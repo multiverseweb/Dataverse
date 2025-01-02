@@ -9,6 +9,7 @@
 │   ├── images/
 │   │   ├── SWOC.jpg
 │   │   ├── SWOC.png
+│   │   ├── home_UI.png
 │   │   ├── netlify.svg
 │   │   └── report.png
 │   ├── repo_structure.html
@@ -119,7 +120,6 @@
         ├── hide_password_icon.png
         ├── issue.webp
         ├── live.gif
-        ├── loader.gif
         ├── loader.mp4
         ├── portal.webp
         ├── settings.webp

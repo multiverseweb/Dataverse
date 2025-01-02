@@ -4,8 +4,8 @@
 ```
 ├── 404.html
 ├── Documentation/
-│   ├── Contributing.md
 │   ├── PROJECT_STRUCTURE.md
+│   ├── contributing.md
 │   ├── images/
 │   │   ├── SWOC.jpg
 │   │   ├── SWOC.png

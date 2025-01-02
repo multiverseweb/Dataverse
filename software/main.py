@@ -21,6 +21,8 @@ maxLimit = 16 # maximum limit for colors
 #===================================================================================================================connecting mySQL
 mycon=financeTracker.mycon
 cursor=financeTracker.cursor
+cursor.execute("CREATE DATABASE IF NOT EXISTS DATAVERSE;")
+cursor.execute("USE DATAVERSE;")
 cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id BIGINT PRIMARY KEY, u_name VARCHAR(255), pwd VARCHAR(255), country varchar(50) default 'India')")
 cursor.execute("CREATE TABLE IF NOT EXISTS finance (u_id BIGINT, salary FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total FLOAT AS (salary + gold + stocks + commodity + sales - expenditure), entryDate date);")
 #===================================================================================================================================

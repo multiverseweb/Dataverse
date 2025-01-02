@@ -1,4 +1,5 @@
 import tabulate
+import db_config
 from tkinter import messagebox
 from matplotlib.gridspec import GridSpec
 import matplotlib.pyplot as plt
@@ -14,14 +15,18 @@ from mysql.connector import Error
 colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462","#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato","tan"]
 #==================================================================================================connecting MySQL
 try:
-    mycon = my.connect(host='localhost', user='root', passwd='tejas123', database='dataverse')  # Declared as constant
-    cursor = mycon.cursor()  # Declared as constant
+    mycon = my.connect(
+    host=db_config.DB_HOST,
+    user=db_config.DB_USER,
+    passwd=db_config.DB_PASSWORD
+)
+    cursor = mycon.cursor()
 except Error as e:
     print(f"Error connecting to MySQL: {e}")
     messagebox.showerror("Database Error", f"Failed to connect to the database: {e}\n\nExecute the following query in your MYSQL Workbench or MySQL Shell and then try again:\n\nCREATE DATABASE DATAVERSE;")
     exit()  # Exit the program if the database connection fails
 
-z = 0  # Declared as constant
+z = 0 # Global variable to track failed login attempts
 
 #=========================================================================================view data
 def view_data(user_id):

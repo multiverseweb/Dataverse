@@ -14,7 +14,7 @@ from mysql.connector import Error
 colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462","#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato","tan"]
 #==================================================================================================connecting MySQL
 try:
-    mycon = my.connect(host='localhost', user='root', passwd='tejas123', database='dataverse')  # Declared as constant
+    mycon = my.connect(host='localhost', user='root', passwd='root', database='dataverse')  # Declared as constant
     cursor = mycon.cursor()  # Declared as constant
 except Error as e:
     print(f"Error connecting to MySQL: {e}")

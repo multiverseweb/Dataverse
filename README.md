@@ -144,6 +144,14 @@
 
   - Alternatively, open `main.py` in VSCode and run it.
 
+7. **Deactivate the Virtual Environment**
+
+- After you’re done working with the project, you can deactivate the virtual environment:
+
+  ```
+  deactivate
+  ```
+
 Now the software should run locally with no errors, feel free to use the software and don't forget to give feedback on the [website](https://multiverse-dataverse.netlify.app/)!
 
 ---

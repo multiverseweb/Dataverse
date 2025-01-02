@@ -1,15 +1,15 @@
 import tkinter as tk                              #for GUI
 from tkinter import *                             #for GUI                                   +---------------------------+
 from tkinter import messagebox                    #for GUI messages                          |        DATAVERSE          |
-import customtkinter                              #for scrollable GUI frame                  |     version 6550(24)      |
+import customtkinter                              #for scrollable GUI frame                  |        v.6550.24          |
 from PIL import Image, ImageTk                    #for GUI images                            |  Designed & Developed By  |
 from functools import partial                     #for calling button functions              |        TEJAS GUPTA        |
 import mysql.connector as my                      #for connecting database                   +---------------------------+
-import datetime                                   #for getting current date                  |developing version XM45'24 |
+import datetime                                   #for getting current date                  |   developing v.XM45.24    |
 import time                                       #for getting current time                  +---------------------------+                 
 import webbrowser                                 #for opening external link
 import ctypes as ct                               #for styling windows
-import manage_data as manage_data           #user defined module - finance
+import manage_data as manage_data                 #user defined module - finance
 import matplotlib.pyplot as plt                   #for plotting graphs
 from mpl_toolkits.mplot3d import Axes3D           #for 3d plotting
 import matplotlib                                 #for plotting graphs

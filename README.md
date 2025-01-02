@@ -83,13 +83,17 @@ Software GUI
 <br><br>
 <details> 
  <summary align=left><H4>View More</H4></summary><br>
-Visualised Finance Data
+Software Home Page
+<br>
+<img src="Documentation/images/home_UI.png" width="800px">
+<br><br>
+Visualised Data
 <br>
 <img src="website/web_images/finance_down.webp" width="800px">
 <br><br>
-Relational Data
+Stored Data
 <br>
-<img src="website/web_images/data.png" width="800px">
+<img src="website/web_images/finance_up.webp" width="800px">
 </details>
 </div>
 

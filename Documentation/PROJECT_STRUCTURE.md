@@ -4,11 +4,12 @@
 ```
 ├── 404.html
 ├── Documentation/
-│   ├── Contributing.md
 │   ├── PROJECT_STRUCTURE.md
+│   ├── contributing.md
 │   ├── images/
 │   │   ├── SWOC.jpg
 │   │   ├── SWOC.png
+│   │   ├── home_UI.png
 │   │   ├── netlify.svg
 │   │   └── report.png
 │   ├── repo_structure.html
@@ -26,16 +27,17 @@
 ├── software/
 │   ├── __pycache__/
 │   │   ├── dataVisualization.cpython-311.pyc
+│   │   ├── db_config.cpython-312.pyc
 │   │   ├── financeTracker.cpython-311.pyc
 │   │   ├── financeTracker.cpython-312.pyc
 │   │   ├── functions.cpython-311.pyc
 │   │   ├── main.cpython-311.pyc
 │   │   ├── mainGUI.cpython-311.pyc
+│   │   ├── manage_data.cpython-312.pyc
 │   │   ├── plot.cpython-311.pyc
 │   │   └── report.cpython-311.pyc
 │   ├── database.sql
-│   ├── financeTracker.py
-│   ├── finance_tracker.ipynb
+│   ├── db_config.py
 │   ├── images/
 │   │   ├── 2dlogo.png
 │   │   ├── 3dScatter.png
@@ -64,6 +66,7 @@
 │   │   ├── view.png
 │   │   └── visualization.png
 │   ├── main.py
+│   ├── manage_data.py
 │   ├── report.py
 │   └── tempCodeRunnerFile.py
 └── website/
@@ -117,7 +120,6 @@
         ├── hide_password_icon.png
         ├── issue.webp
         ├── live.gif
-        ├── loader.gif
         ├── loader.mp4
         ├── portal.webp
         ├── settings.webp

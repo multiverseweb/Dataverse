@@ -32,11 +32,11 @@
 │   │   ├── functions.cpython-311.pyc
 │   │   ├── main.cpython-311.pyc
 │   │   ├── mainGUI.cpython-311.pyc
+│   │   ├── manage_data.cpython-312.pyc
 │   │   ├── plot.cpython-311.pyc
 │   │   └── report.cpython-311.pyc
 │   ├── database.sql
 │   ├── db_config.py
-│   ├── financeTracker.py
 │   ├── images/
 │   │   ├── 2dlogo.png
 │   │   ├── 3dScatter.png
@@ -65,6 +65,7 @@
 │   │   ├── view.png
 │   │   └── visualization.png
 │   ├── main.py
+│   ├── manage_data.py
 │   ├── report.py
 │   └── tempCodeRunnerFile.py
 └── website/

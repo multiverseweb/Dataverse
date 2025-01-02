@@ -124,6 +124,24 @@ II. Run the following commands in terminal:
 > ```
 > git clone https://github.com/multiverseweb/Dataverse.git
 > ```
+
+III. Create a Virtual Environment (optional but recommended)
+  - On Windows:
+
+    ```
+    python -m venv venv
+    venv\Scripts\activate
+    ```
+
+  - On macOS/Linux:
+
+    ```
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+
+IV. Install dependencies:
+
 > ```
 > cd Dataverse
 > ```
@@ -131,12 +149,12 @@ II. Run the following commands in terminal:
 > pip install -r installation/requirements.txt  
 > ```
 
-III. Install MySQL if you don't have it already from [here](https://dev.mysql.com/downloads/installer/).
+V. Install MySQL if you don't have it already from [here](https://dev.mysql.com/downloads/installer/).
 
 > [!IMPORTANT]
 > Change the values of `DB_HOST`, `DB_USER` and `DB_PASSWORD` in [software/db_config.py](software/db_config.py) file according to your MySQL account.
 
-IV. Run the application:
+VI. Run the application:
 
 > ```
 > python software/main.py
@@ -174,7 +192,7 @@ Now, the software should run smoothly with no errors, feel free to use the softw
 
 Want to make contributions to this project? ✨
 
-| **Read _[contribution guidelines!](Documentation/contributing.md)_** |
+| **[Read _contribution guidelines!_](Documentation/contributing.md)** |
 |-|
 
 ---

@@ -23,7 +23,6 @@
 ├── index.html
 ├── installation/
 │   └── requirements.txt
-├── plot.png
 ├── sitemap.xml
 ├── software/
 │   ├── __pycache__/

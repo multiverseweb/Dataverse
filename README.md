@@ -160,6 +160,15 @@ VI. Run the application:
 > python software/main.py
 > ```
 
+VII. To Run `index.html` (For Website Development)
+
+1. Install the **Go Live** extension in VS Code.
+2. Open the `index.html` file in VS Code.
+3. Click on the **Go Live** button in the bottom-right corner of VS Code.
+
+> The default URL will be:  
+> `http://localhost:5500/Dataverse/index.html`
+
 Now, the software should run smoothly with no errors, feel free to use the software and don't forget to give feedback on [Dataverse's website](https://multiverse-dataverse.netlify.app/)!
 
 ---

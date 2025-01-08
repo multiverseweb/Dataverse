@@ -79,7 +79,7 @@
 
 Software GUI
 <br>
-<img src="software/images/preview.png" width="800px">
+<img src="software/images/dark/preview.png" width="800px">
 <br><br>
 <details> 
  <summary align=left><H4>View More</H4></summary><br>

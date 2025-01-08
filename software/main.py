@@ -108,7 +108,7 @@ theme = dark_colors if mode == "dark" else light_colors
 def switch_theme():
     global theme
     theme = light_colors if mode == "dark" else dark_colors
-    response = messagebox.askyesno("Need to Restart to switch theme !")
+    response = messagebox.askyesno(message="Restart Required to switch themes !")
     if response:
         python = sys.executable
         if theme == dark_colors:

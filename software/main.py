@@ -423,7 +423,7 @@ def user_menu(u_id,u_name):
     viewData = resize_image(icons["view"], 20)
     plotData= resize_image(icons["pie_chart"], 20)
     deleteData = resize_image(icons["delete"], 20)
-    logout = resize_image(icons["loout"], 20)
+    logout = resize_image(icons["logout"], 20)
 
     b1=Button(menu,fg=theme["White"],bg=theme["Neutral"],text="Add Data",image=addData,compound='left',width=170,anchor='w',padx=10,font="poppins 10",command=partial(insert,u_id,u_name),cursor="hand2")
     b2=Button(menu,fg=theme["White"],bg=theme["Neutral"],text="View Data",image=viewData,compound='left',width=170,anchor='w',padx=10,command=partial(view,u_id,u_name),font="poppins 10",cursor="hand2")

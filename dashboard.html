@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to Your Dashboard</h1>
+    <div>
+        <h2>Your Visualizations</h2>
+        <ul>
+            {% for viz in visualizations %}
+                <li><a href="{{ url_for('view_visualization', viz_id=viz['id']) }}">{{ viz['name'] }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <h2>Your Uploaded Data</h2>
+        <ul>
+            {% for data in uploaded_data %}
+                <li>{{ data['file_name'] }} (Uploaded on: {{ data['upload_date'] }})</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- Button to toggle themes -->
+<button onclick="toggleTheme()">Toggle Theme</button>
+
+<script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</body>
+</html>

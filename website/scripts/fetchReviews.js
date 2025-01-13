@@ -2,8 +2,8 @@ import fs from 'fs';
 import fetch from 'node-fetch';
 
 const NETLIFY_API_URL = "https://api.netlify.com/api/v1";
-const ACCESS_TOKEN = "nfp_NKuDfD8syXDwJuj4FvmejraCrLesfJUm76ac"; // Replace with your token
-const SITE_ID = "fe5bd5ca-244f-420c-af5c-9c10d13f77c7"; // Replace with your form's ID
+const ACCESS_TOKEN = ""; // Replace with your token
+const SITE_ID = ""; // Replace with your form's ID
 
 async function fetchFormSubmissions() {
   try {

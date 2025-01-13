@@ -18,7 +18,7 @@ body {
   z-index: 20;
   height: 120vh;
   width: 100vw;
-  background-image: url('../../software/images/background.png');
+  background-image: url('../../software/images/dark/background.png');
   background-size: cover;
   background-repeat:repeat;
   background-attachment: scroll; /* Enable scroll */

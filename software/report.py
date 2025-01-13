@@ -4,19 +4,20 @@ import matplotlib.pyplot as plt
 from datetime import date
 import os
 import seaborn as sns
+import matplotlib.dates as mdates
 
-
-# Connect to MySQL database
+# Function to fetch data from the database
 def fetch_data_from_db(username):
-    connection = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="ananyavastare2345",
-        database="finance_data",
-    )
-    cursor = connection.cursor(dictionary=True)
-
     try:
+        # Connect to MySQL database
+        connection = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="ananyavastare2345",
+            database="finance_data",
+        )
+        cursor = connection.cursor(dictionary=True)
+
         # Fetch user data
         cursor.execute("SELECT user_id FROM user WHERE username = %s", (username,))
         user = cursor.fetchone()
@@ -54,13 +55,18 @@ def fetch_data_from_db(username):
 
     except mysql.connector.Error as err:
         print(f"Error: {err}")
+        return None
+
     finally:
-        cursor.close()  # Close the cursor
-        connection.close()  # Close the connection
+        if cursor:
+            cursor.close()  # Close the cursor
+        if connection:
+            connection.close()  # Close the connection
 
 
 # Function to create a combined pie and line chart for the income data
 def create_combined_chart(income_data, plot_path="combined_plot.png"):
+    # Prepare labels and amounts for the pie chart
     labels = list(income_data.keys())
     amounts = [sum(data["amounts"]) for data in income_data.values()]
     colors = sns.color_palette("pastel", len(labels))
@@ -94,6 +100,9 @@ def create_combined_chart(income_data, plot_path="combined_plot.png"):
     axs[1].set_ylabel("Amount ($)")
     axs[1].grid(True)
     axs[1].legend(loc="upper left")
+    axs[1].xaxis.set_major_locator(mdates.MonthLocator())
+    axs[1].xaxis.set_major_formatter(mdates.DateFormatter('%b %d, %Y'))
+    plt.xticks(rotation=45)
 
     # Adjust layout and save the combined plot
     plt.tight_layout()
@@ -133,6 +142,8 @@ def main():
 
         # Generate and save the PDF report
         save_report(username)
+    else:
+        print(f"No income data found for {username}.")
 
 
 # Run the main function when the script is executed

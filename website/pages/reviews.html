@@ -1,23 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="../web_images/3dlogo.svg" type="image/x-icon">
-  <title>Dataverse Reviews</title>
-  <link rel="stylesheet" href="../styles/reviews.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-</head>
-<body>
-
-  <div class="reviewContainer">
-    <p class="reviewHeading">Dataverse Reviews</p>
-    <div id="average-rating"></div>
-    <div id="reviews-container" class="reviews-container">
-      <!-- Reviews will be dynamically inserted here -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../web_images/3dlogo.svg"
+      type="image/x-icon"
+    />
+    <title>Dataverse Reviews</title>
+    <link rel="stylesheet" href="../styles/reviews.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/style.css">
+  </head>
+  <body>
+    <nav id="navbar">
+      <img
+        src="../web_images/3dlogo.svg"
+        alt="Dataverse Logo"
+        class="logo"
+        id="normal"
+      />
+      <img
+        src="../web_images/3d_glow.webp"
+        alt="Dataverse Logo"
+        class="logo"
+        id="glow"
+      />
+      <div class="scrollBar" id="progress_bar"></div>
+      <!--PROGRESS BAR-->
+      <a href="./login.html">
+        <button class="navbarButton">
+          <span class="button-text">Login</span>
+          <img
+            src="../web_images/user.png"
+            alt="User Icon"
+            class="user-icon"
+          />
+        </button>
+      </a>
+    </nav>
+    <div class="reviewContainer">
+      <p class="reviewHeading">Dataverse Reviews</p>
+      <div id="average-rating"></div>
+      <div id="reviews-container" class="reviews-container">
+        <!-- Reviews will be dynamically inserted here -->
+      </div>
     </div>
-  </div>
-  <a href="../../index.html"><button class="goBack">Go To Home</button></a>
-  <script src="../scripts/beautifyReviews.js"></script>
-</body>
+    <a href="../../index.html"><button class="goBack">Go To Home</button></a>
+    <script src="../scripts/beautifyReviews.js"></script>
+  </body>
 </html>

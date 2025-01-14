@@ -248,10 +248,19 @@
         <form name="Dataverse Reviews" method="POST" data-netlify="true" id="feedback-form"
             onsubmit="return validateForm()">
             <p style="color:white">Let Me Know Your Thoughts!</p>
+            <div class="tooltip">
             <input type="text" name="Name" placeholder="Your Name" required>
+            <span class="tooltiptext">Please enter your full name here.</span> 
+            </div>
+            <div class="tooltip">
             <input type="email" name="Email" placeholder="Your Email ID" required>
+            <span class="tooltiptext">Please enter a valid email like example@gmail.com.</span>
+          </div>
+          <div class="tooltip">    
             <textarea name="Message" placeholder="Your thoughts on Dataverse" rows="4" required
                 oninput="checkFeedbackLength(this)"></textarea>
+            <span class="tooltiptext">Feel free to describe your thoughts in detail.</span>
+        </div>
             <p id="feedbackError"
                 style="color:#fd4346; opacity: 0%; font-size: 15px; white-space: normal; transition: opacity 0.4s ease ">
                 Feedback must be at least 10 characters long.</p>

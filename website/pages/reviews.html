@@ -43,6 +43,45 @@
         </button>
       </a>
     </nav>
+    <button class="burger" id="burger" onclick="show()"></button>
+    <button id="cross" class="burger" onclick="hide()"></button>
+    <div class="burger" id="lines">
+        <div class="line" id="l1"></div>
+        <div class="line" id="l2"></div>
+        <div class="line" id="l3"></div>
+    </div>
+    <div class="plane" id="plane">
+        <table>
+            <tr>
+                <td id="current"><a href="../../index.html" class="table_link">Home</a></td>
+            </tr>
+            <tr>
+                <td><a href="../../documentation.html" class="table_link">Documentation</a></td>
+            </tr>
+            <tr>
+                <td><a href="./versions.html" class="table_link">Versions</a></td>
+            </tr>
+            <tr>
+                <td><a href="./support.html" class="table_link">Support</a></td>
+            </tr>
+            <tr>
+                <td><a href="./contributor.html" class="table_link">Contributors</a></td>
+            </tr>
+            <tr>
+                <td><a href="./reviews.html" class="table_link">Reviews</a></td>
+            </tr>
+            <tr>
+                <td><a href="./license.html" class="table_link">License</a></td>
+            </tr>
+            <tr>
+                <td><a href="../../404.html" class="table_link">Stunning Visuals</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
+            </tr>
+        </table>
+    </div>
+
     <div class="reviewContainer">
       <p class="reviewHeading">Dataverse Reviews</p>
       <div id="average-rating"></div>
@@ -52,5 +91,6 @@
     </div>
     <a href="../../index.html"><button class="goBack">Go To Home</button></a>
     <script src="../scripts/beautifyReviews.js"></script>
+    <script src="../scripts/script.js" type="module"></script>
   </body>
 </html>

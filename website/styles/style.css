@@ -1019,7 +1019,7 @@ form {
 input {
     background-color: #76767639;
     width: 85%;
-    height: 30px;
+    height: 35px;
     margin-top: 20px;
     border-radius: 5px;
     padding: 5px 10px;
@@ -1046,6 +1046,38 @@ input {
     background-color: rgba(0, 240, 236, 0.867);
     box-shadow: 0px 0px 10px cyan;
 }
+
+.tooltip {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+   /* Tooltip text  */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: rgba(255, 255, 255, 0.873);
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    left: 70%;
+    margin-left: -100px; 
+    top: 48%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 11px;
+  }
+    
+  /* Show the tooltip on hover */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
 
 .contact {
     width: 40vw;

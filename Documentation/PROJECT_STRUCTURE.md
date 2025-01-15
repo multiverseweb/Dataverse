@@ -19,6 +19,7 @@
 ├── LICENSE.md
 ├── README.md
 ├── SECURITY.md
+├── appconfig
 ├── documentation.html
 ├── index.html
 ├── installation/
@@ -38,32 +39,62 @@
 │   ├── database.sql
 │   ├── db_config.py
 │   ├── images/
-│   │   ├── 2dlogo.png
-│   │   ├── 3dScatter.png
-│   │   ├── 3dlogo.png
-│   │   ├── add.png
-│   │   ├── area_chart.png
-│   │   ├── background.png
-│   │   ├── bar_graph.png
-│   │   ├── delete-user.png
-│   │   ├── delete.png
-│   │   ├── equation.png
-│   │   ├── finance.png
-│   │   ├── globe.png
-│   │   ├── heatmap_plot.png
-│   │   ├── histogram.png
-│   │   ├── home.png
-│   │   ├── line_graph.png
-│   │   ├── logout.png
-│   │   ├── pie_chart.png
-│   │   ├── polarScatter.png
-│   │   ├── preview.png
-│   │   ├── radar_chart.png
-│   │   ├── scatter_plot.png
-│   │   ├── surface.png
-│   │   ├── user.png
-│   │   ├── view.png
-│   │   └── visualization.png
+│   │   ├── dark/
+│   │   │   ├── 2dlogo.png
+│   │   │   ├── 3dScatter.png
+│   │   │   ├── 3dlogo.png
+│   │   │   ├── add.png
+│   │   │   ├── area_chart.png
+│   │   │   ├── background.png
+│   │   │   ├── bar_graph.png
+│   │   │   ├── delete-user.png
+│   │   │   ├── delete.png
+│   │   │   ├── equation.png
+│   │   │   ├── finance.png
+│   │   │   ├── globe.png
+│   │   │   ├── heatmap_plot.png
+│   │   │   ├── histogram.png
+│   │   │   ├── home.png
+│   │   │   ├── line_graph.png
+│   │   │   ├── logout.png
+│   │   │   ├── mode.png
+│   │   │   ├── pie_chart.png
+│   │   │   ├── polarScatter.png
+│   │   │   ├── preview.png
+│   │   │   ├── radar_chart.png
+│   │   │   ├── scatter_plot.png
+│   │   │   ├── surface.png
+│   │   │   ├── user.png
+│   │   │   ├── view.png
+│   │   │   └── visualization.png
+│   │   └── light/
+│   │       ├── 2dlogo.png
+│   │       ├── 3dScatter.png
+│   │       ├── 3dlogo.png
+│   │       ├── add.png
+│   │       ├── area_chart.png
+│   │       ├── background.png
+│   │       ├── bar_graph.png
+│   │       ├── delete-user.png
+│   │       ├── delete.png
+│   │       ├── equation.png
+│   │       ├── finance.png
+│   │       ├── globe.png
+│   │       ├── heatmap_plot.png
+│   │       ├── histogram.png
+│   │       ├── home.png
+│   │       ├── line_graph.png
+│   │       ├── logout.png
+│   │       ├── mode.png
+│   │       ├── pie_chart.png
+│   │       ├── polarScatter.png
+│   │       ├── preview.png
+│   │       ├── radar_chart.png
+│   │       ├── scatter_plot.png
+│   │       ├── surface.png
+│   │       ├── user.png
+│   │       ├── view.png
+│   │       └── visualization.png
 │   ├── main.py
 │   ├── manage_data.py
 │   ├── report.py

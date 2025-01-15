@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataverse</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="shortcut icon" href="../web_images/3dlogo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body id="body">
+    <!-- preloader -->
+    <div id="video-loader">
+        <video src="../web_images/loader.mp4" alt="Dataverse" autoplay muted>Your browser does not support the
+            video tag.</video>
+    </div>
+    <div class="buttons" id="buttons">
+        <div id="indicator"></div>
+        <div class="group">
+            <button id="darkButton" onclick="dark(false)">
+                <img src="https://static.thenounproject.com/png/4066359-200.png" class="copy" id="moon">
+            </button>
+            <button id="lightButton" onclick="light(false)">
+                <!-- <div id="theme2"> -->
+                <img src="https://cdn-icons-png.freepik.com/256/467/467619.png?semt=ais_hybrid" alt="" class="copy"
+                    id="sun">
+                <!-- </div> -->
+            </button>
+        </div>
+        <button id="defaultButton" onclick="systemDefault()">
+            <img src="../web_images/settings.webp" class="copy" id="default">
+        </button>
+    </div>
+    <button class="top" id="top" onclick="topFunction()"><img src="website/web_images/top.webp" alt=""></button>
+    <nav id="navbar">
+        <img src="../web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
+        <img src="../web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
+        <div class="scrollBar" id="progress_bar"></div> <!--PROGRESS BAR-->
+        <a href="./pages/login.html">
+            <button class="navbarButton">
+                <span class="button-text">Login</span>
+                <img src="../web_images/user.png" alt="User Icon" class="user-icon">
+            </button>
+        </a>
+    </nav>
+
+    <button class="burger" id="burger" onclick="show()"></button>
+    <button id="cross" class="burger" onclick="hide()"></button>
+    <div class="burger" id="lines">
+        <div class="line" id="l1"></div>
+        <div class="line" id="l2"></div>
+        <div class="line" id="l3"></div>
+    </div>
+    <div class="plane" id="plane">
+        <table>
+            <tr>
+                <td id="current"><a href="/" class="table_link">Home</a></td>
+            </tr>
+            <tr>
+                <td><a href="/documentation" class="table_link">Documentation</a></td>
+            </tr>
+            <tr>
+                <td><a href="/versions" class="table_link">Versions</a></td>
+            </tr>
+            <tr>
+                <td><a href="/support" class="table_link">Support</a></td>
+            </tr>
+            <tr>
+                <td><a href="/contributor" class="table_link">Contributors</a></td>
+            </tr>
+            <tr>
+                <td><a href="/reviews" class="table_link">Reviews</a></td>
+            </tr>
+            <tr>
+                <td><a href="/license" class="table_link">License</a></td>
+            </tr>
+            <tr>
+                <td><a href="/404" class="table_link">Stunning Visuals</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="scroll_icon" id="scroll_icon">SCROLL TO KNOW MORE
+        <div class="shadow" id="shadow"></div>
+    </div>
+    <div class="download" id="download">
+        <div class="left">
+            <div id="map">
+                <div class="direction"><img src="https://cdn-icons-png.flaticon.com/512/0/614.png" id="aeroplane"></div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="top_dataverse">
+                <p id="data">Data</p>
+                <p>verse</p>
+            </div>
+            <p id="intro_text">An Open-Source Software (OSS) that allows organizing, analyzing and visualizing data,
+                providing flexible tools for financial tracking and customized chart creation.
+            </p>
+            <p id="intro_text">The adjoining map shows people who are using or contributing to Dataverse.</p>
+            <button id="download_btn"
+                onclick="showModal('Dataverse is currently under development. It will be available for installastion soon.\n\nHowever, you can fork the GitHub repo and run Dataverse on your computer:', 'download dataverse')">Get
+                Dataverse</button>
+
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span id="modal-message"></span>
+                    <div id="modal-buttons">
+                        <a
+                            href="https://github.com/multiverseweb/Dataverse?tab=readme-ov-file#deployment-specifications"><button
+                                id="accept-modal">Try
+                                Dataverse</button></a>
+                        <button onclick="closeModal()" id="close-modal">Later</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="scroll_animation"></div>
+        </div>
+    </div>
+    <div class="section" id="about">
+        <div class="about_left">
+            <p class="heading reveal">So, What does this Software do?</p>
+            <p class="subheading reveal">Visualise Data!</p>
+            <p class="text reveal">Easily transform raw data into visually appealing charts such as bar graphs, pie charts,
+                and
+                line graphs. It also supports advanced data visualisation techniques like heatmaps, Radar charts, 3D
+                Surface Plots, etc..
+                <br><br>
+                You can also download the generated plots or save the data for later use.
+            </p>
+        </div>
+        <div class="about_right reveal">
+            <img src="../web_images/about_up.webp" class="preview up">
+            <img src="../web_images/about_down.webp" class="preview down">
+        </div>
+    </div>
+    <div class="section" id="finance">
+        <div class="finance_left reveal">
+            <img src="../web_images/finance_up.webp" class="preview up">
+            <img src="../web_images/finance_down.webp" class="preview down">
+        </div>
+        <div class="finance_right">
+            <p class="subheading reveal">Track Finances!</p>
+            <p class="text reveal">Manage your finances by providing data such as income, expense, investment, etc. and get
+                useful results such as visualization of data, extrapolated data, max expenditure, etc.. Also, the
+                software automatically stores data with a timestamp.</p>
+        </div>
+    </div>
+
+    <div class="section" id="charts">
+        <p class="heading reveal">Here are some examples of what you can do with Dataverse</p>
+        <div class="examples reveal" id="examples">
+
+            <img src="../web_images/volcano.gif" alt="">
+            <img src="../web_images/live.gif" alt="">
+            <img src="https://i0.wp.com/learnbyinsight.com/wp-content/uploads/2020/09/sub-plot.png?resize=600%2C398&ssl=1"
+                alt="">
+            <img src="https://docs.sympy.org/latest/_images/plotting-16.png" alt="">
+            <img src="../web_images/galaxy.webp" alt="">
+            <img src="../web_images/3d.gif" alt="">
+            <img src="../web_images/volcano.gif" alt="">
+            <img src="../web_images/live.gif" alt="">
+            <img src="https://i0.wp.com/learnbyinsight.com/wp-content/uploads/2020/09/sub-plot.png?resize=600%2C398&ssl=1"
+                alt="">
+            <img src="https://docs.sympy.org/latest/_images/plotting-16.png" alt="">
+            <img src="../web_images/galaxy.webp" alt="">
+            <img src="../web_images/3d.gif" alt="">
+
+
+        </div>
+        <div class="examples reveal" id="examples2">
+
+            <img src="https://matplotlib.org/stable/_images/sphx_glr_polar_scatter_001.png" alt="">
+            <img src="../web_images/wordcloud.png" alt="">
+            <img src="https://www.pythoncharts.com/matplotlib/radar-charts/images/radar-chart-step1.png" alt="">
+            <img src="https://discourse.matplotlib.org/uploads/default/original/2X/4/4a1f2f7f8f90b98517aa85b8b984d4c9a3a94c72.jpeg"
+                alt="">
+            <img src="https://miro.medium.com/v2/resize:fit:1188/1*kpksgzDd6qKP2h6GM7OVCA.png" alt="">
+            <img src="https://miro.medium.com/v2/resize:fit:1140/1*Lc5VzM9Yo4775Omc-vqddQ.png" alt="">
+            <img src="website/web_images/portal.webp" alt="">
+            <img src="website/web_images/stars.webp" alt="">
+            <img src="https://matplotlib.org/stable/_images/sphx_glr_polar_scatter_001.png" alt="">
+            <img src="../web_images/wordcloud.png" alt="">
+            <img src="https://www.pythoncharts.com/matplotlib/radar-charts/images/radar-chart-step1.png" alt="">
+            <img src="https://discourse.matplotlib.org/uploads/default/original/2X/4/4a1f2f7f8f90b98517aa85b8b984d4c9a3a94c72.jpeg"
+                alt="">
+            <img src="https://miro.medium.com/v2/resize:fit:1188/1*kpksgzDd6qKP2h6GM7OVCA.png" alt="">
+            <img src="https://miro.medium.com/v2/resize:fit:1140/1*Lc5VzM9Yo4775Omc-vqddQ.png" alt="">
+            <img src="../web_images/portal.webp" alt="">
+            <img src="../web_images/stars.webp" alt="">
+        </div>
+    </div>
+
+
+    <div class="section" id="develop">
+        <div class="develop_left">
+            <p class="heading reveal">Want to contribute to this Project?</p>
+            <div class="reveal">
+            <div class="subheading" id="technologies">
+                <div class="circle" id="red"></div>
+                <div class="circle" id="yellow"></div>
+                <div class="circle" id="green"></div>
+                <p>Technologies Used</p>
+            </div>
+            <div class="tags" id="tags">
+                <p id="pythontag">Python</p>
+                <p id="numpytag">Numpy</p>
+                <p id="pandastag">Pandas</p>
+                <p id="matplotlibtag">Matplotlib</p>
+                <p id="pythontag">Tkinter</p>
+                <p id="mysqltag">MySQL</p>
+                <p id="htmltag">HTML</p>
+                <p id="csstag">CSS</p>
+                <p id="jstag">JavaScript</p>
+                <p id="exceltag">MS Excel</p>
+                <p id="netlifytag">Netlify</p>
+                <p id="htmltag">Postman</p>
+            </div>
+        </div>
+            <p class="text">As this is an open-source project, contributions are always welcome. Whether you're
+                interested in adding new features, fixing bugs, or improving documentation, your contributions are
+                valuable. You can contribute to the project by visiting the link to the GitHub repository provided
+                below. Join me in making Dataverse even better for everyone!</p>
+            <a href="https://github.com/multiverseweb/Dataverse?tab=readme-ov-file#contributions"
+                target="_blank" class="reveal"><button id="contribute">
+                    <p>Contribute</p><img src="../web_images/github.png" id="github">
+                </button></a>
+        </div>
+        <div class="develop_right reveal">
+            <img src="../web_images/develop_up.webp" class="preview up develop_theme">
+            <img src="../web_images/develop_down.webp" class="preview down develop_theme">
+        </div>
+    </div>
+    <footer id="footer">
+        <form name="Dataverse Reviews" method="POST" data-netlify="true" id="feedback-form"
+            onsubmit="return validateForm()">
+            <p style="color:white">Let Me Know Your Thoughts!</p>
+            <input type="text" name="Name" placeholder="Your Name" required>
+            <input type="email" name="Email" placeholder="Your Email ID" required>
+            <textarea name="Message" placeholder="Your thoughts on Dataverse" rows="4" required
+                oninput="checkFeedbackLength(this)"></textarea>
+            <p id="feedbackError"
+                style="color:#fd4346; opacity: 0%; font-size: 15px; white-space: normal; transition: opacity 0.4s ease ">
+                Feedback must be at least 10 characters long.</p>
+            <div class="star-rating" style="text-align: center; margin: 10px;">
+                <input type="radio" id="star5" name="rating" value="5" />
+                <label for="star5" title="5 star">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4" />
+                <label for="star4" title="4 stars">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3" />
+                <label for="star3" title="3 stars">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2" />
+                <label for="star2" title="2 stars">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1" />
+                <label for="star1" title="1 stars">&#9733;</label>
+            </div>
+            <input type="submit" value="Send" id="send">
+        </form>
+        <div class="left_links">
+            <div class="contact">
+                <div class="name">
+                    <img src="../web_images/2dlogo.svg" alt="" class="end-logo" id="end-logo">
+                    <a class="subheading" href="index.html" id="last_link">Dataverse</a>
+                </div>
+            </div>
+            <div class="small">
+                <div class="link_class">
+                    <p class="link-category">Software Details</p>
+                    <a href="./pages/versions.html" class="table_link">Versions</a>
+                    <a href="./pages/license.html" class="table_link">License</a>
+                    <a href="documentation.html" class="table_link">Documentation</a>
+                    <a href="https://github.com/multiverseweb/Dataverse" class="table_link">GitHub Repository</a>
+                </div>
+                <div class="link_class">
+                    <p class="link-category">Help & Information</p>
+                    <a href="./pages/support.html" class="table_link" target="_blank">Support</a>
+                    <a href="sitemap.xml" class="table_link" target="_blank">Sitemap</a>
+                    <a href="./pages/reviews.html" class="table_link">Reviews</a>
+                    <a href="./pages/contributor.html" class="table_link">Contributors</a>
+                </div>
+                <div class="link_class">
+                    <p class="link-category">More to Explore</p>
+                    <a href="404.html" class="table_link">Stunning Visuals</a>
+                    <a href="https://tejasgupta.netlify.app">Owner's Portfolio</a>
+                    <a href="https://www.linkedin.com/in/tejascodes/">Owner's LinkedIn</a>
+                    <a href="https://github.com/multiverseweb">Owner's GitHub Profile</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="links" id="linksTejas">
+        <div class="end_line"></div>
+        <p class="tejas_credits" style="color:rgb(177, 177, 177);">&copy; 2023-<span id="copyright">32949832</span>
+            Dataverse.&nbsp;All rights Reserved.</p>
+        <p style="color:rgb(187, 187, 187);"> Designed & Developed by <a href="404.html">Tejas
+                Gupta</a></p>
+        <p>Licensed under the <a href="./pages/license.html">CC BY-NC-ND 4.0 License</a></p>
+    </div>
+
+    <script>
+        function validateFeedback() {
+            var feedback = document.forms["Dataverse Reviews"]["Feedback"];
+            checkFeedbackLength(feedback);
+            return feedback.value.length >= 10;
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                window.embeddedChatbotConfig = {
+                    chatbotId: "oKgfHa3hvh7Ic0ypSqDbv",
+                    domain: "www.chatbase.co"
+                };
+
+                var script = document.createElement('script');
+                script.src = "https://www.chatbase.co/embed.min.js";
+                script.chatbotId = "oKgfHa3hvh7Ic0ypSqDbv";
+                script.domain = "www.chatbase.co";
+                script.defer = true;
+                document.body.appendChild(script);
+            }, 3000); // Delay of 3 seconds (3000 ms)
+        });
+    </script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="../scripts/script.js" type="module"></script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-fetch('../scripts/reviews.json')
+fetch('reviews.json')
     .then(response => response.json())
     .then(data => {
         const averageRating = calculateAverageRating(data);

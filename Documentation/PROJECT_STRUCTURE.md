@@ -2,7 +2,13 @@
 
 <!-- START_STRUCTURE -->
 ```
-├── 404.html
+├── LICENSE.md
+├── README.md
+├── SECURITY.md
+├── appconfig
+├── documentation.html
+├── index.html
+├── sitemap.xml
 ├── Documentation/
 │   ├── PROJECT_STRUCTURE.md
 │   ├── contributing.md
@@ -16,15 +22,8 @@
 │   ├── repo_structure.txt
 │   └── styles/
 │       └── sitemap.xsl
-├── LICENSE.md
-├── README.md
-├── SECURITY.md
-├── appconfig
-├── documentation.html
-├── index.html
 ├── installation/
 │   └── requirements.txt
-├── sitemap.xml
 ├── software/
 │   ├── __pycache__/
 │   │   ├── dataVisualization.cpython-311.pyc
@@ -100,7 +99,14 @@
 │   ├── report.py
 │   └── tempCodeRunnerFile.py
 └── website/
-    ├── pages/
+    ├── main.py
+    ├── routes/
+    ├── models/
+    ├── schema/
+    ├── templates/
+    |   ├── index.html
+    |   ├── documentation.html
+    |   ├── 404.html
     │   ├── contributor.html
     │   ├── license.html
     │   ├── login.html

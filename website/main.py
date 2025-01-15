@@ -39,6 +39,7 @@ app.mount("/web_images", StaticFiles(directory="web_images"), name="web_images")
 app.mount("/styles", StaticFiles(directory="styles"), name="styles")
 app.mount("/scripts", StaticFiles(directory="scripts"), name="scripts")
 app.mount("/software", StaticFiles(directory="../software"), name="software")
+app.mount("/Documentation", StaticFiles(directory="../Documentation"), name="Documentation")
 
 # Set up Jinja2 templates for dynamic HTML rendering
 templates = Jinja2Templates(directory="templates/")

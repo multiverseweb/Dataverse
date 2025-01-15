@@ -1,11 +1,11 @@
-fetch('reviews.json')
-    .then(response => response.json())
-    .then(data => {
-        const averageRating = calculateAverageRating(data);
-        displayAverageRating(averageRating);
-        displayReviews(data);
-    })
-    .catch(error => console.error("Error loading reviews:", error));
+fetch("/scripts/reviews.json")
+  .then((response) => response.json())
+  .then((data) => {
+    const averageRating = calculateAverageRating(data);
+    displayAverageRating(averageRating);
+    displayReviews(data);
+  })
+  .catch((error) => console.error("Error loading reviews:", error));
 
 // Function to calculate the average rating
 function calculateAverageRating(reviews) {

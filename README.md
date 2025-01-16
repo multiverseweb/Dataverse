@@ -34,7 +34,7 @@
     <th><a href="#repository-structure">Repository Structure</a></th>
     <th><a href="#deployment-specifications">Use Dataverse</a></th>
     <th><a href="#contributions">Make Contributions</a></th>
-    <th><a href="#website">Website</a></th>
+    <th><a href="#links">Links</a></th>
   </tr>
 </table>
 
@@ -224,9 +224,9 @@ Want to make contributions to this project? ✨
 
 ---
  
-### Website
-|<a href="https://multiverse-dataverse.netlify.app/"><img src="Documentation/images/netlify.svg"></a>|[Visit Dataverse's Website](https://multiverse-dataverse.netlify.app/)|
-|-|-|
+### Links
+|<a href="https://multiverse-dataverse.netlify.app/"><img src="Documentation/images/netlify.svg"></a>|<a href="https://multiverse-dataverse.netlify.app/"><img src="software/images/dark/globe.png" height='30px'></a>|<a href="https://multiverse-dataverse.netlify.app/"><img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" height='30px'></a>|<a href="mailto:multiverse.letter@gmail.com"><img src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/email-envelope-line-white-icon.png" height="30px"></a>|[Multiverse](https://github.com/Multiverse-Web)
+|-|-|-|-|-|
 
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 

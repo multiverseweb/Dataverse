@@ -13,4 +13,4 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: "👋 Thank you for raising an issue! We appreciate your effort in helping us improve. A maintainer from `Dataverse` will review it shortly. Stay tuned!"
-        pr-message: " 🎉 Thank you for your contribution! Your pull request has been submitted successfully. A maintainer from `Dataverse` will review it as soon as possible. We appreciate your support in making this project better."
+        pr-message: " 🎉 Thank you for your contribution! Your pull request has been submitted successfully. A maintainer from `Dataverse` will review it soon. We appreciate your support in making this project better."

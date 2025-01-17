@@ -30,9 +30,6 @@ async def lifespan(app: FastAPI):
 # Create FastAPI app and pass lifespan
 app = FastAPI(lifespan=lifespan)
 
-# MongoDB configuration
-MONGO_DETAILS = os.getenv("MONGODB_URL")  # Replace with your MongoDB URI
-
 # Serve static files
 app.mount("/static", StaticFiles(directory="../"), name="static")
 app.mount("/web_images", StaticFiles(directory="web_images"), name="web_images")
@@ -47,7 +44,7 @@ templates = Jinja2Templates(directory="templates/")
 # MongoDB setup
 MONGODB_URL = os.getenv("MONGODB_URL")
 client = AsyncIOMotorClient(MONGODB_URL)
-db = client.social_media_products
+db = client.Dataverse
 
 # Image Collections
 review_collection = db["reviews"]

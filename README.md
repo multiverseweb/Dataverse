@@ -169,7 +169,7 @@ VI (b). To run the website:
 > ```
 
 > The default URL will be:  
-> `http://localhost:5500/Dataverse/index.html`
+> `http://127.0.0.1:8000`
 
 Now, the software should run smoothly with no errors, feel free to use the software and don't forget to give feedback on [Dataverse's website](https://multiverse-dataverse.netlify.app/)!
 

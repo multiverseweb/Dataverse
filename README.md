@@ -1,5 +1,5 @@
 # Dataverse
-<img src="website/web_images/3d_glow.webp" height=50px align=right>
+<img src="/web_images/3d_glow.webp" height=50px align=right>
 
 ###### Data Visualisation Software & Finance Tracker
 
@@ -89,11 +89,11 @@ Software Home Page
 <br><br>
 Visualised Data
 <br>
-<img src="website/web_images/finance_down.webp" width="800px">
+<img src="/web_images/finance_down.webp" width="800px">
 <br><br>
 Stored Data
 <br>
-<img src="website/web_images/finance_up.webp" width="800px">
+<img src="/web_images/finance_up.webp" width="800px">
 </details>
 </div>
 

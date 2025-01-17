@@ -60,6 +60,14 @@ def read_root(request: Request):
     # Provide the context including the request object
     return templates.TemplateResponse("index.html", {"request": request})
 
+@app.get("/login", response_class=HTMLResponse)
+def documentation(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+@app.get("/signup", response_class=HTMLResponse)
+def documentation(request: Request):
+    return templates.TemplateResponse("signup.html", {"request": request})
+
 @app.get("/documentation", response_class=HTMLResponse)
 def documentation(request: Request):
     return templates.TemplateResponse("documentation.html", {"request": request})

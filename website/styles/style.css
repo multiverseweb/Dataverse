@@ -1197,17 +1197,23 @@ input {
 
 #versions{
     width: 50vw;
-    margin-top: 70px;
-    border: 1px solid rgba(128, 128, 128, 0.352);
-    margin-left: 20px;
+    margin-top: 0px;
+    border: 2px solid rgba(128, 128, 128, 0.352);
+    margin-left: auto;
+    margin-right: auto;
 }
 #versions td{
     padding: 10px;
     border: 1px solid rgba(128, 128, 128, 0.352);
+    text-align: justify;
 }
 #versions th{
     padding: 10px;
     border: 1px solid rgba(128, 128, 128, 0.352);
+}
+.highlight {
+        font-weight: bold;
+        color: #ff4500;
 }
 
 /*===========================RESPONSIVE===================================*/

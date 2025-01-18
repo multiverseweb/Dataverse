@@ -1209,7 +1209,40 @@ input {
     padding: 10px;
     border: 1px solid rgba(128, 128, 128, 0.352);
 }
+/* Infinite scroll */
+#examples, #examples2 {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    width: 100%;
+}
 
+.examples img {
+    margin-right: 20px; 
+    width: 200px; 
+}
+
+#examples:not(:hover) img,#examples2:not(:hover) img{
+    animation: scrollImages 10s linear infinite;
+}
+
+#examples:hover img, #examples2:hover img {
+    animation-play-state: paused;
+}
+
+
+#examples img:hover, #examples2 img:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scrollImages {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
 /*===========================RESPONSIVE===================================*/
 @media screen and (max-width: 660px) {
     .navbarButton {

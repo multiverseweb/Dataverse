@@ -1,188 +1,194 @@
 /* Basic resets */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #000000;
-    color: #ffffff;
+  font-family: "Arial", sans-serif;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .reviewContainer {
-    text-align: center;
-    margin-top: 90px;
+  text-align: center;
+  margin-top: 90px;
 }
 
 .reviewHeading {
-    color: #ffffff;
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 20px;
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 #average-rating {
-    padding: 20px;
-    text-align: center;
-    font-size: 30px;
-    margin-bottom: 20px;
-    width: 90vw;
-    margin-left: 5vw;
-    border: 2px solid #dddddd35;
-    border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  width: 90vw;
+  margin-left: 5vw;
+  border: 2px solid #dddddd35;
+  border-radius: 10px;
 }
 
 .average-rating-text {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 .average-star-rating {
-    color: gold;
+  color: gold;
 }
 
 .filled {
-    color: gold;
-    text-shadow: 0 0 10px gold;
+  color: gold;
+  text-shadow: 0 0 10px gold;
 }
 
 .half {
-    background: linear-gradient(to right, gold, gold, black, black, black);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: -3px 0 10px gold;
+  background: linear-gradient(to right, gold, gold, black, black, black);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: -3px 0 10px gold;
 }
 
 .empty {
-    margin-left: -25px;
+  margin-left: -25px;
 }
 
 /* Review Container */
 .reviews-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    padding-bottom: 70px;
-    width: 90vw;
-    margin-left: 5vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding-bottom: 70px;
+  width: 90vw;
+  margin-left: 5vw;
 }
 
 .review {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    background-color: #50505032;
-    border: 1px solid rgba(202, 202, 202, 0.178);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition-duration: 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  background-color: #50505032;
+  border: 1px solid rgba(202, 202, 202, 0.178);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition-duration: 0.3s;
 }
 
 .review-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .review-header h3 {
-    font-size: 1.3em;
-    color: #cbcbcb;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.145);
-    width: 100%;
-    text-align: left;
-    padding-bottom: 5px;
+  font-size: 1.3em;
+  color: #cbcbcb;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.145);
+  width: 100%;
+  text-align: left;
+  padding-bottom: 5px;
 }
 
 .review-content {
-    position: relative;
-    color: #ffffff;
-    font-size: 1em;
-    text-align: left;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  position: relative;
+  color: #ffffff;
+  font-size: 1em;
+  text-align: left;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .review-date {
-    float: left;
-    font-size: 12px;
-    color: #888;
-    font-style: italic;
+  float: left;
+  font-size: 12px;
+  color: #888;
+  font-style: italic;
 }
 
 .review-footer {
-    position: relative;
-    /* Keep it within the parent review div */
-    height: 30px;
-    /* Adjust as needed */
-    display: flex;
-    align-items: flex-end;
-    /* Push the date to the bottom */
-    justify-content: space-between;
-    /* Align the date to the left */
-    text-align: right;
+  position: relative;
+  /* Keep it within the parent review div */
+  height: 30px;
+  /* Adjust as needed */
+  display: flex;
+  align-items: flex-end;
+  /* Push the date to the bottom */
+  justify-content: space-between;
+  /* Align the date to the left */
+  text-align: right;
 }
 
 .star-rating {
-    background: linear-gradient(to right, #ff0000, #fcc100);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 10px gold;
+  background: linear-gradient(to right, #ff0000, #fcc100);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px gold;
 }
 
 .star-rating star {
-    margin-right: 5px;
-    font-size: 1.5rem;
+  margin-right: 5px;
+  font-size: 1.5rem;
 }
 
 .goBack {
-    cursor: pointer;
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    padding: 10px;
-    background-color: #d0d0d032;
-    backdrop-filter: blur(7px);
-    color: rgb(105, 105, 105);
-    border: none;
-    border-radius: 7px;
-    box-shadow: 0 0 5px black;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px;
+  background-color: #d0d0d032;
+  backdrop-filter: blur(7px);
+  color: rgb(105, 105, 105);
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0 0 5px black;
 }
 
-
 .review:hover::before {
-    opacity: 1;
+  opacity: 1;
 }
 
 .review::before,
 .review::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    border-radius: inherit;
-    z-index: 2;
-    opacity: 0;
-    transition: opacity 500ms;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 500ms;
 }
 
 .review::before {
-    background: radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.09), transparent 40%);
-    z-index: 3;
+  background: radial-gradient(
+    500px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.09),
+    transparent 40%
+  );
+  z-index: 3;
 }
 
 .review::after {
-    background: radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.3), transparent 40%);
-    z-index: 1;
+  background: radial-gradient(
+    300px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.3),
+    transparent 40%
+  );
+  z-index: 1;
 }
 
-
-#reviews-container:hover>.card:after {
-    opacity: 1;
+#reviews-container:hover > .card:after {
+  opacity: 1;
 }

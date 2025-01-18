@@ -1,5 +1,5 @@
 # Dataverse
-<img src="website/web_images/3d_glow.webp" height=50px align=right>
+<img src="/web_images/3d_glow.webp" height=50px align=right>
 
 ###### Data Visualisation Software & Finance Tracker
 
@@ -89,11 +89,11 @@ Software Home Page
 <br><br>
 Visualised Data
 <br>
-<img src="website/web_images/finance_down.webp" width="800px">
+<img src="/web_images/finance_down.webp" width="800px">
 <br><br>
 Stored Data
 <br>
-<img src="website/web_images/finance_up.webp" width="800px">
+<img src="/web_images/finance_up.webp" width="800px">
 </details>
 </div>
 
@@ -154,20 +154,22 @@ V. Install MySQL if you don't have it already from [here](https://dev.mysql.com/
 > [!IMPORTANT]
 > Change the values of `DB_HOST`, `DB_USER` and `DB_PASSWORD` in [software/db_config.py](software/db_config.py) file according to your MySQL account.
 
-VI. Run the application:
+VI (a). To run the application:
 
 > ```
-> python software/main.py
+> cd software
+> python main.py
 > ```
 
-VII. To Run `index.html` (For Website Development)
+VI (b). To run the website:
 
-1. Install the **Go Live** extension in VS Code.
-2. Open the `index.html` file in VS Code.
-3. Click on the **Go Live** button in the bottom-right corner of VS Code.
+> ```
+> cd website
+> uvicorn main:app --reload
+> ```
 
 > The default URL will be:  
-> `http://localhost:5500/Dataverse/index.html`
+> `http://127.0.0.1:8000`
 
 Now, the software should run smoothly with no errors, feel free to use the software and don't forget to give feedback on [Dataverse's website](https://multiverse-dataverse.netlify.app/)!
 

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dataverse | License</title>
-    <link rel="shortcut icon" href="../web_images/3dlogo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="shortcut icon" href="../../web_images/3dlogo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../../styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.1/marked.min.js"></script>
 </head>
@@ -31,7 +31,7 @@
     <nav id="navbar">
         <img src="../web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
         <img src="../web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
-        <a href="login.html">
+        <a href="/login">
             <button class="navbarButton">
                 <span class="button-text">Login</span>
                 <img src="../web_images/user.png" alt="User Icon" class="user-icon">
@@ -49,28 +49,28 @@
     <div class="plane" id="plane">
         <table>
             <tr>
-                <td><a href="../../index.html" class="table_link">Home</a></td>
+                <td><a href="/" class="table_link">Home</a></td>
             </tr>
             <tr>
-                <td><a href="../../documentation.html" class="table_link">Documentation</a></td>
+                <td><a href="/documentation" class="table_link">Documentation</a></td>
             </tr>
             <tr>
-                <td><a href="versions.html" class="table_link">Versions</a></td>
+                <td><a href="/versions" class="table_link">Versions</a></td>
             </tr>
             <tr>
-                <td><a href="support.html" class="table_link">Support</a></td>
+                <td><a href="/support" class="table_link">Support</a></td>
             </tr>
             <tr>
-                <td><a href="contributor.html" class="table_link">Contributors</a></td>
+                <td><a href="/contributor" class="table_link">Contributors</a></td>
             </tr>
             <tr>
-                <td><a href="reviews.html" class="table_link">Reviews</a></td>
+                <td><a href="/reviews" class="table_link">Reviews</a></td>
             </tr>
             <tr>
-                <td id="current"><a href="license.html" class="table_link">License</a></td>
+                <td id="current"><a href="/license" class="table_link">License</a></td>
             </tr>
             <tr>
-                <td><a href="../../404.html" class="table_link">Stunning Visuals</a></td>
+                <td><a href="/404" class="table_link">Stunning Visuals</a></td>
             </tr>
             <tr>
                 <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
@@ -90,7 +90,7 @@
         <div id="markdown-content"></div>
     </div>
     <script>
-        fetch('../../LICENSE.md')
+        fetch('/static/LICENSE.md')
             .then(response => response.text())
             .then(markdownText => {
                 let html = marked(markdownText);
@@ -98,7 +98,7 @@
             });
     </script>
 
-    <a href="../../index.html"><button class="goBack">Go To Home</button></a>
+    <a href="/"><button class="goBack">Go To Home</button></a>
     <style>
         body {
             margin: 0;
@@ -140,7 +140,7 @@
             padding: 10px;
         }
     </style>
-    <script src="../scripts/license.js"></script>
+    <script src="../../scripts/license.js"></script>
 </body>
 
 </html>

@@ -133,7 +133,7 @@
             </div>
             <button type="button" class="btn btn-primary" id="loginButton" style="width: 50%; font-weight: 400;" onclick="login(event)">LOGIN</button>
             <div style="text-align: center; margin-top: 10px;">
-                <p style="color: white;">Don't have an account? <a href="signup.html" style="text-decoration: underline; color: #004ab7;"> Sign Up</a></p>
+                <p style="color: white;">Don't have an account? <a href="/signup" style="text-decoration: underline; color: #004ab7;"> Sign Up</a></p>
             </div>
         </div>
         <!--login form end-->
@@ -149,7 +149,7 @@
             </div>
         </div>
     </div>
-    <a href="../../index.html"><button class="goBack">Go To Home</button></a>
+    <a href="/"><button class="goBack">Go To Home</button></a>
     <script type="module">
         import {showModal, closeModal, attachToWindow} from '../scripts/sharedUtilities.js';
         var windowFunctions = [];
@@ -261,7 +261,7 @@
             showModal('Login successful!', 'no reply');
             // Redirect to index.html after a short time seconds of showing the modal
             setTimeout(() => {
-                window.location.href = '../../index.html';  
+                window.location.href = '../index.html';  
             }, 1500);
         };
         windowFunctions.push(login);

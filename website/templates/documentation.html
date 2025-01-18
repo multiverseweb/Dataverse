@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="website/styles/style.css" />
+    <link rel="stylesheet" href="../styles/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.1/marked.min.js"></script>
     <style>
         body {
@@ -79,12 +79,12 @@
 
 <body>
     <nav id="navbar">
-        <img src="website/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
-        <img src="website/web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
-        <a href="website/pages/login.html">
+        <img src="/web_images/3dlogo.svg" alt="Dataverse Logo" class="logo" id="normal">
+        <img src="/web_images/3d_glow.webp" alt="Dataverse Logo" class="logo" id="glow">
+        <a href="/login">
             <button class="navbarButton">
                 <span class="button-text">Login</span>
-                <img src="website/web_images/user.png" alt="User Icon" class="user-icon">
+                <img src="/web_images/user.png" alt="User Icon" class="user-icon">
             </button>
         </a>
     </nav>
@@ -99,28 +99,28 @@
     <div class="plane" id="plane">
         <table id="navbar_table">
             <tr>
-                <td><a href="index.html" class="table_link">Home</a></td>
+                <td><a href="/" class="table_link">Home</a></td>
             </tr>
             <tr>
-                <td id="current"><a href="documentation.html" class="table_link">Documentation</a></td>
+                <td id="current"><a href="/documentation" class="table_link">Documentation</a></td>
             </tr>
             <tr>
-                <td><a href="./website/pages/versions.html" class="table_link">Versions</a></td>
+                <td><a href="/versions" class="table_link">Versions</a></td>
             </tr>
             <tr>
-                <td><a href="./website/pages/support.html" class="table_link">Support</a></td>
+                <td><a href="/support" class="table_link">Support</a></td>
             </tr>
             <tr>
-                <td><a href="./website/pages/contributor.html" class="table_link">Contributors</a></td>
+                <td><a href="/contributor" class="table_link">Contributors</a></td>
             </tr>
             <tr>
-                <td><a href="./website/pages/reviews.html" class="table_link">Reviews</a></td>
+                <td><a href="/reviews" class="table_link">Reviews</a></td>
             </tr>
             <tr>
-                <td><a href="./website/pages/license.html" class="table_link">License</a></td>
+                <td><a href="/license" class="table_link">License</a></td>
             </tr>
             <tr>
-                <td><a href="404.html" class="table_link">Stunning Visuals</a></td>
+                <td><a href="/404" class="table_link">Stunning Visuals</a></td>
             </tr>
             <tr>
                 <td><a href="https://github.com/multiverseweb/Dataverse" class="table_link">Github Repository</a></td>
@@ -129,14 +129,14 @@
     </div>
     <div id="markdown-content"></div>
     <script>
-        fetch('README.md')
+        fetch('/static/README.md')
             .then(response => response.text())
             .then(markdownText => {
                 let html = marked(markdownText);
                 document.getElementById('markdown-content').innerHTML = html;
             });
     </script>
-    <script src="website/scripts/script.js" type="module" defer></script>
+    <script src="../scripts/script.js" type="module" defer></script>
 </body>
 
 </html>

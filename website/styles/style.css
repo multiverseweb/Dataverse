@@ -1210,6 +1210,7 @@ input {
     padding: 10px;
     border: 1px solid rgba(128, 128, 128, 0.352);
 }
+
 /*===========================RESPONSIVE===================================*/
 @media screen and (max-width: 660px) {
     .navbarButton {
@@ -1279,14 +1280,6 @@ input {
         margin-top: 150px;
         flex-direction: column;
     }
-
-    /*.examples{
-        margin-left: 10vw;
-        width: 82.5vw
-    }
-    .examples img{
-        height: 30vh;
-    }*/
 
     #finance {
         flex-direction: column-reverse;

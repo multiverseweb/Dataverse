@@ -1205,10 +1205,15 @@ input {
 #versions td{
     padding: 10px;
     border: 1px solid rgba(128, 128, 128, 0.352);
+    text-align: justify;
 }
 #versions th{
     padding: 10px;
     border: 1px solid rgba(128, 128, 128, 0.352);
+}
+.highlight {
+        font-weight: bold;
+        color: #ff4500;
 }
 
 /*===========================RESPONSIVE===================================*/

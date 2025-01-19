@@ -157,8 +157,7 @@ V. Install MySQL if you don't have it already from [here](https://dev.mysql.com/
 VI (a). To run the application:
 
 > ```
-> cd software
-> python main.py
+> python software\main.py
 > ```
 
 VI (b). To run the website:

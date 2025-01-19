@@ -33,3 +33,4 @@ starlette
 tabulate
 typing_extensions
 uvicorn
+python-multipart

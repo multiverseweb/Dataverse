@@ -7,6 +7,7 @@ from fastapi.templating import Jinja2Templates
 from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 import os
+from routes.feedback import router as feedback_router
 
 # Load .env file
 load_dotenv()
@@ -46,15 +47,14 @@ MONGODB_URL = os.getenv("MONGODB_URL")
 client = AsyncIOMotorClient(MONGODB_URL)
 db = client.Dataverse
 
-# Image Collections
-review_collection = db["reviews"]
-
+# Collections
+feedback_collection = db["feedbacks"]
 
 # Include Routers
+app.include_router(feedback_router)
 
 @app.get("/", response_class=HTMLResponse)
 def read_root(request: Request): 
-    # Provide the context including the request object
     return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get("/login", response_class=HTMLResponse)
@@ -92,5 +92,3 @@ def license(request: Request):
 @app.get("/404", response_class=HTMLResponse)
 def not_found(request: Request):
     return templates.TemplateResponse("404.html", {"request": request})
-
-

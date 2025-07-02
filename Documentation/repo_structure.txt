@@ -3,9 +3,13 @@
 │   ├── PROJECT_STRUCTURE.md
 │   ├── contributing.md
 │   ├── images/
+│   │   ├── IWOC.png
+│   │   ├── gssoc.png
+│   │   ├── hacktoberfest.png
 │   │   ├── home_UI.png
 │   │   ├── netlify.svg
-│   │   └── report.png
+│   │   ├── report.png
+│   │   └── swoc.png
 │   ├── repo_structure.html
 │   ├── repo_structure.txt
 │   └── styles/

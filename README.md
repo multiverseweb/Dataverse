@@ -34,32 +34,38 @@
     <th><a href="#repository-structure">Repository Structure</a></th>
     <th><a href="#deployment-specifications">Use Dataverse</a></th>
     <th><a href="#contributions">Make Contributions</a></th>
-    <th><a href="#links">Links</a></th>
   </tr>
 </table>
 
 ---
 
-### Featured In
+<details>
+  <summary><h3>Featured In: Open Source Programs</h3></summary>
 
+  
 <table>
 <tr>
       <th>Event Logo</th>
       <th>Event Name</th>
     </tr>
+  <tr>
+        <td><img src="Documentation/images/iwoc.png" width="200" height="auto" loading="lazy" alt="IWOC"/></td>
+        <td>Innogeeks Winter of Code Season-3 (IWOC) 2025</td>
+    </tr>
 <tr>
-        <td><img src="Documentation/images/SWOC.jpg" width="200" height="auto" loading="lazy" alt="SWOC"/></td>
+        <td><img src="Documentation/images/swoc.jpg" width="200" height="auto" loading="lazy" alt="SWOC"/></td>
         <td><a href="https://www.socialwinterofcode.com/">Social Winter of Code Season-5 (SWOC) </a>2024-2025</td>
     </tr>
     <tr>
-        <td><img src="https://user-images.githubusercontent.com/63473496/213306279-338f7ce9-9a9f-4427-8c2a-3e344874498f.png#gh-dark-mode-only" width="200" height="auto" loading="lazy" alt="GSSoC Ext 24"/></td>
+        <td><img src="Documentation/images/gssoc.png"" width="200" height="auto" loading="lazy" alt="GSSoC Ext 24"/></td>
         <td><a href="https://gssoc.girlscript.tech/">GirlScript Summer of Code Ext (GSSoC'24) </a>2024</td>
     </tr>
    <tr>
-        <td><img src="https://cdn.prod.website-files.com/63bc83b29094ec80844b6dd5/66fc35d92c74c4e4103f3673_Flyte-at-Hacktoberfest-2024.png" width="200" height="auto" loading="lazy" alt="Hacktoberfest 24"/></td>
+        <td><img src="Documentation/images/hacktoberfest.png" width="200" height="auto" loading="lazy" alt="Hacktoberfest 24"/></td>
         <td><a href="https://hacktoberfest.com/">Hacktober Fest</a> 2024</td>
     </tr>
 </table>
+</details>
 
 ### What does this software do?
 - Supports all data visualisation techniques, basic as well as advanced.
@@ -223,10 +229,6 @@ Want to make contributions to this project? ✨
 [![Forkers repo roster for @multiverseweb/Dataverse](https://reporoster.com/forks/dark/multiverseweb/Dataverse)](https://github.com/multiverseweb/Dataverse/network/members)
 
 ---
- 
-### Links
-|<a href="https://multiverse-dataverse.netlify.app/"><img src="Documentation/images/netlify.svg"></a>|<a href="https://multiverse-dataverse.netlify.app/"><img src="software/images/dark/globe.png" height='30px' width="60px"></a>|<a href="https://discord.gg/zPchdx52Ug"><img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" height='30px' width="60px"></a>|<a href="mailto:multiverse.letter@gmail.com"><img src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/email-envelope-line-white-icon.png" height="30px" width="60px"></a>|[Multiverse](https://github.com/Multiverse-Web)
-|-|-|-|-|-|
 
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
 

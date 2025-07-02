@@ -49,19 +49,19 @@
       <th>Event Name</th>
     </tr>
   <tr>
-        <td><img src="Documentation/images/iwoc.png" width="200" height="auto" loading="lazy" alt="IWOC"/></td>
+        <td><img src="Documentation/images/IWOC.png" width="50" height="auto" loading="lazy" alt="IWOC"/></td>
         <td>Innogeeks Winter of Code Season-3 (IWOC) 2025</td>
     </tr>
 <tr>
-        <td><img src="Documentation/images/swoc.jpg" width="200" height="auto" loading="lazy" alt="SWOC"/></td>
+        <td><img src="Documentation/images/swoc.png" width="50" height="auto" loading="lazy" alt="SWOC"/></td>
         <td><a href="https://www.socialwinterofcode.com/">Social Winter of Code Season-5 (SWOC) </a>2024-2025</td>
     </tr>
     <tr>
-        <td><img src="Documentation/images/gssoc.png"" width="200" height="auto" loading="lazy" alt="GSSoC Ext 24"/></td>
+        <td><img src="Documentation/images/gssoc.png" width="50" height="auto" loading="lazy" alt="GSSoC Ext 24"/></td>
         <td><a href="https://gssoc.girlscript.tech/">GirlScript Summer of Code Ext (GSSoC'24) </a>2024</td>
     </tr>
    <tr>
-        <td><img src="Documentation/images/hacktoberfest.png" width="200" height="auto" loading="lazy" alt="Hacktoberfest 24"/></td>
+        <td><img src="Documentation/images/hacktoberfest.png" width="50" height="auto" loading="lazy" alt="Hacktoberfest 24"/></td>
         <td><a href="https://hacktoberfest.com/">Hacktober Fest</a> 2024</td>
     </tr>
 </table>

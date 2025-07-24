@@ -186,3 +186,24 @@ body {
 #reviews-container:hover>.card:after {
     opacity: 1;
 }
+
+
+/* Fix for Issue # 394 Feature Request: Add Padding/Margin to Image Containers*/
+
+.reviews-container {
+    gap: 30px; /* Increased from 20px (space between cards) */
+    padding: 25px 0; /* Added vertical padding (was only bottom: 70px) */
+}
+
+.review {
+    padding: 25px; /* Increased from 15px (internal spacing) */
+    margin: 0; /* Reset since gap handles spacing */
+}
+
+.review-header {
+    margin-bottom: 20px; /* Increased from 15px */
+}
+
+.review-content {
+    margin-bottom: 20px; /* Added consistent bottom margin */
+}

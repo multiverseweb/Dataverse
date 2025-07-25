@@ -1,0 +1,14 @@
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-mode a {
+  color: #90caf9;
+}
+
+.dark-mode header, .dark-mode footer {
+  background-color: #1f1f1f;
+  color: #fff;
+}

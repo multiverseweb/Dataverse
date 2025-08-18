@@ -1,4 +1,5 @@
 import mysql.connector
+import db_config
 from fpdf import FPDF
 import matplotlib.pyplot as plt
 from datetime import date
@@ -11,44 +12,62 @@ def fetch_data_from_db(username):
     try:
         # Connect to MySQL database
         connection = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="ananyavastare2345",
-            database="finance_data",
+            host=db_config.DB_HOST,
+            user=db_config.DB_USER,
+            password=db_config.DB_PASSWORD,
+            database=db_config.DB_NAME,
         )
         cursor = connection.cursor(dictionary=True)
 
-        # Fetch user data
-        cursor.execute("SELECT user_id FROM user WHERE username = %s", (username,))
+        # Fetch user data (align with app schema: table `user`, columns `u_id`, `u_name`)
+        cursor.execute("SELECT u_id FROM user WHERE u_name = %s", (username,))
         user = cursor.fetchone()
 
         if user:
-            user_id = user["user_id"]
+            user_id = user["u_id"]
 
-            # Ensure all results are fetched or cleared before running the next query
-            cursor.fetchall()  # Add this to avoid unread results
+            # Get finance breakdown for most recent date for pie, and timeline for line
+            cursor.execute(
+                "SELECT MAX(entryDate) AS last_date FROM finance WHERE u_id = %s",
+                (user_id,)
+            )
+            last = cursor.fetchone()
+            last_date = last["last_date"]
 
-            # Fetch income data for the user
+            # For pie: take latest row's categories
             cursor.execute(
                 """
-                SELECT income_source, amount, date_received 
-                FROM income 
-                WHERE user_id = %s
-            """,
-                (user_id,),
+                SELECT salary, gold, stocks, commodity, sales, expenditure
+                FROM finance
+                WHERE u_id = %s AND entryDate = %s
+                """,
+                (user_id, last_date)
             )
-            income_data = cursor.fetchall()
+            latest_row = cursor.fetchone()
 
-            # Organize data by income source
-            data_by_source = {}
-            for row in income_data:
-                source = row["income_source"]
-                if source not in data_by_source:
-                    data_by_source[source] = {"dates": [], "amounts": []}
-                data_by_source[source]["dates"].append(row["date_received"])
-                data_by_source[source]["amounts"].append(row["amount"])
+            # For line: time series of total over dates
+            cursor.execute(
+                "SELECT entryDate, total FROM finance WHERE u_id = %s ORDER BY entryDate",
+                (user_id,)
+            )
+            timeline_rows = cursor.fetchall()
 
-            return data_by_source
+            # Build a structure compatible with create_combined_chart
+            # Map categories for pie
+            income_data = {
+                "Salary": {"dates": [last_date], "amounts": [latest_row["salary"]]},
+                "Gold": {"dates": [last_date], "amounts": [latest_row["gold"]]},
+                "Stocks": {"dates": [last_date], "amounts": [latest_row["stocks"]]},
+                "Commodity": {"dates": [last_date], "amounts": [latest_row["commodity"]]},
+                "Sales": {"dates": [last_date], "amounts": [latest_row["sales"]]},
+                "Expenditure": {"dates": [last_date], "amounts": [latest_row["expenditure"]]},
+                "Total Timeline": {
+                    "dates": [row["entryDate"] for row in timeline_rows],
+                    "amounts": [row["total"] for row in timeline_rows],
+                },
+            }
+
+            return income_data
         else:
             print(f"User {username} not found.")
             return None
@@ -85,17 +104,18 @@ def create_combined_chart(income_data, plot_path="combined_plot.png"):
     axs[0].set_title("Income Sources Distribution")
     axs[0].axis("equal")
 
-    # Create Line chart to show income amounts over time
-    for label, values in income_data.items():
+    # Create Line chart to show total amount over time (from key 'Total Timeline')
+    if "Total Timeline" in income_data:
+        tt = income_data["Total Timeline"]
         axs[1].plot(
-            values["dates"],
-            values["amounts"],
+            tt["dates"],
+            tt["amounts"],
             marker="o",
             linestyle="-",
             linewidth=2,
-            label=label,
+            label="Total",
         )
-    axs[1].set_title("Income Sources Over Time")
+    axs[1].set_title("Total Over Time")
     axs[1].set_xlabel("Date")
     axs[1].set_ylabel("Amount ($)")
     axs[1].grid(True)

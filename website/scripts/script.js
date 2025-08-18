@@ -69,6 +69,21 @@ addMarkersWithDelay(cities);
 
 // /preloader js styling and other stuff needed for preload
 window.addEventListener('DOMContentLoaded', () => {
+  // Try to programmatically start preloader video in case autoplay is blocked
+  const loaderEl = document.getElementById('video-loader');
+  const videoEl = loaderEl ? loaderEl.querySelector('video') : null;
+  if (videoEl && typeof videoEl.play === 'function') {
+    const tryPlay = () => {
+      videoEl.play().catch(() => {
+        // Autoplay blocked; ensure it's visible and will hide on timeout below
+      });
+    };
+    // Attempt play immediately and again on user interaction
+    tryPlay();
+    ['click','touchstart','keydown'].forEach(evt => {
+      window.addEventListener(evt, tryPlay, { once: true, passive: true });
+    });
+  }
   // Hide the loader after 3 seconds
   setTimeout(() => {
       const loader = document.getElementById('video-loader');

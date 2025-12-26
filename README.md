@@ -1,5 +1,4 @@
-# Dataverse
-<img src="website/web_images/3d_glow.webp" height=50px align=right>
+# Dataverse <img src="website/web_images/3d_glow.webp" height=50px align=right>
 
 ###### Data Visualisation Software & Finance Tracker
 

@@ -1,4 +1,4 @@
-# Dataverse <img src="website/web_images/3d_glow.webp" height=50px align=right>
+# Dataverse <img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/website/web_images/3d_glow.webp" height=50px align=right>
 
 ###### Data Visualisation Software & Finance Tracker
 
@@ -48,19 +48,19 @@
       <th>Event Name</th>
     </tr>
   <tr>
-        <td><img src="Documentation/images/IWOC.png" width="50" height="auto" loading="lazy" alt="IWOC"/></td>
+        <td><img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/Documentation/images/IWOC.png" width="50" height="auto" loading="lazy" alt="IWOC"/></td>
         <td>Innogeeks Winter of Code Season-3 (IWOC) 2025</td>
     </tr>
 <tr>
-        <td><img src="Documentation/images/swoc.png" width="50" height="auto" loading="lazy" alt="SWOC"/></td>
+        <td><img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/Documentation/images/swoc.png" width="50" height="auto" loading="lazy" alt="SWOC"/></td>
         <td><a href="https://www.socialwinterofcode.com/">Social Winter of Code Season-5 (SWOC) </a>2024-2025</td>
     </tr>
     <tr>
-        <td><img src="Documentation/images/gssoc.png" width="50" height="auto" loading="lazy" alt="GSSoC Ext 24"/></td>
+        <td><img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/Documentation/images/gssoc.png" width="50" height="auto" loading="lazy" alt="GSSoC Ext 24"/></td>
         <td><a href="https://gssoc.girlscript.tech/">GirlScript Summer of Code Ext (GSSoC'24) </a>2024</td>
     </tr>
    <tr>
-        <td><img src="Documentation/images/hacktoberfest.png" width="50" height="auto" loading="lazy" alt="Hacktoberfest 24"/></td>
+        <td><img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/Documentation/images/hacktoberfest.png" width="50" height="auto" loading="lazy" alt="Hacktoberfest 24"/></td>
         <td><a href="https://hacktoberfest.com/">Hacktober Fest</a> 2024</td>
     </tr>
 </table>
@@ -84,21 +84,21 @@
 
 Software GUI
 <br>
-<img src="software/images/dark/preview.png" width="800px">
+<img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/software/images/dark/preview.png" width="800px">
 <br><br>
 <details> 
  <summary align=left><H4>View More</H4></summary><br>
 Software Home Page
 <br>
-<img src="Documentation/images/home_UI.png" width="800px">
+<img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/Documentation/images/home_UI.png" width="800px">
 <br><br>
 Visualised Data
 <br>
-<img src="website/web_images/finance_down.webp" width="800px">
+<img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/website/web_images/finance_down.webp" width="800px">
 <br><br>
 Stored Data
 <br>
-<img src="website/web_images/finance_up.webp" width="800px">
+<img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/website/web_images/finance_up.webp" width="800px">
 </details>
 </div>
 

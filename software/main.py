@@ -21,6 +21,9 @@ import pickle
 
 APP_THEME = "appconfig"
 
+# Global session management
+current_session_token = None
+
 #===================================================================================================================plot colors
 colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462","#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato","tan"]
 maxLimit = 16 # maximum limit for colors
@@ -125,8 +128,12 @@ cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id BIGINT PRIMARY KEY, u_name
 cursor.execute("CREATE TABLE IF NOT EXISTS finance (u_id BIGINT, salary FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total FLOAT AS (salary + gold + stocks + commodity + sales - expenditure), entryDate date);")
 #===================================================================================================================================
 #============================================================================================Dataverse Operations
-#======================================================================password encryption
+#======================================================================password encryption (DEPRECATED - kept for migration only)
 def encrypt(pwd):
+    """
+    DEPRECATED: Old encryption method - kept only for migration purposes
+    New code should use security_manager.hash_password() instead
+    """
     n=len(pwd)
     e=""
     t=pwd[int(n/2):]
@@ -139,20 +146,29 @@ def login(b1,b2,b3,b4,preview_image):
     switch(b1,b2,b3,b4)
     preview_image.place_forget()
     def show_message():
-        message=manage_data.check_credentials(f"{user.get()}",f"{pwd.get()}")
-        word=message.split(' ')[0]
-        if word=='Login':
-            messagebox.showinfo(title="", message=message,icon="info")
-            global menu
+        username = f"{user.get()}"
+        password = f"{pwd.get()}"
+        
+        # Use secure authentication
+        success, message, session_token = manage_data.authenticate_user_secure(username, password)
+        
+        if success:
+            messagebox.showinfo(title="Success", message="Login successful!",icon="info")
+            global menu, current_session_token
             menu.pack_forget()
             form.pack_forget()
-            user_menu(message.split(' ')[-1],f"{user.get()}")
-        elif word=='No':
-            messagebox.showinfo(title="", message=message,icon="info")
-        elif word=='Incorrect':
-            messagebox.showinfo(title="", message=message,icon="error")
+            
+            # Store session token globally for the session
+            current_session_token = session_token
+            
+            # Get user info from session
+            session_info = manage_data.security_manager.validate_session(session_token)
+            if session_info:
+                user_menu(session_info['user_id'], username)
+            else:
+                messagebox.showerror(title="Error", message="Session creation failed",icon="error")
         else:
-            messagebox.showinfo(title="", message="Some unknown error occured.",icon="warning")
+            messagebox.showerror(title="Login Failed", message=message,icon="error")
     global relation
     relation.pack_forget()
     global text
@@ -181,20 +197,19 @@ def create(b2,b1,b3,b4,preview_image):
     def show_message(u_name,pwd,country,names):
         u_name=f"{u_name.get()}"
         pwd=f"{pwd.get()}"
-        pwd=encrypt(pwd)
         country=f"{country.get()}"
-        if u_name in names:
-            messagebox.showinfo(title="Username Not Available", message="That username is already taken. Try another one.",icon="info")
-        else:
-            u_id = datetime.datetime.now().strftime("%y%m%d%H%M%S")
-            q="insert into user values({},'{}','{}','{}')".format(u_id,u_name,pwd,country)
-            cursor.execute(q)
-            mycon.commit()
-            msg="Account Created Successfully! ✓\nYour User ID is: {}\n".format(u_id)
+        
+        # Use secure user creation
+        success, message, user_id = manage_data.create_user_secure(u_name, pwd, country)
+        
+        if success:
             global text
-            text=Label(font="poppins 10 bold",fg=theme["White"],bg=theme["Black"],text=msg)
+            text=Label(font="poppins 10 bold",fg=theme["White"],bg=theme["Black"],text=message)
             text.pack(fill=X,pady=35,padx=(0,200))
-            messagebox.showinfo(title="Important", message="This User ID is required while deleting the account.",icon="warning")
+            messagebox.showinfo(title="Success", message="Account created successfully!",icon="info")
+            messagebox.showinfo(title="Important", message=f"Your User ID is: {user_id}\nThis User ID is required while deleting the account.",icon="warning")
+        else:
+            messagebox.showerror(title="Error", message=message,icon="error")
 
     switch(b2,b1,b3,b4)
     preview_image.place_forget()

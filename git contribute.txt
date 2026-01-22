@@ -1,0 +1,5 @@
+git commit -m "Fix: Added top padding to hero section to avoid header overlap also changed member dasboard button styles which was not visible earlier and nav link colors changed also extra login button removed as sign in option already available"
+git checkout -b feature-branch
+git add .
+git commit -m "Meaningful commit message"
+git push origin feature-branch

@@ -9,21 +9,17 @@ import numpy as np
 import datetime
 from datetime import datetime, timedelta, date
 from matplotlib.widgets import Cursor as lines
-import mysql.connector as my
-from mysql.connector import Error
+import sqlite3 as my
+from sqlite3 import Error
 #===============================================================================================================plot colors
 colors=["#440154", "#3b528b","#21918c", "#5ec962", "#fde725","#f89540", "#e16462","#b12a90", "#6a00a8", "#0d0887", "#3474eb", "#5ec962", "yellow", "#f89540", "tomato","tan"]
-#==================================================================================================connecting MySQL
+#==================================================================================================connecting SQLite
 try:
-    mycon = my.connect(
-    host=db_config.DB_HOST,
-    user=db_config.DB_USER,
-    passwd=db_config.DB_PASSWORD
-)
+    mycon = my.connect(db_config.DB_FILE)
     cursor = mycon.cursor()
 except Error as e:
-    print(f"Error connecting to MySQL: {e}")
-    messagebox.showerror("Database Error", f"Failed to connect to the database: {e}\n\nExecute the following query in your MYSQL Workbench or MySQL Shell and then try again:\n\nCREATE DATABASE DATAVERSE;")
+    print(f"Error connecting to SQLite: {e}")
+    messagebox.showerror("Database Error", f"Failed to connect to the database: {e}")
     exit()  # Exit the program if the database connection fails
 
 z = 0 # Global variable to track failed login attempts
@@ -98,9 +94,9 @@ def fetch_data(user_id):
         if len(result_set) == 0:
             return None
         else:
-            cursor.execute("DESCRIBE finance")
+            cursor.execute("PRAGMA table_info(finance)")
             schema = cursor.fetchall()
-            column_names = [column[0] for column in schema]
+            column_names = [column[1] for column in schema]
             data_pool = {}
             for column_name in column_names:
                 column_data = []

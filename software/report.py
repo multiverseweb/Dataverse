@@ -1,4 +1,5 @@
-import mysql.connector
+import sqlite3
+import db_config
 from fpdf import FPDF
 import matplotlib.pyplot as plt
 from datetime import date
@@ -9,31 +10,27 @@ import matplotlib.dates as mdates
 # Function to fetch data from the database
 def fetch_data_from_db(username):
     try:
-        # Connect to MySQL database
-        connection = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="ananyavastare2345",
-            database="finance_data",
-        )
-        cursor = connection.cursor(dictionary=True)
+        # Connect to SQLite database
+        connection = sqlite3.connect(db_config.DB_FILE)
+        connection.row_factory = sqlite3.Row
+        cursor = connection.cursor()
 
         # Fetch user data
-        cursor.execute("SELECT user_id FROM user WHERE username = %s", (username,))
+        cursor.execute("SELECT u_id FROM users WHERE u_name = ?", (username,))
         user = cursor.fetchone()
 
         if user:
-            user_id = user["user_id"]
+            user_id = user["u_id"]
 
             # Ensure all results are fetched or cleared before running the next query
-            cursor.fetchall()  # Add this to avoid unread results
+            # SQLite handles this automatically, no need to fetchall here.
 
             # Fetch income data for the user
             cursor.execute(
                 """
                 SELECT income_source, amount, date_received 
                 FROM income 
-                WHERE user_id = %s
+                WHERE user_id = ?
             """,
                 (user_id,),
             )
@@ -53,7 +50,7 @@ def fetch_data_from_db(username):
             print(f"User {username} not found.")
             return None
 
-    except mysql.connector.Error as err:
+    except sqlite3.Error as err:
         print(f"Error: {err}")
         return None
 

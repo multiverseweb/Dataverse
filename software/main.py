@@ -4,7 +4,7 @@ from tkinter import messagebox                    #for GUI messages             
 import customtkinter                              #for scrollable GUI frame                  |        v.6550.24          |
 from PIL import Image, ImageTk                    #for GUI images                            |  Designed & Developed By  |
 from functools import partial                     #for calling button functions              |        TEJAS GUPTA        |
-import mysql.connector as my                      #for connecting database                   +---------------------------+
+# removed mysql import
 import datetime                                   #for getting current date                  |   developing v.XM45.24    |
 import time                                       #for getting current time                  +---------------------------+
 import webbrowser                                 #for opening external link
@@ -54,7 +54,11 @@ def load_theme():
         return "dark"
 
 def icon_provider(mode):
-    path = "software/images/{mode}/"
+    import sys, os
+    if getattr(sys, 'frozen', False):
+        path = os.path.join(sys._MEIPASS, "software", "images", "{mode}") + "/"
+    else:
+        path = "software/images/{mode}/"
     icons = {"3dlogo": "",
              "2dlogo" : "",
              "line_graph" : "",
@@ -119,10 +123,7 @@ def switch_theme():
 
 mycon=manage_data.mycon
 cursor=manage_data.cursor
-cursor.execute("CREATE DATABASE IF NOT EXISTS DATAVERSE;")
-cursor.execute("USE DATAVERSE;")
-cursor.execute("CREATE TABLE IF NOT EXISTS user (u_id BIGINT PRIMARY KEY, u_name VARCHAR(255), pwd VARCHAR(255), country varchar(50) default 'India')")
-cursor.execute("CREATE TABLE IF NOT EXISTS finance (u_id BIGINT, salary FLOAT DEFAULT 0, gold FLOAT DEFAULT 0, stocks FLOAT DEFAULT 0, commodity FLOAT DEFAULT 0, sales FLOAT DEFAULT 0, expenditure FLOAT DEFAULT 0, total FLOAT AS (salary + gold + stocks + commodity + sales - expenditure), entryDate date);")
+# Table initialization is now handled by db_config.init_db()
 #===================================================================================================================================
 #============================================================================================Dataverse Operations
 #======================================================================password encryption
@@ -1493,4 +1494,4 @@ relation.pack(side=RIGHT)
 menu=Frame(root,bg=theme["Primary"],relief=SUNKEN)
 menu.pack(side=LEFT,fill=Y)
 main()
-mycon.close()
+manage_data.mycon.close()

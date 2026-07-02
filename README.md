@@ -206,7 +206,7 @@ Now, the software should run smoothly with no errors, feel free to use the softw
 
 Want to make contributions to this project? ✨
 
-| **[Read _contribution guidelines!_](Documentation/contributing.md)** |
+| **[Read _contribution guidelines!_](contributing.md)** |
 |-|
 
 ---

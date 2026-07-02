@@ -1,4 +1,4 @@
-# Dataverse <img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/website/web_images/3d_glow.webp" height=50px align=right>
+# Dataverse <img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/website/web_images/3d_glow.webp" height=50px align=right id="project-logo">
 
 ###### Data Visualisation Software & Finance Tracker
 

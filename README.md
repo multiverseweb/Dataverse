@@ -21,8 +21,6 @@
   ![GitHub last commit](https://img.shields.io/github/last-commit/multiverseweb/Dataverse)
   ![GitHub repo size](https://img.shields.io/github/repo-size/multiverseweb/Dataverse)
   ![GitHub total lines](https://sloc.xyz/github/multiverseweb/Dataverse)
-  <a href="https://multiverse-dataverse.netlify.app/"><img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fmultiverse-dataverse.netlify.app%2F&up_message=awake&up_color=%2300d18f&down_message=asleep&down_color=red&style=flat">
-</a>
 
 ---
 
@@ -38,14 +36,10 @@
 </table>
 
 ### What does this software do?
-- Supports all data visualisation techniques, basic as well as advanced.
+- Provides a graphical interface for generating Matplotlib charts.
+- Supports visualizing datasets without writing Python code.
 - Generates interactive, customizable and exportable graphs.
-- Provides data storage for later use.
-- Supports data inputs from excel sheets.
-- Simplifies expense tracking and financial management.
-- Allows user to download financial reports.
-- Uses encryption techniques to securely store your passwords.
-- View and manage data via a mobile-friendly website.
+- Serves as a local tool for rapid data visualization.
 
 ---
 
@@ -61,14 +55,6 @@ Software GUI
 Software Home Page
 <br>
 <img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/Documentation/images/home_UI.png" width="800px">
-<br><br>
-Visualised Data
-<br>
-<img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/website/web_images/finance_down.webp" width="800px">
-<br><br>
-Stored Data
-<br>
-<img src="https://raw.githubusercontent.com/multiverseweb/Dataverse/main/website/web_images/finance_up.webp" width="800px">
 </details>
 </div>
 
@@ -92,11 +78,9 @@ A pre-compiled executable is provided for Windows users, eliminating the need to
 > [!NOTE]
 > If you prefer to run from source, you can clone the repository and run `pip install -r requirements.txt` followed by `python software/main.py`.
 
-Now, the software should run smoothly with no errors, feel free to use the software and don't forget to give feedback on [Dataverse's website](https://multiverse-dataverse.netlify.app/)!
+Now, the software should run smoothly with no errors. Enjoy visualizing your data!
 
 ---
-
-### Star History
 
 <picture>
   <source
@@ -121,7 +105,3 @@ Now, the software should run smoothly with no errors, feel free to use the softw
 
 
 <sup><a href="#table-of-contents" align="right">Back to top</a></sup>
-
-```
-
-```

@@ -123,6 +123,23 @@ nav {
   position: relative;
 }
 
+#logo-3d-container {
+  width: 100%;
+  height: 280px;
+  max-width: 320px;
+  margin: 0 auto 1rem auto;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: grab;
+  /* Add subtle background glow */
+  background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+}
+
+#logo-3d-container:active {
+  cursor: grabbing;
+}
+
 .hero::before {
   content: '';
   position: absolute;

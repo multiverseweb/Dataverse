@@ -6,9 +6,19 @@ function init3DLogo() {
     // Scene setup
     const scene = new THREE.Scene();
 
-    // Camera setup
-    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+    // Camera setup - Using Orthographic for parallel lines
+    const aspect = container.clientWidth / container.clientHeight;
+    const frustumSize = 4.5;
+    const camera = new THREE.OrthographicCamera(
+        -frustumSize * aspect / 2, 
+        frustumSize * aspect / 2, 
+        frustumSize / 2, 
+        -frustumSize / 2, 
+        0.1, 
+        1000
+    );
     camera.position.set(4, 3, 4);
+    camera.lookAt(0, 0, 0);
 
     // Renderer setup
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -153,7 +163,12 @@ function init3DLogo() {
     // Resize Handler
     window.addEventListener('resize', () => {
         if (!container) return;
-        camera.aspect = container.clientWidth / container.clientHeight;
+        const aspect = container.clientWidth / container.clientHeight;
+        const frustumSize = 4.5;
+        camera.left = -frustumSize * aspect / 2;
+        camera.right = frustumSize * aspect / 2;
+        camera.top = frustumSize / 2;
+        camera.bottom = -frustumSize / 2;
         camera.updateProjectionMatrix();
         renderer.setSize(container.clientWidth, container.clientHeight);
     });
